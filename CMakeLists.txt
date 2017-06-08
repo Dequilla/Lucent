@@ -12,15 +12,16 @@ set(OUR_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 # Include our source files
 include_directories(${OUR_SRC_DIR})
 
-# Dependencies (TODO: WINDOWS set a changable variable to change between x86 and x64)
+# Dependencies
+
+# OpenGL
+find_package(OpenGL REQUIRED)
+include_directories(${OPENGL_INCLUDE_DIRS})
 if(WIN32)
+	set(GLEW_LIBRARIES ${CEngineDependencies}/lib/x86/glew32.lib)
+
 	# Set SDL2_LIBRARY manually
-	set(SDL2_LIBRARY ${CEngineDependencies}/lib/x86/SDL2.lib ${CEngineDependencies}/lib/x86/SDL2main.lib
-					 ${CEngineDependencies}/lib/x64/SDL2.lib ${CEngineDependencies}/lib/x64/SDL2main.lib)
-	
-	# Set GLEW_LIBRARIES manually
-	set(GLEW_LIBRARIES ${CEngineDependencies}/lib/x86/glew32.lib ${CEngineDependencies}/lib/x86/glew32d.lib
-					   ${CEngineDependencies}/lib/x64/glew32.lib ${CEngineDependencies}/lib/x64/glew32d.lib)
+	set(SDL2_LIBRARY ${CEngineDependencies}/lib/x86/SDL2.lib ${CEngineDependencies}/lib/x86/SDL2main.lib)
 
 	# Include our local dependencies for windows
 	include_directories(${ALL_DEP_INCLUDES})

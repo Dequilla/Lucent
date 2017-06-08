@@ -12,5 +12,7 @@ namespace ce
 	public:
 		Window(std::string title, int posx, int posy, int width, int height);
 		~Window();
+
+		SDL_Window* getSDLWindow() { return m_window; }
 	};
 }

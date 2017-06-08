@@ -2,6 +2,7 @@
   "ExpandedNodes": [
     "",
     "\\deps",
+    "\\deps\\include",
     "\\src",
     "\\src\\Core"
   ],
