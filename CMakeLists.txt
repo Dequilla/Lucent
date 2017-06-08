@@ -13,7 +13,6 @@ set(OUR_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 include_directories(${OUR_SRC_DIR})
 
 # Dependencies
-
 # OpenGL
 find_package(OpenGL REQUIRED)
 include_directories(${OPENGL_INCLUDE_DIRS})
