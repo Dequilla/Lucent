@@ -4,6 +4,7 @@
 add_executable(CEngine Main.cpp)
 
 # Link libraries to the main target
-target_link_libraries(CEngine CEngineCore ${SDL2_LIBRARY})
+target_link_libraries(CEngine 
+	CEngineCore ${SDL2_LIBRARY} ${GLEW_LIBRARIES})
 
 add_subdirectory(Core)

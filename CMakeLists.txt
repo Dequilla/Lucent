@@ -12,12 +12,16 @@ set(OUR_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 # Include our source files
 include_directories(${OUR_SRC_DIR})
 
-# Dependencies
+# Dependencies (TODO: WINDOWS set a changable variable to change between x86 and x64)
 if(WIN32)
 	# Set SDL2_LIBRARY manually
 	set(SDL2_LIBRARY ${CEngineDependencies}/lib/x86/SDL2.lib ${CEngineDependencies}/lib/x86/SDL2main.lib
 					 ${CEngineDependencies}/lib/x64/SDL2.lib ${CEngineDependencies}/lib/x64/SDL2main.lib)
 	
+	# Set GLEW_LIBRARIES manually
+	set(GLEW_LIBRARIES ${CEngineDependencies}/lib/x86/glew32.lib ${CEngineDependencies}/lib/x86/glew32d.lib
+					   ${CEngineDependencies}/lib/x64/glew32.lib ${CEngineDependencies}/lib/x64/glew32d.lib)
+
 	# Include our local dependencies for windows
 	include_directories(${ALL_DEP_INCLUDES})
 elseif(UNIX)
@@ -27,8 +31,11 @@ elseif(UNIX)
 	# Sets SDL2_INCLUDE_DIR and SDL2_LIBRARY
 	find_package(SDL2 REQUIRED)
 
-	# Include the found path for SDL2 on UNIX
-	include_directories(${SDL2_INCLUDE_DIR})
+	# GLEW exsists by default in CMAKE
+	find_package(GLEW REQUIRED)
+
+	# Include the found path for our deps on UNIX
+	include_directories(${SDL2_INCLUDE_DIR} ${GLEW_INCLUDE_DIRS})
 endif()
 
 add_subdirectory(src)

@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "SDL2/SDL.h"
+#include "GL/glew.h"
 
 #include "Core/Window.h"
 
@@ -14,6 +15,7 @@
 int main(int argc, char** argv)
 {
 	SDL_Init(SDL_INIT_VIDEO);
+	glewInit();
 
 	ce::Window window("Hello world", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600);
 
