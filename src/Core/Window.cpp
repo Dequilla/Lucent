@@ -18,20 +18,21 @@ bool ce::Window::initVideoComponents()
 	return true;
 }
 
-ce::Window::Window(std::string title, int posx, int posy, int width, int height)
+ce::Window::Window(std::string title, int posx, int posy, int width, int height, unsigned int flags)
 {
+	// Initialize any videocomponents we will need
 	initVideoComponents();
 
-	m_window = SDL_CreateWindow(title.c_str(), posx, posy, width, height, SDL_WINDOW_OPENGL);
-
+	// Create the window
+	m_window = SDL_CreateWindow(title.c_str(), posx, posy, width, height, SDL_WINDOW_OPENGL | flags);
 	if (m_window == NULL)
 	{
 		std::cout << "CE: Failed to create window with title: "
 			<< title << " containing error: " << SDL_GetError() << std::endl;
 	}
 
+	// Create the context
 	m_glContext = SDL_GL_CreateContext(m_window);
-
 	if (m_glContext == NULL)
 	{
 		std::cout << "CE: Failed to create a GL context for the window with the title: "
@@ -67,4 +68,19 @@ void ce::Window::clear()
 void ce::Window::display()
 {
 	SDL_GL_SwapWindow(m_window);
+}
+
+void ce::Window::setSize(int width, int height)
+{
+	SDL_SetWindowSize(m_window, width, height);
+}
+
+void ce::Window::setResizeable(bool x)
+{
+	SDL_SetWindowResizable(m_window, (SDL_bool)x);
+}
+
+void ce::Window::setTitle(std::string title)
+{
+	SDL_SetWindowTitle(m_window, title.c_str());
 }

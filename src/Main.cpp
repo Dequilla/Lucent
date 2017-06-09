@@ -5,17 +5,23 @@
 
 #include "Core/Window.h"
 
-// TODO:
-// Get OpenGL up and running
-// Get on clearing screen, drawing something simple and then setup a proper window
-// Event handeling
-// Make sure I can compile on linux aswell
-// FUCKING PROFIT
+#include "Core/GameMode.h"
+
+// TODO: KEEP GOING ON INPUT
+
 
 int main(int argc, char* argv[])
 {
-	ce::Window window("Hello world", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600);
+	ce::Window window(
+		"Hello world", 
+		ce::WINDOWPOS_CENTERED, 
+		ce::WINDOWPOS_CENTERED,
+		800, 600, 
+		ce::WINDOW_RESIZABLE
+	);
 	window.setClearColor(0.f, 0.f, 0.f);
+
+	ce::GameMode mode;
 
 	bool running = true;
 	while (running)
@@ -27,6 +33,7 @@ int main(int argc, char* argv[])
 			{
 				running = false;
 			}
+			mode.checkInput(e); // TODO
 		}
 
 		window.clear();
