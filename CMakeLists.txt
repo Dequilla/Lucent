@@ -2,6 +2,9 @@
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 project(CEngine)
 
+# Enable c++11
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+
 # Dependencies directory
 set(CEngineDependencies ${PROJECT_SOURCE_DIR}/deps)
 
@@ -31,7 +34,7 @@ elseif(UNIX)
 	# Sets SDL2_INCLUDE_DIR and SDL2_LIBRARY
 	find_package(SDL2 REQUIRED)
 
-	# GLEW exsists by default in CMAKE
+	# Sets GLEW libraries and includes
 	find_package(GLEW REQUIRED)
 
 	# Include the found path for our deps on UNIX

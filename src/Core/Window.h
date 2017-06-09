@@ -1,8 +1,9 @@
-#include "SDL2/SDL.h" 
-#include "GL/glew.h"
-
+#pragma once
 #include <string>
 #include <iostream>
+
+#include "SDL2/SDL.h" 
+#include "GL/glew.h"
 
 namespace ce
 {

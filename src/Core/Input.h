@@ -14,7 +14,8 @@ namespace ce
 	class Input
 	{
 	protected:
-		std::unordered_map<KeyCodes, std::function< void() >> m_cbKeypress; // Map with callbacks
+		// Using an INT however it represents a KeyCode
+		std::unordered_map<int, std::function< void() >> m_cbKeypress; // Map with callbacks
 		std::vector<KeyCodes> m_boundKeys; // Used to determine which keys to check
 
 		// Todo add axis support, mouse, joystick, controller
