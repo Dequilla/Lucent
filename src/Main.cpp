@@ -4,32 +4,25 @@
 #include "GL/glew.h"
 
 #include "Core/Window.h"
-
 #include "Core/GameMode.h"
+#include "Core/Application.h"
 
 // TODO: KEEP GOING ON INPUT
 
-
 int main(int argc, char* argv[])
 {
-	// Give us our SDL_Versions
-	SDL_version compiled;
-	SDL_version linked;
-	SDL_VERSION(&compiled);
-	SDL_GetVersion(&linked);
-	std::cout << "SDL_VERSION_COMPILED - " << (int)compiled.major << "." << (int)compiled.minor << "." << (int)compiled.patch << std::endl;
-	std::cout << "SDL_VERSION_LINKED - " << (int)compiled.major << "." << (int)compiled.minor << "." << (int)compiled.patch << std::endl;
-
-	ce::Window window(
+	ce::core::Application::getInstance().init();
+	
+	ce::core::Window window(
 		"Hello world", 
-		ce::WINDOWPOS_CENTERED, 
-		ce::WINDOWPOS_CENTERED,
+		ce::core::WINDOWPOS_CENTERED,
+		ce::core::WINDOWPOS_CENTERED,
 		800, 600, 
-		ce::WINDOW_RESIZABLE
+		ce::core::WINDOW_RESIZABLE
 	);
 	window.setClearColor(0.f, 0.f, 0.f);
 
-	ce::GameMode mode;
+	ce::core::GameMode mode;
 
 	bool running = true;
 	while (running)

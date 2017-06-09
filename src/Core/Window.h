@@ -5,8 +5,8 @@
 #include "SDL2/SDL.h" 
 #include "GL/glew.h"
 
-namespace ce
-{
+namespace ce { namespace core {
+
 	enum WindowFlags
 	{
 		WINDOW_FULLSCREEN			= SDL_WINDOW_FULLSCREEN,			/* Fullscreen window */
@@ -40,7 +40,8 @@ namespace ce
 
 		void setSize(int width, int height);
 
-		void setResizeable(bool x);
+		void setWindowFlags(unsigned int flags);
 		void setTitle(std::string title);
 	};
-}
+
+}} // Namespace end

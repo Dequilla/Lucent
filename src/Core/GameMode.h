@@ -4,32 +4,33 @@
 
 #include "Core/Input.h"
 
-namespace ce
-{
-	// TODO: Current version of this is extremely temporary to test INPUT methods
-	class GameMode
-	{
-	protected:
+namespace ce { namespace core {
 
-	public:
-
-		Input input;
-	
-		void checkInput(const SDL_Event &e)
+		// TODO: Current version of this is extremely temporary to test INPUT methods
+		class GameMode
 		{
-			input.checkInput(e);
-		}
+		protected:
 
-		GameMode() 
-		{ 
-			input.bindKeypress(K_0, this, &GameMode::Test); 
-			input.bindKeypress(K_0, this, &GameMode::TestTest);
-		}
+		public:
 
+			Input input;
 
-		void Test() { std::cout << "TEST" << std::endl; }
-		void TestTest() { std::cout << "TEST TEST WOOO" << std::endl; }
+			void checkInput(const SDL_Event &e)
+			{
+				input.checkInput(e);
+			}
 
-	};
+			GameMode()
+			{
+				input.bindKeyboardEvent(K_0, this, &GameMode::TestTest);
+				input.bindAxisEvent(M_MOTION_X, this, &GameMode::MouseX);
+				input.bindAxisEvent(M_MOTION_Y, this, &GameMode::MouseY);
+			}
 
-}
+			void MouseX(float movementX) { std::cout << "X: " << movementX << std::endl; }
+			void MouseY(float movementY) { std::cout << "Y: " << movementY << std::endl; }
+			void TestTest(bool key_pressed) { std::cout << "Key pressed: " << key_pressed << std::endl; }
+
+		};
+
+}} // End namespace

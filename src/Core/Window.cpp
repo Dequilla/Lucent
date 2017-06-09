@@ -1,6 +1,6 @@
 #include "Window.h"
 
-bool ce::Window::initVideoComponents()
+bool ce::core::Window::initVideoComponents()
 {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
@@ -18,7 +18,7 @@ bool ce::Window::initVideoComponents()
 	return true;
 }
 
-ce::Window::Window(std::string title, int posx, int posy, int width, int height, unsigned int flags)
+ce::core::Window::Window(std::string title, int posx, int posy, int width, int height, unsigned int flags)
 {
 	// Initialize any videocomponents we will need
 	initVideoComponents();
@@ -44,13 +44,13 @@ ce::Window::Window(std::string title, int posx, int posy, int width, int height,
 	glewInit();
 }
 
-ce::Window::~Window()
+ce::core::Window::~Window()
 {
 	SDL_DestroyWindow(m_window);
 	SDL_GL_DeleteContext(m_glContext);
 }
 
-void ce::Window::setClearColor(float r, float g, float b, float a)
+void ce::core::Window::setClearColor(float r, float g, float b, float a)
 {
 	if (m_glContext != SDL_GL_GetCurrentContext())
 	{
@@ -60,27 +60,28 @@ void ce::Window::setClearColor(float r, float g, float b, float a)
 	glClearColor(r, g, b, a);
 }
 
-void ce::Window::clear()
+void ce::core::Window::clear()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 }
 
-void ce::Window::display()
+void ce::core::Window::display()
 {
 	SDL_GL_SwapWindow(m_window);
 }
 
-void ce::Window::setSize(int width, int height)
+void ce::core::Window::setSize(int width, int height)
 {
 	SDL_SetWindowSize(m_window, width, height);
 }
 
-void ce::Window::setResizeable(bool x)
+void ce::core::Window::setWindowFlags(unsigned int flags)
 {
-	SDL_SetWindowResizable(m_window, (SDL_bool)x);
+	// Recreate m_window with new flags
+	// Recreate context???
 }
 
-void ce::Window::setTitle(std::string title)
+void ce::core::Window::setTitle(std::string title)
 {
 	SDL_SetWindowTitle(m_window, title.c_str());
 }
