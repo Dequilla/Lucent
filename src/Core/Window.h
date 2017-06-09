@@ -16,9 +16,6 @@ namespace ce
 		WINDOW_BORDERLESS			= SDL_WINDOW_BORDERLESS,			/* Window has no decorations */
 		WINDOW_MINIMIZED			= SDL_WINDOW_MINIMIZED,				/* Window opens minimized */
 		WINDOW_MAXAMIZED			= SDL_WINDOW_MAXIMIZED,				/* Window opens maxamized */
-		WINDOW_UTILITY				= SDL_WINDOW_UTILITY,				/* Window behaves like a utlity window*/
-		WINDOW_TOOLTIP				= SDL_WINDOW_TOOLTIP,				/* Window behaves like a tooltip */
-		WINDOW_POPUP				= SDL_WINDOW_POPUP_MENU				/* Window behaves like a popup menu */
 	};
 
 	// Used to indicate that the window should be centered
