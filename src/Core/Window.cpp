@@ -1,27 +1,38 @@
 #include "Window.h"
 
-bool ce::core::Window::initVideoComponents()
+void ce::core::Window::initVideoComponents()
 {
-	if (SDL_Init(SDL_INIT_VIDEO) < 0)
-	{
-		std::cout << "CE: Failed to initialize SDL with error:\n" << SDL_GetError() << std::endl;
-		
-		return false;
-	}
-
 	// Set openGL Attributes
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+}
 
-	return true;
+void ce::core::Window::destroyWindow()
+{
+	SDL_DestroyWindow(m_window);
+	SDL_GL_DeleteContext(m_glContext);
 }
 
 ce::core::Window::Window(std::string title, int posx, int posy, int width, int height, unsigned int flags)
 {
-	// Initialize any videocomponents we will need
+	create(title, posx, posy, width, height, flags);
+}
+
+ce::core::Window::~Window()
+{
+	destroyWindow();
+}
+
+void ce::core::Window::create(std::string title, int posx, int posy, int width, int height, unsigned int flags)
+{
 	initVideoComponents();
+
+	if(m_window != nullptr || m_window != NULL && m_glContext != nullptr || m_glContext != NULL)
+	{
+		destroyWindow();
+	}
 
 	// Create the window
 	m_window = SDL_CreateWindow(title.c_str(), posx, posy, width, height, SDL_WINDOW_OPENGL | flags);
@@ -36,18 +47,15 @@ ce::core::Window::Window(std::string title, int posx, int posy, int width, int h
 	if (m_glContext == NULL)
 	{
 		std::cout << "CE: Failed to create a GL context for the window with the title: "
-					<< title << " containing error:\n" << SDL_GetError() << std::endl;
+			<< title << " containing error:\n" << SDL_GetError() << std::endl;
 	}
 
 	// Need a context to init GLEW
 	glewExperimental = GL_TRUE;
-	glewInit();
-}
-
-ce::core::Window::~Window()
-{
-	SDL_DestroyWindow(m_window);
-	SDL_GL_DeleteContext(m_glContext);
+	if (glewInit() != GLEW_OK)
+	{
+		std::cout << "CE: GLEW failed to initialize" << std::endl;
+	}
 }
 
 void ce::core::Window::setClearColor(float r, float g, float b, float a)
@@ -62,6 +70,11 @@ void ce::core::Window::setClearColor(float r, float g, float b, float a)
 
 void ce::core::Window::clear()
 {
+	if (m_glContext != SDL_GL_GetCurrentContext())
+	{
+		SDL_GL_MakeCurrent(m_window, m_glContext);
+	}
+
 	glClear(GL_COLOR_BUFFER_BIT);
 }
 
@@ -77,8 +90,13 @@ void ce::core::Window::setSize(int width, int height)
 
 void ce::core::Window::setWindowFlags(unsigned int flags)
 {
-	// Recreate m_window with new flags
-	// Recreate context???
+	std::string title = SDL_GetWindowTitle(m_window);
+	int posx, posy;
+	SDL_GetWindowPosition(m_window, &posx, &posy);
+	int width, height;
+	SDL_GetWindowSize(m_window, &width, &height);
+
+	create(title, posx, posy, width, height, flags);
 }
 
 void ce::core::Window::setTitle(std::string title)

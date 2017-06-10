@@ -25,14 +25,18 @@ namespace ce { namespace core {
 	class Window
 	{
 	protected:
-		SDL_Window* m_window;
-		SDL_GLContext m_glContext;
+		SDL_Window* m_window = nullptr;
+		SDL_GLContext m_glContext = NULL;
 
-		bool initVideoComponents();
+		void initVideoComponents();
+		void destroyWindow();
 
 	public:
+		Window() {}
 		Window(std::string title, int posx, int posy, int width, int height, unsigned int flags = WINDOW_SHOWN);
 		~Window();
+
+		void create(std::string title, int posx, int posy, int width, int height, unsigned int flags = WINDOW_SHOWN);
 
 		void setClearColor(float r, float g, float b, float a = 0.0f);
 		void clear();

@@ -10,7 +10,8 @@ namespace ce { namespace core {
 	{
 	public:
 
-		void init();
+		// Has to be called before anything else in the application
+		bool init();
 
 		// Make this a singleton
 		Application() {}

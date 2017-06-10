@@ -7,8 +7,6 @@
 #include "Core/GameMode.h"
 #include "Core/Application.h"
 
-// TODO: KEEP GOING ON INPUT
-
 int main(int argc, char* argv[])
 {
 	ce::core::Application::getInstance().init();
@@ -22,6 +20,8 @@ int main(int argc, char* argv[])
 	);
 	window.setClearColor(0.f, 0.f, 0.f);
 
+	window.setWindowFlags(ce::core::WINDOW_SHOWN);
+
 	ce::core::GameMode mode;
 
 	bool running = true;
@@ -34,7 +34,7 @@ int main(int argc, char* argv[])
 			{
 				running = false;
 			}
-			mode.checkInput(e); // TODO
+			mode.checkInput(e);
 		}
 
 		window.clear();
