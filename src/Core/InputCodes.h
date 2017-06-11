@@ -7,17 +7,44 @@ namespace ce { namespace core {
 	// TODO: add more, eg: joysticks etc
 	enum AxisEventCodes
 	{
+		// Mouse
 		M_MOTION_X =	0x01,
 		M_MOTION_Y =	0x02,
 		M_MOTION_XREL = 0x03,
 		M_MOTION_YREL = 0x04,
 		M_WHEEL_X =		0x05,
-		M_WHEEL_Y =		0x06
+		M_WHEEL_Y =		0x06,
+		
+		// Controller
+		C_AXIS_LSTICKX = 0x07,
+		C_AXIS_LSTICKY = 0x08,
+
+		C_AXIS_RSTICKX = 0x09,
+		C_AXIS_RSTICKY = 0x0A,
+
+		C_AXIS_LTRIGGER = 0x0B,
+		C_AXIS_RTRIGGER = 0x0C
 	};
 
 	enum KeyCodes
 	{
-		// Mouse Buttons (seems to work for now)
+		// Controller buttons			
+		C_BUTTON_FACE1 = -100000,		/* Equivalent on XBOX ONE: A			*/
+		C_BUTTON_FACE2 = -100001,		/* Equivalent on XBOX ONE: X			*/
+		C_BUTTON_FACE3 = -100002,		/* Equivalent on XBOX ONE: B			*/
+		C_BUTTON_FACE4 = -100003,		/* Equivalent on XBOX ONE: Y			*/
+		C_BUTTON_DPAD_DOWN = -100004,	/* Equivalent on XBOX ONE: DPAD DOWN	*/
+		C_BUTTON_DPAD_UP = -100005,		/* Equivalent on XBOX ONE: DPAD UP		*/
+		C_BUTTON_DPAD_LEFT = -100006,	/* Equivalent on XBOX ONE: DPAD LEFT	*/
+		C_BUTTON_DPAD_RIGHT = -100007,	/* Equivalent on XBOX ONE: DPAD RIGHT	*/
+		C_BUTTON_STICK1 = -100008,		/* Equivalent on XBOX ONE: Left stick	*/
+		C_BUTTON_STICK2 = -100009,		/* Equivalent on XBOX ONE: Right stick	*/
+		C_BUTTON_LBUMPER = -100010,		/* Equivalent on XBOX ONE: Left button	*/
+		C_BUTTON_RBUMPER = -100011,		/* Equivalent on XBOX ONE: Right button	*/
+		C_BUTTON_SELECT = -100012,		/* Equivalent on XBOX ONE: View button	*/
+		C_BUTTON_START = -100013,		/* Equivalent on XBOX ONE: Menu button	*/
+
+		// Mouse Buttons
 		M_BUTTON_LEFT = -10000,
 		M_BUTTON_RIGHT = -10001,
 		M_BUTTON_MIDDLE = -10002,

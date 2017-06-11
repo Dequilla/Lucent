@@ -11,6 +11,14 @@
 
 namespace ce { namespace core {
 
+	// Structure for joysticks and controllers
+	struct Joystick
+	{
+		int instanceID = NULL;
+		SDL_Joystick* joystick = nullptr;
+		SDL_GameController* controller = nullptr;
+	};
+
 	class Input
 	{
 	protected:
@@ -25,16 +33,20 @@ namespace ce { namespace core {
 
 		// Fixes a crashing issue with binds being cleared during a input check
 		void unbindActual();
-
 		bool m_bUnbindButtons = false;
 		bool m_bUnbindAxis = false;
 
+		void addJoystick(int joystickID);
+		void addController(int controllerID);
+		void removeController(int controllerID);
+	
 	public:
 		// TODO: reconsider where we do the event polling and how we interact with events
 		void checkInput(const SDL_Event &e);
 
-		void unbindAllButtons();
-		void unbindAllAxis();
+		void clearButtonBinds();
+		void clearAxisBinds();
+
 
 		// Bind a function to a keypress
 		// Param 1: KeyCode that it reacts to
