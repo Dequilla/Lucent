@@ -3,6 +3,7 @@
 #include <functional>
 #include <unordered_map>
 #include <vector>
+#include <iostream>
 
 #include "SDL2/SDL.h"
 
@@ -22,9 +23,18 @@ namespace ce { namespace core {
 		std::vector<AxisEventCodes> m_boundAxis;
 		// TODO: Add more axis's eg: joysticks, controller
 
+		// Fixes a crashing issue with binds being cleared during a input check
+		void unbindActual();
+
+		bool m_bUnbindButtons = false;
+		bool m_bUnbindAxis = false;
+
 	public:
 		// TODO: reconsider where we do the event polling and how we interact with events
 		void checkInput(const SDL_Event &e);
+
+		void unbindAllButtons();
+		void unbindAllAxis();
 
 		// Bind a function to a keypress
 		// Param 1: KeyCode that it reacts to
@@ -44,8 +54,6 @@ namespace ce { namespace core {
 	template<class T>
 	inline void ce::core::Input::bindButtonEvent(KeyCodes key, T* instance, void(T::*func)(bool))
 	{
-		int highestCode = KeyCodes::K_SLEEP;
-		
 		// Remove any already bound references
 		for (unsigned int i = 0; i < m_boundKeys.size(); i++)
 		{
@@ -66,7 +74,7 @@ namespace ce { namespace core {
 	}
 
 	template<class T>
-	inline void ce::core::Input::bindAxisEvent(AxisEventCodes axis, T * instance, void(T::* func)(float))
+	inline void ce::core::Input::bindAxisEvent(AxisEventCodes axis, T* instance, void(T::* func)(float))
 	{
 		// Remove any already bound references
 		for (unsigned int i = 0; i < m_boundAxis.size(); i++)

@@ -22,21 +22,14 @@ namespace ce { namespace core {
 
 			GameMode()
 			{
-				input.bindButtonEvent(K_w, this, &GameMode::TestTest);
-				input.bindButtonEvent(K_a, this, &GameMode::TestTest);
-				input.bindButtonEvent(K_s, this, &GameMode::TestTest);
-				input.bindButtonEvent(K_d, this, &GameMode::TestTest);
-
-				input.bindButtonEvent(M_BUTTON_MIDDLE, this, &GameMode::TestTest);
-
-				input.bindAxisEvent(M_MOTION_XREL, this, &GameMode::MouseX);
-				input.bindAxisEvent(M_MOTION_YREL, this, &GameMode::MouseY);
+				input.bindButtonEvent(K_ESCAPE, this, &GameMode::clearBind);
 			}
 
-			void MouseX(float movementX) { std::cout << "Relative X movement: " << movementX << std::endl; }
-			void MouseY(float movementY) { std::cout << "Relative Y movement: " << movementY << std::endl; }
-			void TestTest(bool key_pressed) { std::cout << "Button pressed: " << key_pressed << std::endl; }
-
+			void clearBind(bool key_pressed) 
+			{ 
+				std::cout << "Clearing bind" << std::endl;
+				input.unbindAllButtons();
+			}
 		};
 
 }} // End namespace
