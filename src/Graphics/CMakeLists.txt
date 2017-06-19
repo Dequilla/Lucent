@@ -1,0 +1,9 @@
+# FILE: /src/Core/CMakeLists.txt
+set(CEngineGraphicsSource Shader.h  Shader.cpp
+						  Camera.h  Camera.cpp
+						  Texture.h Texture.cpp
+						  Mesh.h	Mesh.cpp
+						  Model.h	Model.cpp)
+
+
+add_library(CEngineGraphics ${CEngineGraphicsSource})

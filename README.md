@@ -3,10 +3,11 @@
 
 # Requirements
 
-Uses SDL, GLEW and OpenGL under the hood.
+Uses SDL, GLEW, ASSIMP, GLM and OpenGL under the hood.
 
 On Ubuntu packages(tested):
 - libsdl2-dev
 - libglew-dev
+- libassimp-dev
 
 On Windows any libaries needed come with the project under the "deps"-folder.

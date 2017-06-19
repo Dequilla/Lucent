@@ -49,6 +49,7 @@ void ce::core::Window::create(std::string title, int posx, int posy, int width, 
 		std::cout << "CE: Failed to create a GL context for the window with the title: "
 			<< title << " containing error:\n" << SDL_GetError() << std::endl;
 	}
+	SDL_GL_MakeCurrent(m_window, m_glContext);
 
 	// Need a context to init GLEW
 	glewExperimental = GL_TRUE;
@@ -88,18 +89,24 @@ void ce::core::Window::setSize(int width, int height)
 	SDL_SetWindowSize(m_window, width, height);
 }
 
-void ce::core::Window::setWindowFlags(unsigned int flags)
-{
-	std::string title = SDL_GetWindowTitle(m_window);
-	int posx, posy;
-	SDL_GetWindowPosition(m_window, &posx, &posy);
-	int width, height;
-	SDL_GetWindowSize(m_window, &width, &height);
-
-	create(title, posx, posy, width, height, flags);
-}
-
 void ce::core::Window::setTitle(std::string title)
 {
 	SDL_SetWindowTitle(m_window, title.c_str());
+}
+
+void ce::core::Window::setWindowGrab(bool grab)
+{
+	SDL_SetRelativeMouseMode((grab) ? SDL_TRUE : SDL_FALSE);
+}
+
+void ce::core::Window::setWindowFullscreen(unsigned int type)
+{
+	SDL_SetWindowFullscreen(m_window, type);
+}
+
+glm::vec2 ce::core::Window::getSize()
+{
+	int width, height;
+	SDL_GetWindowSize(m_window, &width, &height);
+	return glm::vec2(width, height);
 }

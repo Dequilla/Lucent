@@ -40,7 +40,7 @@ void ce::core::Input::checkInput(const SDL_Event& e)
 			for (auto &ptr : m_boundKeys)
 			{
 				// If key/button is pressed keyPressed = true
-				bool keyPressed = (e.type == SDL_KEYDOWN || e.type == SDL_MOUSEBUTTONDOWN || SDL_CONTROLLERBUTTONDOWN) ? true : false;
+				bool keyPressed = (e.type == SDL_KEYDOWN || e.type == SDL_MOUSEBUTTONDOWN || e.type == SDL_CONTROLLERBUTTONDOWN) ? true : false;
 
 				// Check if it equals a key
 				if (e.key.keysym.sym == ptr)

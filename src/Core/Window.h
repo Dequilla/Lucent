@@ -2,8 +2,10 @@
 #include <string>
 #include <iostream>
 
+#include "GLM/glm.hpp"
 #include "SDL2/SDL.h" 
 #include "GL/glew.h"
+
 
 namespace ce { namespace core {
 
@@ -44,8 +46,11 @@ namespace ce { namespace core {
 
 		void setSize(int width, int height);
 
-		void setWindowFlags(unsigned int flags);
 		void setTitle(std::string title);
+		void setWindowGrab(bool grab);
+		void setWindowFullscreen(unsigned int type); // WINDOW_FULLSCREEN, WINDOW_FULLSCREEN_DESKTOP or 0 to remove it
+
+		glm::vec2 getSize();
 	};
 
 }} // Namespace end

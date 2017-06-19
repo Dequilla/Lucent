@@ -1,0 +1,15 @@
+# Visual Sudio #
+################
+*.vs/
+
+
+# CMAKE #
+#########
+CMakeCache.txt
+
+
+# Folders #
+###########
+[Bb]in/
+[Bb]uild/
+[Rr]elease/

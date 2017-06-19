@@ -8,7 +8,9 @@ target_compile_features(CEngine PRIVATE cxx_range_for)
 
 # Link libraries to the main target
 target_link_libraries(CEngine 
-	CEngineCore ${SDL2_LIBRARY} ${GLEW_LIBRARIES}
-		${OPENGL_LIBRARIES})
+								CEngineCore CEngineGraphics 
+								${SDL2_LIBRARY} ${GLEW_LIBRARIES}
+								${OPENGL_LIBRARIES} ${ASSIMP_LIBRARIES})
 
 add_subdirectory(Core)
+add_subdirectory(Graphics)
