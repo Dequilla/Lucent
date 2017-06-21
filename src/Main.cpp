@@ -12,15 +12,25 @@
 
 #include "Graphics/Shader.h"
 #include "Graphics/Camera.h"
-
+#include "Graphics/Texture.h"
 #include "Graphics/Model.h"
+#include "Graphics/Lights.h"
+
+#include "Graphics/Scene.h"
 
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 600
 
 float cameraYaw = 0.0f;
-float cameraPitch = 0.0f;
 bool fullscreen = false;
+
+// Also in CMakeLists.txt
+// TODO: on WIN32 copy dlls into build directories Debug and Release
+// TODO: Create build scripts ? Windows and linux(ubuntu) makes testing the engine faster even if just a few minutes faster
+// TODO TODO TODO TODO
+// TODO TODO TODO TODO
+// TODO TODO TODO TODO
+// TODO TODO TODO TODO
 
 int main(int argc, char* argv[])
 {
@@ -38,12 +48,38 @@ int main(int argc, char* argv[])
 
 	window.setWindowGrab(true);
 
-	ce::graphics::Shader testShader("Shaders/vertex_test.glsl", "Shaders/fragment_test.glsl");
+	ce::graphics::Model model("Resources/Models/Nanosuit/nanosuit.obj");
+	model.translate(glm::vec3(-1.0f, -1.0f, -1.0f));
+	model.scale(glm::vec3(0.1f, 0.1f, 0.1f));
+
+	ce::graphics::Model model1("Resources/Models/Nanosuit/nanosuit.obj");
+	model1.rotate(45.f, glm::vec3(0.0f, 1.0f, 0.0f));
+	model1.translate(glm::vec3(1.0f, -1.0f, 1.0f));
+	model1.scale(glm::vec3(0.1f, 0.1f, 0.1f));
+
+	ce::graphics::Model model2("Resources/Models/Nanosuit/nanosuit.obj");
+	model2.rotate(120.f, glm::vec3(0.0f, 1.0f, 0.0f));
+	model2.translate(glm::vec3(-1.0f, -1.0f, -1.0f));
+	model2.scale(glm::vec3(0.1f, 0.1f, 0.1f));
+
+	ce::graphics::Scene scene;
+	scene.addModel(model);
+	scene.addModel(model1);
+	scene.addModel(model2);
+
+	ce::graphics::DirLight dirLight;
+	dirLight.direction = glm::vec3(0.0f, -0.5f, 0.5f);
+	dirLight.ambient = glm::vec3(0.8f, 0.2f, 0.2f);
+	scene.addDirLight(dirLight);
+	
+	ce::graphics::PointLight pointLight;
+	scene.addPointLight(pointLight);
+
+	ce::graphics::SpotLight spotLight;
+	scene.addSpotLight(spotLight);
+
 	ce::graphics::Camera camera;
 
-	ce::graphics::Model model("Resources/Models/Nanosuit/nanosuit.obj");
-
-	// TODO TODO TODO
 	glEnable(GL_DEPTH_TEST);
 
 	bool running = true;
@@ -106,54 +142,9 @@ int main(int argc, char* argv[])
 
 		window.clear();
 		
-		testShader.use();
 		glClear(GL_DEPTH_BUFFER_BIT); // Depth buffer
 
-		glm::mat4 view;
-		glm::mat4 projection;
-		view = camera.getViewMatrix();
-		projection = camera.getProjectionMatrix();
-
-		testShader.setMat4("projection", projection);
-		testShader.setMat4("view", view);
-
-		glm::mat4 modelMatrix;
-		modelMatrix = glm::translate(modelMatrix, glm::vec3(0.0f, -1.0f, -3.0f));
-		modelMatrix = glm::rotate(modelMatrix, glm::radians((float)ticks / 50), glm::vec3(0.0f, 1.0f, 0.0f));
-		modelMatrix = glm::scale(modelMatrix, glm::vec3(0.09f, 0.09f, 0.09f));
-		testShader.setMat4("model", modelMatrix);
-
-		testShader.setFloat("material.shininess", 64.0f);
-		testShader.setVec3("viewPos", camera.getPosition()); // Camera Position (not matrix)
-
-		// Directional light
-		testShader.setVec3("dirLights[0].direction", -0.2f, 0.0f, -0.3f);
-		testShader.setVec3("dirLights[0].ambient", 0.05f, 0.05f, 0.05f);
-		testShader.setVec3("dirLights[0].diffuse", 0.4f, 0.4f, 0.4f);
-		testShader.setVec3("dirLights[0].specular", 0.5f, 0.5f, 0.5f);
-
-		// Point light
-		testShader.setVec3("pointLights[0].position", 3.0, 0.0, 1.0);
-		testShader.setVec3("pointLights[0].ambient", 0.05f, 0.05f, 0.05f);
-		testShader.setVec3("pointLights[0].diffuse", 0.8f, 0.1f, 0.1f);
-		testShader.setVec3("pointLights[0].specular", 1.0f, 0.0f, 0.0f);
-		testShader.setFloat("pointLights[0].constant", 1.0f);
-		testShader.setFloat("pointLights[0].linear", 0.09);
-		testShader.setFloat("pointLights[0].quadratic", 0.032);
-
-		// Spot light
-		testShader.setVec3("spotLights[0].position", -camera.getPosition().x, camera.getPosition().y, -camera.getPosition().z);
-		testShader.setVec3("spotLights[0].direction", camera.getForwardVector());
-		testShader.setVec3("spotLights[0].ambient", 0.0f, 0.0f, 0.0f);
-		testShader.setVec3("spotLights[0].diffuse", 1.0f, 1.0f, 1.0f);
-		testShader.setVec3("spotLights[0].specular", 1.0f, 1.0f, 1.0f);
-		testShader.setFloat("spotLights[0].constant", 1.0f);
-		testShader.setFloat("spotLights[0].linear", 0.09);
-		testShader.setFloat("spotLights[0].quadratic", 0.032);
-		testShader.setFloat("spotLights[0].cutOff", glm::cos(glm::radians(15.f)));
-		testShader.setFloat("spotLights[0].outerCutOff", glm::cos(glm::radians(25.0f)));
-
-		model.draw(testShader);
+		scene.draw(camera);
 
 		window.display();
 	}

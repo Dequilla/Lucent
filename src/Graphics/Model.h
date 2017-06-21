@@ -11,6 +11,9 @@
 #include "Graphics/Shader.h"
 #include "Graphics/Mesh.h"
 
+#include "GLM/glm.hpp"
+#include "GLM/gtc/matrix_transform.hpp"
+
 namespace ce { namespace graphics { 
 
 	class Model
@@ -19,6 +22,8 @@ namespace ce { namespace graphics {
 		std::vector<Texture> m_loadedTextures;
 		std::vector<Mesh> m_meshes;
 		std::string m_directory;
+
+		glm::mat4 m_modelMatrix;
 
 		void loadModel(std::string path);
 		void processNode(aiNode *node, const aiScene *scene);
@@ -31,7 +36,12 @@ namespace ce { namespace graphics {
 	public:
 		Model(std::string path);
 
-		// TODO: possible idea, give models their shader when we create them? (the program that is)
+		// TODO: These have to happen in a surten order?
+		void rotate(float angle, glm::vec3 axis);
+		void translate(glm::vec3 axis);
+		void scale(glm::vec3 scale);
+
+		// TODO: possible idea, give models(meshes) their shader when we create them? (the program that is)
 		void draw(Shader shader);
 	};
 

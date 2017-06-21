@@ -134,8 +134,25 @@ ce::graphics::Model::Model(std::string path)
 	loadModel(path);
 }
 
+void ce::graphics::Model::rotate(float angle, glm::vec3 axis)
+{
+	m_modelMatrix = glm::rotate(m_modelMatrix, glm::radians(angle), axis);
+}
+
+void ce::graphics::Model::translate(glm::vec3 axis)
+{
+	m_modelMatrix = glm::translate(m_modelMatrix, axis);
+}
+
+void ce::graphics::Model::scale(glm::vec3 scale)
+{
+	m_modelMatrix = glm::scale(m_modelMatrix, scale);
+}
+
 void ce::graphics::Model::draw(Shader shader)
 {
+	shader.setMat4("model", m_modelMatrix);
+
 	for (unsigned int i = 0; i < m_meshes.size(); i++)
 		m_meshes[i].draw(shader);
 }

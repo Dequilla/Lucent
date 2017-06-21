@@ -1,3 +1,11 @@
+# Also in main.cpp
+# TODO: on WIN32 copy dlls into build directories Debug and Release
+# TODO: Create build scripts? Windows and linux(ubuntu) makes testing the engine faster even if just a few minutes faster
+# TODO TODO TODO TODO
+# TODO TODO TODO TODO
+# TODO TODO TODO TODO
+# TODO TODO TODO TODO
+
 #FILE: /CMakeLists.txt
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 project(CEngine)
