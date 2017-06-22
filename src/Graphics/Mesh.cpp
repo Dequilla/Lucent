@@ -38,6 +38,16 @@ ce::graphics::Mesh::Mesh(std::vector<Vertex> vertices, std::vector<unsigned int>
 	setupMesh();
 }
 
+ce::graphics::Mesh::Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Material> materials)
+{
+	this->m_vertices = vertices;
+	this->m_indices = indices;
+	this->m_materials = materials;
+
+	setupMesh();
+}
+
+
 void ce::graphics::Mesh::draw(Shader shader)
 {
 	shader.use();
@@ -46,6 +56,28 @@ void ce::graphics::Mesh::draw(Shader shader)
 	unsigned int specularNr = 1;
 
 	for (unsigned int i = 0; i < m_textures.size(); i++)
+	{
+		glActiveTexture(GL_TEXTURE0 + i); // Activate the texture unit we will use
+		std::string number = "";
+		std::string name = m_textures[i].type;
+
+		if (name == "texture_diffuse")
+		{
+			number = diffuseNr;
+			diffuseNr++;
+		}
+		else if (name == "texture_specular")
+		{
+			number = specularNr;
+			specularNr++;
+		}
+
+		shader.setFloat(("material." + name + number).c_str(), i);
+		glBindTexture(GL_TEXTURE_2D, m_textures[i].id);
+	}
+
+	// Materials
+	for (unsigned int i = 0; i < m_materials.size(); i++)
 	{
 		glActiveTexture(GL_TEXTURE0 + i); // Activate the texture unit we will use
 		std::string number = "";

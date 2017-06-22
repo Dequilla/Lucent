@@ -11,12 +11,16 @@
 #include "Core/Application.h"
 
 #include "Graphics/Shader.h"
+#include "Graphics/ShaderManager.h"
+
 #include "Graphics/Camera.h"
 #include "Graphics/Texture.h"
 #include "Graphics/Model.h"
 #include "Graphics/Lights.h"
 
 #include "Graphics/Scene.h"
+
+#include "Graphics/ForwardRenderer.h"
 
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 600
@@ -48,6 +52,11 @@ int main(int argc, char* argv[])
 
 	window.setWindowGrab(true);
 
+	ce::graphics::ForwardRenderer renderer;
+	ce::graphics::Shader shader("Shaders/opaque_sd_vertex.glsl", "Shaders/opaque_sd_fragment.glsl");
+	ce::graphics::ShaderManager shrMgr;
+	shrMgr.addShader("ForwardRendered_Opaque", shader);
+
 	ce::graphics::Model model("Resources/Models/Nanosuit/nanosuit.obj");
 	model.translate(glm::vec3(-1.0f, -1.0f, -1.0f));
 	model.scale(glm::vec3(0.1f, 0.1f, 0.1f));
@@ -77,6 +86,11 @@ int main(int argc, char* argv[])
 
 	ce::graphics::SpotLight spotLight;
 	scene.addSpotLight(spotLight);
+
+	ce::graphics::LightSetup lights;
+	lights.addDirLight(&dirLight);
+	lights.addPointLight(&pointLight);
+	lights.addSpotLight(&spotLight);
 
 	ce::graphics::Camera camera;
 
@@ -145,6 +159,15 @@ int main(int argc, char* argv[])
 		glClear(GL_DEPTH_BUFFER_BIT); // Depth buffer
 
 		scene.draw(camera);
+
+		renderer.begin();
+		renderer.beginScene(&camera);
+		// renderer.submit(renderCommand);
+		model.draw(&renderer);
+		renderer.submitLightSetup(lights);
+		renderer.endScene();
+		renderer.end();
+		renderer.present();
 
 		window.display();
 	}

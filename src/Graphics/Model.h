@@ -7,6 +7,7 @@
 #include "assimp/Importer.hpp"
 #include "assimp/scene.h"
 
+#include "Graphics/ForwardRenderer.h"
 #include "Graphics/Texture.h"
 #include "Graphics/Shader.h"
 #include "Graphics/Mesh.h"
@@ -43,6 +44,7 @@ namespace ce { namespace graphics {
 
 		// TODO: possible idea, give models(meshes) their shader when we create them? (the program that is)
 		void draw(Shader shader);
+		void draw(ForwardRenderer* renderer);
 	};
 
 }}

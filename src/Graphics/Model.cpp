@@ -84,6 +84,8 @@ ce::graphics::Mesh ce::graphics::Model::processMesh(aiMesh * mesh, const aiScene
 	{
 		aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
 
+		// TODO: Figure out how to deterine what shader to use (for blending, other effects etc)
+
 		std::vector<Texture> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
 		textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
 
@@ -151,8 +153,17 @@ void ce::graphics::Model::scale(glm::vec3 scale)
 
 void ce::graphics::Model::draw(Shader shader)
 {
-	shader.setMat4("model", m_modelMatrix);
-
 	for (unsigned int i = 0; i < m_meshes.size(); i++)
 		m_meshes[i].draw(shader);
+}
+
+void ce::graphics::Model::draw(ForwardRenderer* renderer)
+{
+	for (unsigned int i = 0; i < m_meshes.size(); i++)
+	{
+		RenderCommand command;
+		command.mesh = &m_meshes[i];
+		command.transform = m_modelMatrix;
+		renderer->submit(command);
+	}
 }

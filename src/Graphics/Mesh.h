@@ -27,6 +27,12 @@ namespace ce { namespace graphics {
 		std::string path;
 	};
 
+	struct Material
+	{
+		std::vector<Texture> textures;
+		float shininess = 32.0f;
+	};
+
 	class Mesh
 	{
 	private:
@@ -38,13 +44,18 @@ namespace ce { namespace graphics {
 		void setupMesh();
 
 	protected:
-	public:
 		// Mesh data
 		std::vector<Vertex> m_vertices;
 		std::vector<unsigned int> m_indices;
 		std::vector<Texture> m_textures;
 
+		std::vector<Material> m_materials;
+
+	public:
+
 		Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture> textures);
+		Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Material> materials);
+
 		void draw(Shader shader);
 
 	};

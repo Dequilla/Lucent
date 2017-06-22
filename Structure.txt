@@ -1,0 +1,56 @@
+Features I want:
+ - 3D rendering with:
+	- Some basic lighting ( Not deferred until later )
+		- Directional, Point and Spot lights
+	- Opaque and translucent meshes
+	- Simple materials with:
+		- Diffuse mapping
+		- Specular mapping
+		- Transparency ( Let's only support transparency on seperate meshes for simplicity, 1 material per mesh)
+			- If no transparency (on material used by mesh) use opaque shader if we have transparency use transparency shader
+
+Renderer3D -- 3D rendering base class \      --- These will sort and batch so that rendering goes as smooth as possible ---
+Focus on -> ForwardRenderer -- Takes a rendering command containing -> Mesh, Shader, Transform(model matrix)
+			DeferredRenderer -- Takes a rendering command containing -> Mesh, Shader, Transform(model matrix)
+
+			Batch and sort commands(meshes) based on:
+			  -  Material (Contains Shader, Textures, Transparent or not) - other than transparency sorting is low priority
+			Also do rough checks to only render things actually in view
+			  -  Create shader for particles and foilage etc using glDrawXXXXInstanced and gl_InstanceID - low priority
+
+
+		Scene \
+			EX:
+		RootObject
+			 |                                 .- GameObject
+			/ \_____ GameObject -- Children --<-- GameObject
+		   /					               '- GameObject
+		GameObject
+		  |
+		Components
+		  |
+		Any of ex: ModelComponent - TransformComponent
+						|        __________________________________________________
+					  Model     ( Assimp - Insperation: Scene -> Meshes, Materials ) -\
+						|       ( Then the models contain indexes to the materials ) --\
+					  Meshes    ( and meshes avoiding duplicating when loading the ) ---\
+						|       ( same models later                                ) --------------------.
+					   Mesh																				 |
+				  .--->	|  >---.--->VAO																	 |
+				 |	   /|\     |																		 |
+ IndexArray --> EBO	__/ | \__ VBO <-- VertexArray --> Vertex --> texCoords, normals, position            |
+						|																				 |
+					 Material* (avoid duplicates)														 |
+						|																				 |
+					 Shader* (avoid duplicates)															 |
+					 Textures (avoid duplicates)														 |
+				values like shininess																	 |
+																										 |
+																ModelLoader -----------------------------'
+																     | ---- For deletion, reference counters/smart pointers?
+												  Meshes ___________/|\____________ Materials
+													 ^				 |				    ^
+													  \				 |				   /
+													   \		   Models			  /
+													Meshes* ________/ \________ Materials*
+																	

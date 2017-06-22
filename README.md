@@ -1,5 +1,5 @@
 # A crossplatform game engine using OpenGL
-##### NOTE *A hobby project*
+##### NOTE *A hobby project* by someone who has no experience
 
 ## Requirements
 
