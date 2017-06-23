@@ -38,8 +38,8 @@ namespace ce { namespace graphics {
 		float linear = 0.09f;
 		float quadratic = 0.032f;
 
-		float cutOff = 0.96592583;
-		float outerCutOff = 0.90630779;
+		float cutOff = 0.96f;
+		float outerCutOff = 0.90f;
 	};
 
 }}

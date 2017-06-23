@@ -5,19 +5,24 @@
 #include <sstream>
 #include <iostream>
 
+#include <unordered_map>
+
 #include "GL/glew.h"
 #include "GLM/glm.hpp"
 
-// TODO: Add geometry shader
-
 namespace ce { namespace graphics {
 
+	// TODO: Add geometry shader
 	class Shader
 	{
 	protected:
 		unsigned int programID;
 
+		// string is all paths appended to eachother
+		static std::unordered_map<std::string, Shader> m_loadedShaders;
+
 	public:
+		Shader() {}
 		Shader(const GLchar* vertexPath, const GLchar* fragmentPath);
 
 		void use(); // Set this shader program as current

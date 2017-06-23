@@ -1,3 +1,7 @@
+##############################
+## Readable in VisualStudio ##
+##############################
+
 Features I want:
  - 3D rendering with:
 	- Some basic lighting ( Not deferred until later )
@@ -36,7 +40,7 @@ Focus on -> ForwardRenderer -- Takes a rendering command containing -> Mesh, Sha
 					  Meshes    ( and meshes avoiding duplicating when loading the ) ---\
 						|       ( same models later                                ) --------------------.
 					   Mesh																				 |
-				  .--->	|  >---.--->VAO																	 |
+				 .--->	|  >---.--->VAO																	 |
 				 |	   /|\     |																		 |
  IndexArray --> EBO	__/ | \__ VBO <-- VertexArray --> Vertex --> texCoords, normals, position            |
 						|																				 |
@@ -52,5 +56,5 @@ Focus on -> ForwardRenderer -- Takes a rendering command containing -> Mesh, Sha
 													 ^				 |				    ^
 													  \				 |				   /
 													   \		   Models			  /
-													Meshes* ________/ \________ Materials*
-																	
+													Meshes* ________/		 ____ Materials*
+														 \__________________/

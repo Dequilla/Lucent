@@ -6,20 +6,21 @@
 #include "GLM/glm.hpp"
 #include "GLM/gtc/matrix_transform.hpp"
 
+#include "Core/Time.h"
 #include "Core/Input.h"
 #include "Core/Window.h"
 #include "Core/Application.h"
 
-#include "Graphics/Shader.h"
+#include "Graphics/Shader/Shader.h"
 #include "Graphics/Camera.h"
 #include "Graphics/Texture.h"
-#include "Graphics/Model.h"
 #include "Graphics/Lights.h"
 
-#include "Graphics/Scene.h"
+#include "Graphics/Model/ModelLoader.h"
+#include "Graphics/Model/Model.h"
 
-#define SCREEN_WIDTH 800
-#define SCREEN_HEIGHT 600
+#define SCREEN_WIDTH 1280
+#define SCREEN_HEIGHT 720
 
 float cameraYaw = 0.0f;
 bool fullscreen = false;
@@ -48,45 +49,29 @@ int main(int argc, char* argv[])
 
 	window.setWindowGrab(true);
 
-	ce::graphics::Model model("Resources/Models/Nanosuit/nanosuit.obj");
-	model.translate(glm::vec3(-1.0f, -1.0f, -1.0f));
-	model.scale(glm::vec3(0.1f, 0.1f, 0.1f));
-
-	ce::graphics::Model model1("Resources/Models/Nanosuit/nanosuit.obj");
-	model1.rotate(45.f, glm::vec3(0.0f, 1.0f, 0.0f));
-	model1.translate(glm::vec3(1.0f, -1.0f, 1.0f));
-	model1.scale(glm::vec3(0.1f, 0.1f, 0.1f));
-
-	ce::graphics::Model model2("Resources/Models/Nanosuit/nanosuit.obj");
-	model2.rotate(120.f, glm::vec3(0.0f, 1.0f, 0.0f));
-	model2.translate(glm::vec3(-1.0f, -1.0f, -1.0f));
-	model2.scale(glm::vec3(0.1f, 0.1f, 0.1f));
-
-	ce::graphics::Scene scene;
-	scene.addModel(model);
-	scene.addModel(model1);
-	scene.addModel(model2);
-
-	ce::graphics::DirLight dirLight;
-	dirLight.direction = glm::vec3(0.0f, -0.5f, 0.5f);
-	dirLight.ambient = glm::vec3(0.8f, 0.2f, 0.2f);
-	scene.addDirLight(dirLight);
-	
-	ce::graphics::PointLight pointLight;
-	scene.addPointLight(pointLight);
-
-	ce::graphics::SpotLight spotLight;
-	scene.addSpotLight(spotLight);
-
 	ce::graphics::Camera camera;
 
+	ce::core::Clock clock;
+
+	ce::graphics::ModelLoader loader;
+	ce::graphics::Model		  model;
+	ce::graphics::Model		  model1;
+
+	clock.start();
+	model1 = loader.loadModel("Resources/Models/Nanosuit/nanosuit.obj");
+	model = loader.loadModel("Resources/Models/TestWindow/test-window.obj");
+	std::cout << "Loading models took: " << clock.getPassed().asSeconds() << "s" << std::endl;
+
+	// When loading shaders there is only ever one instance created even if you load it elsewhere with the same paths specified
+	ce::graphics::Shader shaderOpaque("Shaders/opaque_sd_vertex.glsl", "Shaders/opaque_sd_fragment.glsl");
+	ce::graphics::Shader shaderTransparent("Shaders/transparent_sd_vertex.glsl", "Shaders/transparent_sd_fragment.glsl");
+	
 	glEnable(GL_DEPTH_TEST);
+	
 
 	bool running = true;
 	while (running)
 	{
-		Uint32 ticks = SDL_GetTicks();
-
 		SDL_Event e;
 		while (SDL_PollEvent(&e) != 0)
 		{
@@ -144,8 +129,104 @@ int main(int argc, char* argv[])
 		
 		glClear(GL_DEPTH_BUFFER_BIT); // Depth buffer
 
-		scene.draw(camera);
+		// LIGHTS OPAQUE SHADER
+		// Dir
+		ce::graphics::DirLight dLight;
+		ce::graphics::PointLight pLight;
+		ce::graphics::SpotLight sLight;
 
+		shaderOpaque.setVec3("dirLights[0].ambient", dLight.ambient);
+		shaderOpaque.setVec3("dirLights[0].diffuse", dLight.diffuse);
+		shaderOpaque.setVec3("dirLights[0].specular", dLight.specular);
+		shaderOpaque.setVec3("dirLights[0].direction", dLight.direction);
+
+		// Point
+		shaderOpaque.setVec3("pointLights[0].ambient", pLight.ambient);
+		shaderOpaque.setVec3("pointLights[0].diffuse", pLight.diffuse);
+		shaderOpaque.setVec3("pointLights[0].specular", pLight.specular);
+		shaderOpaque.setVec3("pointLights[0].position", pLight.position);
+
+		shaderOpaque.setFloat("pointLights[0].constant", pLight.constant);
+		shaderOpaque.setFloat("pointLights[0].linear", pLight.linear);
+		shaderOpaque.setFloat("pointLights[0].quadratic", pLight.quadratic);
+
+		// Spot
+		shaderOpaque.setVec3("spotLights[0].ambient", sLight.ambient);
+		shaderOpaque.setVec3("spotLights[0].diffuse", sLight.diffuse);
+		shaderOpaque.setVec3("spotLights[0].specular", sLight.specular);
+
+		shaderOpaque.setVec3("spotLights[0].position", sLight.position);
+		shaderOpaque.setVec3("spotLights[0].direction", sLight.direction);
+
+		shaderOpaque.setFloat("spotLights[0].constant", sLight.constant);
+		shaderOpaque.setFloat("spotLights[0].linear", sLight.linear);
+		shaderOpaque.setFloat("spotLights[0].quadratic", sLight.quadratic);
+
+		shaderOpaque.setFloat("spotLights[0].cutOff", sLight.cutOff);
+		shaderOpaque.setFloat("spotLights[0].outerCutOff", sLight.outerCutOff);
+
+		// LIGHTS TRANSPARENT SHADER
+		// Dir
+		shaderTransparent.setVec3("dirLights[0].ambient", dLight.ambient);
+		shaderTransparent.setVec3("dirLights[0].diffuse", dLight.diffuse);
+		shaderTransparent.setVec3("dirLights[0].specular", dLight.specular);
+		shaderTransparent.setVec3("dirLights[0].direction", dLight.direction);
+
+		// Point
+		shaderTransparent.setVec3("pointLights[0].ambient", pLight.ambient);
+		shaderTransparent.setVec3("pointLights[0].diffuse", pLight.diffuse);
+		shaderTransparent.setVec3("pointLights[0].specular", pLight.specular);
+		shaderTransparent.setVec3("pointLights[0].position", pLight.position);
+
+		shaderTransparent.setFloat("pointLights[0].constant", pLight.constant);
+		shaderTransparent.setFloat("pointLights[0].linear", pLight.linear);
+		shaderTransparent.setFloat("pointLights[0].quadratic", pLight.quadratic);
+
+		// Spot
+		shaderTransparent.setVec3("spotLights[0].ambient", sLight.ambient);
+		shaderTransparent.setVec3("spotLights[0].diffuse", sLight.diffuse);
+		shaderTransparent.setVec3("spotLights[0].specular", sLight.specular);
+
+		shaderTransparent.setVec3("spotLights[0].position", sLight.position);
+		shaderTransparent.setVec3("spotLights[0].direction", sLight.direction);
+
+		shaderTransparent.setFloat("spotLights[0].constant", sLight.constant);
+		shaderTransparent.setFloat("spotLights[0].linear", sLight.linear);
+		shaderTransparent.setFloat("spotLights[0].quadratic", sLight.quadratic);
+
+		shaderTransparent.setFloat("spotLights[0].cutOff", sLight.cutOff);
+		shaderTransparent.setFloat("spotLights[0].outerCutOff", sLight.outerCutOff);
+
+		// Camera
+		shaderOpaque.setMat4("view", camera.getViewMatrix());
+		shaderOpaque.setMat4("projection", camera.getProjectionMatrix());
+
+		shaderTransparent.setMat4("view", camera.getViewMatrix());
+		shaderTransparent.setMat4("projection", camera.getProjectionMatrix());
+		
+		// Suit
+		glDisable(GL_BLEND);
+		glm::mat4 modelMatrix = glm::mat4();
+		modelMatrix = glm::translate(modelMatrix, glm::vec3(0.0f, 0.3f, -3.0f));
+		modelMatrix = glm::scale(modelMatrix, glm::vec3(0.1f, 0.1f, 0.1f));
+		shaderOpaque.setMat4("model", modelMatrix);
+		shaderTransparent.setMat4("model", modelMatrix);
+		model1.draw();
+
+		// Window
+		// TODO: BLENDING PROBLEM LIES IN THE FACT
+		// THAT WHEN LOADED SECOND THE SHADER DOESNT WORK, PROBABLE PROBLEM: MY SHADER OPTIMIZATION wrong shader program
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ZERO);
+
+		modelMatrix = glm::mat4();
+		modelMatrix = glm::translate(modelMatrix, glm::vec3(0.0f, 0.3f, -3.0f));
+		modelMatrix = glm::rotate(modelMatrix, glm::radians(90.f), glm::vec3(0.0f, 1.0f, 0.0f));
+		shaderOpaque.setMat4("model", modelMatrix);
+		shaderTransparent.setMat4("model", modelMatrix);
+		model.draw();
+		
 		window.display();
 	}
 

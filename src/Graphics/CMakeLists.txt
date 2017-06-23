@@ -1,11 +1,19 @@
-# FILE: /src/Core/CMakeLists.txt
-set(CEngineGraphicsSource Shader.h	 Shader.cpp
-						  Camera.h	 Camera.cpp
+# FILE: /src/Graphics/CMakeLists.txt
+
+add_subdirectory(Model)
+add_subdirectory(Shader)
+
+set(CEngineGraphicsSource Camera.h	 Camera.cpp
 						  Texture.h	 Texture.cpp
-						  Mesh.h	 Mesh.cpp
-						  Model.h	 Model.cpp
 						  Lights.h	 Lights.cpp
-						  Scene.h	 Scene.cpp)
+						  Vertex.h
+
+						  Shader/Shader.h	 Shader/Shader.cpp
+
+						  Model/ModelLoader.h Model/ModelLoader.cpp
+						  Model/Material.h	  Model/Material.cpp
+						  Model/Mesh.h		  Model/Mesh.cpp
+						  Model/Model.h		  Model/Model.cpp)
 
 
 add_library(CEngineGraphics ${CEngineGraphicsSource})
