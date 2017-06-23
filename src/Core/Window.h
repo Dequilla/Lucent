@@ -48,7 +48,7 @@ namespace ce { namespace core {
 
 		void setTitle(std::string title);
 		void setWindowGrab(bool grab);
-		void setWindowFullscreen(unsigned int type); // WINDOW_FULLSCREEN, WINDOW_FULLSCREEN_DESKTOP or 0 to remove it
+		void setWindowFullscreen(unsigned int type); // WINDOW_FULLSCREEN, WINDOW_FULLSCREEN_DESKTOP or 0
 
 		glm::vec2 getSize();
 	};

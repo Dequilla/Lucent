@@ -67,7 +67,6 @@ int main(int argc, char* argv[])
 	ce::graphics::Shader shaderTransparent("Shaders/transparent_sd_vertex.glsl", "Shaders/transparent_sd_fragment.glsl");
 	
 	glEnable(GL_DEPTH_TEST);
-	
 
 	bool running = true;
 	while (running)
@@ -127,14 +126,16 @@ int main(int argc, char* argv[])
 
 		window.clear();
 		
-		glClear(GL_DEPTH_BUFFER_BIT); // Depth buffer
+		glClear(GL_DEPTH_BUFFER_BIT);
 
 		// LIGHTS OPAQUE SHADER
 		// Dir
+		{
 		ce::graphics::DirLight dLight;
 		ce::graphics::PointLight pLight;
 		ce::graphics::SpotLight sLight;
 
+		shaderOpaque.use();
 		shaderOpaque.setVec3("dirLights[0].ambient", dLight.ambient);
 		shaderOpaque.setVec3("dirLights[0].diffuse", dLight.diffuse);
 		shaderOpaque.setVec3("dirLights[0].specular", dLight.specular);
@@ -167,6 +168,7 @@ int main(int argc, char* argv[])
 
 		// LIGHTS TRANSPARENT SHADER
 		// Dir
+		shaderTransparent.use();
 		shaderTransparent.setVec3("dirLights[0].ambient", dLight.ambient);
 		shaderTransparent.setVec3("dirLights[0].diffuse", dLight.diffuse);
 		shaderTransparent.setVec3("dirLights[0].specular", dLight.specular);
@@ -196,11 +198,13 @@ int main(int argc, char* argv[])
 
 		shaderTransparent.setFloat("spotLights[0].cutOff", sLight.cutOff);
 		shaderTransparent.setFloat("spotLights[0].outerCutOff", sLight.outerCutOff);
-
+		}
 		// Camera
+		shaderOpaque.use();
 		shaderOpaque.setMat4("view", camera.getViewMatrix());
 		shaderOpaque.setMat4("projection", camera.getProjectionMatrix());
 
+		shaderTransparent.use();
 		shaderTransparent.setMat4("view", camera.getViewMatrix());
 		shaderTransparent.setMat4("projection", camera.getProjectionMatrix());
 		
@@ -209,21 +213,23 @@ int main(int argc, char* argv[])
 		glm::mat4 modelMatrix = glm::mat4();
 		modelMatrix = glm::translate(modelMatrix, glm::vec3(0.0f, 0.3f, -3.0f));
 		modelMatrix = glm::scale(modelMatrix, glm::vec3(0.1f, 0.1f, 0.1f));
+		shaderOpaque.use();
 		shaderOpaque.setMat4("model", modelMatrix);
+		shaderTransparent.use();
 		shaderTransparent.setMat4("model", modelMatrix);
 		model1.draw();
 
 		// Window
-		// TODO: BLENDING PROBLEM LIES IN THE FACT
-		// THAT WHEN LOADED SECOND THE SHADER DOESNT WORK, PROBABLE PROBLEM: MY SHADER OPTIMIZATION wrong shader program
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ZERO);
 
 		modelMatrix = glm::mat4();
 		modelMatrix = glm::translate(modelMatrix, glm::vec3(0.0f, 0.3f, -3.0f));
-		modelMatrix = glm::rotate(modelMatrix, glm::radians(90.f), glm::vec3(0.0f, 1.0f, 0.0f));
+		modelMatrix = glm::rotate(modelMatrix, glm::radians((float)clock.getPassed().asMilliseconds() / 20.f), glm::vec3(0.0f, 1.0f, 0.0f));
+		shaderOpaque.use();
 		shaderOpaque.setMat4("model", modelMatrix);
+		shaderTransparent.use();
 		shaderTransparent.setMat4("model", modelMatrix);
 		model.draw();
 		

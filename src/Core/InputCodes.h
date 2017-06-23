@@ -4,7 +4,6 @@
 
 namespace ce { namespace core {
 	
-	// TODO: add more, eg: joysticks etc
 	enum AxisEventCodes
 	{
 		// Mouse

@@ -14,7 +14,7 @@ namespace ce { namespace core {
 	// Structure for joysticks and controllers
 	struct Joystick
 	{
-		int instanceID = NULL;
+		int instanceID = 0;
 		SDL_Joystick* joystick = nullptr;
 		SDL_GameController* controller = nullptr;
 	};
@@ -29,7 +29,6 @@ namespace ce { namespace core {
 		// Bound Axis callbacks get with them their axis value (eg: mouse position)
 		std::unordered_map<int, std::function< void(float) >> m_cbAxisEvent;
 		std::vector<AxisEventCodes> m_boundAxis;
-		// TODO: Add more axis's eg: joysticks, controller
 
 		// Fixes a crashing issue with binds being cleared during a input check
 		void unbindActual();
@@ -41,7 +40,6 @@ namespace ce { namespace core {
 		void removeController(int controllerID);
 	
 	public:
-		// TODO: reconsider where we do the event polling and how we interact with events
 		void checkInput(const SDL_Event &e);
 
 		void clearButtonBinds();
