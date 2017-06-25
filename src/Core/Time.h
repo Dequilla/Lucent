@@ -4,29 +4,37 @@
 
 namespace ce { namespace core {
 
-
+	/**
+	* \brief Represents time in diffrent formats
+	* 
+	* Internally uses milliseconds and easily transfers it to other formats for use in the engine.
+	*/
 	struct Time
 	{
-		int time = 0; // The time in milliseconds
+		int time = 0;  /**<  The time in milliseconds */
 		
 		int asMicroseconds()	{ return time * 1000; }
 		int asMilliseconds()	{ return time; }
 		float asSeconds()		{ return (float)time / 1000.f; }
 	};
 
+
+	/**
+	* \brief A simple clock
+	*/
 	class Clock
 	{
 	private:
-		unsigned int m_ticksStarted = 0; // Ms at start
+		unsigned int m_ticksStarted = 0; // Milliseconds at start
 	
 	public:
 		Clock() {}
 
-		void start();
+		void start(); /**< Start clock */
 
-		Time getPassed(); // Time passed since start
+		Time getPassed(); /**< Get the Time passed since start or restart */
 
-		Time restart(); // Get time passed then restarts
+		Time restart(); /**< Get Time passed then restart the clock */
 	};
 
 

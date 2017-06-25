@@ -1,54 +1,67 @@
+/**
+* \file InputCodes.h
+* \brief Contains all the input codes for buttons and axis's
+*/
+
 #pragma once
 
 #include "SDL2/SDL.h"
 
+// TODO: if bored document all of the buttons
+
 namespace ce { namespace core {
 	
+	/**
+	* \brief Enum containing all the codes for detecting AxisEvents such as the mouse
+	*/
 	enum AxisEventCodes
 	{
 		// Mouse
-		M_MOTION_X =	0x01,
-		M_MOTION_Y =	0x02,
-		M_MOTION_XREL = 0x03,
-		M_MOTION_YREL = 0x04,
-		M_WHEEL_X =		0x05,
-		M_WHEEL_Y =		0x06,
+		M_MOTION_X =	0x01, /**< Mouse motion x */
+		M_MOTION_Y =	0x02, /**< Mouse motion y */
+		M_MOTION_XREL = 0x03, /**< Mouse motion x relative to last position */
+		M_MOTION_YREL = 0x04, /**< Mouse motion y relative to last position */
+		M_WHEEL_X =		0x05, /**< Mouse wheel motion x */
+		M_WHEEL_Y =		0x06, /**< Mouse wheel motion y */
 		
 		// Controller
-		C_AXIS_LSTICKX = 0x07,
-		C_AXIS_LSTICKY = 0x08,
+		C_AXIS_LSTICKX = 0x07, /**< Controller axis left stick x-movement */
+		C_AXIS_LSTICKY = 0x08, /**< Controller axis left stick y-movement */
 
-		C_AXIS_RSTICKX = 0x09,
-		C_AXIS_RSTICKY = 0x0A,
+		C_AXIS_RSTICKX = 0x09, /**< Controller axis right stick x-movement */
+		C_AXIS_RSTICKY = 0x0A, /**< Controller axis right stick y-movement */
 
-		C_AXIS_LTRIGGER = 0x0B,
-		C_AXIS_RTRIGGER = 0x0C
+		C_AXIS_LTRIGGER = 0x0B, /**< Controller axis left trigger */
+		C_AXIS_RTRIGGER = 0x0C  /**< Controller axis right trigger */
 	};
 
+	/**
+	* \brief Enum containing all the keycodes and buttoncodes
+	*/
 	enum KeyCodes
 	{
 		// Controller buttons			
-		C_BUTTON_FACE1 = -100000,		/* Equivalent on XBOX ONE: A			*/
-		C_BUTTON_FACE2 = -100001,		/* Equivalent on XBOX ONE: X			*/
-		C_BUTTON_FACE3 = -100002,		/* Equivalent on XBOX ONE: B			*/
-		C_BUTTON_FACE4 = -100003,		/* Equivalent on XBOX ONE: Y			*/
-		C_BUTTON_DPAD_DOWN = -100004,	/* Equivalent on XBOX ONE: DPAD DOWN	*/
-		C_BUTTON_DPAD_UP = -100005,		/* Equivalent on XBOX ONE: DPAD UP		*/
-		C_BUTTON_DPAD_LEFT = -100006,	/* Equivalent on XBOX ONE: DPAD LEFT	*/
-		C_BUTTON_DPAD_RIGHT = -100007,	/* Equivalent on XBOX ONE: DPAD RIGHT	*/
-		C_BUTTON_STICK1 = -100008,		/* Equivalent on XBOX ONE: Left stick	*/
-		C_BUTTON_STICK2 = -100009,		/* Equivalent on XBOX ONE: Right stick	*/
-		C_BUTTON_LBUMPER = -100010,		/* Equivalent on XBOX ONE: Left button	*/
-		C_BUTTON_RBUMPER = -100011,		/* Equivalent on XBOX ONE: Right button	*/
-		C_BUTTON_SELECT = -100012,		/* Equivalent on XBOX ONE: View button	*/
-		C_BUTTON_START = -100013,		/* Equivalent on XBOX ONE: Menu button	*/
+		C_BUTTON_FACE1 = -100000,		/**< Equivalent on XBOX ONE: A				*/
+		C_BUTTON_FACE2 = -100001,		/**< Equivalent on XBOX ONE: X				*/
+		C_BUTTON_FACE3 = -100002,		/**< Equivalent on XBOX ONE: B				*/
+		C_BUTTON_FACE4 = -100003,		/**< Equivalent on XBOX ONE: Y				*/
+		C_BUTTON_DPAD_DOWN = -100004,	/**< Equivalent on XBOX ONE: DPAD DOWN		*/
+		C_BUTTON_DPAD_UP = -100005,		/**< Equivalent on XBOX ONE: DPAD UP		*/
+		C_BUTTON_DPAD_LEFT = -100006,	/**< Equivalent on XBOX ONE: DPAD LEFT		*/
+		C_BUTTON_DPAD_RIGHT = -100007,	/**< Equivalent on XBOX ONE: DPAD RIGHT		*/
+		C_BUTTON_STICK1 = -100008,		/**< Equivalent on XBOX ONE: Left stick		*/
+		C_BUTTON_STICK2 = -100009,		/**< Equivalent on XBOX ONE: Right stick	*/
+		C_BUTTON_LBUMPER = -100010,		/**< Equivalent on XBOX ONE: Left button	*/
+		C_BUTTON_RBUMPER = -100011,		/**< Equivalent on XBOX ONE: Right button	*/
+		C_BUTTON_SELECT = -100012,		/**< Equivalent on XBOX ONE: View button	*/
+		C_BUTTON_START = -100013,		/**< Equivalent on XBOX ONE: Menu button	*/
 
 		// Mouse Buttons
-		M_BUTTON_LEFT = -10000,
-		M_BUTTON_RIGHT = -10001,
-		M_BUTTON_MIDDLE = -10002,
-		M_BUTTON_X1 = -10003,
-		M_BUTTON_X2 = -10004,
+		M_BUTTON_LEFT = -10000,		/**< Left mouse button */
+		M_BUTTON_RIGHT = -10001,	/**< Right mouse button */
+		M_BUTTON_MIDDLE = -10002,	/**< Middle mouse button */
+		M_BUTTON_X1 = -10003,		/**< Extra mouse button 1 */
+		M_BUTTON_X2 = -10004,		/**< Extra mouse button 2 */
 
 		K_RETURN = SDLK_RETURN,
 		K_ESCAPE = SDLK_ESCAPE,

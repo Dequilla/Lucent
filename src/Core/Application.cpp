@@ -7,13 +7,15 @@ bool ce::core::Application::init()
 	SDL_version linked;
 	SDL_VERSION(&compiled);
 	SDL_GetVersion(&linked);
-	std::cout << "SDL_VERSION_COMPILED - " << (int)compiled.major << "." << (int)compiled.minor << "." << (int)compiled.patch << std::endl;
-	std::cout << "SDL_VERSION_LINKED - " << (int)compiled.major << "." << (int)compiled.minor << "." << (int)compiled.patch << std::endl;
+	std::string compiledVersion = "SDL_VERSION_COMPILED - " + std::to_string((int)compiled.major) + "." + std::to_string((int)compiled.minor) + "." + std::to_string((int)compiled.patch);
+	std::string linkedVersion = "SDL_VERSION_LINKED - " + std::to_string((int)compiled.major) + "." + std::to_string((int)compiled.minor) + "." + std::to_string((int)compiled.patch);
+
+	ce::core::log(compiledVersion);
+	ce::core::log(linkedVersion);
 
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
 	{
-		std::cout << "CE: Failed to initialize SDL with error:\n" << SDL_GetError() << std::endl;
-
+		ce::core::log("CE: Failed to initialize SDL with error:\n" + std::string(SDL_GetError()), LOG_ERROR);
 		return false;
 	}
 

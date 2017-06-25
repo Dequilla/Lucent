@@ -89,7 +89,7 @@ void main()
 	for(int i = 0; i < NR_SPOT_LIGHTS; i++)
 		result += CalcSpotLight(spotLights[i], norm, FragPos, viewDir);
 
-	FragColor = vec4(result, material.opacity);
+	FragColor = vec4(result, texture(material.texture_diffuse1, TexCoords).a);
 }
 
 vec3 CalcDirLight(DirLight light, vec3 normal, vec3 viewDir)

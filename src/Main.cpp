@@ -12,6 +12,10 @@
 #include "Core/Application.h"
 
 #include "Graphics/Shader/Shader.h"
+#include "Graphics/Shader/ShaderLoader.h"
+
+#include "Graphics/Renderer/ForwardRenderer.h"
+
 #include "Graphics/Camera.h"
 #include "Graphics/Texture.h"
 #include "Graphics/Lights.h"
@@ -32,6 +36,8 @@ bool fullscreen = false;
 // TODO TODO TODO TODO
 // TODO TODO TODO TODO
 // TODO TODO TODO TODO
+
+#include "Core/Utility/log.h"
 
 int main(int argc, char* argv[])
 {
@@ -56,16 +62,34 @@ int main(int argc, char* argv[])
 	ce::graphics::ModelLoader loader;
 	ce::graphics::Model		  model;
 	ce::graphics::Model		  model1;
+	ce::graphics::Model		  modelGrass;
 
 	clock.start();
 	model1 = loader.loadModel("Resources/Models/Nanosuit/nanosuit.obj");
 	model = loader.loadModel("Resources/Models/TestWindow/test-window.obj");
-	std::cout << "Loading models took: " << clock.getPassed().asSeconds() << "s" << std::endl;
+	modelGrass = loader.loadModel("Resources/Models/TestGrass/untitled.obj");
+	ce::core::log("Loading models took: " + std::to_string(clock.getPassed().asSeconds()));
 
-	// When loading shaders there is only ever one instance created even if you load it elsewhere with the same paths specified
-	ce::graphics::Shader shaderOpaque("Shaders/opaque_sd_vertex.glsl", "Shaders/opaque_sd_fragment.glsl");
-	ce::graphics::Shader shaderTransparent("Shaders/transparent_sd_vertex.glsl", "Shaders/transparent_sd_fragment.glsl");
-	
+	ce::graphics::ForwardRenderer renderer;
+	renderer.init();
+	renderer.setScreenBufferSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+
+	ce::graphics::ShaderProperties properties;
+	ce::graphics::ShaderLoader sLoader;
+
+	// Opaque
+	properties.vPath = "Shaders/Dynamic/opaque_sd_vertex.glsl";
+	properties.fPath = "Shaders/Dynamic/opaque_sd_fragment.glsl";
+	properties.numDirLights = 1;
+	properties.numPointLights = 1;
+	properties.numSpotLights = 1;
+	ce::graphics::Shader* shaderOpaque = sLoader.loadShader(properties);
+
+	// Transparent
+	properties.vPath = "Shaders/Dynamic/transparent_sd_vertex.glsl";
+	properties.fPath = "Shaders/Dynamic/transparent_sd_fragment.glsl";
+	ce::graphics::Shader* shaderTransparent = sLoader.loadShader(properties);
+
 	glEnable(GL_DEPTH_TEST);
 
 	bool running = true;
@@ -125,114 +149,43 @@ int main(int argc, char* argv[])
 		}
 
 		window.clear();
-		
 		glClear(GL_DEPTH_BUFFER_BIT);
 
-		// LIGHTS OPAQUE SHADER
-		// Dir
-		{
 		ce::graphics::DirLight dLight;
 		ce::graphics::PointLight pLight;
 		ce::graphics::SpotLight sLight;
-
-		shaderOpaque.use();
-		shaderOpaque.setVec3("dirLights[0].ambient", dLight.ambient);
-		shaderOpaque.setVec3("dirLights[0].diffuse", dLight.diffuse);
-		shaderOpaque.setVec3("dirLights[0].specular", dLight.specular);
-		shaderOpaque.setVec3("dirLights[0].direction", dLight.direction);
-
-		// Point
-		shaderOpaque.setVec3("pointLights[0].ambient", pLight.ambient);
-		shaderOpaque.setVec3("pointLights[0].diffuse", pLight.diffuse);
-		shaderOpaque.setVec3("pointLights[0].specular", pLight.specular);
-		shaderOpaque.setVec3("pointLights[0].position", pLight.position);
-
-		shaderOpaque.setFloat("pointLights[0].constant", pLight.constant);
-		shaderOpaque.setFloat("pointLights[0].linear", pLight.linear);
-		shaderOpaque.setFloat("pointLights[0].quadratic", pLight.quadratic);
-
-		// Spot
-		shaderOpaque.setVec3("spotLights[0].ambient", sLight.ambient);
-		shaderOpaque.setVec3("spotLights[0].diffuse", sLight.diffuse);
-		shaderOpaque.setVec3("spotLights[0].specular", sLight.specular);
-
-		shaderOpaque.setVec3("spotLights[0].position", sLight.position);
-		shaderOpaque.setVec3("spotLights[0].direction", sLight.direction);
-
-		shaderOpaque.setFloat("spotLights[0].constant", sLight.constant);
-		shaderOpaque.setFloat("spotLights[0].linear", sLight.linear);
-		shaderOpaque.setFloat("spotLights[0].quadratic", sLight.quadratic);
-
-		shaderOpaque.setFloat("spotLights[0].cutOff", sLight.cutOff);
-		shaderOpaque.setFloat("spotLights[0].outerCutOff", sLight.outerCutOff);
-
-		// LIGHTS TRANSPARENT SHADER
-		// Dir
-		shaderTransparent.use();
-		shaderTransparent.setVec3("dirLights[0].ambient", dLight.ambient);
-		shaderTransparent.setVec3("dirLights[0].diffuse", dLight.diffuse);
-		shaderTransparent.setVec3("dirLights[0].specular", dLight.specular);
-		shaderTransparent.setVec3("dirLights[0].direction", dLight.direction);
-
-		// Point
-		shaderTransparent.setVec3("pointLights[0].ambient", pLight.ambient);
-		shaderTransparent.setVec3("pointLights[0].diffuse", pLight.diffuse);
-		shaderTransparent.setVec3("pointLights[0].specular", pLight.specular);
-		shaderTransparent.setVec3("pointLights[0].position", pLight.position);
-
-		shaderTransparent.setFloat("pointLights[0].constant", pLight.constant);
-		shaderTransparent.setFloat("pointLights[0].linear", pLight.linear);
-		shaderTransparent.setFloat("pointLights[0].quadratic", pLight.quadratic);
-
-		// Spot
-		shaderTransparent.setVec3("spotLights[0].ambient", sLight.ambient);
-		shaderTransparent.setVec3("spotLights[0].diffuse", sLight.diffuse);
-		shaderTransparent.setVec3("spotLights[0].specular", sLight.specular);
-
-		shaderTransparent.setVec3("spotLights[0].position", sLight.position);
-		shaderTransparent.setVec3("spotLights[0].direction", sLight.direction);
-
-		shaderTransparent.setFloat("spotLights[0].constant", sLight.constant);
-		shaderTransparent.setFloat("spotLights[0].linear", sLight.linear);
-		shaderTransparent.setFloat("spotLights[0].quadratic", sLight.quadratic);
-
-		shaderTransparent.setFloat("spotLights[0].cutOff", sLight.cutOff);
-		shaderTransparent.setFloat("spotLights[0].outerCutOff", sLight.outerCutOff);
-		}
-		// Camera
-		shaderOpaque.use();
-		shaderOpaque.setMat4("view", camera.getViewMatrix());
-		shaderOpaque.setMat4("projection", camera.getProjectionMatrix());
-
-		shaderTransparent.use();
-		shaderTransparent.setMat4("view", camera.getViewMatrix());
-		shaderTransparent.setMat4("projection", camera.getProjectionMatrix());
 		
+		ce::graphics::LightSetup lights;
+		lights.dirLights.push_back(dLight);
+		lights.pointLights.push_back(pLight);
+		lights.spotLights.push_back(sLight);
+
+		renderer.begin();
+		renderer.beginScene(&camera);
+		renderer.submitLightSetup(lights);
+
 		// Suit
-		glDisable(GL_BLEND);
 		glm::mat4 modelMatrix = glm::mat4();
 		modelMatrix = glm::translate(modelMatrix, glm::vec3(0.0f, 0.3f, -3.0f));
 		modelMatrix = glm::scale(modelMatrix, glm::vec3(0.1f, 0.1f, 0.1f));
-		shaderOpaque.use();
-		shaderOpaque.setMat4("model", modelMatrix);
-		shaderTransparent.use();
-		shaderTransparent.setMat4("model", modelMatrix);
-		model1.draw();
+		model1.draw(&renderer, modelMatrix);
 
 		// Window
-		glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ZERO);
-
 		modelMatrix = glm::mat4();
 		modelMatrix = glm::translate(modelMatrix, glm::vec3(0.0f, 0.3f, -3.0f));
 		modelMatrix = glm::rotate(modelMatrix, glm::radians((float)clock.getPassed().asMilliseconds() / 20.f), glm::vec3(0.0f, 1.0f, 0.0f));
-		shaderOpaque.use();
-		shaderOpaque.setMat4("model", modelMatrix);
-		shaderTransparent.use();
-		shaderTransparent.setMat4("model", modelMatrix);
-		model.draw();
-		
+		model.draw(&renderer, modelMatrix);
+
+		// Grass
+		modelMatrix = glm::mat4();
+		modelMatrix = glm::translate(modelMatrix, glm::vec3(0.0f, 0.3f, -2.0f));
+		modelGrass.draw(&renderer, modelMatrix);
+
+		renderer.endScene();
+		renderer.end();
+
+		renderer.present();
+
 		window.display();
 	}
 

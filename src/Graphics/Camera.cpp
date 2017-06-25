@@ -24,9 +24,9 @@ void ce::graphics::Camera::setFOV(float fov)
 	setProjection(fov, m_aspectRatio, m_near, m_far);
 }
 
-void ce::graphics::Camera::setNearFar(float near, float far)
+void ce::graphics::Camera::setNearFar(float n, float f)
 {
-	setProjection(m_fov, m_aspectRatio, near, far);
+	setProjection(m_fov, m_aspectRatio, n, f);
 }
 
 void ce::graphics::Camera::setAspectRatio(float ratio)
@@ -34,14 +34,14 @@ void ce::graphics::Camera::setAspectRatio(float ratio)
 	setProjection(m_fov, ratio, m_near, m_far);
 }
 
-void ce::graphics::Camera::setProjection(float fov, float aspectRatio, float near, float far)
+void ce::graphics::Camera::setProjection(float fov, float aspectRatio, float n, float f)
 {
 	m_fov = fov;
 	m_aspectRatio = aspectRatio;
-	m_near = near;
-	m_far = far;
+	m_near = n;
+	m_far = f;
 
-	m_projection = glm::perspective(glm::radians(fov), aspectRatio, near, far);
+	m_projection = glm::perspective(glm::radians(fov), aspectRatio, n, f);
 }
 
 glm::vec3 ce::graphics::Camera::getPosition() const

@@ -53,24 +53,43 @@ ce::graphics::Mesh ce::graphics::ModelLoader::processMesh(aiMesh* mesh, const ai
 		
 		aiMaterial* assimpMaterial = scene->mMaterials[mesh->mMaterialIndex];
 
-		// Full mesh material opacity
 		float opacity;
-		assimpMaterial->Get(AI_MATKEY_OPACITY, opacity);
-		material.opacity = opacity;
+		if (aiReturn_SUCCESS == assimpMaterial->Get(AI_MATKEY_OPACITY, opacity))
+		{
+			material.opacity = opacity;
+		}
 
-		// Use normal shaders
+		// Choose shader based on if we need blending or not
 		if (opacity >= 1.0f)
 		{
-			material.shader = Shader("Shaders/opaque_sd_vertex.glsl", "Shaders/opaque_sd_fragment.glsl");
+			ce::graphics::ShaderProperties properties;
+			ce::graphics::ShaderLoader loader;
+			properties.vPath = "Shaders/Dynamic/opaque_sd_vertex.glsl";
+			properties.fPath = "Shaders/Dynamic/opaque_sd_fragment.glsl";
+			properties.numDirLights = 1;
+			properties.numPointLights = 1;
+			properties.numSpotLights = 1;
+			material.shader = loader.loadShader(properties);
 		}
 		else if (opacity < 1.0f) // Use blending shader to get opacity
 		{
-			material.shader = Shader("Shaders/transparent_sd_vertex.glsl", "Shaders/transparent_sd_fragment.glsl");
+			material.m_materialProperties = material.m_materialProperties | MAT_BLEND;
+
+			ce::graphics::ShaderProperties properties;
+			ce::graphics::ShaderLoader loader;
+			properties.vPath = "Shaders/Dynamic/transparent_sd_vertex.glsl";
+			properties.fPath = "Shaders/Dynamic/transparent_sd_fragment.glsl";
+			properties.numDirLights = 1;
+			properties.numPointLights = 1;
+			properties.numSpotLights = 1;
+			material.shader = loader.loadShader(properties);
 		}
 
 		float shininess;
-		assimpMaterial->Get(AI_MATKEY_SHININESS, shininess);
-		material.shininess = 32.f;
+		if (aiReturn_SUCCESS == assimpMaterial->Get(AI_MATKEY_SHININESS, shininess))
+		{
+			material.shininess = shininess;
+		}
 
 		std::vector<Texture> diffuseMaps = loadMaterialTextures(assimpMaterial, aiTextureType_DIFFUSE, TEXTURE_DIFFUSE);
 		material.textures.insert(material.textures.end(), diffuseMaps.begin(), diffuseMaps.end());
@@ -132,7 +151,7 @@ ce::graphics::Model ce::graphics::ModelLoader::loadModel(std::string path)
 
 		if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 		{
-			std::cout << "CE: Failed importing model (path: " << path << "), error: " << importer.GetErrorString() << std::endl;
+			ce::core::log("Failed importing model(path: " + path + "), error: " + importer.GetErrorString(), ce::core::LOG_WARNING);
 			return Model();
 		}
 

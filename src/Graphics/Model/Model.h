@@ -4,6 +4,9 @@
 
 #include "Graphics/Model/Mesh.h"
 
+#include "Graphics/Renderer/ForwardRenderer.h"
+#include "Graphics/Renderer/RenderCommand.h"
+
 namespace ce { namespace graphics {
 
 	//
@@ -26,6 +29,8 @@ namespace ce { namespace graphics {
 
 		// TODO: TEMP FOR TESTING
 		void draw();
+
+		void draw(ForwardRenderer* renderer, glm::mat4 modelMatrix);
 	};
 
 }}

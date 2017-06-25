@@ -1,0 +1,58 @@
+\hypertarget{classce_1_1graphics_1_1_renderer3_d}{}\section{ce\+:\+:graphics\+:\+:Renderer3D Class Reference}
+\label{classce_1_1graphics_1_1_renderer3_d}\index{ce\+::graphics\+::\+Renderer3D@{ce\+::graphics\+::\+Renderer3D}}
+Inheritance diagram for ce\+:\+:graphics\+:\+:Renderer3D\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classce_1_1graphics_1_1_renderer3_d}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_renderer3_d_ae887bbdc74af40838e6d059d30bb430b}\label{classce_1_1graphics_1_1_renderer3_d_ae887bbdc74af40838e6d059d30bb430b}} 
+virtual void {\bfseries init} ()=0
+\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_renderer3_d_a51818b5b581c33001ddbbc6dff9d6e36}\label{classce_1_1graphics_1_1_renderer3_d_a51818b5b581c33001ddbbc6dff9d6e36}} 
+virtual void {\bfseries begin} ()=0
+\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_renderer3_d_a94e60931e0ff3f26b217db09a11ee7e6}\label{classce_1_1graphics_1_1_renderer3_d_a94e60931e0ff3f26b217db09a11ee7e6}} 
+virtual void {\bfseries begin\+Scene} (\hyperlink{classce_1_1graphics_1_1_camera}{Camera} $\ast$camera)=0
+\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_renderer3_d_a67e956930a17600cdcfc689aa624f990}\label{classce_1_1graphics_1_1_renderer3_d_a67e956930a17600cdcfc689aa624f990}} 
+virtual void {\bfseries submit} (const \hyperlink{structce_1_1graphics_1_1_render_command}{Render\+Command} \&command)=0
+\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_renderer3_d_aba7b0abfa0aad0d89a816923e83ef787}\label{classce_1_1graphics_1_1_renderer3_d_aba7b0abfa0aad0d89a816923e83ef787}} 
+virtual void {\bfseries submit\+Mesh} (\hyperlink{classce_1_1graphics_1_1_mesh}{Mesh} $\ast$mesh, const glm\+::mat4 \&transform)=0
+\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_renderer3_d_a4a2eb6efe3adbff611c20141159eb3dc}\label{classce_1_1graphics_1_1_renderer3_d_a4a2eb6efe3adbff611c20141159eb3dc}} 
+virtual void {\bfseries submit\+Light\+Setup} (const \hyperlink{structce_1_1graphics_1_1_light_setup}{Light\+Setup} \&light\+Setup)=0
+\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_renderer3_d_a0b8feaf1dd7f6ee03c7be2197d012e25}\label{classce_1_1graphics_1_1_renderer3_d_a0b8feaf1dd7f6ee03c7be2197d012e25}} 
+virtual void {\bfseries end\+Scene} ()=0
+\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_renderer3_d_a4d35e07f42a4fb42ebe3f8e57bfcdb58}\label{classce_1_1graphics_1_1_renderer3_d_a4d35e07f42a4fb42ebe3f8e57bfcdb58}} 
+virtual void {\bfseries end} ()=0
+\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_renderer3_d_a7b258350b5af957550a2d29800d3c5b7}\label{classce_1_1graphics_1_1_renderer3_d_a7b258350b5af957550a2d29800d3c5b7}} 
+virtual void {\bfseries present} ()=0
+\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_renderer3_d_a39b5c5b8a62c71600d23de2d642e1546}\label{classce_1_1graphics_1_1_renderer3_d_a39b5c5b8a62c71600d23de2d642e1546}} 
+virtual void {\bfseries set\+Screen\+Buffer\+Size} (unsigned int width, unsigned int height)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_renderer3_d_ae0794abc076ff68ed7c8eb9fd2bbd278}\label{classce_1_1graphics_1_1_renderer3_d_ae0794abc076ff68ed7c8eb9fd2bbd278}} 
+unsigned int {\bfseries m\+\_\+screen\+Buffer\+Width}
+\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_renderer3_d_a03b1b45f98919b5468fce308f19fac57}\label{classce_1_1graphics_1_1_renderer3_d_a03b1b45f98919b5468fce308f19fac57}} 
+unsigned int {\bfseries m\+\_\+screen\+Buffer\+Height}
+\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_renderer3_d_a495b3dd349daf3e7f7b7b0cc0de8d950}\label{classce_1_1graphics_1_1_renderer3_d_a495b3dd349daf3e7f7b7b0cc0de8d950}} 
+Command\+Queue {\bfseries m\+\_\+command\+Queue}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Graphics/\+Renderer/Renderer3\+D.\+h\end{DoxyCompactItemize}

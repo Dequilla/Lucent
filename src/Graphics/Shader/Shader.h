@@ -16,14 +16,12 @@ namespace ce { namespace graphics {
 	class Shader
 	{
 	protected:
-		unsigned int programID;
+		friend class ShaderLoader;
 
-		// string is all paths appended to eachother
-		static std::unordered_map<std::string, Shader> m_loadedShaders;
+		unsigned int programID;
 
 	public:
 		Shader() {}
-		Shader(const GLchar* vertexPath, const GLchar* fragmentPath);
 
 		void use(); // Set this shader program as current
 

@@ -14,9 +14,6 @@ namespace ce { namespace graphics {
 
 		VertexArray m_vertices;
 		IndexArray m_indices;
-
-		// TODO: Lets not have duplicate materials
-		Material m_material; // We have materials on a mesh-to-mesh basis
 		
 		friend class ModelLoader;
 
@@ -29,6 +26,9 @@ namespace ce { namespace graphics {
 	public:
 		Mesh(VertexArray vertices, IndexArray indices, Material material);
 
+		// TODO: Lets not have duplicate materials
+		Material material; // We have materials on a mesh-to-mesh basis
+		
 		// TODO: TEMP FOR TEST
 		void draw();
 	};

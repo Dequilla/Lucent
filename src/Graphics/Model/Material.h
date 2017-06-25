@@ -7,30 +7,29 @@
 
 namespace ce { namespace graphics {
 
-	// TODO:
-	// ASSIMP: BLEND_FUNC to determine if we blend it (if we have textures with opacity or opacity isnt 1.0f
-	// AssimpMaterial.Get()
-	// Material goal:
-	//  - Diffuse color
-	//  - Specular color
-	//  - Ambient color
-	//  - Emissive color (Maybe, but later?)
-	//  - Global Opacity (transparency for whole mesh)
-	//  - Shininess
-	//  - Diffuse mapping (Can contain transparency, sample transparency from this texture)
-	//  - Specular mapping
-	//  When all these are supported and stable:
-	//  - Normal mapping etc.
+	enum MaterialProperty
+	{
+		MAT_BLEND = 0x01
+	};
 
 	struct Material
 	{
-		Shader shader;
+		Shader* shader;
 		
 		std::vector<Texture> textures;
 
-		float shininess = 32.0f; // Specular shininess
+		float shininess = 32.0f;
+		float opacity = 1.0f;
 
-		float opacity = 1.0f; // For transparency
+		inline bool hasProperty(MaterialProperty matprop)
+		{
+			return ((m_materialProperties & matprop) ? true : false);
+		}
+
+	protected:
+		friend class ModelLoader;
+
+		unsigned int m_materialProperties = 0;
 	};
 	
 }}

@@ -7,31 +7,38 @@
 
 #include "SDL2/SDL.h"
 
+#include "Core/Utility/log.h"
+
 #include "InputCodes.h"
 
 namespace ce { namespace core {
 
-	// Structure for joysticks and controllers
+	/**
+	* \struct Joystick
+	* \brief Structure containing information needed for Joysticks and Controllers
+	*/
 	struct Joystick
 	{
 		int instanceID = 0;
 		SDL_Joystick* joystick = nullptr;
 		SDL_GameController* controller = nullptr;
 	};
-
+	
+	/**
+	* \brief Class for handling user input
+	*
+	* Class for handling user input through a callback system.
+	*/
 	class Input
 	{
-	protected:
-		// Bound Keyboard callbacks get with them a bool (true = key_pressed, false = key_released)
+	private:
 		std::unordered_map<int, std::function< void(bool) >> m_cbButtonEvent;
 		std::vector<KeyCodes> m_boundKeys;
 
-		// Bound Axis callbacks get with them their axis value (eg: mouse position)
 		std::unordered_map<int, std::function< void(float) >> m_cbAxisEvent;
 		std::vector<AxisEventCodes> m_boundAxis;
-
-		// Fixes a crashing issue with binds being cleared during a input check
-		void unbindActual();
+		
+		void unbindActual(); 
 		bool m_bUnbindButtons = false;
 		bool m_bUnbindAxis = false;
 
@@ -40,23 +47,28 @@ namespace ce { namespace core {
 		void removeController(int controllerID);
 	
 	public:
-		void checkInput(const SDL_Event &e);
+		void checkInput(const SDL_Event &e); /**< Polls input and calls callbacks */
 
-		void clearButtonBinds();
-		void clearAxisBinds();
+		void clearButtonBinds(); /**< Completely clear the button bindings */
+		void clearAxisBinds(); /**< Completely clear the axis bindings */
 
-
-		// Bind a function to a keypress
-		// Param 1: KeyCode that it reacts to
-		// Param 2: The instance which contains the function
-		// Param 3: A function pointer, function must have a bool parameter and returntype void (eg: &AClass::Function)
+		/**
+		* \brief Register a button event to a callback
+		*
+		* @param key Keycode to identify callback with
+		* @param instance Class instance which contains the function
+		* @param func A function pointer, function must have a bool parameter and returntype void (eg: &AClass::Function)
+		*/
 		template <class T>
 		void bindButtonEvent(KeyCodes key, T* instance, void(T::*func)(bool));
 
-		// Bind a function to a axis event like the mouse
-		// Param 1: Axis it reacts to
-		// Param 2: The instance which contains the function
-		// Param 3: A function pointer, function must have a float parameter and returntype void (eg: &AClass::Function)
+		/**
+		* \brief Register a axis event to a callback
+		*
+		* @param key AxisEventCode to identify callback with
+		* @param instance Class instance which contains the function
+		* @param func A function pointer, function must have a float parameter and returntype void (eg: &AClass::Function)
+		*/
 		template <class T>
 		void bindAxisEvent(AxisEventCodes axis, T* instance, void(T::*func)(float));
 	};

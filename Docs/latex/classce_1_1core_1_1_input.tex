@@ -1,0 +1,96 @@
+\hypertarget{classce_1_1core_1_1_input}{}\section{ce\+:\+:core\+:\+:Input Class Reference}
+\label{classce_1_1core_1_1_input}\index{ce\+::core\+::\+Input@{ce\+::core\+::\+Input}}
+
+
+Class for handling user input.  
+
+
+
+
+{\ttfamily \#include $<$Input.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classce_1_1core_1_1_input_aa921d892488a1c346539aab31343ac0c}{check\+Input} (const S\+D\+L\+\_\+\+Event \&e)
+\item 
+void \hyperlink{classce_1_1core_1_1_input_a84f905f6bd9f450d26fd23e1f8868dcb}{clear\+Button\+Binds} ()
+\item 
+void \hyperlink{classce_1_1core_1_1_input_a945216b48170e96f34f99c00ebeb138a}{clear\+Axis\+Binds} ()
+\item 
+{\footnotesize template$<$class T $>$ }\\void \hyperlink{classce_1_1core_1_1_input_a97f7ebd9ae572b447631bd05a782b73b}{bind\+Button\+Event} (\hyperlink{_input_codes_8h_a0205e42a827583bec00e09861c1bd835}{Key\+Codes} key, T $\ast$instance, void(T\+::$\ast$func)(bool))
+\begin{DoxyCompactList}\small\item\em Register a button event to a callback. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class T $>$ }\\void \hyperlink{classce_1_1core_1_1_input_abf2973ba66d676fa5c0c731913049555}{bind\+Axis\+Event} (\hyperlink{_input_codes_8h_a9044fffd6a7c3417b0a100f0a0427a90}{Axis\+Event\+Codes} axis, T $\ast$instance, void(T\+::$\ast$func)(float))
+\begin{DoxyCompactList}\small\item\em Register a axis event to a callback. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class for handling user input. 
+
+Class for handling user input through a callback system. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classce_1_1core_1_1_input_abf2973ba66d676fa5c0c731913049555}\label{classce_1_1core_1_1_input_abf2973ba66d676fa5c0c731913049555}} 
+\index{ce\+::core\+::\+Input@{ce\+::core\+::\+Input}!bind\+Axis\+Event@{bind\+Axis\+Event}}
+\index{bind\+Axis\+Event@{bind\+Axis\+Event}!ce\+::core\+::\+Input@{ce\+::core\+::\+Input}}
+\subsubsection{\texorpdfstring{bind\+Axis\+Event()}{bindAxisEvent()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void ce\+::core\+::\+Input\+::bind\+Axis\+Event (\begin{DoxyParamCaption}\item[{\hyperlink{_input_codes_8h_a9044fffd6a7c3417b0a100f0a0427a90}{Axis\+Event\+Codes}}]{axis,  }\item[{T $\ast$}]{instance,  }\item[{void(T\+::$\ast$)(float)}]{func }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Register a axis event to a callback. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & Axis\+Event\+Code to identify callback with \\
+\hline
+{\em instance} & Class instance which contains the function \\
+\hline
+{\em func} & A function pointer, function must have a float parameter and returntype void (eg\+: \&A\+Class\+::\+Function) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classce_1_1core_1_1_input_a97f7ebd9ae572b447631bd05a782b73b}\label{classce_1_1core_1_1_input_a97f7ebd9ae572b447631bd05a782b73b}} 
+\index{ce\+::core\+::\+Input@{ce\+::core\+::\+Input}!bind\+Button\+Event@{bind\+Button\+Event}}
+\index{bind\+Button\+Event@{bind\+Button\+Event}!ce\+::core\+::\+Input@{ce\+::core\+::\+Input}}
+\subsubsection{\texorpdfstring{bind\+Button\+Event()}{bindButtonEvent()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void ce\+::core\+::\+Input\+::bind\+Button\+Event (\begin{DoxyParamCaption}\item[{\hyperlink{_input_codes_8h_a0205e42a827583bec00e09861c1bd835}{Key\+Codes}}]{key,  }\item[{T $\ast$}]{instance,  }\item[{void(T\+::$\ast$)(bool)}]{func }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Register a button event to a callback. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & Keycode to identify callback with \\
+\hline
+{\em instance} & Class instance which contains the function \\
+\hline
+{\em func} & A function pointer, function must have a bool parameter and returntype void (eg\+: \&A\+Class\+::\+Function) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classce_1_1core_1_1_input_aa921d892488a1c346539aab31343ac0c}\label{classce_1_1core_1_1_input_aa921d892488a1c346539aab31343ac0c}} 
+\index{ce\+::core\+::\+Input@{ce\+::core\+::\+Input}!check\+Input@{check\+Input}}
+\index{check\+Input@{check\+Input}!ce\+::core\+::\+Input@{ce\+::core\+::\+Input}}
+\subsubsection{\texorpdfstring{check\+Input()}{checkInput()}}
+{\footnotesize\ttfamily void ce\+::core\+::\+Input\+::check\+Input (\begin{DoxyParamCaption}\item[{const S\+D\+L\+\_\+\+Event \&}]{e }\end{DoxyParamCaption})}
+
+Polls input and calls callbacks \mbox{\Hypertarget{classce_1_1core_1_1_input_a945216b48170e96f34f99c00ebeb138a}\label{classce_1_1core_1_1_input_a945216b48170e96f34f99c00ebeb138a}} 
+\index{ce\+::core\+::\+Input@{ce\+::core\+::\+Input}!clear\+Axis\+Binds@{clear\+Axis\+Binds}}
+\index{clear\+Axis\+Binds@{clear\+Axis\+Binds}!ce\+::core\+::\+Input@{ce\+::core\+::\+Input}}
+\subsubsection{\texorpdfstring{clear\+Axis\+Binds()}{clearAxisBinds()}}
+{\footnotesize\ttfamily void ce\+::core\+::\+Input\+::clear\+Axis\+Binds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Completely clear the axis bindings \mbox{\Hypertarget{classce_1_1core_1_1_input_a84f905f6bd9f450d26fd23e1f8868dcb}\label{classce_1_1core_1_1_input_a84f905f6bd9f450d26fd23e1f8868dcb}} 
+\index{ce\+::core\+::\+Input@{ce\+::core\+::\+Input}!clear\+Button\+Binds@{clear\+Button\+Binds}}
+\index{clear\+Button\+Binds@{clear\+Button\+Binds}!ce\+::core\+::\+Input@{ce\+::core\+::\+Input}}
+\subsubsection{\texorpdfstring{clear\+Button\+Binds()}{clearButtonBinds()}}
+{\footnotesize\ttfamily void ce\+::core\+::\+Input\+::clear\+Button\+Binds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Completely clear the button bindings 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Core/Input.\+h\item 
+Core/Input.\+cpp\end{DoxyCompactItemize}

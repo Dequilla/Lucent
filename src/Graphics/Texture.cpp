@@ -31,7 +31,7 @@ unsigned int ce::graphics::loadTexture(const char * path)
 	}
 	else
 	{
-		std::cout << "CE: Failed to load texture: " << path << std::endl;
+		ce::core::log("Failed to load texture : " + std::string(path), ce::core::LOG_WARNING);
 	}
 
 	stbi_image_free(data);

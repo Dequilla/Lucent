@@ -1,0 +1,81 @@
+\hypertarget{log_8h}{}\section{Core/\+Utility/log.h File Reference}
+\label{log_8h}\index{Core/\+Utility/log.\+h@{Core/\+Utility/log.\+h}}
+
+
+Tools to make logging easier and more unified.  
+
+
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+{\ttfamily \#include \char`\"{}Core/\+Utility/console.\+h\char`\"{}}\newline
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{log_8h_a7766f79535ad275c0d177e9f904a6987}{ce\+::core\+::\+Log\+Type} \{ \hyperlink{log_8h_a7766f79535ad275c0d177e9f904a6987a8edac70818090a4c8a5e46ed65ea54c9}{ce\+::core\+::\+L\+O\+G\+\_\+\+M\+E\+S\+S\+A\+GE}, 
+\hyperlink{log_8h_a7766f79535ad275c0d177e9f904a6987af9b1402988b5421b58da810ef4e1536f}{ce\+::core\+::\+L\+O\+G\+\_\+\+W\+A\+R\+N\+I\+NG}, 
+\hyperlink{log_8h_a7766f79535ad275c0d177e9f904a6987ad0240923a2e3f0674c10208502fc3639}{ce\+::core\+::\+L\+O\+G\+\_\+\+E\+R\+R\+OR}, 
+\hyperlink{log_8h_a7766f79535ad275c0d177e9f904a6987a1227bda98a2a95e64ec18055b37c2468}{ce\+::core\+::\+L\+O\+G\+\_\+\+C\+R\+I\+T\+I\+C\+AL}
+ \}\begin{DoxyCompactList}\small\item\em Enum with the types of logging you can make. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{log_8h_a6a81e4153fbef11c1e5de48a834360c3}{ce\+::core\+::log} (const std\+::string \&output, const Log\+Type \&type=L\+O\+G\+\_\+\+M\+E\+S\+S\+A\+GE)
+\begin{DoxyCompactList}\small\item\em Log a text message to the console. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Tools to make logging easier and more unified. 
+
+Currently only very simple and logs to the console only. 
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{log_8h_file_a7766f79535ad275c0d177e9f904a6987}\label{log_8h_file_a7766f79535ad275c0d177e9f904a6987}} 
+\index{log.\+h@{log.\+h}!Log\+Type@{Log\+Type}}
+\index{Log\+Type@{Log\+Type}!log.\+h@{log.\+h}}
+\subsubsection{\texorpdfstring{Log\+Type}{LogType}}
+{\footnotesize\ttfamily enum \hyperlink{log_8h_a7766f79535ad275c0d177e9f904a6987}{ce\+::core\+::\+Log\+Type}}
+
+
+
+Enum with the types of logging you can make. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+O\+G\+\_\+\+M\+E\+S\+S\+A\+GE@{L\+O\+G\+\_\+\+M\+E\+S\+S\+A\+GE}!log.\+h@{log.\+h}}\index{log.\+h@{log.\+h}!L\+O\+G\+\_\+\+M\+E\+S\+S\+A\+GE@{L\+O\+G\+\_\+\+M\+E\+S\+S\+A\+GE}}}\mbox{\Hypertarget{log_8h_a7766f79535ad275c0d177e9f904a6987a8edac70818090a4c8a5e46ed65ea54c9}\label{log_8h_a7766f79535ad275c0d177e9f904a6987a8edac70818090a4c8a5e46ed65ea54c9}} 
+L\+O\+G\+\_\+\+M\+E\+S\+S\+A\+GE&A message, in the console it has grey text \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+O\+G\+\_\+\+W\+A\+R\+N\+I\+NG@{L\+O\+G\+\_\+\+W\+A\+R\+N\+I\+NG}!log.\+h@{log.\+h}}\index{log.\+h@{log.\+h}!L\+O\+G\+\_\+\+W\+A\+R\+N\+I\+NG@{L\+O\+G\+\_\+\+W\+A\+R\+N\+I\+NG}}}\mbox{\Hypertarget{log_8h_a7766f79535ad275c0d177e9f904a6987af9b1402988b5421b58da810ef4e1536f}\label{log_8h_a7766f79535ad275c0d177e9f904a6987af9b1402988b5421b58da810ef4e1536f}} 
+L\+O\+G\+\_\+\+W\+A\+R\+N\+I\+NG&A warning, in the console it has yellow text \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+O\+G\+\_\+\+E\+R\+R\+OR@{L\+O\+G\+\_\+\+E\+R\+R\+OR}!log.\+h@{log.\+h}}\index{log.\+h@{log.\+h}!L\+O\+G\+\_\+\+E\+R\+R\+OR@{L\+O\+G\+\_\+\+E\+R\+R\+OR}}}\mbox{\Hypertarget{log_8h_a7766f79535ad275c0d177e9f904a6987ad0240923a2e3f0674c10208502fc3639}\label{log_8h_a7766f79535ad275c0d177e9f904a6987ad0240923a2e3f0674c10208502fc3639}} 
+L\+O\+G\+\_\+\+E\+R\+R\+OR&An error, in the console it has red text \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+O\+G\+\_\+\+C\+R\+I\+T\+I\+C\+AL@{L\+O\+G\+\_\+\+C\+R\+I\+T\+I\+C\+AL}!log.\+h@{log.\+h}}\index{log.\+h@{log.\+h}!L\+O\+G\+\_\+\+C\+R\+I\+T\+I\+C\+AL@{L\+O\+G\+\_\+\+C\+R\+I\+T\+I\+C\+AL}}}\mbox{\Hypertarget{log_8h_a7766f79535ad275c0d177e9f904a6987a1227bda98a2a95e64ec18055b37c2468}\label{log_8h_a7766f79535ad275c0d177e9f904a6987a1227bda98a2a95e64ec18055b37c2468}} 
+L\+O\+G\+\_\+\+C\+R\+I\+T\+I\+C\+AL&A critical error, in the console it has red text with yellow background \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{log_8h_file_a6a81e4153fbef11c1e5de48a834360c3}\label{log_8h_file_a6a81e4153fbef11c1e5de48a834360c3}} 
+\index{log.\+h@{log.\+h}!log@{log}}
+\index{log@{log}!log.\+h@{log.\+h}}
+\subsubsection{\texorpdfstring{log()}{log()}}
+{\footnotesize\ttfamily void ce\+::core\+::log (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{output,  }\item[{const \hyperlink{log_8h_a7766f79535ad275c0d177e9f904a6987}{Log\+Type} \&}]{type = {\ttfamily LOG\+\_\+MESSAGE} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Log a text message to the console. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output} & The output string/message \\
+\hline
+{\em type} & The type of message this is, check Log\+Type \\
+\hline
+\end{DoxyParams}

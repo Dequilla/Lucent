@@ -8,6 +8,11 @@
 #include "Graphics/Model/Model.h"
 #include "Graphics/Model/Material.h"
 
+#include "Graphics/Shader/ShaderLoader.h"
+#include "Graphics/Shader/Shader.h"
+
+#include "Core/Utility/log.h"
+
 #include <memory>
 #include <vector>
 #include <unordered_map>

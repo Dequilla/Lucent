@@ -1,0 +1,118 @@
+\hypertarget{console_8h}{}\section{Core/\+Utility/console.h File Reference}
+\label{console_8h}\index{Core/\+Utility/console.\+h@{Core/\+Utility/console.\+h}}
+
+
+File containing some functions to handle the console.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{console_8h_a4007b22d02a0ce8d7bf348552e20f10e}{ce\+::core\+::\+Console\+Color} \{ \newline
+\hyperlink{console_8h_a4007b22d02a0ce8d7bf348552e20f10eaf0932ceaf16ebbc8fa9f82ff359e3f8f}{ce\+::core\+::\+C\+O\+N\+S\+O\+L\+E\+\_\+\+R\+E\+S\+ET}, 
+\hyperlink{console_8h_a4007b22d02a0ce8d7bf348552e20f10ea222d8c2f1234fe0a733720ad956796b8}{ce\+::core\+::\+C\+O\+N\+S\+O\+L\+E\+\_\+\+B\+L\+UE}, 
+\hyperlink{console_8h_a4007b22d02a0ce8d7bf348552e20f10ea2f4cfc86a52183a8857b171fe2051379}{ce\+::core\+::\+C\+O\+N\+S\+O\+L\+E\+\_\+\+C\+Y\+AN}, 
+\hyperlink{console_8h_a4007b22d02a0ce8d7bf348552e20f10eac3135eb25bbe870624b0d74a8e2a7136}{ce\+::core\+::\+C\+O\+N\+S\+O\+L\+E\+\_\+\+R\+ED}, 
+\newline
+\hyperlink{console_8h_a4007b22d02a0ce8d7bf348552e20f10ea325fdd708a858c4d261e7ac7f84b3b93}{ce\+::core\+::\+C\+O\+N\+S\+O\+L\+E\+\_\+\+M\+A\+G\+E\+N\+TA}, 
+\hyperlink{console_8h_a4007b22d02a0ce8d7bf348552e20f10ea476e4048cd743a2f30edd0fb12d4ec37}{ce\+::core\+::\+C\+O\+N\+S\+O\+L\+E\+\_\+\+G\+R\+E\+EN}, 
+\hyperlink{console_8h_a4007b22d02a0ce8d7bf348552e20f10ea7665b0818fc8e1cff640511a575d9fba}{ce\+::core\+::\+C\+O\+N\+S\+O\+L\+E\+\_\+\+Y\+E\+L\+L\+OW}, 
+\hyperlink{console_8h_a4007b22d02a0ce8d7bf348552e20f10ea944cf3359502f3bbda8ccb327228a3c6}{ce\+::core\+::\+C\+O\+N\+S\+O\+L\+E\+\_\+\+B\+L\+A\+CK}, 
+\newline
+\hyperlink{console_8h_a4007b22d02a0ce8d7bf348552e20f10ea15e6b999c49c7226e33b671457232fa5}{ce\+::core\+::\+C\+O\+N\+S\+O\+L\+E\+\_\+\+G\+R\+EY}, 
+\hyperlink{console_8h_a4007b22d02a0ce8d7bf348552e20f10ea294447fe8183de15412c63f2559f739f}{ce\+::core\+::\+C\+O\+N\+S\+O\+L\+E\+\_\+\+W\+H\+I\+TE}
+ \}\begin{DoxyCompactList}\small\item\em The supported colors for console output. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{console_8h_a1f4a8d779aef48638993f05e321b9248}{ce\+::core\+::print\+With\+Colors} (std\+::string output, Console\+Color foreground, Console\+Color background=C\+O\+N\+S\+O\+L\+E\+\_\+\+B\+L\+A\+CK)
+\begin{DoxyCompactList}\small\item\em Prints output to the console using the colors specified. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+File containing some functions to handle the console. 
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{console_8h_file_a4007b22d02a0ce8d7bf348552e20f10e}\label{console_8h_file_a4007b22d02a0ce8d7bf348552e20f10e}} 
+\index{console.\+h@{console.\+h}!Console\+Color@{Console\+Color}}
+\index{Console\+Color@{Console\+Color}!console.\+h@{console.\+h}}
+\subsubsection{\texorpdfstring{Console\+Color}{ConsoleColor}}
+{\footnotesize\ttfamily enum \hyperlink{console_8h_a4007b22d02a0ce8d7bf348552e20f10e}{ce\+::core\+::\+Console\+Color}}
+
+
+
+The supported colors for console output. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+N\+S\+O\+L\+E\+\_\+\+R\+E\+S\+ET@{C\+O\+N\+S\+O\+L\+E\+\_\+\+R\+E\+S\+ET}!console.\+h@{console.\+h}}\index{console.\+h@{console.\+h}!C\+O\+N\+S\+O\+L\+E\+\_\+\+R\+E\+S\+ET@{C\+O\+N\+S\+O\+L\+E\+\_\+\+R\+E\+S\+ET}}}\mbox{\Hypertarget{console_8h_a4007b22d02a0ce8d7bf348552e20f10eaf0932ceaf16ebbc8fa9f82ff359e3f8f}\label{console_8h_a4007b22d02a0ce8d7bf348552e20f10eaf0932ceaf16ebbc8fa9f82ff359e3f8f}} 
+C\+O\+N\+S\+O\+L\+E\+\_\+\+R\+E\+S\+ET&Used to reset to the standard colors of the console \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+N\+S\+O\+L\+E\+\_\+\+B\+L\+UE@{C\+O\+N\+S\+O\+L\+E\+\_\+\+B\+L\+UE}!console.\+h@{console.\+h}}\index{console.\+h@{console.\+h}!C\+O\+N\+S\+O\+L\+E\+\_\+\+B\+L\+UE@{C\+O\+N\+S\+O\+L\+E\+\_\+\+B\+L\+UE}}}\mbox{\Hypertarget{console_8h_a4007b22d02a0ce8d7bf348552e20f10ea222d8c2f1234fe0a733720ad956796b8}\label{console_8h_a4007b22d02a0ce8d7bf348552e20f10ea222d8c2f1234fe0a733720ad956796b8}} 
+C\+O\+N\+S\+O\+L\+E\+\_\+\+B\+L\+UE&Console color blue \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+N\+S\+O\+L\+E\+\_\+\+C\+Y\+AN@{C\+O\+N\+S\+O\+L\+E\+\_\+\+C\+Y\+AN}!console.\+h@{console.\+h}}\index{console.\+h@{console.\+h}!C\+O\+N\+S\+O\+L\+E\+\_\+\+C\+Y\+AN@{C\+O\+N\+S\+O\+L\+E\+\_\+\+C\+Y\+AN}}}\mbox{\Hypertarget{console_8h_a4007b22d02a0ce8d7bf348552e20f10ea2f4cfc86a52183a8857b171fe2051379}\label{console_8h_a4007b22d02a0ce8d7bf348552e20f10ea2f4cfc86a52183a8857b171fe2051379}} 
+C\+O\+N\+S\+O\+L\+E\+\_\+\+C\+Y\+AN&Console color cyan \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+N\+S\+O\+L\+E\+\_\+\+R\+ED@{C\+O\+N\+S\+O\+L\+E\+\_\+\+R\+ED}!console.\+h@{console.\+h}}\index{console.\+h@{console.\+h}!C\+O\+N\+S\+O\+L\+E\+\_\+\+R\+ED@{C\+O\+N\+S\+O\+L\+E\+\_\+\+R\+ED}}}\mbox{\Hypertarget{console_8h_a4007b22d02a0ce8d7bf348552e20f10eac3135eb25bbe870624b0d74a8e2a7136}\label{console_8h_a4007b22d02a0ce8d7bf348552e20f10eac3135eb25bbe870624b0d74a8e2a7136}} 
+C\+O\+N\+S\+O\+L\+E\+\_\+\+R\+ED&Console color red \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+N\+S\+O\+L\+E\+\_\+\+M\+A\+G\+E\+N\+TA@{C\+O\+N\+S\+O\+L\+E\+\_\+\+M\+A\+G\+E\+N\+TA}!console.\+h@{console.\+h}}\index{console.\+h@{console.\+h}!C\+O\+N\+S\+O\+L\+E\+\_\+\+M\+A\+G\+E\+N\+TA@{C\+O\+N\+S\+O\+L\+E\+\_\+\+M\+A\+G\+E\+N\+TA}}}\mbox{\Hypertarget{console_8h_a4007b22d02a0ce8d7bf348552e20f10ea325fdd708a858c4d261e7ac7f84b3b93}\label{console_8h_a4007b22d02a0ce8d7bf348552e20f10ea325fdd708a858c4d261e7ac7f84b3b93}} 
+C\+O\+N\+S\+O\+L\+E\+\_\+\+M\+A\+G\+E\+N\+TA&Console color magenta \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+N\+S\+O\+L\+E\+\_\+\+G\+R\+E\+EN@{C\+O\+N\+S\+O\+L\+E\+\_\+\+G\+R\+E\+EN}!console.\+h@{console.\+h}}\index{console.\+h@{console.\+h}!C\+O\+N\+S\+O\+L\+E\+\_\+\+G\+R\+E\+EN@{C\+O\+N\+S\+O\+L\+E\+\_\+\+G\+R\+E\+EN}}}\mbox{\Hypertarget{console_8h_a4007b22d02a0ce8d7bf348552e20f10ea476e4048cd743a2f30edd0fb12d4ec37}\label{console_8h_a4007b22d02a0ce8d7bf348552e20f10ea476e4048cd743a2f30edd0fb12d4ec37}} 
+C\+O\+N\+S\+O\+L\+E\+\_\+\+G\+R\+E\+EN&Console color green \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+N\+S\+O\+L\+E\+\_\+\+Y\+E\+L\+L\+OW@{C\+O\+N\+S\+O\+L\+E\+\_\+\+Y\+E\+L\+L\+OW}!console.\+h@{console.\+h}}\index{console.\+h@{console.\+h}!C\+O\+N\+S\+O\+L\+E\+\_\+\+Y\+E\+L\+L\+OW@{C\+O\+N\+S\+O\+L\+E\+\_\+\+Y\+E\+L\+L\+OW}}}\mbox{\Hypertarget{console_8h_a4007b22d02a0ce8d7bf348552e20f10ea7665b0818fc8e1cff640511a575d9fba}\label{console_8h_a4007b22d02a0ce8d7bf348552e20f10ea7665b0818fc8e1cff640511a575d9fba}} 
+C\+O\+N\+S\+O\+L\+E\+\_\+\+Y\+E\+L\+L\+OW&Console color yellow \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+N\+S\+O\+L\+E\+\_\+\+B\+L\+A\+CK@{C\+O\+N\+S\+O\+L\+E\+\_\+\+B\+L\+A\+CK}!console.\+h@{console.\+h}}\index{console.\+h@{console.\+h}!C\+O\+N\+S\+O\+L\+E\+\_\+\+B\+L\+A\+CK@{C\+O\+N\+S\+O\+L\+E\+\_\+\+B\+L\+A\+CK}}}\mbox{\Hypertarget{console_8h_a4007b22d02a0ce8d7bf348552e20f10ea944cf3359502f3bbda8ccb327228a3c6}\label{console_8h_a4007b22d02a0ce8d7bf348552e20f10ea944cf3359502f3bbda8ccb327228a3c6}} 
+C\+O\+N\+S\+O\+L\+E\+\_\+\+B\+L\+A\+CK&Console color black \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+N\+S\+O\+L\+E\+\_\+\+G\+R\+EY@{C\+O\+N\+S\+O\+L\+E\+\_\+\+G\+R\+EY}!console.\+h@{console.\+h}}\index{console.\+h@{console.\+h}!C\+O\+N\+S\+O\+L\+E\+\_\+\+G\+R\+EY@{C\+O\+N\+S\+O\+L\+E\+\_\+\+G\+R\+EY}}}\mbox{\Hypertarget{console_8h_a4007b22d02a0ce8d7bf348552e20f10ea15e6b999c49c7226e33b671457232fa5}\label{console_8h_a4007b22d02a0ce8d7bf348552e20f10ea15e6b999c49c7226e33b671457232fa5}} 
+C\+O\+N\+S\+O\+L\+E\+\_\+\+G\+R\+EY&Console color grey (white on linux) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+N\+S\+O\+L\+E\+\_\+\+W\+H\+I\+TE@{C\+O\+N\+S\+O\+L\+E\+\_\+\+W\+H\+I\+TE}!console.\+h@{console.\+h}}\index{console.\+h@{console.\+h}!C\+O\+N\+S\+O\+L\+E\+\_\+\+W\+H\+I\+TE@{C\+O\+N\+S\+O\+L\+E\+\_\+\+W\+H\+I\+TE}}}\mbox{\Hypertarget{console_8h_a4007b22d02a0ce8d7bf348552e20f10ea294447fe8183de15412c63f2559f739f}\label{console_8h_a4007b22d02a0ce8d7bf348552e20f10ea294447fe8183de15412c63f2559f739f}} 
+C\+O\+N\+S\+O\+L\+E\+\_\+\+W\+H\+I\+TE&Console color white \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{console_8h_file_a1f4a8d779aef48638993f05e321b9248}\label{console_8h_file_a1f4a8d779aef48638993f05e321b9248}} 
+\index{console.\+h@{console.\+h}!print\+With\+Colors@{print\+With\+Colors}}
+\index{print\+With\+Colors@{print\+With\+Colors}!console.\+h@{console.\+h}}
+\subsubsection{\texorpdfstring{print\+With\+Colors()}{printWithColors()}}
+{\footnotesize\ttfamily void ce\+::core\+::print\+With\+Colors (\begin{DoxyParamCaption}\item[{std\+::string}]{output,  }\item[{\hyperlink{console_8h_a4007b22d02a0ce8d7bf348552e20f10e}{Console\+Color}}]{foreground,  }\item[{\hyperlink{console_8h_a4007b22d02a0ce8d7bf348552e20f10e}{Console\+Color}}]{background = {\ttfamily CONSOLE\+\_\+BLACK} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Prints output to the console using the colors specified. 
+
+Is not supported for all systems, tested on\+:
+\begin{DoxyItemize}
+\item Ubuntu
+\item Windows
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em foreground} & The color of the text/foreground \\
+\hline
+{\em background} & The color of the background \\
+\hline
+\end{DoxyParams}

@@ -33,31 +33,31 @@ ce::graphics::Mesh::Mesh(VertexArray vertices, IndexArray indices, Material mate
 {
 	m_vertices = vertices;
 	m_indices = indices;
-	m_material = material;
+	this->material = material;
 
 	setupMesh();
 }
 
 void ce::graphics::Mesh::draw()
 {
-	m_material.shader.use(); // use the material shader
+	material.shader->use(); // use the material shader
 
 	unsigned int diffuseNr = 1;
 	unsigned int specularNr = 1;
 
-	for (unsigned int i = 0; i < m_material.textures.size(); i++)
+	for (unsigned int i = 0; i < material.textures.size(); i++)
 	{
 		glActiveTexture(GL_TEXTURE0 + i);
 		std::string number = "";
 		std::string name = "";
 
-		if (m_material.textures[i].type == TEXTURE_DIFFUSE)
+		if (material.textures[i].type == TEXTURE_DIFFUSE)
 		{
 			name = "texture_diffuse";
 			number = std::to_string(diffuseNr);
 			diffuseNr++;
 		}
-		else if (m_material.textures[i].type == TEXTURE_SPECULAR)
+		else if (material.textures[i].type == TEXTURE_SPECULAR)
 		{
 			name = "texture_specular";
 			number = std::to_string(specularNr);
@@ -65,12 +65,12 @@ void ce::graphics::Mesh::draw()
 		}
 
 		std::string shaderUniform = ("material." + name + number).c_str();
-		m_material.shader.setInt(shaderUniform, i);
-		glBindTexture(GL_TEXTURE_2D, m_material.textures[i].id);
+		material.shader->setInt(shaderUniform, i);
+		glBindTexture(GL_TEXTURE_2D, material.textures[i].id);
 	}
 
-	m_material.shader.setFloat("material.shininess", m_material.shininess);
-	m_material.shader.setFloat("material.opacity", m_material.opacity);
+	material.shader->setFloat("material.shininess", material.shininess);
+	material.shader->setFloat("material.opacity", material.opacity);
 	glActiveTexture(GL_TEXTURE0);
 
 	glBindVertexArray(m_VAO);
