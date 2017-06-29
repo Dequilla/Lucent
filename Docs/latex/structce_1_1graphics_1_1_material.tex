@@ -1,25 +1,30 @@
 \hypertarget{structce_1_1graphics_1_1_material}{}\section{ce\+:\+:graphics\+:\+:Material Struct Reference}
 \label{structce_1_1graphics_1_1_material}\index{ce\+::graphics\+::\+Material@{ce\+::graphics\+::\+Material}}
+
+
+\hyperlink{structce_1_1graphics_1_1_material}{Material} representation.  
+
+
+
+
+{\ttfamily \#include $<$Material.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{structce_1_1graphics_1_1_material_af33c976594ddcca02b16b7fbf64d429a}\label{structce_1_1graphics_1_1_material_af33c976594ddcca02b16b7fbf64d429a}} 
-bool {\bfseries has\+Property} (Material\+Property matprop)
-\end{DoxyCompactItemize}
+bool \hyperlink{structce_1_1graphics_1_1_material_af33c976594ddcca02b16b7fbf64d429a}{has\+Property} (\hyperlink{_material_8h_aac4ec325697a8f788007e105d586d217}{Material\+Property} matprop)
+\begin{DoxyCompactList}\small\item\em Checks if material has a property. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{structce_1_1graphics_1_1_material_a3451761d37b0d7e42a0bd075b163aa8e}\label{structce_1_1graphics_1_1_material_a3451761d37b0d7e42a0bd075b163aa8e}} 
-\hyperlink{classce_1_1graphics_1_1_shader}{Shader} $\ast$ {\bfseries shader}
+\hyperlink{classce_1_1graphics_1_1_shader}{Shader} $\ast$ \hyperlink{structce_1_1graphics_1_1_material_a3451761d37b0d7e42a0bd075b163aa8e}{shader}
 \item 
-\mbox{\Hypertarget{structce_1_1graphics_1_1_material_ad14fc2a8d3a7d9241226471f8f2e2fcc}\label{structce_1_1graphics_1_1_material_ad14fc2a8d3a7d9241226471f8f2e2fcc}} 
-std\+::vector$<$ \hyperlink{structce_1_1graphics_1_1_texture}{Texture} $>$ {\bfseries textures}
+std\+::vector$<$ \hyperlink{structce_1_1graphics_1_1_texture}{Texture} $>$ \hyperlink{structce_1_1graphics_1_1_material_ad14fc2a8d3a7d9241226471f8f2e2fcc}{textures}
 \item 
-\mbox{\Hypertarget{structce_1_1graphics_1_1_material_a62ed7d4af263dbdd7065a9b664bfab6e}\label{structce_1_1graphics_1_1_material_a62ed7d4af263dbdd7065a9b664bfab6e}} 
-float {\bfseries shininess} = 32.\+0f
+float \hyperlink{structce_1_1graphics_1_1_material_a62ed7d4af263dbdd7065a9b664bfab6e}{shininess} = 32.\+0f
 \item 
-\mbox{\Hypertarget{structce_1_1graphics_1_1_material_ad6f3a5c250e374b47ca6bbefb75b8a6c}\label{structce_1_1graphics_1_1_material_ad6f3a5c250e374b47ca6bbefb75b8a6c}} 
-float {\bfseries opacity} = 1.\+0f
+float \hyperlink{structce_1_1graphics_1_1_material_ad6f3a5c250e374b47ca6bbefb75b8a6c}{opacity} = 1.\+0f
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -35,6 +40,36 @@ class {\bfseries Model\+Loader}
 \end{DoxyCompactItemize}
 
 
+\subsection{Detailed Description}
+\hyperlink{structce_1_1graphics_1_1_material}{Material} representation. 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{structce_1_1graphics_1_1_material_ad6f3a5c250e374b47ca6bbefb75b8a6c}\label{structce_1_1graphics_1_1_material_ad6f3a5c250e374b47ca6bbefb75b8a6c}} 
+\index{ce\+::graphics\+::\+Material@{ce\+::graphics\+::\+Material}!opacity@{opacity}}
+\index{opacity@{opacity}!ce\+::graphics\+::\+Material@{ce\+::graphics\+::\+Material}}
+\subsubsection{\texorpdfstring{opacity}{opacity}}
+{\footnotesize\ttfamily float ce\+::graphics\+::\+Material\+::opacity = 1.\+0f}
+
+The opacity of the object \mbox{\Hypertarget{structce_1_1graphics_1_1_material_a3451761d37b0d7e42a0bd075b163aa8e}\label{structce_1_1graphics_1_1_material_a3451761d37b0d7e42a0bd075b163aa8e}} 
+\index{ce\+::graphics\+::\+Material@{ce\+::graphics\+::\+Material}!shader@{shader}}
+\index{shader@{shader}!ce\+::graphics\+::\+Material@{ce\+::graphics\+::\+Material}}
+\subsubsection{\texorpdfstring{shader}{shader}}
+{\footnotesize\ttfamily \hyperlink{classce_1_1graphics_1_1_shader}{Shader}$\ast$ ce\+::graphics\+::\+Material\+::shader}
+
+\hyperlink{classce_1_1graphics_1_1_shader}{Shader} used to draw the material \mbox{\Hypertarget{structce_1_1graphics_1_1_material_a62ed7d4af263dbdd7065a9b664bfab6e}\label{structce_1_1graphics_1_1_material_a62ed7d4af263dbdd7065a9b664bfab6e}} 
+\index{ce\+::graphics\+::\+Material@{ce\+::graphics\+::\+Material}!shininess@{shininess}}
+\index{shininess@{shininess}!ce\+::graphics\+::\+Material@{ce\+::graphics\+::\+Material}}
+\subsubsection{\texorpdfstring{shininess}{shininess}}
+{\footnotesize\ttfamily float ce\+::graphics\+::\+Material\+::shininess = 32.\+0f}
+
+The shininess of the material \mbox{\Hypertarget{structce_1_1graphics_1_1_material_ad14fc2a8d3a7d9241226471f8f2e2fcc}\label{structce_1_1graphics_1_1_material_ad14fc2a8d3a7d9241226471f8f2e2fcc}} 
+\index{ce\+::graphics\+::\+Material@{ce\+::graphics\+::\+Material}!textures@{textures}}
+\index{textures@{textures}!ce\+::graphics\+::\+Material@{ce\+::graphics\+::\+Material}}
+\subsubsection{\texorpdfstring{textures}{textures}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{structce_1_1graphics_1_1_texture}{Texture}$>$ ce\+::graphics\+::\+Material\+::textures}
+
+Textures used in this material 
+
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-Graphics/\+Model/Material.\+h\end{DoxyCompactItemize}
+E\+:/\+Development/\+Game\+Engine/\+C\+Engine/src/\+Graphics/\+Model/\hyperlink{_material_8h}{Material.\+h}\end{DoxyCompactItemize}

@@ -1,0 +1,88 @@
+\hypertarget{classce_1_1game_1_1_base_component}{}\section{ce\+:\+:game\+:\+:Base\+Component Class Reference}
+\label{classce_1_1game_1_1_base_component}\index{ce\+::game\+::\+Base\+Component@{ce\+::game\+::\+Base\+Component}}
+Inheritance diagram for ce\+:\+:game\+:\+:Base\+Component\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classce_1_1game_1_1_base_component}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classce_1_1game_1_1_base_component_a0b5c620c6b665489b5665621aba17935}\label{classce_1_1game_1_1_base_component_a0b5c620c6b665489b5665621aba17935}} 
+virtual void {\bfseries init} ()=0
+\item 
+\mbox{\Hypertarget{classce_1_1game_1_1_base_component_a0a1cda211f84337d2a33937f89aebd6b}\label{classce_1_1game_1_1_base_component_a0a1cda211f84337d2a33937f89aebd6b}} 
+virtual void {\bfseries tick} (float dt)=0
+\item 
+\mbox{\Hypertarget{classce_1_1game_1_1_base_component_a98da3e6c0af1e20f050ff06749c1299b}\label{classce_1_1game_1_1_base_component_a98da3e6c0af1e20f050ff06749c1299b}} 
+virtual void {\bfseries draw} (\hyperlink{classce_1_1graphics_1_1_renderer3_d}{ce\+::graphics\+::\+Renderer3D} $\ast$renderer)=0
+\item 
+virtual std\+::string \hyperlink{classce_1_1game_1_1_base_component_a1022b55c1926a019a2b3a71fb6b9150e}{get\+Type} ()=0
+\begin{DoxyCompactList}\small\item\em Returns the type of Component in a string value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class T $>$ }\\std\+::vector$<$ T $\ast$ $>$ \hyperlink{classce_1_1game_1_1_base_component_af359b12ae4a497e9b36f08286a3849dc}{get\+Host\+Components\+Of\+Type} (std\+::string type)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classce_1_1game_1_1_base_component_a5bf4558535c84dc795d7815709cd3e5f}\label{classce_1_1game_1_1_base_component_a5bf4558535c84dc795d7815709cd3e5f}} 
+bool {\bfseries b\+Tickable} = false
+\item 
+\mbox{\Hypertarget{classce_1_1game_1_1_base_component_a3fcb89719c18c4675b2a09c564af86b4}\label{classce_1_1game_1_1_base_component_a3fcb89719c18c4675b2a09c564af86b4}} 
+bool {\bfseries b\+Drawable} = false
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \hyperlink{classce_1_1game_1_1_base_component}{Base\+Component} $\ast$ $>$ $\ast$ \hyperlink{classce_1_1game_1_1_base_component_ad0448e0b4026fbfee1f88b63ccfbd19c}{m\+\_\+host\+Components}
+\begin{DoxyCompactList}\small\item\em Components of this components host(\+Game\+Object) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classce_1_1game_1_1_base_component_a00df87c957d8f7ee0fc51f07a0542f4a}\label{classce_1_1game_1_1_base_component_a00df87c957d8f7ee0fc51f07a0542f4a}} 
+class {\bfseries Game\+Object}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classce_1_1game_1_1_base_component_af359b12ae4a497e9b36f08286a3849dc}\label{classce_1_1game_1_1_base_component_af359b12ae4a497e9b36f08286a3849dc}} 
+\index{ce\+::game\+::\+Base\+Component@{ce\+::game\+::\+Base\+Component}!get\+Host\+Components\+Of\+Type@{get\+Host\+Components\+Of\+Type}}
+\index{get\+Host\+Components\+Of\+Type@{get\+Host\+Components\+Of\+Type}!ce\+::game\+::\+Base\+Component@{ce\+::game\+::\+Base\+Component}}
+\subsubsection{\texorpdfstring{get\+Host\+Components\+Of\+Type()}{getHostComponentsOfType()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+std\+::vector$<$ T $\ast$ $>$ ce\+::game\+::\+Base\+Component\+::get\+Host\+Components\+Of\+Type (\begin{DoxyParamCaption}\item[{std\+::string}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Retrieve all the components of a type from the host
+
+T needs to be the class you are getting as a type as it converts it to that type \mbox{\Hypertarget{classce_1_1game_1_1_base_component_a1022b55c1926a019a2b3a71fb6b9150e}\label{classce_1_1game_1_1_base_component_a1022b55c1926a019a2b3a71fb6b9150e}} 
+\index{ce\+::game\+::\+Base\+Component@{ce\+::game\+::\+Base\+Component}!get\+Type@{get\+Type}}
+\index{get\+Type@{get\+Type}!ce\+::game\+::\+Base\+Component@{ce\+::game\+::\+Base\+Component}}
+\subsubsection{\texorpdfstring{get\+Type()}{getType()}}
+{\footnotesize\ttfamily virtual std\+::string ce\+::game\+::\+Base\+Component\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns the type of Component in a string value. 
+
+Example\+: Model, Transform etc 
+
+Implemented in \hyperlink{classce_1_1game_1_1_transform_component_ae4a2729b3f88a77b8405de317ab03510}{ce\+::game\+::\+Transform\+Component}, and \hyperlink{classce_1_1game_1_1_model_component_aaac15cad336e35df7be55dda34f53643}{ce\+::game\+::\+Model\+Component}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classce_1_1game_1_1_base_component_ad0448e0b4026fbfee1f88b63ccfbd19c}\label{classce_1_1game_1_1_base_component_ad0448e0b4026fbfee1f88b63ccfbd19c}} 
+\index{ce\+::game\+::\+Base\+Component@{ce\+::game\+::\+Base\+Component}!m\+\_\+host\+Components@{m\+\_\+host\+Components}}
+\index{m\+\_\+host\+Components@{m\+\_\+host\+Components}!ce\+::game\+::\+Base\+Component@{ce\+::game\+::\+Base\+Component}}
+\subsubsection{\texorpdfstring{m\+\_\+host\+Components}{m\_hostComponents}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{classce_1_1game_1_1_base_component}{Base\+Component}$\ast$$>$$\ast$ ce\+::game\+::\+Base\+Component\+::m\+\_\+host\+Components\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Components of this components host(\+Game\+Object) 
+
+Used to access other components on an object such as Transform\+Components etc 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+E\+:/\+Development/\+Game\+Engine/\+C\+Engine/src/\+Game/\+Components/Base\+Component.\+h\end{DoxyCompactItemize}

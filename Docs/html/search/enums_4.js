@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['texturetype',['TextureType',['../_texture_8h.html#aefaa1df613346ad1fea779bc9a04fdd7',1,'ce::graphics']]]
+  ['materialproperty',['MaterialProperty',['../_material_8h.html#aac4ec325697a8f788007e105d586d217',1,'ce::graphics']]]
 ];

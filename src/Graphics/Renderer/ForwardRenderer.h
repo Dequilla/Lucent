@@ -1,3 +1,6 @@
+/**
+* \file ForwardRenderer.h
+*/
 #pragma once
 
 #include "Graphics/Renderer/Renderer3D.h"

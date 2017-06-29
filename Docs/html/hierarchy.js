@@ -1,6 +1,10 @@
 var hierarchy =
 [
     [ "ce::core::Application", "classce_1_1core_1_1_application.html", null ],
+    [ "ce::game::BaseComponent", "classce_1_1game_1_1_base_component.html", [
+      [ "ce::game::ModelComponent", "classce_1_1game_1_1_model_component.html", null ],
+      [ "ce::game::TransformComponent", "classce_1_1game_1_1_transform_component.html", null ]
+    ] ],
     [ "ce::graphics::BaseLight", "classce_1_1graphics_1_1_base_light.html", [
       [ "ce::graphics::DirLight", "classce_1_1graphics_1_1_dir_light.html", null ],
       [ "ce::graphics::PointLight", "classce_1_1graphics_1_1_point_light.html", null ],
@@ -8,6 +12,9 @@ var hierarchy =
     ] ],
     [ "ce::graphics::Camera", "classce_1_1graphics_1_1_camera.html", null ],
     [ "ce::core::Clock", "classce_1_1core_1_1_clock.html", null ],
+    [ "ce::game::GameObject", "classce_1_1game_1_1_game_object.html", [
+      [ "ce::game::RootObject", "classce_1_1game_1_1_root_object.html", null ]
+    ] ],
     [ "ce::core::Input", "classce_1_1core_1_1_input.html", null ],
     [ "ce::core::Joystick", "structce_1_1core_1_1_joystick.html", null ],
     [ "ce::graphics::LightSetup", "structce_1_1graphics_1_1_light_setup.html", null ],
@@ -19,6 +26,7 @@ var hierarchy =
     [ "ce::graphics::Renderer3D", "classce_1_1graphics_1_1_renderer3_d.html", [
       [ "ce::graphics::ForwardRenderer", "classce_1_1graphics_1_1_forward_renderer.html", null ]
     ] ],
+    [ "ce::game::Scene", "classce_1_1game_1_1_scene.html", null ],
     [ "ce::graphics::Shader", "classce_1_1graphics_1_1_shader.html", null ],
     [ "ce::graphics::ShaderLoader", "classce_1_1graphics_1_1_shader_loader.html", null ],
     [ "ce::graphics::ShaderProperties", "structce_1_1graphics_1_1_shader_properties.html", null ],

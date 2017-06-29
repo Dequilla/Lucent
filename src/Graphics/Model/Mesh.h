@@ -1,3 +1,6 @@
+/**
+* \file Mesh.h
+*/
 #pragma once
 
 #include "Graphics/Shader/Shader.h"
@@ -7,6 +10,9 @@
 
 namespace ce { namespace graphics {
 
+	/**
+	* \brief A object representation of a mesh
+	*/
 	class Mesh
 	{
 	protected:
@@ -24,12 +30,21 @@ namespace ce { namespace graphics {
 		void setupMesh();
 
 	public:
+		/**
+		* \brief Construct mesh from a set of vertices, indices and a material
+		*/
 		Mesh(VertexArray vertices, IndexArray indices, Material material);
 
-		// TODO: Lets not have duplicate materials
-		Material material; // We have materials on a mesh-to-mesh basis
+		/**
+		* \brief The material used by this mesh
+		*/
+		Material material;
 		
-		// TODO: TEMP FOR TEST
+		/**
+		* \brief Draw mesh
+		*
+		* To be updated currently very slow
+		*/
 		void draw();
 	};
 

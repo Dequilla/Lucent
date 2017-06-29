@@ -1,3 +1,6 @@
+/**
+* \file Model.h
+*/
 #pragma once
 
 #include <memory>
@@ -9,10 +12,12 @@
 
 namespace ce { namespace graphics {
 
-	//
-	// Model
-	//  - Contains pointers to the meshes it uses
-	//  - Use modelLoader to load
+	/**
+	* \brief A model object
+	* 
+	* Contains pointers to the meshes it is built of
+	* To load use the ModelLoader class
+	*/
 	class Model
 	{
 	protected:
@@ -20,17 +25,25 @@ namespace ce { namespace graphics {
 
 		std::string m_directory;
 
-		// TODO: Remember to properly move the constructed pointer or we will have two shared_ptrs and memory wont be released
 		std::vector<std::shared_ptr<Mesh>> m_meshes;
 
 	public:
 		Model() {}
+
+		/**
+		* \brief Construct model from a set of meshes
+		*/
 		Model(std::vector<std::shared_ptr<Mesh>> meshes);
 
-		// TODO: TEMP FOR TESTING
+		/**
+		* \brief old draw function to be replaced
+		*/
 		void draw();
 
-		void draw(ForwardRenderer* renderer, glm::mat4 modelMatrix);
+		/**
+		* \brief old draw function to be replaced
+		*/
+		void draw(Renderer3D* renderer, glm::mat4 modelMatrix);
 	};
 
 }}

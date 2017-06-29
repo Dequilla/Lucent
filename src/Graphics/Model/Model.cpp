@@ -11,7 +11,7 @@ void ce::graphics::Model::draw()
 		m_meshes[i].get()->draw();
 }
 
-void ce::graphics::Model::draw(ForwardRenderer* renderer, glm::mat4 modelMatrix)
+void ce::graphics::Model::draw(Renderer3D* renderer, glm::mat4 modelMatrix)
 {
 	for (unsigned int i = 0; i < m_meshes.size(); i++)
 	{

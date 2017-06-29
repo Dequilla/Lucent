@@ -1,0 +1,29 @@
+#pragma once
+
+#include <string>
+
+#include "Graphics/Renderer/Renderer3D.h"
+
+#include "Game/GameObject.h"
+
+namespace ce { namespace game {
+
+	class Scene
+	{
+	private:
+		RootObject m_rootObject;
+
+	public:
+		RootObject* getRootObject();
+		GameObject* getGameObjectByName(std::string name);
+
+		void init();
+		void begin();
+
+		void tick(float dt);
+		void draw(ce::graphics::Renderer3D* renderer);
+
+		void end();
+	};
+
+}} // End namespace

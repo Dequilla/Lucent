@@ -1,3 +1,6 @@
+/**
+* \file ModelLoader.h
+*/
 #pragma once
 
 #include "assimp/postprocess.h"
@@ -20,10 +23,12 @@
 
 namespace ce { namespace graphics { 
 
-	//             
-	// ModelLoader 
-	//  - Loads and contains the original models
-	//  - Prevents loading same models twice, less memory used
+	/**
+	* \brief Loads models
+	*
+	* Loads and contains the original models
+	* Keeps track of duplicates
+	*/
 	class ModelLoader
 	{
 	private:
@@ -40,6 +45,11 @@ namespace ce { namespace graphics {
 	public:
 		ModelLoader() {}
 
+		/**
+		* \brief Load a model
+		*
+		* @param path Path to model file (eg: a .obj file)
+		*/
 		Model loadModel(std::string path);
 	};
 

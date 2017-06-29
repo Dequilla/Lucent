@@ -3,7 +3,7 @@
 // Define static member
 std::vector<std::pair<ce::graphics::ShaderProperties, ce::graphics::Shader>> ce::graphics::ShaderLoader::m_loadedShaders;
 
-ce::graphics::Shader ce::graphics::ShaderLoader::loadFromSource(const GLchar * vertexSource, const GLchar * fragmentSource, const GLchar * geometrySourc)
+ce::graphics::Shader ce::graphics::ShaderLoader::loadFromSource(const GLchar * vertexSource, const GLchar * fragmentSource, const GLchar * geometrySource)
 {
 	unsigned int vertex, fragment, programID;
 	int success;

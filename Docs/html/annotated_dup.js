@@ -9,6 +9,14 @@ var annotated_dup =
         [ "Time", "structce_1_1core_1_1_time.html", "structce_1_1core_1_1_time" ],
         [ "Window", "classce_1_1core_1_1_window.html", "classce_1_1core_1_1_window" ]
       ] ],
+      [ "game", null, [
+        [ "BaseComponent", "classce_1_1game_1_1_base_component.html", "classce_1_1game_1_1_base_component" ],
+        [ "GameObject", "classce_1_1game_1_1_game_object.html", "classce_1_1game_1_1_game_object" ],
+        [ "ModelComponent", "classce_1_1game_1_1_model_component.html", "classce_1_1game_1_1_model_component" ],
+        [ "RootObject", "classce_1_1game_1_1_root_object.html", "classce_1_1game_1_1_root_object" ],
+        [ "Scene", "classce_1_1game_1_1_scene.html", "classce_1_1game_1_1_scene" ],
+        [ "TransformComponent", "classce_1_1game_1_1_transform_component.html", "classce_1_1game_1_1_transform_component" ]
+      ] ],
       [ "graphics", null, [
         [ "BaseLight", "classce_1_1graphics_1_1_base_light.html", "classce_1_1graphics_1_1_base_light" ],
         [ "Camera", "classce_1_1graphics_1_1_camera.html", "classce_1_1graphics_1_1_camera" ],

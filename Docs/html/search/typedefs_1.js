@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vertexarray',['VertexArray',['../_vertex_8h.html#a72d0effc290681342d1fc2b5fffa6aef',1,'ce::graphics']]]
+  ['indexarray',['IndexArray',['../_vertex_8h.html#a25b1e42db1e356e8bfc3ab61ade25040',1,'ce::graphics']]]
 ];

@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['texturecoord',['textureCoord',['../structce_1_1graphics_1_1_vertex.html#a1dd8f6082878c241afc66226b3c45ea0',1,'ce::graphics::Vertex']]],
-  ['time',['time',['../structce_1_1core_1_1_time.html#a9c46ccd85022eb7a5374b2a28cfc9c97',1,'ce::core::Time']]],
-  ['type',['type',['../structce_1_1graphics_1_1_texture.html#a0c6ddb1eacae739d37e336ea03fa01ec',1,'ce::graphics::Texture']]]
+  ['name',['name',['../classce_1_1game_1_1_game_object.html#a1de1f674c70df3bbba6aefb938ad8f32',1,'ce::game::GameObject']]],
+  ['normal',['normal',['../structce_1_1graphics_1_1_vertex.html#ac91e1a269df3e9a9a3a69543f1f68f4b',1,'ce::graphics::Vertex']]],
+  ['numdirlights',['numDirLights',['../structce_1_1graphics_1_1_shader_properties.html#a7d54a6b908a22b03048b931c68bb1b73',1,'ce::graphics::ShaderProperties']]],
+  ['numpointlights',['numPointLights',['../structce_1_1graphics_1_1_shader_properties.html#a67afcd1acec57748e14ed1ee9705f2bf',1,'ce::graphics::ShaderProperties']]],
+  ['numspotlights',['numSpotLights',['../structce_1_1graphics_1_1_shader_properties.html#a2345e569f945babf05778559f639eac4',1,'ce::graphics::ShaderProperties']]]
 ];

@@ -20,8 +20,13 @@
 #include "Graphics/Texture.h"
 #include "Graphics/Lights.h"
 
+
 #include "Graphics/Model/ModelLoader.h"
 #include "Graphics/Model/Model.h"
+
+#include "Game/GameObject.h"
+#include "Game/Scene.h"
+#include "Game/Components/ComponentIncludes.h"
 
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 720
@@ -61,11 +66,9 @@ int main(int argc, char* argv[])
 
 	ce::graphics::ModelLoader loader;
 	ce::graphics::Model		  model;
-	ce::graphics::Model		  model1;
 	ce::graphics::Model		  modelGrass;
 
 	clock.start();
-	model1 = loader.loadModel("Resources/Models/Nanosuit/nanosuit.obj");
 	model = loader.loadModel("Resources/Models/TestWindow/test-window.obj");
 	modelGrass = loader.loadModel("Resources/Models/TestGrass/untitled.obj");
 	ce::core::log("Loading models took: " + std::to_string(clock.getPassed().asSeconds()));
@@ -91,6 +94,20 @@ int main(int argc, char* argv[])
 	ce::graphics::Shader* shaderTransparent = sLoader.loadShader(properties);
 
 	glEnable(GL_DEPTH_TEST);
+
+	// Scene
+	ce::game::Scene scene;
+	ce::game::ModelComponent modelComp;
+	ce::game::TransformComponent transComp;
+	modelComp.setModel(model);
+	ce::game::GameObject modelObj;
+	modelObj.name = "model1";
+	modelObj.setParent(scene.getRootObject());
+	modelObj.addComponent(&modelComp);
+	modelObj.addComponent(&transComp);
+	scene.getRootObject()->addChild(modelObj);
+
+	scene.init();
 
 	bool running = true;
 	while (running)
@@ -144,6 +161,14 @@ int main(int argc, char* argv[])
 				else if (e.key.keysym.sym == SDLK_2)
 					camera.setFOV(80.f);
 
+				else if (e.key.keysym.sym == SDLK_UP)
+					transComp.move(glm::vec3(0.0f, 0.0f, -0.1f));
+				else if (e.key.keysym.sym == SDLK_DOWN)
+					transComp.move(glm::vec3(0.0f, 0.0f, 0.1f));
+				else if (e.key.keysym.sym == SDLK_LEFT)
+					transComp.yaw(10.f);
+				else if (e.key.keysym.sym == SDLK_RIGHT)
+					transComp.yaw(-10.f);
 			}
 			// TODO TEMP TEMP ^^^^
 		}
@@ -160,30 +185,18 @@ int main(int argc, char* argv[])
 		lights.pointLights.push_back(pLight);
 		lights.spotLights.push_back(sLight);
 
+		scene.begin();
 		renderer.begin();
 		renderer.beginScene(&camera);
 		renderer.submitLightSetup(lights);
 
-		// Suit
-		glm::mat4 modelMatrix = glm::mat4();
-		modelMatrix = glm::translate(modelMatrix, glm::vec3(0.0f, 0.3f, -3.0f));
-		modelMatrix = glm::scale(modelMatrix, glm::vec3(0.1f, 0.1f, 0.1f));
-		model1.draw(&renderer, modelMatrix);
-
-		// Window
-		modelMatrix = glm::mat4();
-		modelMatrix = glm::translate(modelMatrix, glm::vec3(0.0f, 0.3f, -3.0f));
-		modelMatrix = glm::rotate(modelMatrix, glm::radians((float)clock.getPassed().asMilliseconds() / 20.f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model.draw(&renderer, modelMatrix);
-
-		// Grass
-		modelMatrix = glm::mat4();
-		modelMatrix = glm::translate(modelMatrix, glm::vec3(0.0f, 0.3f, -2.0f));
-		modelGrass.draw(&renderer, modelMatrix);
+		scene.tick(1.f);
+		scene.draw(&renderer);
 
 		renderer.endScene();
+		scene.end();
 		renderer.end();
-
+		
 		renderer.present();
 
 		window.display();

@@ -1,17 +1,26 @@
 \hypertarget{classce_1_1graphics_1_1_model}{}\section{ce\+:\+:graphics\+:\+:Model Class Reference}
 \label{classce_1_1graphics_1_1_model}\index{ce\+::graphics\+::\+Model@{ce\+::graphics\+::\+Model}}
+
+
+A model object.  
+
+
+
+
+{\ttfamily \#include $<$Model.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classce_1_1graphics_1_1_model_ae80b6da77f07543d9d423ca4884c63d1}\label{classce_1_1graphics_1_1_model_ae80b6da77f07543d9d423ca4884c63d1}} 
-{\bfseries Model} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classce_1_1graphics_1_1_mesh}{Mesh} $>$$>$ meshes)
-\item 
+\hyperlink{classce_1_1graphics_1_1_model_ae80b6da77f07543d9d423ca4884c63d1}{Model} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classce_1_1graphics_1_1_mesh}{Mesh} $>$$>$ meshes)
+\begin{DoxyCompactList}\small\item\em Construct model from a set of meshes. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classce_1_1graphics_1_1_model_a32e4b5c3880eec770dabd21f8b053d49}\label{classce_1_1graphics_1_1_model_a32e4b5c3880eec770dabd21f8b053d49}} 
-void {\bfseries draw} ()
-\item 
-\mbox{\Hypertarget{classce_1_1graphics_1_1_model_a7bc6f7fd875dbfadc56576815c85844c}\label{classce_1_1graphics_1_1_model_a7bc6f7fd875dbfadc56576815c85844c}} 
-void {\bfseries draw} (\hyperlink{classce_1_1graphics_1_1_forward_renderer}{Forward\+Renderer} $\ast$renderer, glm\+::mat4 model\+Matrix)
-\end{DoxyCompactItemize}
+void \hyperlink{classce_1_1graphics_1_1_model_a32e4b5c3880eec770dabd21f8b053d49}{draw} ()
+\begin{DoxyCompactList}\small\item\em old draw function to be replaced \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_model_af8fcd0873c957a521146b6900eca2eaa}\label{classce_1_1graphics_1_1_model_af8fcd0873c957a521146b6900eca2eaa}} 
+void \hyperlink{classce_1_1graphics_1_1_model_af8fcd0873c957a521146b6900eca2eaa}{draw} (\hyperlink{classce_1_1graphics_1_1_renderer3_d}{Renderer3D} $\ast$renderer, glm\+::mat4 model\+Matrix)
+\begin{DoxyCompactList}\small\item\em old draw function to be replaced \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -29,7 +38,12 @@ class {\bfseries Model\+Loader}
 \end{DoxyCompactItemize}
 
 
+\subsection{Detailed Description}
+A model object. 
+
+Contains pointers to the meshes it is built of To load use the \hyperlink{classce_1_1graphics_1_1_model_loader}{Model\+Loader} class 
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Graphics/\+Model/Model.\+h\item 
-Graphics/\+Model/Model.\+cpp\end{DoxyCompactItemize}
+E\+:/\+Development/\+Game\+Engine/\+C\+Engine/src/\+Graphics/\+Model/\hyperlink{_model_8h}{Model.\+h}\item 
+E\+:/\+Development/\+Game\+Engine/\+C\+Engine/src/\+Graphics/\+Model/Model.\+cpp\end{DoxyCompactItemize}

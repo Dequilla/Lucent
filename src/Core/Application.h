@@ -1,3 +1,6 @@
+/**
+* \file Application.h
+*/
 #pragma once
 
 #include "SDL2/SDL.h"
