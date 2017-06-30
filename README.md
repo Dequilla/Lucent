@@ -1,5 +1,6 @@
 # A crossplatform game engine using OpenGL
 ##### NOTE *A hobby project*
+###### *I learn as I go*
 
 ## Requirements
 
@@ -37,3 +38,7 @@ Then press C twice to configure then G to generate. Press Q to quit, then run
 
 #### Window - libraries required
 On Windows any libaries needed come with the project under the "deps"-folder.
+
+
+### Current progress
+![alt text](https://github.com/Dequilla/CEngine/raw/master/progress_latest.png "An image of the engine in action with the current build")

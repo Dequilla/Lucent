@@ -15,6 +15,8 @@ namespace ce { namespace game {
 	protected:
 		ce::graphics::Model m_model;
 
+		TransformComponent* m_transform;
+
 	public:
 		virtual void init() override;
 		virtual void tick(float dt) override;
@@ -23,6 +25,13 @@ namespace ce { namespace game {
 		virtual std::string getType() override;
 
 		void setModel(ce::graphics::Model model);
+		
+		/**
+		* \brief Updates the transform component used
+		*
+		* If it cannot find one among it's hosts component list it will set it to a default position
+		*/
+		void updateTransform();
 	};
 
 }}

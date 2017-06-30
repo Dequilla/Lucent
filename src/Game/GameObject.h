@@ -19,6 +19,8 @@ namespace ce { namespace game {
 	public:
 		/**
 		* \brief Default constructor is only used by the root object
+		*
+		* Note if used by a gameobject a parent has to be set
 		*/
 		GameObject() {}
 		GameObject(GameObject* parent);
@@ -79,7 +81,39 @@ namespace ce { namespace game {
 		void addComponent(BaseComponent* component);
 
 		void init();
+
+		/**
+		* \brief Get all components of the type specified
+		*
+		* T needs to be the component type you are trying to get
+		*
+		* @param type Type string as represented by a components getType() function
+		* @return A component of the type specified, nullptr if none exist
+		*/
+		template<class T>
+		std::vector<T*> getComponentsOfType(std::string type);
 	};
+
+	template<class T>
+	inline std::vector<T*> ce::game::GameObject::getComponentsOfType(std::string type)
+	{
+		int count = 0;
+		std::vector<T*> result;
+
+		for (int i = 0; i < m_components.size(); i++)
+		{
+			if (type == m_components.at(i)->getType())
+			{
+				result.push_back(dynamic_cast<T*>(m_components.at(i)));
+				count++;
+			}
+		}
+
+		if (count < 1)
+			result.push_back(nullptr);
+
+		return result;
+	}
 
 	class RootObject : public GameObject
 	{

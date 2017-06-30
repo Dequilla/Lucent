@@ -120,3 +120,11 @@ void ce::graphics::Camera::setPosition(float x, float y, float z)
 {
 	this->m_position = glm::vec3(x, y, z);
 }
+
+void ce::graphics::Camera::setRotationEularXYZ(float x, float y, float z)
+{
+	glm::quat orientX = glm::angleAxis(glm::radians(x), glm::vec3(1.0f, 0.0f, 0.0f));
+	glm::quat orientY = glm::angleAxis(glm::radians(y), glm::vec3(0.0f, 1.0f, 0.0f));
+	glm::quat orientZ = glm::angleAxis(glm::radians(z), glm::vec3(0.0f, 0.0f, 1.0f));
+	m_orientation = orientX * orientY * orientZ;
+}

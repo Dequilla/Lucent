@@ -166,6 +166,11 @@ namespace ce { namespace graphics {
 		* @param x,y,z 3 components representing a 3D coordinate
 		*/
 		void setPosition(float x, float y, float z);
+
+		/**
+		* \brief Set the rotation via eular angles with angle order XYZ
+		*/
+		void setRotationEularXYZ(float x, float y, float z);
 	};
 
 } }
