@@ -10,12 +10,12 @@ void ce::graphics::ForwardRenderer::begin()
 	glViewport(0, 0, m_screenBufferWidth, m_screenBufferHeight);
 
 	m_commandQueue.clear();
-	m_camera = nullptr;
 }
 
-void ce::graphics::ForwardRenderer::beginScene(Camera* camera)
+void ce::graphics::ForwardRenderer::beginScene(glm::mat4 viewMatrix, glm::mat4 projectionMatrix)
 {
-	m_camera = camera;
+	m_viewMatrix = viewMatrix;
+	m_projectionMatrix = projectionMatrix;
 }
 
 void ce::graphics::ForwardRenderer::submit(const RenderCommand& command)
@@ -65,8 +65,8 @@ void ce::graphics::ForwardRenderer::present()
 		}
 
 		// Temp: submit camera
-		command.shader->setMat4("view", m_camera->getViewMatrix());
-		command.shader->setMat4("projection", m_camera->getProjectionMatrix());
+		command.shader->setMat4("view", m_viewMatrix);
+		command.shader->setMat4("projection", m_projectionMatrix);
 
 		// Temp: submit lights (later sort by shader making us only submit this once per shader per cycle)
 		for (unsigned int x = 0; x < m_lightSetup.dirLights.size(); x++)

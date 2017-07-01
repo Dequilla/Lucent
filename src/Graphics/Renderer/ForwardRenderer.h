@@ -16,13 +16,14 @@ namespace ce { namespace graphics {
 	class ForwardRenderer : public Renderer3D
 	{
 	private:
-		Camera* m_camera;
+		glm::mat4 m_viewMatrix;
+		glm::mat4 m_projectionMatrix;
 		LightSetup m_lightSetup;
 
 	public:
 		void init() override;
 		void begin() override;
-		void beginScene(Camera* camera) override;
+		void beginScene(glm::mat4 viewMatrix, glm::mat4 projectionMatrix) override;
 		void submit(const RenderCommand& command) override;
 		void submitMesh(Mesh* mesh, const glm::mat4& transform) override;
 		void submitLightSetup(const LightSetup& lightSetup) override;

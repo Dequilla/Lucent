@@ -28,7 +28,12 @@ namespace ce { namespace game {
 
 		void setParent(GameObject* parent);
 
-		void addChild(GameObject child);
+		/**
+		* \brief Add a child to this node
+		*
+		* @return A pointer to the game object you added
+		*/
+		GameObject* addChild(GameObject child);
 
 		/**
 		* \breif Remove this objects child with name

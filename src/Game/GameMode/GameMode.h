@@ -16,8 +16,8 @@ namespace ce { namespace game {
 	public:
 		void checkInput(const SDL_Event& input);
 
-		virtual void begin();
 		virtual void init();
+		virtual void begin();
 		virtual void tick(float dt);
 		virtual void draw() = 0;
 		virtual void end();

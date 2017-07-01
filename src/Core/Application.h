@@ -5,6 +5,8 @@
 
 #include "SDL2/SDL.h"
 
+#include "GLM/glm.hpp"
+
 #include "Core/Utility/log.h"
 
 #include <iostream>
@@ -21,12 +23,21 @@ namespace ce { namespace core {
 	class Application
 	{
 	protected:
+		glm::vec2 getScreenBufferSizeInternal();
+		void setScreenBufferSizeInternal(glm::vec2 screenSize);
+		void setScreenBufferSizeInternal(unsigned int width, unsigned int height);
+
+		int m_screenWidth = 0; /**< Screen buffer width for desired output */
+		int m_screenHeight = 0; /**< Screen buffer height for desired output */
+
+		bool initInternal();
+
 	public:
+		static glm::vec2 getScreenBufferSize();
+		static void setScreenBufferSize(glm::vec2 size);
+		static void setScreenBufferSize(unsigned int w, unsigned int h);
 
-		int screenWidth = 0; /**< Screen buffer width for desired output */
-		int screenHeight = 0; /**< Screen buffer height for desired output */
-
-		bool init(); /**< Initializes some of the libraries used internally, called by the engine first thing that happens */
+		static bool init(); /**< Initializes some of the libraries used internally, called by the engine first thing that happens */
 
 		// Is a singleton
 		Application() {}

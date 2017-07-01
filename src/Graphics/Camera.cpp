@@ -3,10 +3,9 @@
 ce::graphics::Camera::Camera(glm::vec3 position) : m_position(position) 
 {
 	// Setup a default projection
-	int w = ce::core::Application::getInstance().screenWidth;
-	int h = ce::core::Application::getInstance().screenHeight;
+	glm::vec2 size = ce::core::Application::getScreenBufferSize();
 	
-	setProjection(m_fov, (float)w / (float)h, m_near, m_far);
+	setProjection(m_fov, (float)size.x / (float)size.y, m_near, m_far);
 }
 
 glm::mat4 ce::graphics::Camera::getViewMatrix() const

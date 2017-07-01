@@ -28,9 +28,8 @@ bool fullscreen = false;
 
 int main(int argc, char* argv[])
 {
-	ce::core::Application::getInstance().init();
-	ce::core::Application::getInstance().screenWidth = SCREEN_WIDTH;
-	ce::core::Application::getInstance().screenHeight = SCREEN_HEIGHT;
+	ce::core::Application::init();
+	ce::core::Application::setScreenBufferSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	ce::core::Window window(
 		"Hello world",

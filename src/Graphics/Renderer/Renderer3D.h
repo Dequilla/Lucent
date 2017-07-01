@@ -34,7 +34,7 @@ namespace ce { namespace graphics {
 	public:
 		virtual void init() = 0;						/**< Initialization stage of the renderer */
 		virtual void begin() = 0;						/**< Begining stage of the renderer */
-		virtual void beginScene(Camera* camera) = 0;	/**< Begining of the scene */
+		virtual void beginScene(glm::mat4 viewMatrix, glm::mat4 projectionMatrix) = 0;			/**< Begining of the scene */
 		virtual void submit(const RenderCommand& command) = 0;					/**< Submit a render command */
 		virtual void submitMesh(Mesh* mesh, const glm::mat4& transform) = 0;	/**< Submit a lone mesh */
 		virtual void submitLightSetup(const LightSetup& lightSetup) = 0;		/**< Submit the light setup to use */

@@ -1,15 +1,12 @@
 #include "ExampleGameMode.h"
 
-void ce::game::ExampleGameMode::begin()
-{
-	m_renderer.begin();
-	m_renderer.beginScene(&m_camera);
-
-	GameMode::begin();
-}
-
 void ce::game::ExampleGameMode::init()
 {
+	// TODO: Needs a better solution
+	glm::vec2 size = ce::core::Application::getScreenBufferSize();
+
+	m_renderer.setScreenBufferSize(size.x, size.y);
+
 	// Game objects
 	ce::game::GameObject model;
 	ce::graphics::ModelLoader loader;
@@ -20,7 +17,6 @@ void ce::game::ExampleGameMode::init()
 	m_transformComponent.move(0.0f, -0.1f, 0.0f);
 
 	model.name = "nanosuit";
-	model.setParent(m_scene.getRootObject());
 	model.addComponent(&m_modelComponent);
 	model.addComponent(&m_transformComponent);
 	m_scene.getRootObject()->addChild(model);
@@ -33,10 +29,18 @@ void ce::game::ExampleGameMode::init()
 	m_transformComponentGrassy.setScale(2.f, 2.f, 2.f);
 
 	grassy.name = "grassy";
-	grassy.setParent(m_scene.getRootObject());
 	grassy.addComponent(&m_modelComponentGrassy);
 	grassy.addComponent(&m_transformComponentGrassy);
 	m_scene.getRootObject()->addChild(grassy);
+
+	// Camera - a gameobject
+	ce::game::GameObject camera;
+	m_camera.setProjection(80.f, (float)size.x / (float)size.y, 0.1f, 100.0f);
+	
+	camera.name = "camera";
+	camera.addComponent(&m_cameraTransform);
+	camera.addComponent(&m_camera);
+	m_scene.getRootObject()->addChild(camera);
 
 	// Lights
 	ce::graphics::DirLight dLight;
@@ -46,8 +50,12 @@ void ce::game::ExampleGameMode::init()
 	ce::graphics::PointLight pLight;
 	pLight.position = glm::vec3(0.0f, 3.0f, 1.0f);
 	pLight.diffuse = glm::vec3(0.7f, 0.7f, 0.7f);
-	pLight.constant = 0.1f;
+	pLight.linear = 0.022f;
+	pLight.quadratic = 0.0019f;
 	ce::graphics::SpotLight sLight;
+	sLight.ambient = glm::vec3(0.1f, 0.1f, 0.1f);
+	sLight.diffuse = glm::vec3(0.8f, 0.8f, 0.8f);
+	sLight.specular = glm::vec3(1.0f, 1.0f, 1.0f);
 
 	m_lights.dirLights.push_back(dLight);
 	m_lights.pointLights.push_back(pLight);
@@ -70,31 +78,42 @@ void ce::game::ExampleGameMode::init()
 	GameMode::init();
 }
 
+void ce::game::ExampleGameMode::begin()
+{
+	m_renderer.begin();
+	m_renderer.beginScene(m_camera.getViewMatrix(), m_camera.getProjectionMatrix());
+
+	GameMode::begin();
+}
+
 void ce::game::ExampleGameMode::tick(float dt)
 {
-	float speed = 20.0f * dt;
+	float speed = 10.0f * dt;
 
 	if (m_moveForward)
 	{
-		m_camera.translate(0.f, 0.f, speed);
+		m_cameraTransform.translate(0.f, 0.f, speed);
 	}
 
 	if (m_moveBackward)
 	{
-		m_camera.translate(0.f, 0.f, -speed);
+		m_cameraTransform.translate(0.f, 0.f, -speed);
 	}
 
 	if (m_moveLeft)
 	{
-		m_camera.translate(speed, 0.f, 0.f);
+		m_cameraTransform.translate(speed, 0.f, 0.f);
 	}
 
 	if (m_moveRight)
 	{
-		m_camera.translate(-speed, 0.f, 0.f);
+		m_cameraTransform.translate(-speed, 0.f, 0.f);
 	}
 
-	m_camera.setRotationEularXYZ(m_orientPitch, m_orientYaw, 0.0f);
+	m_cameraTransform.setRotation(m_orientPitch, m_orientYaw, 0.0f);
+	
+	m_lights.spotLights.at(0).position = glm::vec3(-m_cameraTransform.getPosition().x, -m_cameraTransform.getPosition().y, -m_cameraTransform.getPosition().z);
+	m_lights.spotLights.at(0).direction = m_camera.getForwardVector();
 
 	GameMode::tick(dt);
 }

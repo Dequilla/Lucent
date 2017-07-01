@@ -8,6 +8,7 @@ set(CEngineGraphicsSource Camera.h	 Camera.cpp
 						  Texture.h	 Texture.cpp
 						  Lights.h	 Lights.cpp
 						  Vertex.h
+						  Transform.h Transform.cpp
 
 						  Shader/Shader.h			Shader/Shader.cpp
 						  Shader/ShaderLoader.h		Shader/ShaderLoader.cpp

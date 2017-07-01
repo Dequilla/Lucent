@@ -13,6 +13,9 @@
 #include "Game/GameObject.h"
 #include "Game/Components/TransformComponent.h"
 #include "Game/Components/ModelComponent.h"
+#include "Game/Components/CameraComponent.h"
+
+#include "Core/Application.h"
 
 namespace ce { namespace game {
 
@@ -25,8 +28,10 @@ namespace ce { namespace game {
 		ce::game::TransformComponent m_transformComponentGrassy;
 		ce::game::ModelComponent m_modelComponentGrassy;
 		
+		ce::game::TransformComponent m_cameraTransform;
+		ce::game::CameraComponent m_camera;
+		
 		ce::graphics::ForwardRenderer m_renderer;
-		ce::graphics::Camera m_camera;
 		ce::graphics::LightSetup m_lights;
 
 		// TODO: MovementComponent?
@@ -39,8 +44,8 @@ namespace ce { namespace game {
 		float m_orientPitch = 0.0f;
 
 	public:
-		virtual void begin() override;
 		virtual void init() override;
+		virtual void begin() override;
 		virtual void tick(float dt) override;
 		virtual void draw() override;
 		virtual void end() override;

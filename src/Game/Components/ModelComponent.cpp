@@ -23,7 +23,7 @@ void ce::game::ModelComponent::draw(ce::graphics::Renderer3D* renderer)
 		updateTransform(); // And try to update it
 	}
 	else
-		modelMatrix = m_transform->getAsModelMatrix();
+		modelMatrix = m_transform->getAsMatrix();
 
 	m_model.draw(renderer, modelMatrix);
 }

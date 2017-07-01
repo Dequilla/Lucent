@@ -1,6 +1,27 @@
 #include "Application.h"
 
-bool ce::core::Application::init()
+glm::vec2 ce::core::Application::getScreenBufferSizeInternal()
+{
+	glm::vec2 size;
+	size.x = getInstance().m_screenWidth;
+	size.y = getInstance().m_screenHeight;
+
+	return size;
+}
+
+void ce::core::Application::setScreenBufferSizeInternal(glm::vec2 screenSize)
+{
+	getInstance().m_screenWidth = screenSize.x;
+	getInstance().m_screenHeight = screenSize.y;
+}
+
+void ce::core::Application::setScreenBufferSizeInternal(unsigned int width, unsigned int height)
+{
+	getInstance().m_screenWidth = width;
+	getInstance().m_screenHeight = height;
+}
+
+bool ce::core::Application::initInternal()
 {
 	// Retrieve SDL_Versions
 	SDL_version compiled;
@@ -20,6 +41,26 @@ bool ce::core::Application::init()
 	}
 
 	return true;
+}
+
+glm::vec2 ce::core::Application::getScreenBufferSize()
+{
+	return getInstance().getScreenBufferSizeInternal();
+}
+
+void ce::core::Application::setScreenBufferSize(glm::vec2 size)
+{
+	getInstance().setScreenBufferSizeInternal(size);
+}
+
+void ce::core::Application::setScreenBufferSize(unsigned int w, unsigned int h)
+{
+	getInstance().setScreenBufferSizeInternal(w, h);
+}
+
+bool ce::core::Application::init()
+{
+	return getInstance().initInternal();
 }
 
 ce::core::Application& ce::core::Application::getInstance()

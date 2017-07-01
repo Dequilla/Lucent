@@ -11,9 +11,12 @@ ce::game::GameObject::GameObject(GameObject* parent, std::string name)
 	m_parent = parent;
 }
 
-void ce::game::GameObject::addChild(GameObject child)
+ce::game::GameObject* ce::game::GameObject::addChild(GameObject child)
 {
+	child.setParent(this);
 	m_children.push_back(child);
+
+	return &m_children.back();
 }
 
 void ce::game::GameObject::setParent(GameObject* parent)

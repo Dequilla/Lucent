@@ -8,7 +8,7 @@ target_compile_features(CEngine PRIVATE cxx_range_for)
 
 # Link libraries to the main target
 target_link_libraries(CEngine 
-								CEngineCore CEngineGame CEngineGraphics 
+								CEngineGame CEngineCore CEngineGraphics 
 								${SDL2_LIBRARY} ${GLEW_LIBRARIES}
 								${OPENGL_LIBRARIES} ${ASSIMP_LIBRARIES})
 
