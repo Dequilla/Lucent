@@ -21,20 +21,18 @@ Other distros/unix-based systems are yet to be tested.
 
 To build you also need CMAKE as stated before:
 
-`sudo apt-get install cmake-curses-gui`
+`sudo apt-get install cmake`
 
 Now you can build it:
 
 ```shell
-cd .../CEngine    (root/top directory of CEngine)
-mkdir build
-cd build
-ccmake ../
+cd path/to/CEngine/build
+sh build.sh
 ```
 
-Then press C twice to configure then G to generate. Press Q to quit, then run
-`make` (Not sure if "make" will work nativly, may neet to install some packages).
+You can add `--clean` to create a clean build(ex: `sh build.sh --clean`).
 
+The build will appear in `CEngine/build/bin/src`
 
 #### Window - libraries required
 On Windows any libaries needed come with the project under the "deps"-folder.
