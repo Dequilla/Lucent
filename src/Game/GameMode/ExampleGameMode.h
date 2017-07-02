@@ -7,7 +7,6 @@
 #include "Graphics/Renderer/ForwardRenderer.h"
 #include "Graphics/Model/ModelLoader.h"
 #include "Graphics/Model/Model.h"
-#include "Graphics/Camera.h"
 #include "Graphics/Lights.h"
 
 #include "Game/GameObject.h"

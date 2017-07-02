@@ -23,6 +23,7 @@ bool fullscreen = false;
 // TODO TODO TODO TODO
 // TODO TODO TODO TODO
 // TODO TODO TODO TODO
+// Can remove old camera class, we now have camera components
 
 #include "Core/Utility/log.h"
 
@@ -43,8 +44,6 @@ int main(int argc, char* argv[])
 
 	ce::game::ExampleGameMode exGameMode;
 	exGameMode.init();
-
-	//renderer.setScreenBufferSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	glEnable(GL_DEPTH_TEST);
 
@@ -69,6 +68,7 @@ int main(int argc, char* argv[])
 				// TOGGLE FULLSCREEN
 				if (e.key.keysym.sym == SDLK_F11)
 				{
+					// Buggy on linux it seems
 					if (fullscreen == false)
 					{
 						window.setWindowFullscreen(ce::core::WINDOW_FULLSCREEN_DESKTOP);

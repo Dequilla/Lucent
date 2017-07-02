@@ -4,8 +4,7 @@ add_subdirectory(Model)
 add_subdirectory(Shader)
 add_subdirectory(Renderer)
 
-set(CEngineGraphicsSource Camera.h	 Camera.cpp
-						  Texture.h	 Texture.cpp
+set(CEngineGraphicsSource Texture.h	 Texture.cpp
 						  Lights.h	 Lights.cpp
 						  Vertex.h
 						  Transform.h Transform.cpp

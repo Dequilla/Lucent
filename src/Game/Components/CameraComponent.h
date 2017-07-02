@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Core/Application.h"
+
 #include "BaseComponent.h"
 #include "TransformComponent.h"
 

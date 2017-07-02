@@ -7,7 +7,6 @@
 #include "Graphics/Renderer/RenderCommand.h"
 
 #include "Graphics/Lights.h"
-#include "Graphics/Camera.h"
 
 #include "Graphics/Model/Mesh.h"
 
