@@ -82,6 +82,7 @@ $(document).ready(function(){initNavTree('log_8h.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
@@ -98,6 +99,17 @@ $(document).ready(function(){initNavTree('log_8h.html','');});
 </div>
 <p><a href="log_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ad9ad1dd4d9f7e30b96446c83ea4dd7f8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#ad9ad1dd4d9f7e30b96446c83ea4dd7f8">CE_STR</a>(x)&#160;&#160;&#160;#x</td></tr>
+<tr class="separator:ad9ad1dd4d9f7e30b96446c83ea4dd7f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae16b6d3f21709266317a8d9582619763"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#ae16b6d3f21709266317a8d9582619763">CE_TOSTRING</a>(x)&#160;&#160;&#160;<a class="el" href="log_8h.html#ad9ad1dd4d9f7e30b96446c83ea4dd7f8">CE_STR</a>(x)</td></tr>
+<tr class="separator:ae16b6d3f21709266317a8d9582619763"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84a09ec175c3f5a43d6b9c5285510468"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#a84a09ec175c3f5a43d6b9c5285510468">CE_C_AT</a>&#160;&#160;&#160;__FILE__ &quot;:&quot; <a class="el" href="log_8h.html#ae16b6d3f21709266317a8d9582619763">CE_TOSTRING</a>(__LINE__)</td></tr>
+<tr class="separator:a84a09ec175c3f5a43d6b9c5285510468"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a9a70b9c26ad581f674528b262bbfc8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#a1a9a70b9c26ad581f674528b262bbfc8">CE_AT</a>&#160;&#160;&#160;std::string(<a class="el" href="log_8h.html#a84a09ec175c3f5a43d6b9c5285510468">CE_C_AT</a>)</td></tr>
+<tr class="separator:a1a9a70b9c26ad581f674528b262bbfc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:a7766f79535ad275c0d177e9f904a6987"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#a7766f79535ad275c0d177e9f904a6987">ce::core::LogType</a> <tr class="memdesc:a7766f79535ad275c0d177e9f904a6987"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum with the types of logging you can make.  <a href="log_8h.html#a7766f79535ad275c0d177e9f904a6987">More...</a><br /></td></tr>
@@ -109,11 +121,83 @@ Functions</h2></td></tr>
 <tr class="memitem:a6a81e4153fbef11c1e5de48a834360c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#a6a81e4153fbef11c1e5de48a834360c3">ce::core::log</a> (const std::string &amp;output, const LogType &amp;type=LOG_MESSAGE)</td></tr>
 <tr class="memdesc:a6a81e4153fbef11c1e5de48a834360c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log a text message to the console.  <a href="log_8h.html#a6a81e4153fbef11c1e5de48a834360c3">More...</a><br /></td></tr>
 <tr class="separator:a6a81e4153fbef11c1e5de48a834360c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86d4ee6bf06bbc1efd0e6532005f724e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#a86d4ee6bf06bbc1efd0e6532005f724e">ce::core::log</a> (const std::string &amp;extra_info, const std::string &amp;output, const LogType &amp;type=LOG_MESSAGE)</td></tr>
+<tr class="memdesc:a86d4ee6bf06bbc1efd0e6532005f724e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log a text message to the console.  <a href="log_8h.html#a86d4ee6bf06bbc1efd0e6532005f724e">More...</a><br /></td></tr>
+<tr class="separator:a86d4ee6bf06bbc1efd0e6532005f724e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Tools to make logging easier and more unified. </p>
 <p>Currently only very simple and logs to the console only. </p>
-</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a1a9a70b9c26ad581f674528b262bbfc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a9a70b9c26ad581f674528b262bbfc8">&#9670;&nbsp;</a></span>CE_AT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CE_AT&#160;&#160;&#160;std::string(<a class="el" href="log_8h.html#a84a09ec175c3f5a43d6b9c5285510468">CE_C_AT</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates a C++ style string with the location and line you currently at </p>
+
+</div>
+</div>
+<a id="a84a09ec175c3f5a43d6b9c5285510468"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84a09ec175c3f5a43d6b9c5285510468">&#9670;&nbsp;</a></span>CE_C_AT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CE_C_AT&#160;&#160;&#160;__FILE__ &quot;:&quot; <a class="el" href="log_8h.html#ae16b6d3f21709266317a8d9582619763">CE_TOSTRING</a>(__LINE__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates a c-style string with the location and line you currently at </p>
+
+</div>
+</div>
+<a id="ad9ad1dd4d9f7e30b96446c83ea4dd7f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9ad1dd4d9f7e30b96446c83ea4dd7f8">&#9670;&nbsp;</a></span>CE_STR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CE_STR</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td>&#160;&#160;&#160;#x</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates a c-style string of x </p>
+
+</div>
+</div>
+<a id="ae16b6d3f21709266317a8d9582619763"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae16b6d3f21709266317a8d9582619763">&#9670;&nbsp;</a></span>CE_TOSTRING</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CE_TOSTRING</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="log_8h.html#ad9ad1dd4d9f7e30b96446c83ea4dd7f8">CE_STR</a>(x)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates a c-style string of x </p>
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="file_a7766f79535ad275c0d177e9f904a6987"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#file_a7766f79535ad275c0d177e9f904a6987">&#9670;&nbsp;</a></span>LogType</h2>
 
@@ -142,7 +226,7 @@ Functions</h2></td></tr>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="file_a6a81e4153fbef11c1e5de48a834360c3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#file_a6a81e4153fbef11c1e5de48a834360c3">&#9670;&nbsp;</a></span>log()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#file_a6a81e4153fbef11c1e5de48a834360c3">&#9670;&nbsp;</a></span>log() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -186,13 +270,65 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="file_a86d4ee6bf06bbc1efd0e6532005f724e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#file_a86d4ee6bf06bbc1efd0e6532005f724e">&#9670;&nbsp;</a></span>log() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ce::core::log </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>extra_info</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="log_8h.html#a7766f79535ad275c0d177e9f904a6987">LogType</a> &amp;&#160;</td>
+          <td class="paramname"><em>type</em> = <code>LOG_MESSAGE</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Log a text message to the console. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">extra_info</td><td>Extra output which is given it's own line </td></tr>
+    <tr><td class="paramname">output</td><td>The output string/message </td></tr>
+    <tr><td class="paramname">type</td><td>The type of message this is, check LogType </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a2f0e5642e47e7ed59fe0f0829eafb5f.html">Core</a></li><li class="navelem"><a class="el" href="dir_d0d287c86850ee2e973e827a679001b7.html">Utility</a></li><li class="navelem"><a class="el" href="log_8h.html">log.h</a></li>
-    <li class="footer">Generated on Thu Jun 29 2017 22:25:06 for CEngine by
+    <li class="footer">Generated on Mon Jul 3 2017 22:21:55 for CEngine by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

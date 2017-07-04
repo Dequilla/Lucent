@@ -9,6 +9,7 @@
 #include <sstream>
 #include <iostream>
 
+#include <vector>
 #include <unordered_map>
 
 #include "GL/glew.h"
@@ -32,6 +33,7 @@ namespace ce { namespace graphics {
 		Shader() {}
 
 		void use(); /**< Use this shader program */
+		unsigned int getProgramID() const { return programID; }
 
 		void setBool(const std::string &name, bool value) const;	/**< Set shader uniform bool */
 		void setInt(const std::string &name, int value) const;		/**< Set shader uniform int */
@@ -49,7 +51,5 @@ namespace ce { namespace graphics {
 		void setMat2(const std::string &name, const glm::mat2& value) const;	/**< Set shader uniform 2d matrix */
 		void setMat3(const std::string &name, const glm::mat3& value) const;	/**< Set shader uniform 3d matrix */
 		void setMat4(const std::string &name, const glm::mat4& value) const;	/**< Set shader uniform 4d matrix */
-
 	};
-
 }}

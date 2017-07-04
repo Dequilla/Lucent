@@ -9,7 +9,6 @@ Inheritance diagram for ce\+:\+:game\+:\+:Game\+Object\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classce_1_1game_1_1_game_object_a38079a556bd77da1c43d53b092b975ed}\label{classce_1_1game_1_1_game_object_a38079a556bd77da1c43d53b092b975ed}} 
 \hyperlink{classce_1_1game_1_1_game_object_a38079a556bd77da1c43d53b092b975ed}{Game\+Object} ()
 \begin{DoxyCompactList}\small\item\em Default constructor is only used by the root object. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classce_1_1game_1_1_game_object_a7405cbc0222f54df18d7524c6c4b0e54}\label{classce_1_1game_1_1_game_object_a7405cbc0222f54df18d7524c6c4b0e54}} 
@@ -21,9 +20,8 @@ Inheritance diagram for ce\+:\+:game\+:\+:Game\+Object\+:\begin{figure}[H]
 \mbox{\Hypertarget{classce_1_1game_1_1_game_object_a483e2391d1a903ef7e0a179bc7245529}\label{classce_1_1game_1_1_game_object_a483e2391d1a903ef7e0a179bc7245529}} 
 void {\bfseries set\+Parent} (\hyperlink{classce_1_1game_1_1_game_object}{Game\+Object} $\ast$parent)
 \item 
-\mbox{\Hypertarget{classce_1_1game_1_1_game_object_a1425bed6a585dd450f8dcd7b0d91c33a}\label{classce_1_1game_1_1_game_object_a1425bed6a585dd450f8dcd7b0d91c33a}} 
-void {\bfseries add\+Child} (\hyperlink{classce_1_1game_1_1_game_object}{Game\+Object} child)
-\item 
+\hyperlink{classce_1_1game_1_1_game_object}{Game\+Object} $\ast$ \hyperlink{classce_1_1game_1_1_game_object_a3633057fc9ed4ae0a3c724f59f125c4f}{add\+Child} (\hyperlink{classce_1_1game_1_1_game_object}{Game\+Object} child)
+\begin{DoxyCompactList}\small\item\em Add a child to this node. \end{DoxyCompactList}\item 
 void \hyperlink{classce_1_1game_1_1_game_object_ab00a9e4dcbadfa208df56e3cbed9e8d2}{remove\+Child} (std\+::string \hyperlink{classce_1_1game_1_1_game_object_a1de1f674c70df3bbba6aefb938ad8f32}{name})
 \item 
 void \hyperlink{classce_1_1game_1_1_game_object_ab700981d509605a9b1bef436207e5d54}{remove\+Object} (std\+::string \hyperlink{classce_1_1game_1_1_game_object_a1de1f674c70df3bbba6aefb938ad8f32}{name})
@@ -39,7 +37,9 @@ void {\bfseries add\+Component} (\hyperlink{classce_1_1game_1_1_base_component}{
 \item 
 \mbox{\Hypertarget{classce_1_1game_1_1_game_object_ac4f59a89b96dffe070a928f64ddfe382}\label{classce_1_1game_1_1_game_object_ac4f59a89b96dffe070a928f64ddfe382}} 
 void {\bfseries init} ()
-\end{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class T $>$ }\\std\+::vector$<$ T $\ast$ $>$ \hyperlink{classce_1_1game_1_1_game_object_ac2597ef42f7b375013b744c6a7d65499}{get\+Components\+Of\+Type} (std\+::string type)
+\begin{DoxyCompactList}\small\item\em Get all components of the type specified. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -60,7 +60,33 @@ std\+::vector$<$ \hyperlink{classce_1_1game_1_1_base_component}{Base\+Component}
 \end{DoxyCompactItemize}
 
 
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classce_1_1game_1_1_game_object_a38079a556bd77da1c43d53b092b975ed}\label{classce_1_1game_1_1_game_object_a38079a556bd77da1c43d53b092b975ed}} 
+\index{ce\+::game\+::\+Game\+Object@{ce\+::game\+::\+Game\+Object}!Game\+Object@{Game\+Object}}
+\index{Game\+Object@{Game\+Object}!ce\+::game\+::\+Game\+Object@{ce\+::game\+::\+Game\+Object}}
+\subsubsection{\texorpdfstring{Game\+Object()}{GameObject()}}
+{\footnotesize\ttfamily ce\+::game\+::\+Game\+Object\+::\+Game\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor is only used by the root object. 
+
+Note if used by a gameobject a parent has to be set 
+
 \subsection{Member Function Documentation}
+\mbox{\Hypertarget{classce_1_1game_1_1_game_object_a3633057fc9ed4ae0a3c724f59f125c4f}\label{classce_1_1game_1_1_game_object_a3633057fc9ed4ae0a3c724f59f125c4f}} 
+\index{ce\+::game\+::\+Game\+Object@{ce\+::game\+::\+Game\+Object}!add\+Child@{add\+Child}}
+\index{add\+Child@{add\+Child}!ce\+::game\+::\+Game\+Object@{ce\+::game\+::\+Game\+Object}}
+\subsubsection{\texorpdfstring{add\+Child()}{addChild()}}
+{\footnotesize\ttfamily \hyperlink{classce_1_1game_1_1_game_object}{ce\+::game\+::\+Game\+Object} $\ast$ ce\+::game\+::\+Game\+Object\+::add\+Child (\begin{DoxyParamCaption}\item[{\hyperlink{classce_1_1game_1_1_game_object}{Game\+Object}}]{child }\end{DoxyParamCaption})}
+
+
+
+Add a child to this node. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the game object you added 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classce_1_1game_1_1_game_object_ad5e81a50f4472e7557ec949eb3cc9413}\label{classce_1_1game_1_1_game_object_ad5e81a50f4472e7557ec949eb3cc9413}} 
 \index{ce\+::game\+::\+Game\+Object@{ce\+::game\+::\+Game\+Object}!draw@{draw}}
 \index{draw@{draw}!ce\+::game\+::\+Game\+Object@{ce\+::game\+::\+Game\+Object}}
@@ -76,6 +102,27 @@ Draws itself and its children.
 {\em renderer} & A 3D renderer \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{classce_1_1game_1_1_game_object_ac2597ef42f7b375013b744c6a7d65499}\label{classce_1_1game_1_1_game_object_ac2597ef42f7b375013b744c6a7d65499}} 
+\index{ce\+::game\+::\+Game\+Object@{ce\+::game\+::\+Game\+Object}!get\+Components\+Of\+Type@{get\+Components\+Of\+Type}}
+\index{get\+Components\+Of\+Type@{get\+Components\+Of\+Type}!ce\+::game\+::\+Game\+Object@{ce\+::game\+::\+Game\+Object}}
+\subsubsection{\texorpdfstring{get\+Components\+Of\+Type()}{getComponentsOfType()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+std\+::vector$<$ T $\ast$ $>$ ce\+::game\+::\+Game\+Object\+::get\+Components\+Of\+Type (\begin{DoxyParamCaption}\item[{std\+::string}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get all components of the type specified. 
+
+T needs to be the component type you are trying to get
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Type string as represented by a components get\+Type() function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A component of the type specified, nullptr if none exist 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classce_1_1game_1_1_game_object_a2fcc1608d7c352ba88a5fcc5d99eb5e2}\label{classce_1_1game_1_1_game_object_a2fcc1608d7c352ba88a5fcc5d99eb5e2}} 
 \index{ce\+::game\+::\+Game\+Object@{ce\+::game\+::\+Game\+Object}!get\+Game\+Object\+By\+Name@{get\+Game\+Object\+By\+Name}}
 \index{get\+Game\+Object\+By\+Name@{get\+Game\+Object\+By\+Name}!ce\+::game\+::\+Game\+Object@{ce\+::game\+::\+Game\+Object}}

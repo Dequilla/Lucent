@@ -1,7 +1,7 @@
 var classce_1_1graphics_1_1_forward_renderer =
 [
     [ "begin", "classce_1_1graphics_1_1_forward_renderer.html#a4550120dc1349b5298de4a02422c6c26", null ],
-    [ "beginScene", "classce_1_1graphics_1_1_forward_renderer.html#ae84dbf0b5a71b464cf4fc34a5daac805", null ],
+    [ "beginScene", "classce_1_1graphics_1_1_forward_renderer.html#a218629cfc8ee0f776589956f12ce9441", null ],
     [ "end", "classce_1_1graphics_1_1_forward_renderer.html#a8a8c16a645e63fd54b932f62d96d805b", null ],
     [ "endScene", "classce_1_1graphics_1_1_forward_renderer.html#a34bf60e44a9a594ab596f46ca7688e3e", null ],
     [ "init", "classce_1_1graphics_1_1_forward_renderer.html#ac6c7ad9a18ecfb2cbb6aee202e7e2e8f", null ],

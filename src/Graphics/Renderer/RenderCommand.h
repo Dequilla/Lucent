@@ -18,7 +18,7 @@ namespace ce { namespace graphics {
 	{
 		Mesh* mesh;
 		glm::mat4 transform;
-		Shader* shader;
+		Shader shader;
 	};
 
 }}

@@ -10,7 +10,8 @@ target_compile_features(CEngine PRIVATE cxx_range_for)
 target_link_libraries(CEngine 
 								CEngineGame CEngineCore CEngineGraphics 
 								${SDL2_LIBRARY} ${GLEW_LIBRARIES}
-								${OPENGL_LIBRARIES} ${ASSIMP_LIBRARIES})
+								${OPENGL_LIBRARIES} ${ASSIMP_LIBRARIES}
+								${FREETYPE_LIBRARIES})
 
 add_subdirectory(Core)
 add_subdirectory(Graphics)

@@ -9,6 +9,17 @@ Tools to make logging easier and more unified.
 {\ttfamily \#include $<$iostream$>$}\newline
 {\ttfamily \#include $<$iomanip$>$}\newline
 {\ttfamily \#include \char`\"{}Core/\+Utility/console.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{log_8h_ad9ad1dd4d9f7e30b96446c83ea4dd7f8}{C\+E\+\_\+\+S\+TR}(x)~\#x
+\item 
+\#define \hyperlink{log_8h_ae16b6d3f21709266317a8d9582619763}{C\+E\+\_\+\+T\+O\+S\+T\+R\+I\+NG}(x)~\hyperlink{log_8h_ad9ad1dd4d9f7e30b96446c83ea4dd7f8}{C\+E\+\_\+\+S\+TR}(x)
+\item 
+\#define \hyperlink{log_8h_a84a09ec175c3f5a43d6b9c5285510468}{C\+E\+\_\+\+C\+\_\+\+AT}~\+\_\+\+\_\+\+F\+I\+L\+E\+\_\+\+\_\+ \char`\"{}\+:\char`\"{} \hyperlink{log_8h_ae16b6d3f21709266317a8d9582619763}{C\+E\+\_\+\+T\+O\+S\+T\+R\+I\+NG}(\+\_\+\+\_\+\+L\+I\+N\+E\+\_\+\+\_\+)
+\item 
+\#define \hyperlink{log_8h_a1a9a70b9c26ad581f674528b262bbfc8}{C\+E\+\_\+\+AT}~std\+::string(\hyperlink{log_8h_a84a09ec175c3f5a43d6b9c5285510468}{C\+E\+\_\+\+C\+\_\+\+AT})
+\end{DoxyCompactItemize}
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
@@ -18,6 +29,8 @@ enum \hyperlink{log_8h_a7766f79535ad275c0d177e9f904a6987}{ce\+::core\+::\+Log\+T
 \begin{DoxyCompactItemize}
 \item 
 void \hyperlink{log_8h_a6a81e4153fbef11c1e5de48a834360c3}{ce\+::core\+::log} (const std\+::string \&output, const Log\+Type \&type=L\+O\+G\+\_\+\+M\+E\+S\+S\+A\+GE)
+\begin{DoxyCompactList}\small\item\em Log a text message to the console. \end{DoxyCompactList}\item 
+void \hyperlink{log_8h_a86d4ee6bf06bbc1efd0e6532005f724e}{ce\+::core\+::log} (const std\+::string \&extra\+\_\+info, const std\+::string \&output, const Log\+Type \&type=L\+O\+G\+\_\+\+M\+E\+S\+S\+A\+GE)
 \begin{DoxyCompactList}\small\item\em Log a text message to the console. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -25,6 +38,33 @@ void \hyperlink{log_8h_a6a81e4153fbef11c1e5de48a834360c3}{ce\+::core\+::log} (co
 Tools to make logging easier and more unified. 
 
 Currently only very simple and logs to the console only. 
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{log_8h_a1a9a70b9c26ad581f674528b262bbfc8}\label{log_8h_a1a9a70b9c26ad581f674528b262bbfc8}} 
+\index{log.\+h@{log.\+h}!C\+E\+\_\+\+AT@{C\+E\+\_\+\+AT}}
+\index{C\+E\+\_\+\+AT@{C\+E\+\_\+\+AT}!log.\+h@{log.\+h}}
+\subsubsection{\texorpdfstring{C\+E\+\_\+\+AT}{CE\_AT}}
+{\footnotesize\ttfamily \#define C\+E\+\_\+\+AT~std\+::string(\hyperlink{log_8h_a84a09ec175c3f5a43d6b9c5285510468}{C\+E\+\_\+\+C\+\_\+\+AT})}
+
+Creates a C++ style string with the location and line you currently at \mbox{\Hypertarget{log_8h_a84a09ec175c3f5a43d6b9c5285510468}\label{log_8h_a84a09ec175c3f5a43d6b9c5285510468}} 
+\index{log.\+h@{log.\+h}!C\+E\+\_\+\+C\+\_\+\+AT@{C\+E\+\_\+\+C\+\_\+\+AT}}
+\index{C\+E\+\_\+\+C\+\_\+\+AT@{C\+E\+\_\+\+C\+\_\+\+AT}!log.\+h@{log.\+h}}
+\subsubsection{\texorpdfstring{C\+E\+\_\+\+C\+\_\+\+AT}{CE\_C\_AT}}
+{\footnotesize\ttfamily \#define C\+E\+\_\+\+C\+\_\+\+AT~\+\_\+\+\_\+\+F\+I\+L\+E\+\_\+\+\_\+ \char`\"{}\+:\char`\"{} \hyperlink{log_8h_ae16b6d3f21709266317a8d9582619763}{C\+E\+\_\+\+T\+O\+S\+T\+R\+I\+NG}(\+\_\+\+\_\+\+L\+I\+N\+E\+\_\+\+\_\+)}
+
+Creates a c-\/style string with the location and line you currently at \mbox{\Hypertarget{log_8h_ad9ad1dd4d9f7e30b96446c83ea4dd7f8}\label{log_8h_ad9ad1dd4d9f7e30b96446c83ea4dd7f8}} 
+\index{log.\+h@{log.\+h}!C\+E\+\_\+\+S\+TR@{C\+E\+\_\+\+S\+TR}}
+\index{C\+E\+\_\+\+S\+TR@{C\+E\+\_\+\+S\+TR}!log.\+h@{log.\+h}}
+\subsubsection{\texorpdfstring{C\+E\+\_\+\+S\+TR}{CE\_STR}}
+{\footnotesize\ttfamily \#define C\+E\+\_\+\+S\+TR(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~\#x}
+
+Creates a c-\/style string of x \mbox{\Hypertarget{log_8h_ae16b6d3f21709266317a8d9582619763}\label{log_8h_ae16b6d3f21709266317a8d9582619763}} 
+\index{log.\+h@{log.\+h}!C\+E\+\_\+\+T\+O\+S\+T\+R\+I\+NG@{C\+E\+\_\+\+T\+O\+S\+T\+R\+I\+NG}}
+\index{C\+E\+\_\+\+T\+O\+S\+T\+R\+I\+NG@{C\+E\+\_\+\+T\+O\+S\+T\+R\+I\+NG}!log.\+h@{log.\+h}}
+\subsubsection{\texorpdfstring{C\+E\+\_\+\+T\+O\+S\+T\+R\+I\+NG}{CE\_TOSTRING}}
+{\footnotesize\ttfamily \#define C\+E\+\_\+\+T\+O\+S\+T\+R\+I\+NG(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~\hyperlink{log_8h_ad9ad1dd4d9f7e30b96446c83ea4dd7f8}{C\+E\+\_\+\+S\+TR}(x)}
+
+Creates a c-\/style string of x 
 
 \subsection{Enumeration Type Documentation}
 \mbox{\Hypertarget{log_8h_file_a7766f79535ad275c0d177e9f904a6987}\label{log_8h_file_a7766f79535ad275c0d177e9f904a6987}} 
@@ -61,7 +101,7 @@ L\+O\+G\+\_\+\+C\+R\+I\+T\+I\+C\+AL&A critical error, in the console it has red 
 \mbox{\Hypertarget{log_8h_file_a6a81e4153fbef11c1e5de48a834360c3}\label{log_8h_file_a6a81e4153fbef11c1e5de48a834360c3}} 
 \index{log.\+h@{log.\+h}!log@{log}}
 \index{log@{log}!log.\+h@{log.\+h}}
-\subsubsection{\texorpdfstring{log()}{log()}}
+\subsubsection{\texorpdfstring{log()}{log()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily void ce\+::core\+::log (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{output,  }\item[{const \hyperlink{log_8h_a7766f79535ad275c0d177e9f904a6987}{Log\+Type} \&}]{type = {\ttfamily LOG\+\_\+MESSAGE} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -70,6 +110,25 @@ Log a text message to the console.
 
 
 \begin{DoxyParams}{Parameters}
+{\em output} & The output string/message \\
+\hline
+{\em type} & The type of message this is, check Log\+Type \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{log_8h_file_a86d4ee6bf06bbc1efd0e6532005f724e}\label{log_8h_file_a86d4ee6bf06bbc1efd0e6532005f724e}} 
+\index{log.\+h@{log.\+h}!log@{log}}
+\index{log@{log}!log.\+h@{log.\+h}}
+\subsubsection{\texorpdfstring{log()}{log()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void ce\+::core\+::log (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{extra\+\_\+info,  }\item[{const std\+::string \&}]{output,  }\item[{const \hyperlink{log_8h_a7766f79535ad275c0d177e9f904a6987}{Log\+Type} \&}]{type = {\ttfamily LOG\+\_\+MESSAGE} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Log a text message to the console. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em extra\+\_\+info} & Extra output which is given it\textquotesingle{}s own line \\
+\hline
 {\em output} & The output string/message \\
 \hline
 {\em type} & The type of message this is, check Log\+Type \\

@@ -99,8 +99,9 @@ $(document).ready(function(){initNavTree('classce_1_1game_1_1_base_component.htm
  <div class="center">
   <img src="classce_1_1game_1_1_base_component.png" usemap="#ce::game::BaseComponent_map" alt=""/>
   <map id="ce::game::BaseComponent_map" name="ce::game::BaseComponent_map">
-<area href="classce_1_1game_1_1_model_component.html" alt="ce::game::ModelComponent" shape="rect" coords="0,56,188,80"/>
-<area href="classce_1_1game_1_1_transform_component.html" alt="ce::game::TransformComponent" shape="rect" coords="198,56,386,80"/>
+<area href="classce_1_1game_1_1_camera_component.html" alt="ce::game::CameraComponent" shape="rect" coords="0,56,188,80"/>
+<area href="classce_1_1game_1_1_model_component.html" alt="ce::game::ModelComponent" shape="rect" coords="198,56,386,80"/>
+<area href="classce_1_1game_1_1_transform_component.html" alt="ce::game::TransformComponent" shape="rect" coords="396,56,584,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -170,7 +171,7 @@ template&lt;class T &gt; </div>
 </table>
 </div><div class="memdoc">
 <p>Retrieve all the components of a type from the host</p>
-<p>T needs to be the class you are getting as a type as it converts it to that type </p>
+<p>T needs to be the class you are getting as a type as it converts it to that type Returns a vector with the first element being a nullptr if it can't find any </p>
 
 </div>
 </div>
@@ -200,7 +201,7 @@ template&lt;class T &gt; </div>
 <p>Returns the type of Component in a string value. </p>
 <p>Example: Model, Transform etc </p>
 
-<p>Implemented in <a class="el" href="classce_1_1game_1_1_transform_component.html#ae4a2729b3f88a77b8405de317ab03510">ce::game::TransformComponent</a>, and <a class="el" href="classce_1_1game_1_1_model_component.html#aaac15cad336e35df7be55dda34f53643">ce::game::ModelComponent</a>.</p>
+<p>Implemented in <a class="el" href="classce_1_1game_1_1_camera_component.html#a15140bffd017245dd17ed9aa0f953a1b">ce::game::CameraComponent</a>, <a class="el" href="classce_1_1game_1_1_model_component.html#aaac15cad336e35df7be55dda34f53643">ce::game::ModelComponent</a>, and <a class="el" href="classce_1_1game_1_1_transform_component.html#ae4a2729b3f88a77b8405de317ab03510">ce::game::TransformComponent</a>.</p>
 
 </div>
 </div>
@@ -226,7 +227,7 @@ template&lt;class T &gt; </div>
 </div><div class="memdoc">
 
 <p>Components of this components host(GameObject) </p>
-<p>Used to access other components on an object such as TransformComponents etc </p>
+<p>Used to access other components on the host object such as TransformComponents etc Since it is a pointer, if the host components change, it is updated here too </p>
 
 </div>
 </div>
@@ -239,7 +240,7 @@ template&lt;class T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>ce</b></li><li class="navelem"><b>game</b></li><li class="navelem"><a class="el" href="classce_1_1game_1_1_base_component.html">BaseComponent</a></li>
-    <li class="footer">Generated on Thu Jun 29 2017 22:25:07 for CEngine by
+    <li class="footer">Generated on Mon Jul 3 2017 22:21:56 for CEngine by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

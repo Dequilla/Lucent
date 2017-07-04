@@ -12,8 +12,6 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-bool \hyperlink{classce_1_1core_1_1_application_ad93435a68fa6eb317d85a3465f45d0d5}{init} ()
-\item 
 \mbox{\Hypertarget{classce_1_1core_1_1_application_a8e18666e2174bb3bbc372a9370e41870}\label{classce_1_1core_1_1_application_a8e18666e2174bb3bbc372a9370e41870}} 
 {\bfseries Application} (\hyperlink{classce_1_1core_1_1_application}{Application} const \&)=delete
 \item 
@@ -23,15 +21,41 @@ void {\bfseries operator=} (\hyperlink{classce_1_1core_1_1_application}{Applicat
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{classce_1_1core_1_1_application_a02eadc7f3baf9e2b6a4afaeb70fd6870}\label{classce_1_1core_1_1_application_a02eadc7f3baf9e2b6a4afaeb70fd6870}} 
+static glm\+::vec2 {\bfseries get\+Screen\+Buffer\+Size} ()
+\item 
+\mbox{\Hypertarget{classce_1_1core_1_1_application_a607e77350ed31db6c4463c2ec048fd73}\label{classce_1_1core_1_1_application_a607e77350ed31db6c4463c2ec048fd73}} 
+static void {\bfseries set\+Screen\+Buffer\+Size} (glm\+::vec2 size)
+\item 
+\mbox{\Hypertarget{classce_1_1core_1_1_application_a4e6f45381a3a3f7c6e9ef76446c9ea1c}\label{classce_1_1core_1_1_application_a4e6f45381a3a3f7c6e9ef76446c9ea1c}} 
+static void {\bfseries set\+Screen\+Buffer\+Size} (unsigned int w, unsigned int h)
+\item 
+static bool \hyperlink{classce_1_1core_1_1_application_ad93435a68fa6eb317d85a3465f45d0d5}{init} ()
+\item 
 \mbox{\Hypertarget{classce_1_1core_1_1_application_aa2b9f2c00cdebf63ead970bff2e58519}\label{classce_1_1core_1_1_application_aa2b9f2c00cdebf63ead970bff2e58519}} 
 static \hyperlink{classce_1_1core_1_1_application}{Application} \& {\bfseries get\+Instance} ()
 \end{DoxyCompactItemize}
-\subsection*{Public Attributes}
+\subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \hyperlink{classce_1_1core_1_1_application_a0ba59c070c6163986b246bd4927ca1a3}{screen\+Width} = 0
+\mbox{\Hypertarget{classce_1_1core_1_1_application_ab6561ce429b01ee5b5b3687f502eb6f9}\label{classce_1_1core_1_1_application_ab6561ce429b01ee5b5b3687f502eb6f9}} 
+glm\+::vec2 {\bfseries get\+Screen\+Buffer\+Size\+Internal} ()
 \item 
-int \hyperlink{classce_1_1core_1_1_application_a4b3734ba6626a5a3db7b08069077ea42}{screen\+Height} = 0
+\mbox{\Hypertarget{classce_1_1core_1_1_application_a1b2bf718bbf98e3b95169aca5077ea80}\label{classce_1_1core_1_1_application_a1b2bf718bbf98e3b95169aca5077ea80}} 
+void {\bfseries set\+Screen\+Buffer\+Size\+Internal} (glm\+::vec2 screen\+Size)
+\item 
+\mbox{\Hypertarget{classce_1_1core_1_1_application_af9a89c06b7d8e1a76a8685a67ee53689}\label{classce_1_1core_1_1_application_af9a89c06b7d8e1a76a8685a67ee53689}} 
+void {\bfseries set\+Screen\+Buffer\+Size\+Internal} (unsigned int width, unsigned int height)
+\item 
+\mbox{\Hypertarget{classce_1_1core_1_1_application_a26e6df9acf8018f9fe321869753ab072}\label{classce_1_1core_1_1_application_a26e6df9acf8018f9fe321869753ab072}} 
+bool {\bfseries init\+Internal} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classce_1_1core_1_1_application_ad840abf73bfce6617f76afcfe41b6a37}{m\+\_\+screen\+Width} = 0
+\item 
+int \hyperlink{classce_1_1core_1_1_application_a159cdcc30a4443b5e7f585ed7a00fe7d}{m\+\_\+screen\+Height} = 0
 \end{DoxyCompactItemize}
 
 
@@ -45,22 +69,22 @@ int \hyperlink{classce_1_1core_1_1_application_a4b3734ba6626a5a3db7b08069077ea42
 \index{ce\+::core\+::\+Application@{ce\+::core\+::\+Application}!init@{init}}
 \index{init@{init}!ce\+::core\+::\+Application@{ce\+::core\+::\+Application}}
 \subsubsection{\texorpdfstring{init()}{init()}}
-{\footnotesize\ttfamily bool ce\+::core\+::\+Application\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool ce\+::core\+::\+Application\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 Initializes some of the libraries used internally, called by the engine first thing that happens 
 
 \subsection{Member Data Documentation}
-\mbox{\Hypertarget{classce_1_1core_1_1_application_a4b3734ba6626a5a3db7b08069077ea42}\label{classce_1_1core_1_1_application_a4b3734ba6626a5a3db7b08069077ea42}} 
-\index{ce\+::core\+::\+Application@{ce\+::core\+::\+Application}!screen\+Height@{screen\+Height}}
-\index{screen\+Height@{screen\+Height}!ce\+::core\+::\+Application@{ce\+::core\+::\+Application}}
-\subsubsection{\texorpdfstring{screen\+Height}{screenHeight}}
-{\footnotesize\ttfamily int ce\+::core\+::\+Application\+::screen\+Height = 0}
+\mbox{\Hypertarget{classce_1_1core_1_1_application_a159cdcc30a4443b5e7f585ed7a00fe7d}\label{classce_1_1core_1_1_application_a159cdcc30a4443b5e7f585ed7a00fe7d}} 
+\index{ce\+::core\+::\+Application@{ce\+::core\+::\+Application}!m\+\_\+screen\+Height@{m\+\_\+screen\+Height}}
+\index{m\+\_\+screen\+Height@{m\+\_\+screen\+Height}!ce\+::core\+::\+Application@{ce\+::core\+::\+Application}}
+\subsubsection{\texorpdfstring{m\+\_\+screen\+Height}{m\_screenHeight}}
+{\footnotesize\ttfamily int ce\+::core\+::\+Application\+::m\+\_\+screen\+Height = 0\hspace{0.3cm}{\ttfamily [protected]}}
 
-Screen buffer height for desired output \mbox{\Hypertarget{classce_1_1core_1_1_application_a0ba59c070c6163986b246bd4927ca1a3}\label{classce_1_1core_1_1_application_a0ba59c070c6163986b246bd4927ca1a3}} 
-\index{ce\+::core\+::\+Application@{ce\+::core\+::\+Application}!screen\+Width@{screen\+Width}}
-\index{screen\+Width@{screen\+Width}!ce\+::core\+::\+Application@{ce\+::core\+::\+Application}}
-\subsubsection{\texorpdfstring{screen\+Width}{screenWidth}}
-{\footnotesize\ttfamily int ce\+::core\+::\+Application\+::screen\+Width = 0}
+Screen buffer height for desired output \mbox{\Hypertarget{classce_1_1core_1_1_application_ad840abf73bfce6617f76afcfe41b6a37}\label{classce_1_1core_1_1_application_ad840abf73bfce6617f76afcfe41b6a37}} 
+\index{ce\+::core\+::\+Application@{ce\+::core\+::\+Application}!m\+\_\+screen\+Width@{m\+\_\+screen\+Width}}
+\index{m\+\_\+screen\+Width@{m\+\_\+screen\+Width}!ce\+::core\+::\+Application@{ce\+::core\+::\+Application}}
+\subsubsection{\texorpdfstring{m\+\_\+screen\+Width}{m\_screenWidth}}
+{\footnotesize\ttfamily int ce\+::core\+::\+Application\+::m\+\_\+screen\+Width = 0\hspace{0.3cm}{\ttfamily [protected]}}
 
 Screen buffer width for desired output 
 

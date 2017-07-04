@@ -2,6 +2,7 @@ var hierarchy =
 [
     [ "ce::core::Application", "classce_1_1core_1_1_application.html", null ],
     [ "ce::game::BaseComponent", "classce_1_1game_1_1_base_component.html", [
+      [ "ce::game::CameraComponent", "classce_1_1game_1_1_camera_component.html", null ],
       [ "ce::game::ModelComponent", "classce_1_1game_1_1_model_component.html", null ],
       [ "ce::game::TransformComponent", "classce_1_1game_1_1_transform_component.html", null ]
     ] ],
@@ -10,8 +11,12 @@ var hierarchy =
       [ "ce::graphics::PointLight", "classce_1_1graphics_1_1_point_light.html", null ],
       [ "ce::graphics::SpotLight", "classce_1_1graphics_1_1_spot_light.html", null ]
     ] ],
-    [ "ce::graphics::Camera", "classce_1_1graphics_1_1_camera.html", null ],
+    [ "ce::graphics::Character", "structce_1_1graphics_1_1_character.html", null ],
     [ "ce::core::Clock", "classce_1_1core_1_1_clock.html", null ],
+    [ "ce::graphics::Font", "classce_1_1graphics_1_1_font.html", null ],
+    [ "ce::game::GameMode", "classce_1_1game_1_1_game_mode.html", [
+      [ "ce::game::ExampleGameMode", "classce_1_1game_1_1_example_game_mode.html", null ]
+    ] ],
     [ "ce::game::GameObject", "classce_1_1game_1_1_game_object.html", [
       [ "ce::game::RootObject", "classce_1_1game_1_1_root_object.html", null ]
     ] ],
@@ -30,8 +35,12 @@ var hierarchy =
     [ "ce::graphics::Shader", "classce_1_1graphics_1_1_shader.html", null ],
     [ "ce::graphics::ShaderLoader", "classce_1_1graphics_1_1_shader_loader.html", null ],
     [ "ce::graphics::ShaderProperties", "structce_1_1graphics_1_1_shader_properties.html", null ],
+    [ "ce::graphics::Text", "classce_1_1graphics_1_1_text.html", null ],
     [ "ce::graphics::Texture", "structce_1_1graphics_1_1_texture.html", null ],
     [ "ce::core::Time", "structce_1_1core_1_1_time.html", null ],
+    [ "ce::graphics::Transform", "classce_1_1graphics_1_1_transform.html", [
+      [ "ce::game::TransformComponent", "classce_1_1game_1_1_transform_component.html", null ]
+    ] ],
     [ "ce::graphics::Vertex", "structce_1_1graphics_1_1_vertex.html", null ],
     [ "ce::core::Window", "classce_1_1core_1_1_window.html", null ]
 ];

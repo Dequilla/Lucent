@@ -54,12 +54,15 @@ struct SpotLight
 
 #define NR_DIR_LIGHTS ${NUM_DIR_LIGHTS}
 uniform DirLight dirLights[NR_DIR_LIGHTS];
+uniform int amountOfDirLights;
 
 #define NR_POINT_LIGHTS ${NUM_POINT_LIGHTS}
 uniform PointLight pointLights[NR_POINT_LIGHTS];
+uniform int amountOfPointLights;
 
 #define NR_SPOT_LIGHTS ${NUM_SPOT_LIGHTS}
 uniform SpotLight spotLights[NR_SPOT_LIGHTS];
+uniform int amountOfSpotLights;
 
 uniform vec3 viewPos;
 uniform Material material;

@@ -17,7 +17,7 @@ virtual void \hyperlink{classce_1_1graphics_1_1_renderer3_d_ae887bbdc74af40838e6
 \item 
 virtual void \hyperlink{classce_1_1graphics_1_1_renderer3_d_a51818b5b581c33001ddbbc6dff9d6e36}{begin} ()=0
 \item 
-virtual void \hyperlink{classce_1_1graphics_1_1_renderer3_d_a94e60931e0ff3f26b217db09a11ee7e6}{begin\+Scene} (\hyperlink{classce_1_1graphics_1_1_camera}{Camera} $\ast$camera)=0
+virtual void \hyperlink{classce_1_1graphics_1_1_renderer3_d_a308b1b75bf6ac0d73f89ce89840f632a}{begin\+Scene} (glm\+::mat4 view\+Matrix, glm\+::mat4 projection\+Matrix)=0
 \item 
 virtual void \hyperlink{classce_1_1graphics_1_1_renderer3_d_a67e956930a17600cdcfc689aa624f990}{submit} (const \hyperlink{structce_1_1graphics_1_1_render_command}{Render\+Command} \&command)=0
 \item 
@@ -64,15 +64,15 @@ Begining stage of the renderer
 
 Implemented in \hyperlink{classce_1_1graphics_1_1_forward_renderer_a4550120dc1349b5298de4a02422c6c26}{ce\+::graphics\+::\+Forward\+Renderer}.
 
-\mbox{\Hypertarget{classce_1_1graphics_1_1_renderer3_d_a94e60931e0ff3f26b217db09a11ee7e6}\label{classce_1_1graphics_1_1_renderer3_d_a94e60931e0ff3f26b217db09a11ee7e6}} 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_renderer3_d_a308b1b75bf6ac0d73f89ce89840f632a}\label{classce_1_1graphics_1_1_renderer3_d_a308b1b75bf6ac0d73f89ce89840f632a}} 
 \index{ce\+::graphics\+::\+Renderer3D@{ce\+::graphics\+::\+Renderer3D}!begin\+Scene@{begin\+Scene}}
 \index{begin\+Scene@{begin\+Scene}!ce\+::graphics\+::\+Renderer3D@{ce\+::graphics\+::\+Renderer3D}}
 \subsubsection{\texorpdfstring{begin\+Scene()}{beginScene()}}
-{\footnotesize\ttfamily virtual void ce\+::graphics\+::\+Renderer3\+D\+::begin\+Scene (\begin{DoxyParamCaption}\item[{\hyperlink{classce_1_1graphics_1_1_camera}{Camera} $\ast$}]{camera }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily virtual void ce\+::graphics\+::\+Renderer3\+D\+::begin\+Scene (\begin{DoxyParamCaption}\item[{glm\+::mat4}]{view\+Matrix,  }\item[{glm\+::mat4}]{projection\+Matrix }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 Begining of the scene 
 
-Implemented in \hyperlink{classce_1_1graphics_1_1_forward_renderer_ae84dbf0b5a71b464cf4fc34a5daac805}{ce\+::graphics\+::\+Forward\+Renderer}.
+Implemented in \hyperlink{classce_1_1graphics_1_1_forward_renderer_a218629cfc8ee0f776589956f12ce9441}{ce\+::graphics\+::\+Forward\+Renderer}.
 
 \mbox{\Hypertarget{classce_1_1graphics_1_1_renderer3_d_a4d35e07f42a4fb42ebe3f8e57bfcdb58}\label{classce_1_1graphics_1_1_renderer3_d_a4d35e07f42a4fb42ebe3f8e57bfcdb58}} 
 \index{ce\+::graphics\+::\+Renderer3D@{ce\+::graphics\+::\+Renderer3D}!end@{end}}

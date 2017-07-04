@@ -3,7 +3,7 @@
 Inheritance diagram for ce\+:\+:game\+:\+:Base\+Component\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{classce_1_1game_1_1_base_component}
+\includegraphics[height=1.904762cm]{classce_1_1game_1_1_base_component}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -54,7 +54,7 @@ std\+::vector$<$ T $\ast$ $>$ ce\+::game\+::\+Base\+Component\+::get\+Host\+Comp
 
 Retrieve all the components of a type from the host
 
-T needs to be the class you are getting as a type as it converts it to that type \mbox{\Hypertarget{classce_1_1game_1_1_base_component_a1022b55c1926a019a2b3a71fb6b9150e}\label{classce_1_1game_1_1_base_component_a1022b55c1926a019a2b3a71fb6b9150e}} 
+T needs to be the class you are getting as a type as it converts it to that type Returns a vector with the first element being a nullptr if it can\textquotesingle{}t find any \mbox{\Hypertarget{classce_1_1game_1_1_base_component_a1022b55c1926a019a2b3a71fb6b9150e}\label{classce_1_1game_1_1_base_component_a1022b55c1926a019a2b3a71fb6b9150e}} 
 \index{ce\+::game\+::\+Base\+Component@{ce\+::game\+::\+Base\+Component}!get\+Type@{get\+Type}}
 \index{get\+Type@{get\+Type}!ce\+::game\+::\+Base\+Component@{ce\+::game\+::\+Base\+Component}}
 \subsubsection{\texorpdfstring{get\+Type()}{getType()}}
@@ -66,7 +66,7 @@ Returns the type of Component in a string value.
 
 Example\+: Model, Transform etc 
 
-Implemented in \hyperlink{classce_1_1game_1_1_transform_component_ae4a2729b3f88a77b8405de317ab03510}{ce\+::game\+::\+Transform\+Component}, and \hyperlink{classce_1_1game_1_1_model_component_aaac15cad336e35df7be55dda34f53643}{ce\+::game\+::\+Model\+Component}.
+Implemented in \hyperlink{classce_1_1game_1_1_camera_component_a15140bffd017245dd17ed9aa0f953a1b}{ce\+::game\+::\+Camera\+Component}, \hyperlink{classce_1_1game_1_1_model_component_aaac15cad336e35df7be55dda34f53643}{ce\+::game\+::\+Model\+Component}, and \hyperlink{classce_1_1game_1_1_transform_component_ae4a2729b3f88a77b8405de317ab03510}{ce\+::game\+::\+Transform\+Component}.
 
 
 
@@ -81,7 +81,7 @@ Implemented in \hyperlink{classce_1_1game_1_1_transform_component_ae4a2729b3f88a
 
 Components of this components host(\+Game\+Object) 
 
-Used to access other components on an object such as Transform\+Components etc 
+Used to access other components on the host object such as Transform\+Components etc Since it is a pointer, if the host components change, it is updated here too 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

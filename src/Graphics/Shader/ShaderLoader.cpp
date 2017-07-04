@@ -45,7 +45,6 @@ ce::graphics::Shader ce::graphics::ShaderLoader::loadFromSource(const GLchar * v
 	if (!success)
 	{
 		glGetProgramInfoLog(programID, 512, NULL, infoLog);
-		std::cout << "CE: Failed linking shader program\n Info Log: " << infoLog << std::endl;
 		ce::core::log("Failed linking shader program\n Info Log : " + std::string(infoLog), ce::core::LOG_ERROR);
 	}
 
@@ -58,7 +57,7 @@ ce::graphics::Shader ce::graphics::ShaderLoader::loadFromSource(const GLchar * v
 	return shader;
 }
 
-ce::graphics::Shader* ce::graphics::ShaderLoader::loadShader(ShaderProperties properties)
+ce::graphics::Shader ce::graphics::ShaderLoader::loadShader(ShaderProperties properties)
 {
 	// If it doesn't exist, load it
 	if(!alreadyExists(properties))
@@ -92,23 +91,28 @@ ce::graphics::Shader* ce::graphics::ShaderLoader::loadShader(ShaderProperties pr
 		}
 		catch (std::ifstream::failure e)
 		{
-			ce::core::log("Failed to read shader-file / -s, wrong path?", ce::core::LOG_WARNING);
+			ce::core::log("Failed to read shader-file / -s, wrong path? \
+					\n-- Path vertex: " + properties.vPath
+				+ " \n-- Path fragment: " + properties.fPath 
+				+ " \n-- Path geometry: " + properties.gPath
+				, ce::core::LOG_WARNING);
 		}
 
-		fragmentCode = core::string::replace(fragmentCode, "${NUM_DIR_LIGHTS}", std::to_string(properties.numDirLights));
+		// Set the maximum amount of lights
+		fragmentCode = core::string::replace(fragmentCode, "${NUM_DIR_LIGHTS}", std::to_string(ce::core::Application::getInstance().maxDirLights));
 		// Comment out lightingloop if we have no lights
-		fragmentCode = core::string::replace(fragmentCode, "${HAS_DIR_LIGHT1}", (properties.numDirLights > 0) ? "" : "//"); 
-		fragmentCode = core::string::replace(fragmentCode, "${HAS_DIR_LIGHT2}", (properties.numDirLights > 0) ? "" : "//");
+		fragmentCode = core::string::replace(fragmentCode, "${HAS_DIR_LIGHT1}", (ce::core::Application::getInstance().maxDirLights > 0) ? "" : "//");
+		fragmentCode = core::string::replace(fragmentCode, "${HAS_DIR_LIGHT2}", (ce::core::Application::getInstance().maxDirLights > 0) ? "" : "//");
 
-		fragmentCode = core::string::replace(fragmentCode, "${NUM_POINT_LIGHTS}", std::to_string(properties.numDirLights));
+		fragmentCode = core::string::replace(fragmentCode, "${NUM_POINT_LIGHTS}", std::to_string(ce::core::Application::getInstance().maxPointLights));
 		// Comment out lightingloop if we have no lights
-		fragmentCode = core::string::replace(fragmentCode, "${HAS_POINT_LIGHT1}", (properties.numPointLights > 0) ? "" : "//");
-		fragmentCode = core::string::replace(fragmentCode, "${HAS_POINT_LIGHT2}", (properties.numPointLights > 0) ? "" : "//");
+		fragmentCode = core::string::replace(fragmentCode, "${HAS_POINT_LIGHT1}", (ce::core::Application::getInstance().maxPointLights > 0) ? "" : "//");
+		fragmentCode = core::string::replace(fragmentCode, "${HAS_POINT_LIGHT2}", (ce::core::Application::getInstance().maxPointLights > 0) ? "" : "//");
 
-		fragmentCode = core::string::replace(fragmentCode, "${NUM_SPOT_LIGHTS}", std::to_string(properties.numDirLights));
+		fragmentCode = core::string::replace(fragmentCode, "${NUM_SPOT_LIGHTS}", std::to_string(ce::core::Application::getInstance().maxSpotLights));
 		// Comment out lightingloop if we have no lights
-		fragmentCode = core::string::replace(fragmentCode, "${HAS_SPOT_LIGHT1}", (properties.numSpotLights > 0) ? "" : "//");
-		fragmentCode = core::string::replace(fragmentCode, "${HAS_SPOT_LIGHT2}", (properties.numSpotLights > 0) ? "" : "//");
+		fragmentCode = core::string::replace(fragmentCode, "${HAS_SPOT_LIGHT1}", (ce::core::Application::getInstance().maxSpotLights > 0) ? "" : "//");
+		fragmentCode = core::string::replace(fragmentCode, "${HAS_SPOT_LIGHT2}", (ce::core::Application::getInstance().maxSpotLights > 0) ? "" : "//");
 
 		const GLchar* vertexSource = vertexCode.c_str();
 		const GLchar* fragmentSource = fragmentCode.c_str();
@@ -121,7 +125,7 @@ ce::graphics::Shader* ce::graphics::ShaderLoader::loadShader(ShaderProperties pr
 	{
 		if (shader.first == properties)
 		{
-			return &shader.second;
+			return shader.second;
 		}
 	}
 }

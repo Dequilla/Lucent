@@ -84,7 +84,8 @@ $(document).ready(function(){initNavTree('classce_1_1core_1_1_application.html',
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classce_1_1core_1_1_application-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ce::core::Application Class Reference</div>  </div>
@@ -98,8 +99,6 @@ $(document).ready(function(){initNavTree('classce_1_1core_1_1_application.html',
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad93435a68fa6eb317d85a3465f45d0d5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classce_1_1core_1_1_application.html#ad93435a68fa6eb317d85a3465f45d0d5">init</a> ()</td></tr>
-<tr class="separator:ad93435a68fa6eb317d85a3465f45d0d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e18666e2174bb3bbc372a9370e41870"><td class="memItemLeft" align="right" valign="top"><a id="a8e18666e2174bb3bbc372a9370e41870"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Application</b> (<a class="el" href="classce_1_1core_1_1_application.html">Application</a> const &amp;)=delete</td></tr>
 <tr class="separator:a8e18666e2174bb3bbc372a9370e41870"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -109,16 +108,42 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a cla
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a02eadc7f3baf9e2b6a4afaeb70fd6870"><td class="memItemLeft" align="right" valign="top"><a id="a02eadc7f3baf9e2b6a4afaeb70fd6870"></a>
+static glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><b>getScreenBufferSize</b> ()</td></tr>
+<tr class="separator:a02eadc7f3baf9e2b6a4afaeb70fd6870"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a607e77350ed31db6c4463c2ec048fd73"><td class="memItemLeft" align="right" valign="top"><a id="a607e77350ed31db6c4463c2ec048fd73"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>setScreenBufferSize</b> (glm::vec2 size)</td></tr>
+<tr class="separator:a607e77350ed31db6c4463c2ec048fd73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e6f45381a3a3f7c6e9ef76446c9ea1c"><td class="memItemLeft" align="right" valign="top"><a id="a4e6f45381a3a3f7c6e9ef76446c9ea1c"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>setScreenBufferSize</b> (unsigned int w, unsigned int h)</td></tr>
+<tr class="separator:a4e6f45381a3a3f7c6e9ef76446c9ea1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad93435a68fa6eb317d85a3465f45d0d5"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classce_1_1core_1_1_application.html#ad93435a68fa6eb317d85a3465f45d0d5">init</a> ()</td></tr>
+<tr class="separator:ad93435a68fa6eb317d85a3465f45d0d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2b9f2c00cdebf63ead970bff2e58519"><td class="memItemLeft" align="right" valign="top"><a id="aa2b9f2c00cdebf63ead970bff2e58519"></a>
 static <a class="el" href="classce_1_1core_1_1_application.html">Application</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getInstance</b> ()</td></tr>
 <tr class="separator:aa2b9f2c00cdebf63ead970bff2e58519"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a0ba59c070c6163986b246bd4927ca1a3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classce_1_1core_1_1_application.html#a0ba59c070c6163986b246bd4927ca1a3">screenWidth</a> = 0</td></tr>
-<tr class="separator:a0ba59c070c6163986b246bd4927ca1a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b3734ba6626a5a3db7b08069077ea42"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classce_1_1core_1_1_application.html#a4b3734ba6626a5a3db7b08069077ea42">screenHeight</a> = 0</td></tr>
-<tr class="separator:a4b3734ba6626a5a3db7b08069077ea42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:ab6561ce429b01ee5b5b3687f502eb6f9"><td class="memItemLeft" align="right" valign="top"><a id="ab6561ce429b01ee5b5b3687f502eb6f9"></a>
+glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><b>getScreenBufferSizeInternal</b> ()</td></tr>
+<tr class="separator:ab6561ce429b01ee5b5b3687f502eb6f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b2bf718bbf98e3b95169aca5077ea80"><td class="memItemLeft" align="right" valign="top"><a id="a1b2bf718bbf98e3b95169aca5077ea80"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setScreenBufferSizeInternal</b> (glm::vec2 screenSize)</td></tr>
+<tr class="separator:a1b2bf718bbf98e3b95169aca5077ea80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9a89c06b7d8e1a76a8685a67ee53689"><td class="memItemLeft" align="right" valign="top"><a id="af9a89c06b7d8e1a76a8685a67ee53689"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setScreenBufferSizeInternal</b> (unsigned int width, unsigned int height)</td></tr>
+<tr class="separator:af9a89c06b7d8e1a76a8685a67ee53689"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26e6df9acf8018f9fe321869753ab072"><td class="memItemLeft" align="right" valign="top"><a id="a26e6df9acf8018f9fe321869753ab072"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>initInternal</b> ()</td></tr>
+<tr class="separator:a26e6df9acf8018f9fe321869753ab072"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:ad840abf73bfce6617f76afcfe41b6a37"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classce_1_1core_1_1_application.html#ad840abf73bfce6617f76afcfe41b6a37">m_screenWidth</a> = 0</td></tr>
+<tr class="separator:ad840abf73bfce6617f76afcfe41b6a37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a159cdcc30a4443b5e7f585ed7a00fe7d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classce_1_1core_1_1_application.html#a159cdcc30a4443b5e7f585ed7a00fe7d">m_screenHeight</a> = 0</td></tr>
+<tr class="separator:a159cdcc30a4443b5e7f585ed7a00fe7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classce_1_1core_1_1_application.html" title="Application singlton containing context info needed by some components. ">Application</a> singlton containing context info needed by some components. </p>
@@ -129,6 +154,9 @@ Public Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool ce::core::Application::init </td>
@@ -137,37 +165,58 @@ Public Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Initializes some of the libraries used internally, called by the engine first thing that happens </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a4b3734ba6626a5a3db7b08069077ea42"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4b3734ba6626a5a3db7b08069077ea42">&#9670;&nbsp;</a></span>screenHeight</h2>
+<a id="a159cdcc30a4443b5e7f585ed7a00fe7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a159cdcc30a4443b5e7f585ed7a00fe7d">&#9670;&nbsp;</a></span>m_screenHeight</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int ce::core::Application::screenHeight = 0</td>
+          <td class="memname">int ce::core::Application::m_screenHeight = 0</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Screen buffer height for desired output </p>
 
 </div>
 </div>
-<a id="a0ba59c070c6163986b246bd4927ca1a3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0ba59c070c6163986b246bd4927ca1a3">&#9670;&nbsp;</a></span>screenWidth</h2>
+<a id="ad840abf73bfce6617f76afcfe41b6a37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad840abf73bfce6617f76afcfe41b6a37">&#9670;&nbsp;</a></span>m_screenWidth</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int ce::core::Application::screenWidth = 0</td>
+          <td class="memname">int ce::core::Application::m_screenWidth = 0</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Screen buffer width for desired output </p>
 
@@ -183,7 +232,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>ce</b></li><li class="navelem"><b>core</b></li><li class="navelem"><a class="el" href="classce_1_1core_1_1_application.html">Application</a></li>
-    <li class="footer">Generated on Thu Jun 29 2017 22:25:06 for CEngine by
+    <li class="footer">Generated on Mon Jul 3 2017 22:21:56 for CEngine by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

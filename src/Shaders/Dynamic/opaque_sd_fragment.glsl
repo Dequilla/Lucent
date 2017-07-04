@@ -53,12 +53,15 @@ struct SpotLight
 
 #define NR_DIR_LIGHTS ${NUM_DIR_LIGHTS}
 uniform DirLight dirLights[NR_DIR_LIGHTS];
+uniform int amountOfDirLights;
 
 #define NR_POINT_LIGHTS ${NUM_POINT_LIGHTS}
 uniform PointLight pointLights[NR_POINT_LIGHTS];
+uniform int amountOfPointLights;
 
 #define NR_SPOT_LIGHTS ${NUM_SPOT_LIGHTS}
 uniform SpotLight spotLights[NR_SPOT_LIGHTS];
+uniform int amountOfSpotLights;
 
 uniform vec3 viewPos;
 uniform Material material;
@@ -77,15 +80,15 @@ void main()
 	vec3 result = vec3(0.0, 0.0, 0.0);
 
 	// Dir lights
-	${HAS_DIR_LIGHT1}for(int i = 0; i < NR_DIR_LIGHTS; i++)
+	${HAS_DIR_LIGHT1}for(int i = 0; i < amountOfDirLights; i++)
 		${HAS_DIR_LIGHT2}result += CalcDirLight(dirLights[i], norm, viewDir);
 
 	// Point lights
-	${HAS_POINT_LIGHT1}for(int i = 0; i < NR_POINT_LIGHTS; i++)
+	${HAS_POINT_LIGHT1}for(int i = 0; i < amountOfPointLights; i++)
 		${HAS_POINT_LIGHT2}result += CalcPointLight(pointLights[i], norm, FragPos, viewDir);
 
 	// Spot lights
-	${HAS_SPOT_LIGHT1}for(int i = 0; i < NR_SPOT_LIGHTS; i++)
+	${HAS_SPOT_LIGHT1}for(int i = 0; i < amountOfSpotLights; i++)
 		${HAS_SPOT_LIGHT2}result += CalcSpotLight(spotLights[i], norm, FragPos, viewDir);
 
 	FragColor = vec4(result, 1.0);

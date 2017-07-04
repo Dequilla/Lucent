@@ -38,14 +38,14 @@ void ce::core::Window::create(std::string title, int posx, int posy, int width, 
 	m_window = SDL_CreateWindow(title.c_str(), posx, posy, width, height, SDL_WINDOW_OPENGL | flags);
 	if (m_window == NULL)
 	{
-		ce::core::log("Failed to create window with title: " + title + " with error: " + SDL_GetError(), LOG_ERROR);
+		ce::core::log(CE_AT, "Failed to create window with title: " + title + " with error: " + SDL_GetError(), LOG_ERROR);
 	}
 
 	// Create the context
 	m_glContext = SDL_GL_CreateContext(m_window);
 	if (m_glContext == NULL)
 	{
-		ce::core::log("Failed to create a GL context for the window with the title: " + title + " with error: " + SDL_GetError(), LOG_ERROR);
+		ce::core::log(CE_AT, "Failed to create a GL context for the window with the title: " + title + " with error: " + SDL_GetError(), LOG_ERROR);
 	}
 	SDL_GL_MakeCurrent(m_window, m_glContext);
 
@@ -53,7 +53,7 @@ void ce::core::Window::create(std::string title, int posx, int posy, int width, 
 	glewExperimental = GL_TRUE;
 	if (glewInit() != GLEW_OK)
 	{
-		ce::core::log("GLEW failed to initialize", LOG_ERROR);
+		ce::core::log(CE_AT, "GLEW failed to initialize", LOG_ERROR);
 	}
 }
 

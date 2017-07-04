@@ -33,7 +33,7 @@ namespace ce { namespace graphics {
 	{
 	private:
 		// string - path (avoids loading duplicates) 
-		std::unordered_map<std::string, Model> m_models;
+		static std::unordered_map<std::string, Model> m_models;
 
 		// Loading functions (Assimp)
 		Model m_currProcessedModel;

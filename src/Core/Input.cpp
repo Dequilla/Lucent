@@ -160,7 +160,7 @@ void ce::core::Input::checkInput(const SDL_Event& e)
 		}
 		catch (std::exception& e)
 		{
-			ce::core::log("Exception in  - CheckInput: " + std::string(e.what()), LOG_CRITICAL);
+			ce::core::log(CE_AT, "Exception in CheckInput: " + std::string(e.what()), LOG_ERROR);
 		}
 	}
 	// AXIS EVENTS
@@ -275,9 +275,6 @@ void ce::core::Input::addJoystick(int joystickID)
 
 void ce::core::Input::addController(int controllerID)
 {
-	ce::core::log("Joysticks/Controllers connected: " + std::to_string(SDL_NumJoysticks()));
-
-	// TODO: if not a supported controller add support(test ps4?)
 	if (SDL_IsGameController(controllerID))
 	{
 		Joystick controller;

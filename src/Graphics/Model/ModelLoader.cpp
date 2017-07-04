@@ -1,5 +1,7 @@
 #include "ModelLoader.h"
 
+std::unordered_map<std::string, ce::graphics::Model> ce::graphics::ModelLoader::m_models;
+
 ce::graphics::Mesh ce::graphics::ModelLoader::processMesh(aiMesh* mesh, const aiScene* scene)
 {
 	VertexArray vertices;
@@ -66,9 +68,6 @@ ce::graphics::Mesh ce::graphics::ModelLoader::processMesh(aiMesh* mesh, const ai
 			ce::graphics::ShaderLoader loader;
 			properties.vPath = "Shaders/Dynamic/opaque_sd_vertex.glsl";
 			properties.fPath = "Shaders/Dynamic/opaque_sd_fragment.glsl";
-			properties.numDirLights = 1;
-			properties.numPointLights = 1;
-			properties.numSpotLights = 1;
 			material.shader = loader.loadShader(properties);
 		}
 		else if (opacity < 1.0f) // Use blending shader to get opacity
@@ -79,9 +78,6 @@ ce::graphics::Mesh ce::graphics::ModelLoader::processMesh(aiMesh* mesh, const ai
 			ce::graphics::ShaderLoader loader;
 			properties.vPath = "Shaders/Dynamic/transparent_sd_vertex.glsl";
 			properties.fPath = "Shaders/Dynamic/transparent_sd_fragment.glsl";
-			properties.numDirLights = 1;
-			properties.numPointLights = 1;
-			properties.numSpotLights = 1;
 			material.shader = loader.loadShader(properties);
 		}
 

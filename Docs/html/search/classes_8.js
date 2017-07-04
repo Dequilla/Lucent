@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lightsetup',['LightSetup',['../structce_1_1graphics_1_1_light_setup.html',1,'ce::graphics']]]
+  ['joystick',['Joystick',['../structce_1_1core_1_1_joystick.html',1,'ce::core']]]
 ];

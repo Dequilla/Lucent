@@ -8,6 +8,7 @@
 #include <unordered_map>
 #include <vector>
 
+#include "Core/Application.h"
 #include "Core/Utility/stringutility.h"
 #include "Core/Utility/log.h"
 
@@ -24,10 +25,6 @@ namespace ce { namespace graphics {
 		std::string fPath = ""; /**< Fragment shader path */
 		std::string gPath = ""; /**< Geometry shader path */
 
-		unsigned int numDirLights = 0;	 /**< Number of directional lights it needs to support */
-		unsigned int numPointLights = 0; /**< Number of point lights it needs to support */
-		unsigned int numSpotLights = 0; /**< Number of spot lights it needs to support */
-
 		/**
 		* \breif Comparison operator definition
 		*/
@@ -37,10 +34,7 @@ namespace ce { namespace graphics {
 			(
 				vPath == other.vPath &&
 				fPath == other.fPath &&
-				gPath == other.gPath &&
-				numDirLights == other.numDirLights &&
-				numPointLights == other.numPointLights &&
-				numSpotLights == other.numSpotLights
+				gPath == other.gPath
 			);
 		}
 	};
@@ -53,7 +47,7 @@ namespace ce { namespace graphics {
 	class ShaderLoader
 	{
 	private:
-		static std::vector<std::pair<ShaderProperties, Shader>> m_loadedShaders;
+		static std::vector<std::pair<ce::graphics::ShaderProperties, ce::graphics::Shader>> m_loadedShaders;
 
 	protected:
 		/**
@@ -76,7 +70,7 @@ namespace ce { namespace graphics {
 		* @param properties ShaderProperties describing the shader 
 		* @return Pointer to shader program object
 		*/
-		Shader* loadShader(ShaderProperties properties);
+		Shader loadShader(ShaderProperties properties);
 
 		/**
 		* \breif Check if a shader with ShaderProperties has been loaded previously

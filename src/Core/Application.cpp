@@ -36,11 +36,22 @@ bool ce::core::Application::initInternal()
 
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
 	{
-		ce::core::log("CE: Failed to initialize SDL with error:\n" + std::string(SDL_GetError()), LOG_ERROR);
+		ce::core::log(CE_AT, "Failed to initialize SDL with error:\n" + std::string(SDL_GetError()), LOG_ERROR);
+		return false;
+	}
+
+	// Initialize text
+	if (ce::graphics::initText())
+	{
 		return false;
 	}
 
 	return true;
+}
+
+void ce::core::Application::enableVSYNCInternal(bool enabled)
+{
+	SDL_GL_SetSwapInterval(((enabled) ? 1 : 0));
 }
 
 glm::vec2 ce::core::Application::getScreenBufferSize()
@@ -61,6 +72,11 @@ void ce::core::Application::setScreenBufferSize(unsigned int w, unsigned int h)
 bool ce::core::Application::init()
 {
 	return getInstance().initInternal();
+}
+
+void ce::core::Application::enableVSYNC(bool enabled)
+{
+	getInstance().enableVSYNCInternal(enabled);
 }
 
 ce::core::Application& ce::core::Application::getInstance()

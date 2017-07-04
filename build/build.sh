@@ -8,31 +8,29 @@ echo "██║     ██╔══╝  ██║╚██╗██║██║ 
 echo " ██████╗███████╗██║ ╚████║╚██████╔╝██║██║ ╚████║███████╗██╗"
 echo " ╚═════╝╚══════╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝"
 
-# Create bin dir if it doesn't exist
-if [ ! -d "$bin/" ]; then
-    mkdir bin/
-fi
+echo "\n\n-CE- Creating bin..."
+mkdir -p bin/
 
 # Enter bin
 cd bin/
 
 # If we want a clean build clear bin
 if [ "$1" = "--clean" ]; then
-    echo "\n\n -CE- Clearing previous build..."
+    echo "-CE- Clearing previous build..."
 
     rm -rf *
 fi
 
 # Run cmake in our root folder where our topmost CMakeLists.txt file is
-echo "\n -CE- Running cmake..."
+echo "-CE- Running cmake..."
 cmake ../../
 
 # Compile program
-echo "\n -CE- Running make..."
+echo "-CE- Running make..."
 make
 
 # Now move resources files
-echo "\n -CE- Moving resources..."
+echo "-CE- Moving resources..."
 cd src/
 
 if [ -d "$Resources/" ]; then

@@ -109,8 +109,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ae887bbdc74af40838e6d059d30bb430b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51818b5b581c33001ddbbc6dff9d6e36"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classce_1_1graphics_1_1_renderer3_d.html#a51818b5b581c33001ddbbc6dff9d6e36">begin</a> ()=0</td></tr>
 <tr class="separator:a51818b5b581c33001ddbbc6dff9d6e36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94e60931e0ff3f26b217db09a11ee7e6"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classce_1_1graphics_1_1_renderer3_d.html#a94e60931e0ff3f26b217db09a11ee7e6">beginScene</a> (<a class="el" href="classce_1_1graphics_1_1_camera.html">Camera</a> *camera)=0</td></tr>
-<tr class="separator:a94e60931e0ff3f26b217db09a11ee7e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a308b1b75bf6ac0d73f89ce89840f632a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classce_1_1graphics_1_1_renderer3_d.html#a308b1b75bf6ac0d73f89ce89840f632a">beginScene</a> (glm::mat4 viewMatrix, glm::mat4 projectionMatrix)=0</td></tr>
+<tr class="separator:a308b1b75bf6ac0d73f89ce89840f632a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67e956930a17600cdcfc689aa624f990"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classce_1_1graphics_1_1_renderer3_d.html#a67e956930a17600cdcfc689aa624f990">submit</a> (const <a class="el" href="structce_1_1graphics_1_1_render_command.html">RenderCommand</a> &amp;command)=0</td></tr>
 <tr class="separator:a67e956930a17600cdcfc689aa624f990"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba7b0abfa0aad0d89a816923e83ef787"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classce_1_1graphics_1_1_renderer3_d.html#aba7b0abfa0aad0d89a816923e83ef787">submitMesh</a> (<a class="el" href="classce_1_1graphics_1_1_mesh.html">Mesh</a> *mesh, const glm::mat4 &amp;transform)=0</td></tr>
@@ -171,8 +171,8 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>m_screenBuffe
 
 </div>
 </div>
-<a id="a94e60931e0ff3f26b217db09a11ee7e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a94e60931e0ff3f26b217db09a11ee7e6">&#9670;&nbsp;</a></span>beginScene()</h2>
+<a id="a308b1b75bf6ac0d73f89ce89840f632a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a308b1b75bf6ac0d73f89ce89840f632a">&#9670;&nbsp;</a></span>beginScene()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -183,9 +183,19 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>m_screenBuffe
         <tr>
           <td class="memname">virtual void ce::graphics::Renderer3D::beginScene </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classce_1_1graphics_1_1_camera.html">Camera</a> *&#160;</td>
-          <td class="paramname"><em>camera</em></td><td>)</td>
+          <td class="paramtype">glm::mat4&#160;</td>
+          <td class="paramname"><em>viewMatrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">glm::mat4&#160;</td>
+          <td class="paramname"><em>projectionMatrix</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -196,7 +206,7 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>m_screenBuffe
 </div><div class="memdoc">
 <p>Begining of the scene </p>
 
-<p>Implemented in <a class="el" href="classce_1_1graphics_1_1_forward_renderer.html#ae84dbf0b5a71b464cf4fc34a5daac805">ce::graphics::ForwardRenderer</a>.</p>
+<p>Implemented in <a class="el" href="classce_1_1graphics_1_1_forward_renderer.html#a218629cfc8ee0f776589956f12ce9441">ce::graphics::ForwardRenderer</a>.</p>
 
 </div>
 </div>
@@ -511,7 +521,7 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>m_screenBuffe
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>ce</b></li><li class="navelem"><b>graphics</b></li><li class="navelem"><a class="el" href="classce_1_1graphics_1_1_renderer3_d.html">Renderer3D</a></li>
-    <li class="footer">Generated on Thu Jun 29 2017 22:25:07 for CEngine by
+    <li class="footer">Generated on Mon Jul 3 2017 22:21:57 for CEngine by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

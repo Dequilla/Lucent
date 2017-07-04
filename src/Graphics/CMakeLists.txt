@@ -1,5 +1,6 @@
 # FILE: /src/Graphics/CMakeLists.txt
 
+add_subdirectory(Text)
 add_subdirectory(Model)
 add_subdirectory(Shader)
 add_subdirectory(Renderer)
@@ -11,6 +12,10 @@ set(CEngineGraphicsSource Texture.h	 Texture.cpp
 
 						  Shader/Shader.h			Shader/Shader.cpp
 						  Shader/ShaderLoader.h		Shader/ShaderLoader.cpp
+
+						  Text/InitText.h	Text/InitText.cpp
+						  Text/Font.h		Text/Font.cpp
+						  Text/Text.h		Text/Text.cpp	
 
 						  Renderer/Renderer3D.h			Renderer/Renderer3D.cpp
 						  Renderer/ForwardRenderer.h	Renderer/ForwardRenderer.cpp

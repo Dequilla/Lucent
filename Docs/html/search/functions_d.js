@@ -1,17 +1,12 @@
 var searchData=
 [
-  ['setaspectratio',['setAspectRatio',['../classce_1_1graphics_1_1_camera.html#a852f190ecd41998257e92d5e56769bce',1,'ce::graphics::Camera']]],
   ['setbool',['setBool',['../classce_1_1graphics_1_1_shader.html#a42b65349e86147bbd0fc611eeb4f5890',1,'ce::graphics::Shader']]],
   ['setclearcolor',['setClearColor',['../classce_1_1core_1_1_window.html#a48c120ae2d7e03c6839747065eeeb7be',1,'ce::core::Window']]],
   ['setfloat',['setFloat',['../classce_1_1graphics_1_1_shader.html#a31d56ffb50a079444baf27c863023efc',1,'ce::graphics::Shader']]],
-  ['setfov',['setFOV',['../classce_1_1graphics_1_1_camera.html#a46c1c89dd83bcd2991d41e5b87555704',1,'ce::graphics::Camera']]],
   ['setint',['setInt',['../classce_1_1graphics_1_1_shader.html#ab0599b30f759cd140b3c1727673c4665',1,'ce::graphics::Shader']]],
   ['setmat2',['setMat2',['../classce_1_1graphics_1_1_shader.html#a6355f9a1480838ce2f1ef8030ef1c259',1,'ce::graphics::Shader']]],
   ['setmat3',['setMat3',['../classce_1_1graphics_1_1_shader.html#a52a066ab5a24e7f4596931e9c0e325e6',1,'ce::graphics::Shader']]],
   ['setmat4',['setMat4',['../classce_1_1graphics_1_1_shader.html#ae5f67d260222f5b315ea097b3d898c9f',1,'ce::graphics::Shader']]],
-  ['setnearfar',['setNearFar',['../classce_1_1graphics_1_1_camera.html#a0908e7c08307000941dd51f01e07e582',1,'ce::graphics::Camera']]],
-  ['setposition',['setPosition',['../classce_1_1graphics_1_1_camera.html#a03003f6beb426e19d497222977e6568a',1,'ce::graphics::Camera::setPosition(glm::vec3 pos)'],['../classce_1_1graphics_1_1_camera.html#ad993b93d1a746100d5f014070abb438b',1,'ce::graphics::Camera::setPosition(float x, float y, float z)']]],
-  ['setprojection',['setProjection',['../classce_1_1graphics_1_1_camera.html#a6145b8ef21c58b4426d2400aac9cefbf',1,'ce::graphics::Camera']]],
   ['setscreenbuffersize',['setScreenBufferSize',['../classce_1_1graphics_1_1_renderer3_d.html#a39b5c5b8a62c71600d23de2d642e1546',1,'ce::graphics::Renderer3D']]],
   ['setsize',['setSize',['../classce_1_1core_1_1_window.html#a105a93cc62e222c99411b3184b70d84a',1,'ce::core::Window']]],
   ['settitle',['setTitle',['../classce_1_1core_1_1_window.html#ac182b4657e4240663b49923e6349e48c',1,'ce::core::Window']]],

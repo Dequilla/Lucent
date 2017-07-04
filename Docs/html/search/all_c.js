@@ -11,10 +11,12 @@ var searchData=
   ['m_5fmotion_5fxrel',['M_MOTION_XREL',['../_input_codes_8h.html#a9044fffd6a7c3417b0a100f0a0427a90ab2795023ce2458199f937e927285cce9',1,'ce::core']]],
   ['m_5fmotion_5fy',['M_MOTION_Y',['../_input_codes_8h.html#a9044fffd6a7c3417b0a100f0a0427a90a48d1908e0caf112a71aeb5febefb14a5',1,'ce::core']]],
   ['m_5fmotion_5fyrel',['M_MOTION_YREL',['../_input_codes_8h.html#a9044fffd6a7c3417b0a100f0a0427a90adae46ff6b1b43c48f30733c388ca16d6',1,'ce::core']]],
-  ['m_5fposition',['m_position',['../classce_1_1game_1_1_transform_component.html#a72b0b9f989fd7ddcecf0ebec18bd2076',1,'ce::game::TransformComponent']]],
-  ['m_5frotation',['m_rotation',['../classce_1_1game_1_1_transform_component.html#aacf1e75e976c54bb503448b6da534f63',1,'ce::game::TransformComponent']]],
-  ['m_5fscale',['m_scale',['../classce_1_1game_1_1_transform_component.html#af120345110ceff7bcf3b40d2ac1b0575',1,'ce::game::TransformComponent']]],
+  ['m_5fposition',['m_position',['../classce_1_1graphics_1_1_transform.html#ac55ab1bffbe1250d4bef77798180d592',1,'ce::graphics::Transform']]],
+  ['m_5frotation',['m_rotation',['../classce_1_1graphics_1_1_transform.html#a1952fc3789a58ab6bb54887bc8374693',1,'ce::graphics::Transform']]],
+  ['m_5fscale',['m_scale',['../classce_1_1graphics_1_1_transform.html#a88394bb0517cf741b97f9c9c76d3775e',1,'ce::graphics::Transform']]],
   ['m_5fscreenbufferheight',['m_screenBufferHeight',['../classce_1_1graphics_1_1_renderer3_d.html#a03b1b45f98919b5468fce308f19fac57',1,'ce::graphics::Renderer3D']]],
+  ['m_5fscreenheight',['m_screenHeight',['../classce_1_1core_1_1_application.html#a159cdcc30a4443b5e7f585ed7a00fe7d',1,'ce::core::Application']]],
+  ['m_5fscreenwidth',['m_screenWidth',['../classce_1_1core_1_1_application.html#ad840abf73bfce6617f76afcfe41b6a37',1,'ce::core::Application']]],
   ['m_5fwheel_5fx',['M_WHEEL_X',['../_input_codes_8h.html#a9044fffd6a7c3417b0a100f0a0427a90a2a35fb3465f9999b04b6fc05d3387875',1,'ce::core']]],
   ['m_5fwheel_5fy',['M_WHEEL_Y',['../_input_codes_8h.html#a9044fffd6a7c3417b0a100f0a0427a90ae35cd013aca44f2613cda6b51035ac2e',1,'ce::core']]],
   ['mat_5fblend',['MAT_BLEND',['../_material_8h.html#aac4ec325697a8f788007e105d586d217a3b636d9bd6c025fd6c4196e36745546d',1,'ce::graphics']]],
@@ -27,6 +29,5 @@ var searchData=
   ['model_2eh',['Model.h',['../_model_8h.html',1,'']]],
   ['modelcomponent',['ModelComponent',['../classce_1_1game_1_1_model_component.html',1,'ce::game']]],
   ['modelloader',['ModelLoader',['../classce_1_1graphics_1_1_model_loader.html',1,'ce::graphics']]],
-  ['modelloader_2eh',['ModelLoader.h',['../_model_loader_8h.html',1,'']]],
-  ['move',['move',['../classce_1_1graphics_1_1_camera.html#a93fa78fa33b430d0bb5412624678423a',1,'ce::graphics::Camera::move(const glm::vec3 &amp;vec)'],['../classce_1_1graphics_1_1_camera.html#ae1f4306dcc5622eccc111c00404633df',1,'ce::graphics::Camera::move(float x, float y, float z)']]]
+  ['modelloader_2eh',['ModelLoader.h',['../_model_loader_8h.html',1,'']]]
 ];

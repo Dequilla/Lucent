@@ -25,7 +25,7 @@ namespace ce { namespace graphics {
 	*/
 	struct Material
 	{
-		Shader* shader; /**< Shader used to draw the material */
+		Shader shader; /**< Shader used to draw the material */
 		
 		std::vector<Texture> textures; /**< Textures used in this material */
 

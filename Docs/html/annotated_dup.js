@@ -11,6 +11,9 @@ var annotated_dup =
       ] ],
       [ "game", null, [
         [ "BaseComponent", "classce_1_1game_1_1_base_component.html", "classce_1_1game_1_1_base_component" ],
+        [ "CameraComponent", "classce_1_1game_1_1_camera_component.html", "classce_1_1game_1_1_camera_component" ],
+        [ "ExampleGameMode", "classce_1_1game_1_1_example_game_mode.html", "classce_1_1game_1_1_example_game_mode" ],
+        [ "GameMode", "classce_1_1game_1_1_game_mode.html", "classce_1_1game_1_1_game_mode" ],
         [ "GameObject", "classce_1_1game_1_1_game_object.html", "classce_1_1game_1_1_game_object" ],
         [ "ModelComponent", "classce_1_1game_1_1_model_component.html", "classce_1_1game_1_1_model_component" ],
         [ "RootObject", "classce_1_1game_1_1_root_object.html", "classce_1_1game_1_1_root_object" ],
@@ -19,8 +22,9 @@ var annotated_dup =
       ] ],
       [ "graphics", null, [
         [ "BaseLight", "classce_1_1graphics_1_1_base_light.html", "classce_1_1graphics_1_1_base_light" ],
-        [ "Camera", "classce_1_1graphics_1_1_camera.html", "classce_1_1graphics_1_1_camera" ],
+        [ "Character", "structce_1_1graphics_1_1_character.html", "structce_1_1graphics_1_1_character" ],
         [ "DirLight", "classce_1_1graphics_1_1_dir_light.html", "classce_1_1graphics_1_1_dir_light" ],
+        [ "Font", "classce_1_1graphics_1_1_font.html", "classce_1_1graphics_1_1_font" ],
         [ "ForwardRenderer", "classce_1_1graphics_1_1_forward_renderer.html", "classce_1_1graphics_1_1_forward_renderer" ],
         [ "LightSetup", "structce_1_1graphics_1_1_light_setup.html", "structce_1_1graphics_1_1_light_setup" ],
         [ "Material", "structce_1_1graphics_1_1_material.html", "structce_1_1graphics_1_1_material" ],
@@ -34,7 +38,9 @@ var annotated_dup =
         [ "ShaderLoader", "classce_1_1graphics_1_1_shader_loader.html", "classce_1_1graphics_1_1_shader_loader" ],
         [ "ShaderProperties", "structce_1_1graphics_1_1_shader_properties.html", "structce_1_1graphics_1_1_shader_properties" ],
         [ "SpotLight", "classce_1_1graphics_1_1_spot_light.html", "classce_1_1graphics_1_1_spot_light" ],
+        [ "Text", "classce_1_1graphics_1_1_text.html", "classce_1_1graphics_1_1_text" ],
         [ "Texture", "structce_1_1graphics_1_1_texture.html", "structce_1_1graphics_1_1_texture" ],
+        [ "Transform", "classce_1_1graphics_1_1_transform.html", "classce_1_1graphics_1_1_transform" ],
         [ "Vertex", "structce_1_1graphics_1_1_vertex.html", "structce_1_1graphics_1_1_vertex" ]
       ] ]
     ] ]

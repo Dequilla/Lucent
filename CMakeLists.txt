@@ -1,13 +1,5 @@
-# Also in main.cpp
-# TODO: on WIN32 copy dlls into build directories Debug and Release
-# TODO: Create build scripts? Windows and linux(ubuntu) makes testing the engine faster even if just a few minutes faster
-# TODO TODO TODO TODO
-# TODO TODO TODO TODO
-# TODO TODO TODO TODO
-# TODO TODO TODO TODO
-
 #FILE: /CMakeLists.txt
-cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.0.2 FATAL_ERROR)
 project(CEngine)
 
 # Enable c++11
@@ -36,10 +28,14 @@ if(WIN32)
 		set(ASSIMP_LIBRARIES ${CEngineDependencies}/lib/x86/Debug/assimp-vc140-mt.lib)
 		
 		set(GLEW_LIBRARIES ${CEngineDependencies}/lib/x86/Debug/glew32d.lib)
+	
+		set(FREETYPE_LIBRARIES ${CEngineDependencies}/lib/x86/Debug/freetype28d.lib)
 	else()
 		set(ASSIMP_LIBRARIES ${CEngineDependencies}/lib/x86/Release/assimp-vc140-mt.lib)
 
 		set(GLEW_LIBRARIES ${CEngineDependencies}/lib/x86/Release/glew32.lib)
+
+		set(FREETYPE_LIBRARIES ${CEngineDependencies}/lib/x86/Release/freetype28.lib)
 	endif()
 
 	# Set SDL2_LIBRARY manually
@@ -60,6 +56,9 @@ elseif(UNIX)
 	# Sets ASSIMP_FOUND, ASSIMP_INCLUDE_DIRS, ASSIMP_LIBRARIES
 	find_package(ASSIMP REQUIRED)
 
+	# Find FreeType library
+	find_package(Freetype REQUIRED)
+
 	if(ASSIMP_FOUND MATCHES NOT_FOUND)
 		message(FATAL_ERROR "Did not find ASSIMP, do you have it installed?")
 	elseif(ASSIMP_FOUND MATCHES FOUND)
@@ -67,7 +66,7 @@ elseif(UNIX)
 	endif()
 
 	# Include the found path for our deps on UNIX
-	include_directories(${ASSIMP_INCLUDE_DIRS} ${SDL2_INCLUDE_DIR} ${GLEW_INCLUDE_DIRS} ${ALL_DEP_INCLUDES})
+	include_directories(${ASSIMP_INCLUDE_DIRS} ${SDL2_INCLUDE_DIR} ${GLEW_INCLUDE_DIRS} ${FREETYPE_INCLUDE_DIRS} ${ALL_DEP_INCLUDES})
 endif()
 
 add_subdirectory(src)

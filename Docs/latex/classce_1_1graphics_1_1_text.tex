@@ -1,0 +1,91 @@
+\hypertarget{classce_1_1graphics_1_1_text}{}\section{ce\+:\+:graphics\+:\+:Text Class Reference}
+\label{classce_1_1graphics_1_1_text}\index{ce\+::graphics\+::\+Text@{ce\+::graphics\+::\+Text}}
+
+
+A renderable piece of text.  
+
+
+
+
+{\ttfamily \#include $<$Text.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_text_a54e3ef845a5ae19f298f84c768280fb2}\label{classce_1_1graphics_1_1_text_a54e3ef845a5ae19f298f84c768280fb2}} 
+void {\bfseries set\+Font} (\hyperlink{classce_1_1graphics_1_1_font}{Font} $\ast$font)
+\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_text_a6d91d8e541393513dc999cb9f7627ee5}\label{classce_1_1graphics_1_1_text_a6d91d8e541393513dc999cb9f7627ee5}} 
+void {\bfseries set\+Text} (std\+::string text)
+\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_text_a7f3a666a2a6a0725a61c1cecc437d832}\label{classce_1_1graphics_1_1_text_a7f3a666a2a6a0725a61c1cecc437d832}} 
+void {\bfseries set\+Size} (unsigned int size)
+\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_text_ac9757fb654ae91f3c80eb04f1e7422f9}\label{classce_1_1graphics_1_1_text_ac9757fb654ae91f3c80eb04f1e7422f9}} 
+void {\bfseries set\+Position} (int x, int y)
+\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_text_a97ceb3ee07e53939d0de53546147ef21}\label{classce_1_1graphics_1_1_text_a97ceb3ee07e53939d0de53546147ef21}} 
+void {\bfseries set\+Position} (glm\+::ivec2 pos)
+\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_text_a65b3eeebadc7b36bffe6abc5fcaf7256}\label{classce_1_1graphics_1_1_text_a65b3eeebadc7b36bffe6abc5fcaf7256}} 
+void {\bfseries set\+Color} (glm\+::vec4 color)
+\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_text_a4a88235e0f0a7c5e3b5c529f637a1d49}\label{classce_1_1graphics_1_1_text_a4a88235e0f0a7c5e3b5c529f637a1d49}} 
+void {\bfseries set\+Color} (float r, float g, float b, float a=1.\+0f)
+\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_text_a069d0ec7f8f03fc12228d1fb1f407f27}\label{classce_1_1graphics_1_1_text_a069d0ec7f8f03fc12228d1fb1f407f27}} 
+void {\bfseries draw} (\hyperlink{classce_1_1graphics_1_1_shader}{ce\+::graphics\+::\+Shader} shader)
+\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_text_ac7e5b5679947244d96cc4d592d364936}\label{classce_1_1graphics_1_1_text_ac7e5b5679947244d96cc4d592d364936}} 
+std\+::string {\bfseries get\+Text} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classce_1_1graphics_1_1_text_a666aae08c7a6c6344b0722ffbefd6fb3}{update} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_text_ac24aa6948fcd48f365e8327dc0b0db73}\label{classce_1_1graphics_1_1_text_ac24aa6948fcd48f365e8327dc0b0db73}} 
+\hyperlink{classce_1_1graphics_1_1_font}{ce\+::graphics\+::\+Font} $\ast$ {\bfseries m\+\_\+font}
+\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_text_a172659977452467ed56f00182ba67c13}\label{classce_1_1graphics_1_1_text_a172659977452467ed56f00182ba67c13}} 
+std\+::string {\bfseries m\+\_\+text} = \char`\"{}\char`\"{}
+\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_text_a4f11e340917dbd28cb664a96d8d63ae5}\label{classce_1_1graphics_1_1_text_a4f11e340917dbd28cb664a96d8d63ae5}} 
+unsigned int {\bfseries m\+\_\+size} = 48
+\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_text_a6a154160a60e196464a2371df2a5cf72}\label{classce_1_1graphics_1_1_text_a6a154160a60e196464a2371df2a5cf72}} 
+glm\+::ivec2 {\bfseries m\+\_\+position}
+\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_text_ae23869942fc68b6e59131574fb0aa7a7}\label{classce_1_1graphics_1_1_text_ae23869942fc68b6e59131574fb0aa7a7}} 
+glm\+::vec4 {\bfseries m\+\_\+color} = glm\+::vec4(1.\+0f, 1.\+0f, 1.\+0f, 1.\+0f)
+\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_text_a3290f89985cc8b4f74051235f281d157}\label{classce_1_1graphics_1_1_text_a3290f89985cc8b4f74051235f281d157}} 
+std\+::vector$<$ \hyperlink{structce_1_1graphics_1_1_character}{ce\+::graphics\+::\+Character} $>$ {\bfseries m\+\_\+characters}
+\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_text_a152e95edbed3733f77d6036985e918f6}\label{classce_1_1graphics_1_1_text_a152e95edbed3733f77d6036985e918f6}} 
+G\+Luint {\bfseries m\+\_\+\+V\+AO}
+\item 
+\mbox{\Hypertarget{classce_1_1graphics_1_1_text_a7e5a825933c15cf45ce80de33eb941b7}\label{classce_1_1graphics_1_1_text_a7e5a825933c15cf45ce80de33eb941b7}} 
+G\+Luint {\bfseries m\+\_\+\+V\+BO}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A renderable piece of text. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classce_1_1graphics_1_1_text_a666aae08c7a6c6344b0722ffbefd6fb3}\label{classce_1_1graphics_1_1_text_a666aae08c7a6c6344b0722ffbefd6fb3}} 
+\index{ce\+::graphics\+::\+Text@{ce\+::graphics\+::\+Text}!update@{update}}
+\index{update@{update}!ce\+::graphics\+::\+Text@{ce\+::graphics\+::\+Text}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void ce\+::graphics\+::\+Text\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Updates the characters 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+E\+:/\+Development/\+Game\+Engine/\+C\+Engine/src/\+Graphics/\+Text/Text.\+h\item 
+E\+:/\+Development/\+Game\+Engine/\+C\+Engine/src/\+Graphics/\+Text/Text.\+cpp\end{DoxyCompactItemize}

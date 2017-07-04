@@ -40,7 +40,7 @@ ce::graphics::Mesh::Mesh(VertexArray vertices, IndexArray indices, Material mate
 
 void ce::graphics::Mesh::draw()
 {
-	material.shader->use(); // use the material shader
+	material.shader.use(); // use the material shader
 
 	unsigned int diffuseNr = 1;
 	unsigned int specularNr = 1;
@@ -65,12 +65,12 @@ void ce::graphics::Mesh::draw()
 		}
 
 		std::string shaderUniform = ("material." + name + number).c_str();
-		material.shader->setInt(shaderUniform, i);
+		material.shader.setInt(shaderUniform, i);
 		glBindTexture(GL_TEXTURE_2D, material.textures[i].id);
 	}
 
-	material.shader->setFloat("material.shininess", material.shininess);
-	material.shader->setFloat("material.opacity", material.opacity);
+	material.shader.setFloat("material.shininess", material.shininess);
+	material.shader.setFloat("material.opacity", material.opacity);
 	glActiveTexture(GL_TEXTURE0);
 
 	glBindVertexArray(m_VAO);

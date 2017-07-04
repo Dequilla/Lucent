@@ -4,7 +4,7 @@
 
 ## Requirements
 
-Uses SDL, GLEW, ASSIMP, GLM and OpenGL under the hood.
+Uses Freetype, SDL, GLEW, ASSIMP, GLM and OpenGL under the hood.
 
 #### Building
 CEngine uses CMAKE as it's building system. It is recommended to build out of source.
@@ -14,8 +14,9 @@ On Ubuntu packages(tested):
 - libsdl2-dev
 - libglew-dev
 - libassimp-dev
+- libfreetype6-dev
 
-`sudo apt-get install libsdl2-dev libglew-dev libassimp-dev`
+`sudo apt-get install libsdl2-dev libglew-dev libassimp-dev libfreetype6-dev`
 
 Other distros/unix-based systems are yet to be tested.
 

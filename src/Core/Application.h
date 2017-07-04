@@ -8,6 +8,7 @@
 #include "GLM/glm.hpp"
 
 #include "Core/Utility/log.h"
+#include "Graphics/Text/InitText.h"
 
 #include <iostream>
 #include <string>
@@ -32,12 +33,20 @@ namespace ce { namespace core {
 
 		bool initInternal();
 
+		static void enableVSYNCInternal(bool enabled);
+
 	public:
 		static glm::vec2 getScreenBufferSize();
 		static void setScreenBufferSize(glm::vec2 size);
 		static void setScreenBufferSize(unsigned int w, unsigned int h);
 
 		static bool init(); /**< Initializes some of the libraries used internally, called by the engine first thing that happens */
+
+		static void enableVSYNC(bool enabled);
+
+		int maxDirLights = 0;
+		int maxPointLights = 0;
+		int maxSpotLights = 0;
 
 		// Is a singleton
 		Application() {}

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['gpath',['gPath',['../structce_1_1graphics_1_1_shader_properties.html#af1c3a63df0b9520a9cbb00022a5cf32a',1,'ce::graphics::ShaderProperties']]]
+  ['bearing',['bearing',['../structce_1_1graphics_1_1_character.html#ac4a2c763131a527a79c23607cb3b3218',1,'ce::graphics::Character']]]
 ];

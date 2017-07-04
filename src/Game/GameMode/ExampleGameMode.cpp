@@ -37,6 +37,8 @@ void ce::game::ExampleGameMode::init()
 	ce::game::GameObject camera;
 	m_camera.setProjection(80.f, (float)size.x / (float)size.y, 0.1f, 100.0f);
 	
+	m_cameraTransform.setPosition(0.0f, -2.0f, -3.0f);
+
 	camera.name = "camera";
 	camera.addComponent(&m_cameraTransform);
 	camera.addComponent(&m_camera);
@@ -50,8 +52,24 @@ void ce::game::ExampleGameMode::init()
 	ce::graphics::PointLight pLight;
 	pLight.position = glm::vec3(0.0f, 3.0f, 1.0f);
 	pLight.diffuse = glm::vec3(0.7f, 0.7f, 0.7f);
+	pLight.constant = 0.5f;
 	pLight.linear = 0.022f;
 	pLight.quadratic = 0.0019f;
+
+	ce::graphics::PointLight pLight2;
+	pLight2.position = glm::vec3(3.0f, 3.0f, 9.0f);
+	pLight2.diffuse = glm::vec3(0.7f, 0.1f, 0.1f);
+	pLight2.constant = 0.1f;
+	pLight2.linear = 0.022f;
+	pLight2.quadratic = 0.0019f;
+
+	ce::graphics::PointLight pLight3;
+	pLight3.position = glm::vec3(-3.0f, 3.0f, -9.0f);
+	pLight3.diffuse = glm::vec3(0.1f, 0.1f, 0.7f);
+	pLight3.constant = 0.1f;
+	pLight3.linear = 0.022f;
+	pLight3.quadratic = 0.0019f;
+	
 	ce::graphics::SpotLight sLight;
 	sLight.ambient = glm::vec3(0.1f, 0.1f, 0.1f);
 	sLight.diffuse = glm::vec3(0.8f, 0.8f, 0.8f);
@@ -59,6 +77,8 @@ void ce::game::ExampleGameMode::init()
 
 	m_lights.dirLights.push_back(dLight);
 	m_lights.pointLights.push_back(pLight);
+	m_lights.pointLights.push_back(pLight2);
+	m_lights.pointLights.push_back(pLight3);
 	m_lights.spotLights.push_back(sLight);
 
 	// Input
@@ -80,6 +100,9 @@ void ce::game::ExampleGameMode::init()
 
 void ce::game::ExampleGameMode::begin()
 {
+	glm::vec2 size = ce::core::Application::getScreenBufferSize();
+	m_renderer.setScreenBufferSize(size.x, size.y);
+
 	m_renderer.begin();
 	m_renderer.beginScene(m_camera.getViewMatrix(), m_camera.getProjectionMatrix());
 
