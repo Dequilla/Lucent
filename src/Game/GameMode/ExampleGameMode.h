@@ -10,9 +10,10 @@
 #include "Graphics/Lights.h"
 
 #include "Game/GameObject.h"
+#include "Game/GameObjects/CameraObject.h"
+#include "Game/GameObjects/ModelObject.h"
 #include "Game/Components/TransformComponent.h"
 #include "Game/Components/ModelComponent.h"
-#include "Game/Components/CameraComponent.h"
 
 #include "Core/Application.h"
 
@@ -21,15 +22,11 @@ namespace ce { namespace game {
 	class ExampleGameMode : public GameMode
 	{
 	protected:
-		ce::game::TransformComponent m_transformComponent;
-		ce::game::ModelComponent m_modelComponent;
+		// GameObjects
+		ce::game::ModelObject m_nanosuit;
+		ce::game::ModelObject m_grassy;
+		ce::game::CameraObject m_camera;
 
-		ce::game::TransformComponent m_transformComponentGrassy;
-		ce::game::ModelComponent m_modelComponentGrassy;
-		
-		ce::game::TransformComponent m_cameraTransform;
-		ce::game::CameraComponent m_camera;
-		
 		ce::graphics::ForwardRenderer m_renderer;
 		ce::graphics::LightSetup m_lights;
 

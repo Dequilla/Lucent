@@ -11,7 +11,7 @@ namespace ce { namespace game {
 	class GameObject
 	{
 	protected:
-		std::vector<GameObject> m_children;
+		std::vector<GameObject*> m_children;
 		GameObject* m_parent = nullptr;			  // Also have parent's components creating recursion?
 												  // Only problem: GameObjects inside GameObjects being positioned based on its parent
 		std::vector<BaseComponent*> m_components; // TODO: Give pointer of this to components so all components can access its hosts(game objects) components (eg: modelComps can access transforComps)
@@ -25,6 +25,7 @@ namespace ce { namespace game {
 		GameObject() {}
 		GameObject(GameObject* parent);
 		GameObject(GameObject* parent, std::string name);
+		virtual ~GameObject() {}
 
 		void setParent(GameObject* parent);
 
@@ -33,7 +34,7 @@ namespace ce { namespace game {
 		*
 		* @return A pointer to the game object you added
 		*/
-		GameObject* addChild(GameObject child);
+		GameObject* addChild(GameObject* child);
 
 		/**
 		* \breif Remove this objects child with name
@@ -123,7 +124,7 @@ namespace ce { namespace game {
 	class RootObject : public GameObject
 	{
 	public:
-		RootObject() : GameObject() {};
+		RootObject() : GameObject() { this->name = "root"; };
 		RootObject(GameObject* parent) = delete;
 		RootObject(GameObject* parent, std::string name) = delete;
 	};

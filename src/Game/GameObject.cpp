@@ -11,12 +11,12 @@ ce::game::GameObject::GameObject(GameObject* parent, std::string name)
 	m_parent = parent;
 }
 
-ce::game::GameObject* ce::game::GameObject::addChild(GameObject child)
+ce::game::GameObject* ce::game::GameObject::addChild(GameObject* child)
 {
-	child.setParent(this);
+	child->setParent(this);
 	m_children.push_back(child);
 
-	return &m_children.back();
+	return m_children.back();
 }
 
 void ce::game::GameObject::setParent(GameObject* parent)
@@ -28,7 +28,7 @@ void ce::game::GameObject::removeChild(std::string name)
 {
 	for (int i = 0; i < m_children.size(); i++)
 	{
-		if (m_children[i].name == name)
+		if (m_children[i]->name == name)
 		{
 			m_children.erase(m_children.begin() + i);
 		}
@@ -40,7 +40,7 @@ void ce::game::GameObject::removeObject(std::string name)
 	for (int i = 0; i < m_children.size(); i++)
 	{
 		// Check if names are equal
-		if (m_children[i].name == name)
+		if (m_children[i]->name == name)
 		{
 			m_children.erase(m_children.begin() + i);
 			return; 
@@ -48,7 +48,7 @@ void ce::game::GameObject::removeObject(std::string name)
 		else
 		{
 			// Check the children of this game object
-			m_children[i].removeObject(name);
+			m_children[i]->removeObject(name);
 		}
 	}
 }
@@ -65,7 +65,7 @@ void ce::game::GameObject::tick(float dt)
 	// Tick children
 	for (int i = 0; i < m_children.size(); i++) 
 	{
-		m_children[i].tick(dt);
+		m_children[i]->tick(dt);
 	}
 }
 
@@ -81,7 +81,7 @@ void ce::game::GameObject::draw(ce::graphics::Renderer3D* renderer)
 	// Draw children
 	for (int i = 0; i < m_children.size(); i++)
 	{
-		m_children[i].draw(renderer);
+		m_children[i]->draw(renderer);
 	}
 }
 
@@ -90,23 +90,25 @@ ce::game::GameObject* ce::game::GameObject::getGameObjectByName(std::string name
 	for (int i = 0; i < m_children.size(); i++)
 	{
 		// Check if names are equal
-		if (m_children[i].name == name)
+		if (m_children[i]->name == name)
 		{
-			return &m_children[i];
-		}
-		else
-		{
-			// Check the children of this game object
-			return m_children[i].getGameObjectByName(name);
+			return m_children[i];
 		}
 	}
 
+	for (int i = 0; i < m_children.size(); i++)
+	{
+		// Check the children of this game object
+		return m_children[i]->getGameObjectByName(name);
+	}
+
+	// No where to be found? return nullptr
 	return nullptr;
 }
 
 void ce::game::GameObject::addComponent(ce::game::BaseComponent* component)
 {
-	component->m_hostComponents = &m_components;
+	component->m_hostComponents = &m_components; // Give this component access to this objects components
 	m_components.push_back(component);
 }
 
@@ -121,6 +123,6 @@ void ce::game::GameObject::init()
 	// Do the same for all the children
 	for (int i = 0; i < m_children.size(); i++)
 	{
-		m_children[i].init();
+		m_children[i]->init();
 	}
 }

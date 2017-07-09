@@ -10,8 +10,21 @@ ce::game::GameObject* ce::game::Scene::getGameObjectByName(std::string name)
 	return m_rootObject.getGameObjectByName(name);
 }
 
+ce::game::GameObject* ce::game::Scene::addGameObject(std::string nameOfParent, GameObject * object)
+{
+	// If it matches the root object
+	if (this->m_rootObject.name == nameOfParent)
+	{
+		return this->m_rootObject.addChild(object);
+	}
+
+	// If not root, go through all objects and check for the parent, then add it, then return
+	return m_rootObject.getGameObjectByName(nameOfParent)->addChild(object);;
+}
+
 void ce::game::Scene::init()
 {
+	m_rootObject.name = "root";
 	m_rootObject.init(); // Initializes all the objects
 }
 

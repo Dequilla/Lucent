@@ -15,7 +15,7 @@ namespace ce { namespace core {
 	namespace string
 	{
 		/**
-		* \brief Find and replace some text in a string
+		* \brief Find and replace some text in a string, returns an empty string on failure
 		*
 		* @param source String to replace text in
 		* @param toReplace String to find that should be replaced
@@ -30,7 +30,7 @@ namespace ce { namespace core {
 			if (pos == workable.npos || pos > workable.size())
 			{
 				ce::core::log(CE_AT, "Could not find match to replace. Replacement: \"" + replaceWith + "\" To be replaced: \"" + toReplace + "\"", LOG_WARNING);
-				return workable;
+				return std::string("");
 			}
 
 			workable = workable.replace(pos, toReplace.length(), replaceWith);

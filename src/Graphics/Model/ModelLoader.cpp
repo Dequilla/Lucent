@@ -58,6 +58,7 @@ ce::graphics::Mesh ce::graphics::ModelLoader::processMesh(aiMesh* mesh, const ai
 		float opacity;
 		if (aiReturn_SUCCESS == assimpMaterial->Get(AI_MATKEY_OPACITY, opacity))
 		{
+			// How hard we should treat any translucent texels etc
 			material.opacity = opacity;
 		}
 

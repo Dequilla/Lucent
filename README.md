@@ -35,7 +35,7 @@ You can add `--clean` to create a clean build(ex: `sh build.sh --clean`).
 
 The build will appear in `CEngine/build/bin/src`
 
-#### Window - libraries required
+#### Windows - libraries required
 On Windows any libaries needed come with the project under the "deps"-folder.
 
 

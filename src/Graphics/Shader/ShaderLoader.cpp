@@ -100,6 +100,7 @@ ce::graphics::Shader ce::graphics::ShaderLoader::loadShader(ShaderProperties pro
 
 		// Set the maximum amount of lights
 		fragmentCode = core::string::replace(fragmentCode, "${NUM_DIR_LIGHTS}", std::to_string(ce::core::Application::getInstance().maxDirLights));
+
 		// Comment out lightingloop if we have no lights
 		fragmentCode = core::string::replace(fragmentCode, "${HAS_DIR_LIGHT1}", (ce::core::Application::getInstance().maxDirLights > 0) ? "" : "//");
 		fragmentCode = core::string::replace(fragmentCode, "${HAS_DIR_LIGHT2}", (ce::core::Application::getInstance().maxDirLights > 0) ? "" : "//");

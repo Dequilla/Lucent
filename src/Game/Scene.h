@@ -16,6 +16,7 @@ namespace ce { namespace game {
 	public:
 		RootObject* getRootObject();
 		GameObject* getGameObjectByName(std::string name);
+		GameObject* addGameObject(std::string nameOfParent, GameObject* object);
 
 		void init();
 		void begin();
