@@ -26,6 +26,9 @@ namespace ce { namespace graphics {
 		void submit(const RenderCommand& command) override;
 		void submitMesh(Mesh* mesh, const glm::mat4& transform) override;
 		void submitLightSetup(const LightSetup& lightSetup) override;
+		void submitDirLight(const DirLight& light) override;
+		void submitPointLight(const PointLight& light) override;
+		void submitSpotLight(const SpotLight& light) override;
 		void endScene() override;
 		void end() override;
 		void present() override;

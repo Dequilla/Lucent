@@ -9,6 +9,7 @@ set(CEngineGameSource    Scene.h		Scene.cpp
 						 GameObject.h	GameObject.cpp
 						 GameObjects/CameraObject.h GameObjects/CameraObject.cpp
 						 GameObjects/ModelObject.h	GameObjects/ModelObject.cpp
+						 GameObjects/LightObjects.h	GameObjects/LightObjects.cpp
 
 						 GameMode/GameMode.h		GameMode/GameMode.cpp
 						 GameMode/ExampleGameMode.h GameMode/ExampleGameMode.cpp
@@ -16,6 +17,7 @@ set(CEngineGameSource    Scene.h		Scene.cpp
 						 Components/BaseComponent.h			Components/BaseComponent.cpp
 						 Components/ModelComponent.h		Components/ModelComponent.cpp
 						 Components/CameraComponent.h		Components/CameraComponent.cpp
-						 Components/TransformComponent.h	Components/TransformComponent.cpp)
+						 Components/TransformComponent.h	Components/TransformComponent.cpp
+						 Components/LightComponents.h		Components/LightComponents.cpp)
 
 add_library(CEngineGame ${CEngineGameSource})

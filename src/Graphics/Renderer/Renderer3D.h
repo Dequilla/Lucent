@@ -36,7 +36,10 @@ namespace ce { namespace graphics {
 		virtual void beginScene(glm::mat4 viewMatrix, glm::mat4 projectionMatrix) = 0;			/**< Begining of the scene */
 		virtual void submit(const RenderCommand& command) = 0;					/**< Submit a render command */
 		virtual void submitMesh(Mesh* mesh, const glm::mat4& transform) = 0;	/**< Submit a lone mesh */
-		virtual void submitLightSetup(const LightSetup& lightSetup) = 0;		/**< Submit the light setup to use */
+		virtual void submitLightSetup(const LightSetup& lightSetup) = 0;		/**< Submit the light setup to use. NOTE: this completely replaces any other lights. */
+		virtual void submitDirLight(const DirLight& light) = 0;
+		virtual void submitPointLight(const PointLight& light) = 0;
+		virtual void submitSpotLight(const SpotLight& light) = 0;
 		virtual void endScene() = 0;	/**< Scene ending */
 		virtual void end() = 0;			/**< Render loop ending */
 		virtual void present() = 0;		/**< Do the actual rendering and present it on screen */

@@ -10,6 +10,10 @@ void ce::graphics::ForwardRenderer::begin()
 	glViewport(0, 0, m_screenBufferWidth, m_screenBufferHeight);
 
 	m_commandQueue.clear();
+
+	m_lightSetup.dirLights.clear();
+	m_lightSetup.pointLights.clear();
+	m_lightSetup.spotLights.clear();
 }
 
 void ce::graphics::ForwardRenderer::beginScene(glm::mat4 viewMatrix, glm::mat4 projectionMatrix)
@@ -35,6 +39,21 @@ void ce::graphics::ForwardRenderer::submitMesh(Mesh* mesh, const glm::mat4 & tra
 void ce::graphics::ForwardRenderer::submitLightSetup(const LightSetup& lightSetup)
 {
 	m_lightSetup = lightSetup;
+}
+
+void ce::graphics::ForwardRenderer::submitDirLight(const DirLight & light)
+{
+	m_lightSetup.dirLights.push_back(light);
+}
+
+void ce::graphics::ForwardRenderer::submitPointLight(const PointLight & light)
+{
+	m_lightSetup.pointLights.push_back(light);
+}
+
+void ce::graphics::ForwardRenderer::submitSpotLight(const SpotLight & light)
+{
+	m_lightSetup.spotLights.push_back(light);
 }
 
 void ce::graphics::ForwardRenderer::endScene()
@@ -64,7 +83,7 @@ void ce::graphics::ForwardRenderer::present()
 			glDisable(GL_BLEND);
 		}
 
-		// Temp: submit camera
+		// Temp: submit camera TODO: use uniform buffer or similar
 		command.shader.setMat4("view", m_viewMatrix);
 		command.shader.setMat4("projection", m_projectionMatrix);
 

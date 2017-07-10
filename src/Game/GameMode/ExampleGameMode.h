@@ -12,6 +12,8 @@
 #include "Game/GameObject.h"
 #include "Game/GameObjects/CameraObject.h"
 #include "Game/GameObjects/ModelObject.h"
+#include "Game/GameObjects/LightObjects.h"
+
 #include "Game/Components/TransformComponent.h"
 #include "Game/Components/ModelComponent.h"
 
@@ -26,6 +28,9 @@ namespace ce { namespace game {
 		ce::game::ModelObject m_nanosuit;
 		ce::game::ModelObject m_grassy;
 		ce::game::CameraObject m_camera;
+		ce::game::DirLightObject m_dirLight;
+		ce::game::PointLightObject m_pointLights[2];
+		ce::game::SpotLightObject m_spotLight;
 
 		ce::graphics::ForwardRenderer m_renderer;
 		ce::graphics::LightSetup m_lights;

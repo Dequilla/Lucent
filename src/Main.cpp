@@ -61,7 +61,7 @@ int main(int argc, char* argv[])
 	font.load("Resources/Fonts/MotionControl-Bold.otf");
 	ce::graphics::Text text;
 	text.setFont(&font);
-	text.setColor(1.0f, 0.0f, 0.0f);
+	text.setColor(1.0f, 1.0f, 1.0f);
 	text.setSize(30);
 
 	ce::graphics::ShaderLoader sLoader;

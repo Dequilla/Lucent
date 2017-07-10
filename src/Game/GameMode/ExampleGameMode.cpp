@@ -17,12 +17,12 @@ void ce::game::ExampleGameMode::init()
 	m_grassy.transform()->setScale(2.f, 2.f, 2.f);
 	m_scene.addGameObject("root", &m_grassy);
 
-	ce::graphics::Model nanosuit = loader.loadModel("Resources/Models/Bulb/Bulb.obj");
+	ce::graphics::Model nanosuit = loader.loadModel("Resources/Models/Nanosuit/nanosuit.obj");
 
 	m_nanosuit.name = "nanosuit";
 	m_nanosuit.model()->setModel(nanosuit);
 	m_nanosuit.transform()->setScale(0.2f, 0.2f, 0.2f);
-	m_nanosuit.transform()->move(0.0f, 2.f, 0.0f);
+	m_nanosuit.transform()->move(0.0f, 0.2f, 0.0f);
 	m_scene.addGameObject("root", &m_nanosuit);
 
 	// Camera - a gameobject(extended to CameraObject)
@@ -32,25 +32,29 @@ void ce::game::ExampleGameMode::init()
 	m_scene.addGameObject("root", &m_camera);
 
 	// Lights
-	ce::graphics::DirLight dLight;
-	dLight.ambient = glm::vec3(0.005f, 0.005f, 0.005f);
-	dLight.diffuse = glm::vec3(0.02f, 0.02f, 0.02f);
-	dLight.specular = glm::vec3(0.03f, 0.03f, 0.03f);
-	ce::graphics::PointLight pLight;
-	pLight.position = glm::vec3(0.0f, 4.f, 0.0f);
-	pLight.diffuse = glm::vec3(0.7f, 0.7f, 0.7f);
-	pLight.constant = 0.5f;
-	pLight.linear = 0.022f;
-	pLight.quadratic = 0.0019f;
-	
-	ce::graphics::SpotLight sLight;
-	sLight.ambient = glm::vec3(0.1f, 0.1f, 0.1f);
-	sLight.diffuse = glm::vec3(0.8f, 0.8f, 0.8f);
-	sLight.specular = glm::vec3(1.0f, 1.0f, 1.0f);
+	m_dirLight.light()->ambient = glm::vec3(0.005f, 0.005f, 0.005f);
+	m_dirLight.light()->diffuse = glm::vec3(0.02f, 0.02f, 0.02f);
+	m_dirLight.light()->specular = glm::vec3(0.03f, 0.03f, 0.03f);
+	m_scene.addGameObject("root", &m_dirLight);
 
-	m_lights.dirLights.push_back(dLight);
-	m_lights.pointLights.push_back(pLight);
-	m_lights.spotLights.push_back(sLight);
+	m_pointLights[0].light()->position = glm::vec3(0.0f, 2.f, 0.0f);
+	m_pointLights[0].light()->diffuse = glm::vec3(0.7f, 0.7f, 0.7f);
+	m_pointLights[0].light()->constant = 0.5f;
+	m_pointLights[0].light()->linear = 0.022f;
+	m_pointLights[0].light()->quadratic = 0.0019f;
+	m_scene.addGameObject("root", &m_pointLights[0]);
+
+	m_pointLights[1].light()->position = glm::vec3(10.0f, 2.f, 10.0f);
+	m_pointLights[1].light()->diffuse = glm::vec3(0.7f, 0.7f, 0.2f);
+	m_pointLights[1].light()->constant = 0.5f;
+	m_pointLights[1].light()->linear = 0.022f;
+	m_pointLights[1].light()->quadratic = 0.0019f;
+	m_scene.addGameObject("root", &m_pointLights[1]);
+
+	m_spotLight.light()->ambient = glm::vec3(0.1f, 0.1f, 0.1f);
+	m_spotLight.light()->diffuse = glm::vec3(0.8f, 0.8f, 0.8f);
+	m_spotLight.light()->specular = glm::vec3(1.0f, 1.0f, 1.0f);
+	m_scene.addGameObject("root", &m_spotLight);
 
 	// Input
 	m_input.bindAxisEvent(ce::core::M_MOTION_XREL, this, &ExampleGameMode::cameraYaw);
@@ -106,16 +110,14 @@ void ce::game::ExampleGameMode::tick(float dt)
 
 	m_camera.transform()->setRotation(m_orientPitch, m_orientYaw, 0.0f);
 	
-	m_lights.spotLights.at(0).position = glm::vec3(-m_camera.transform()->getPosition().x, -m_camera.transform()->getPosition().y, -m_camera.transform()->getPosition().z);
-	m_lights.spotLights.at(0).direction = m_camera.camera()->getForwardVector();
+	m_spotLight.light()->position = glm::vec3(-m_camera.transform()->getPosition().x, -m_camera.transform()->getPosition().y, -m_camera.transform()->getPosition().z);
+	m_spotLight.light()->direction = m_camera.camera()->getForwardVector();
 
 	GameMode::tick(dt);
 }
 
 void ce::game::ExampleGameMode::draw()
 {
-	m_renderer.submitLightSetup(m_lights);
-
 	GameMode::draw(&m_renderer);
 }
 
@@ -124,7 +126,7 @@ void ce::game::ExampleGameMode::end()
 	m_renderer.endScene();
 	m_renderer.end();
 
-	m_renderer.present();
+	m_renderer.present(); // The "actual" drawing of everything to screen
 
 	GameMode::end();
 }
@@ -166,24 +168,24 @@ void ce::game::ExampleGameMode::moveBackward(bool pressed)
 
 void ce::game::ExampleGameMode::movePLightF(bool pressed)
 {
-	m_lights.pointLights.at(0).position += glm::vec3(0.0f, 0.0f, -0.2f);
+	m_pointLights[0].light()->position += glm::vec3(0.0f, 0.0f, -0.2f);
 	m_nanosuit.transform()->move(glm::vec3(0.0f, 0.0f, -0.2f));
 }
 
 void ce::game::ExampleGameMode::movePLightB(bool pressed)
 {
-	m_lights.pointLights.at(0).position += glm::vec3(0.0f, 0.0f, 0.2f);
+	m_pointLights[0].light()->position += glm::vec3(0.0f, 0.0f, 0.2f);
 	m_nanosuit.transform()->move(glm::vec3(0.0f, 0.0f, 0.2f));
 }
 
 void ce::game::ExampleGameMode::movePLightL(bool pressed)
 {
-	m_lights.pointLights.at(0).position += glm::vec3(-0.2f, 0.0f, 0.0f);
+	m_pointLights[0].light()->position += glm::vec3(-0.2f, 0.0f, 0.0f);
 	m_nanosuit.transform()->move(glm::vec3(-0.2f, 0.0f, 0.0f));
 }
 
 void ce::game::ExampleGameMode::movePLightR(bool pressed)
 {
-	m_lights.pointLights.at(0).position += glm::vec3(0.2f, 0.0f, 0.0f);
+	m_pointLights[0].light()->position += glm::vec3(0.2f, 0.0f, 0.0f);
 	m_nanosuit.transform()->move(glm::vec3(0.2f, 0.0f, 0.0f));
 }
