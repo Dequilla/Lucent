@@ -13,7 +13,8 @@ set(ALL_DEP_INCLUDES ${CEngineDependencies}/include/All)
 
 # Include our source files
 set(OUR_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
-include_directories(${OUR_SRC_DIR})
+set(OUR_INC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
+include_directories(${OUR_SRC_DIR} ${OUR_INC_DIR})
 
 # Dependencies
 # OpenGL

@@ -1,4 +1,4 @@
-#include "Application.h"
+#include "Core/Application.h"
 
 glm::vec2 ce::core::Application::getScreenBufferSizeInternal()
 {

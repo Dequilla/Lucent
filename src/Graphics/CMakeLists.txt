@@ -5,26 +5,28 @@ add_subdirectory(Model)
 add_subdirectory(Shader)
 add_subdirectory(Renderer)
 
-set(CEngineGraphicsSource Texture.h	 Texture.cpp
-						  Lights.h	 Lights.cpp
-						  Vertex.h
-						  Transform.h Transform.cpp
+set(INC_GRAPHICS_DIR ${OUR_INC_DIR}/Graphics)
 
-						  Shader/Shader.h			Shader/Shader.cpp
-						  Shader/ShaderLoader.h		Shader/ShaderLoader.cpp
+set(CEngineGraphicsSource 	${INC_GRAPHICS_DIR}/Texture.h	 	Texture.cpp
+							${INC_GRAPHICS_DIR}/Lights.h	 	Lights.cpp
+							${INC_GRAPHICS_DIR}/Vertex.h
+							${INC_GRAPHICS_DIR}/Transform.h 	Transform.cpp
 
-						  Text/InitText.h	Text/InitText.cpp
-						  Text/Font.h		Text/Font.cpp
-						  Text/Text.h		Text/Text.cpp	
+						  ${INC_GRAPHICS_DIR}/Shader/Shader.h			Shader/Shader.cpp
+						  ${INC_GRAPHICS_DIR}/Shader/ShaderLoader.h		Shader/ShaderLoader.cpp
 
-						  Renderer/Renderer3D.h			Renderer/Renderer3D.cpp
-						  Renderer/ForwardRenderer.h	Renderer/ForwardRenderer.cpp
-						  Renderer/RenderCommand.h
+						  ${INC_GRAPHICS_DIR}/Text/InitText.h	Text/InitText.cpp
+						  ${INC_GRAPHICS_DIR}/Text/Font.h		Text/Font.cpp
+						  ${INC_GRAPHICS_DIR}/Text/Text.h		Text/Text.cpp	
 
-						  Model/ModelLoader.h Model/ModelLoader.cpp
-						  Model/Material.h	  Model/Material.cpp
-						  Model/Mesh.h		  Model/Mesh.cpp
-						  Model/Model.h		  Model/Model.cpp)
+						  ${INC_GRAPHICS_DIR}/Renderer/Renderer3D.h			Renderer/Renderer3D.cpp
+						  ${INC_GRAPHICS_DIR}/Renderer/ForwardRenderer.h	Renderer/ForwardRenderer.cpp
+						  ${INC_GRAPHICS_DIR}/Renderer/RenderCommand.h
+
+						  ${INC_GRAPHICS_DIR}/Model/ModelLoader.h 	Model/ModelLoader.cpp
+						  ${INC_GRAPHICS_DIR}/Model/Material.h	  	Model/Material.cpp
+						  ${INC_GRAPHICS_DIR}/Model/Mesh.h		  	Model/Mesh.cpp
+						  ${INC_GRAPHICS_DIR}/Model/Model.h		  	Model/Model.cpp)
 
 
 add_library(CEngineGraphics ${CEngineGraphicsSource})

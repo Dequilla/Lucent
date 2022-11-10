@@ -1,4 +1,4 @@
-#include "GameObject.h"
+#include "Game/GameObject.h"
 
 ce::game::GameObject::GameObject(GameObject* parent)
 {

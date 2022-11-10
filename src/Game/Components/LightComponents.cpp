@@ -1,4 +1,4 @@
-#include "LightComponents.h"
+#include "Game/Components/LightComponents.h"
 
 void ce::game::DirLightComponent::init()
 {

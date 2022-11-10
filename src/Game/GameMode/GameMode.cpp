@@ -1,4 +1,4 @@
-#include "GameMode.h"
+#include "Game/GameMode/GameMode.h"
 
 void ce::game::GameMode::checkInput(const SDL_Event& input)
 {

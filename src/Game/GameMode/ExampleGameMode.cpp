@@ -1,4 +1,4 @@
-#include "ExampleGameMode.h"
+#include "Game/GameMode/ExampleGameMode.h"
 
 void ce::game::ExampleGameMode::init()
 {

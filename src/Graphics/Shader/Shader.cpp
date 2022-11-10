@@ -1,4 +1,4 @@
-#include "Shader.h"
+#include "Graphics/Shader/Shader.h"
 
 void ce::graphics::Shader::use()
 {

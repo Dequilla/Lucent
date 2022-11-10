@@ -1,4 +1,4 @@
-#include "TransformComponent.h"
+#include "Game/Components/TransformComponent.h"
 
 void ce::game::TransformComponent::init()
 {

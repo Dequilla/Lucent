@@ -1,4 +1,4 @@
-#include "Scene.h"
+#include "Game/Scene.h"
 
 ce::game::RootObject* ce::game::Scene::getRootObject()
 {

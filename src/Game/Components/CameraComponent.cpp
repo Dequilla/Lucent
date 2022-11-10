@@ -1,4 +1,4 @@
-#include "CameraComponent.h"
+#include "Game/Components/CameraComponent.h"
 
 ce::game::CameraComponent::CameraComponent()
 {

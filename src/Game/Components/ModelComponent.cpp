@@ -1,4 +1,4 @@
-#include "ModelComponent.h"
+#include "Game/Components/ModelComponent.h"
 
 void ce::game::ModelComponent::init()
 {

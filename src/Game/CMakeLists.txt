@@ -4,20 +4,22 @@ add_subdirectory(Components)
 add_subdirectory(GameMode)
 add_subdirectory(GameObjects)
 
-set(CEngineGameSource    Scene.h		Scene.cpp
-						 
-						 GameObject.h	GameObject.cpp
-						 GameObjects/CameraObject.h GameObjects/CameraObject.cpp
-						 GameObjects/ModelObject.h	GameObjects/ModelObject.cpp
-						 GameObjects/LightObjects.h	GameObjects/LightObjects.cpp
+set(INC_GAME_DIR ${OUR_INC_DIR}/Game)
 
-						 GameMode/GameMode.h		GameMode/GameMode.cpp
-						 GameMode/ExampleGameMode.h GameMode/ExampleGameMode.cpp
+set(CEngineGameSource   ${INC_GAME_DIR}/Scene.h							Scene.cpp
+						 	
+						${INC_GAME_DIR}/GameObject.h					GameObject.cpp
+						${INC_GAME_DIR}/GameObjects/CameraObject.h 		GameObjects/CameraObject.cpp
+						${INC_GAME_DIR}/GameObjects/ModelObject.h		GameObjects/ModelObject.cpp
+						${INC_GAME_DIR}/GameObjects/LightObjects.h		GameObjects/LightObjects.cpp
+	
+						${INC_GAME_DIR}/GameMode/GameMode.h				GameMode/GameMode.cpp
+						${INC_GAME_DIR}/GameMode/ExampleGameMode.h 		GameMode/ExampleGameMode.cpp
 
-						 Components/BaseComponent.h			Components/BaseComponent.cpp
-						 Components/ModelComponent.h		Components/ModelComponent.cpp
-						 Components/CameraComponent.h		Components/CameraComponent.cpp
-						 Components/TransformComponent.h	Components/TransformComponent.cpp
-						 Components/LightComponents.h		Components/LightComponents.cpp)
+						${INC_GAME_DIR}/Components/BaseComponent.h		Components/BaseComponent.cpp
+						${INC_GAME_DIR}/Components/ModelComponent.h		Components/ModelComponent.cpp
+						${INC_GAME_DIR}/Components/CameraComponent.h	Components/CameraComponent.cpp
+						${INC_GAME_DIR}/Components/TransformComponent.h	Components/TransformComponent.cpp
+						${INC_GAME_DIR}/Components/LightComponents.h	Components/LightComponents.cpp)
 
 add_library(CEngineGame ${CEngineGameSource})

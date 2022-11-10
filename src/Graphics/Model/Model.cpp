@@ -1,4 +1,4 @@
-#include "Model.h"
+#include "Graphics/Model/Model.h"
 
 ce::graphics::Model::Model(std::vector<std::shared_ptr<Mesh>> meshes)
 {

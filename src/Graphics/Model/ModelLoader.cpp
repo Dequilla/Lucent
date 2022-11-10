@@ -1,4 +1,4 @@
-#include "ModelLoader.h"
+#include "Graphics/Model/ModelLoader.h"
 
 std::unordered_map<std::string, ce::graphics::Model> ce::graphics::ModelLoader::m_models;
 

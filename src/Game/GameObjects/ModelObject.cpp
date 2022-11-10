@@ -1,4 +1,4 @@
-#include "ModelObject.h"
+#include "Game/GameObjects/ModelObject.h"
 
 ce::game::ModelObject::ModelObject()
 {

@@ -1,4 +1,4 @@
-#include "ForwardRenderer.h"
+#include "Graphics/Renderer/ForwardRenderer.h"
 
 void ce::graphics::ForwardRenderer::init()
 {

@@ -1,4 +1,4 @@
-#include "Text.h"
+#include "Graphics/Text/Text.h"
 
 ce::graphics::Text::Text()
 {

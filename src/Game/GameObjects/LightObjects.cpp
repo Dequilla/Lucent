@@ -1,4 +1,4 @@
-#include "LightObjects.h"
+#include "Game/GameObjects/LightObjects.h"
 
 ce::game::DirLightObject::DirLightObject()
 {

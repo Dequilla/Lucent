@@ -1,4 +1,4 @@
-#include "Mesh.h"
+#include "Graphics/Model/Mesh.h"
 
 void ce::graphics::Mesh::setupMesh()
 {

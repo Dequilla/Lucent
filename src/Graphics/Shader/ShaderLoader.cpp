@@ -1,4 +1,4 @@
-#include "ShaderLoader.h"
+#include "Graphics/Shader/ShaderLoader.h"
 
 // Define static member
 std::vector<std::pair<ce::graphics::ShaderProperties, ce::graphics::Shader>> ce::graphics::ShaderLoader::m_loadedShaders;
@@ -98,6 +98,7 @@ ce::graphics::Shader ce::graphics::ShaderLoader::loadShader(ShaderProperties pro
 				, ce::core::LOG_WARNING);
 		}
 
+		
 		// Set the maximum amount of lights
 		fragmentCode = core::string::replace(fragmentCode, "${NUM_DIR_LIGHTS}", std::to_string(ce::core::Application::getInstance().maxDirLights));
 
@@ -114,6 +115,7 @@ ce::graphics::Shader ce::graphics::ShaderLoader::loadShader(ShaderProperties pro
 		// Comment out lightingloop if we have no lights
 		fragmentCode = core::string::replace(fragmentCode, "${HAS_SPOT_LIGHT1}", (ce::core::Application::getInstance().maxSpotLights > 0) ? "" : "//");
 		fragmentCode = core::string::replace(fragmentCode, "${HAS_SPOT_LIGHT2}", (ce::core::Application::getInstance().maxSpotLights > 0) ? "" : "//");
+	
 
 		const GLchar* vertexSource = vertexCode.c_str();
 		const GLchar* fragmentSource = fragmentCode.c_str();
