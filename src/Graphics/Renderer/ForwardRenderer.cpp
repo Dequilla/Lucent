@@ -1,11 +1,11 @@
 #include "Graphics/Renderer/ForwardRenderer.h"
 
-void ce::graphics::ForwardRenderer::init()
+void lu::graphics::ForwardRenderer::init()
 {
 	m_commandQueue.reserve(1000);
 }
 
-void ce::graphics::ForwardRenderer::begin()
+void lu::graphics::ForwardRenderer::begin()
 {
 	glViewport(0, 0, m_screenBufferWidth, m_screenBufferHeight);
 
@@ -16,18 +16,18 @@ void ce::graphics::ForwardRenderer::begin()
 	m_lightSetup.spotLights.clear();
 }
 
-void ce::graphics::ForwardRenderer::beginScene(glm::mat4 viewMatrix, glm::mat4 projectionMatrix)
+void lu::graphics::ForwardRenderer::beginScene(glm::mat4 viewMatrix, glm::mat4 projectionMatrix)
 {
 	m_viewMatrix = viewMatrix;
 	m_projectionMatrix = projectionMatrix;
 }
 
-void ce::graphics::ForwardRenderer::submit(const RenderCommand& command)
+void lu::graphics::ForwardRenderer::submit(const RenderCommand& command)
 {
 	m_commandQueue.push_back(command);
 }
 
-void ce::graphics::ForwardRenderer::submitMesh(Mesh* mesh, const glm::mat4 & transform)
+void lu::graphics::ForwardRenderer::submitMesh(Mesh* mesh, const glm::mat4 & transform)
 {
 	RenderCommand command;
 	command.mesh = mesh;
@@ -36,36 +36,36 @@ void ce::graphics::ForwardRenderer::submitMesh(Mesh* mesh, const glm::mat4 & tra
 	submit(command);
 }
 
-void ce::graphics::ForwardRenderer::submitLightSetup(const LightSetup& lightSetup)
+void lu::graphics::ForwardRenderer::submitLightSetup(const LightSetup& lightSetup)
 {
 	m_lightSetup = lightSetup;
 }
 
-void ce::graphics::ForwardRenderer::submitDirLight(const DirLight & light)
+void lu::graphics::ForwardRenderer::submitDirLight(const DirLight & light)
 {
 	m_lightSetup.dirLights.push_back(light);
 }
 
-void ce::graphics::ForwardRenderer::submitPointLight(const PointLight & light)
+void lu::graphics::ForwardRenderer::submitPointLight(const PointLight & light)
 {
 	m_lightSetup.pointLights.push_back(light);
 }
 
-void ce::graphics::ForwardRenderer::submitSpotLight(const SpotLight & light)
+void lu::graphics::ForwardRenderer::submitSpotLight(const SpotLight & light)
 {
 	m_lightSetup.spotLights.push_back(light);
 }
 
-void ce::graphics::ForwardRenderer::endScene()
+void lu::graphics::ForwardRenderer::endScene()
 {
 }
 
-void ce::graphics::ForwardRenderer::end()
+void lu::graphics::ForwardRenderer::end()
 {
 	// TODO: Batching and sorting etc
 }
 
-void ce::graphics::ForwardRenderer::present()
+void lu::graphics::ForwardRenderer::present()
 {
 	// TODO: Shader binding, texture sorting, visibility testing
 	for (unsigned int i = 0; i < m_commandQueue.size(); i++)

@@ -10,7 +10,7 @@
 #include "Graphics/Renderer/ForwardRenderer.h"
 #include "Graphics/Renderer/RenderCommand.h"
 
-namespace ce { namespace graphics {
+namespace lu { namespace graphics {
 
 	/**
 	* \brief A model object

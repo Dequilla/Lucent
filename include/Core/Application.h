@@ -13,7 +13,7 @@
 #include <iostream>
 #include <string>
 
-namespace ce { namespace core { 
+namespace lu { namespace core { 
 
 	/**
 	* \brief Application singlton containing context info needed by some components.

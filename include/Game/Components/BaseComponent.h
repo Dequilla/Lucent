@@ -4,7 +4,7 @@
 
 #include "Graphics/Renderer/Renderer3D.h"
 
-namespace ce { namespace game {
+namespace lu { namespace game {
 
 	class BaseComponent
 	{
@@ -28,7 +28,7 @@ namespace ce { namespace game {
 		virtual void init() = 0;
 
 		virtual void tick(float dt) = 0;
-		virtual void draw(ce::graphics::Renderer3D* renderer) = 0;
+		virtual void draw(lu::graphics::Renderer3D* renderer) = 0;
 
 		/**
 		* \brief Returns the type of Component in a string value
@@ -48,7 +48,7 @@ namespace ce { namespace game {
 	};
 
 	template<class T>
-	inline std::vector<T*> ce::game::BaseComponent::getHostComponentsOfType(std::string type)
+	inline std::vector<T*> lu::game::BaseComponent::getHostComponentsOfType(std::string type)
 	{
 		int count = 0;
 		std::vector<T*> result;

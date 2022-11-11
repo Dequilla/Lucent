@@ -15,7 +15,7 @@
 #include "GL/glew.h"
 #include "GLM/glm.hpp"
 
-namespace ce { namespace graphics {
+namespace lu { namespace graphics {
 
 	/**
 	* \brief Shader class mostly a container for the id and contains some helper functions

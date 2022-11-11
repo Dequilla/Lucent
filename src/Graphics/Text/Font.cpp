@@ -1,43 +1,43 @@
 #include "Graphics/Text/Font.h"
 
-ce::graphics::Font::Font()
+lu::graphics::Font::Font()
 {
 }
 
-ce::graphics::Font::Font(std::string path)
+lu::graphics::Font::Font(std::string path)
 {
 	load(path);
 }
 
-ce::graphics::Font::~Font()
+lu::graphics::Font::~Font()
 {
 	FT_Done_Face(m_ftFace);
 }
 
-bool ce::graphics::Font::load(std::string path)
+bool lu::graphics::Font::load(std::string path)
 {
-	FT_Error err = FT_New_Face(ce::graphics::ftLib, path.c_str(), 0, &m_ftFace);
+	FT_Error err = FT_New_Face(lu::graphics::ftLib, path.c_str(), 0, &m_ftFace);
 	if (err)
 	{
-		ce::core::log("Failed to load font (" + path + "), FT error: " + std::string(FT_getErrorMessage(err)), ce::core::LOG_ERROR);
+		lu::core::log("Failed to load font (" + path + "), FT error: " + std::string(FT_getErrorMessage(err)), lu::core::LOG_ERROR);
 		return false;
 	}
 
 	return true;
 }
 
-ce::graphics::Character ce::graphics::Font::getCharacter(unsigned long charCode, unsigned int height, unsigned int width)
+lu::graphics::Character lu::graphics::Font::getCharacter(unsigned long charCode, unsigned int height, unsigned int width)
 {
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1); // Disable byte-alignment restriction
 
-	ce::graphics::Character character;
+	lu::graphics::Character character;
 
 	FT_Set_Pixel_Sizes(m_ftFace, width, height);
 
 	FT_Error err = FT_Load_Char(m_ftFace, charCode, FT_LOAD_RENDER);
 	if (err)
 	{
-		ce::core::log("Failed to load glyph: " + std::to_string(charCode) + "(" + (char)charCode + "), FT error: " + std::string(FT_getErrorMessage(err)), ce::core::LOG_ERROR);
+		lu::core::log("Failed to load glyph: " + std::to_string(charCode) + "(" + (char)charCode + "), FT error: " + std::string(FT_getErrorMessage(err)), lu::core::LOG_ERROR);
 		return Character();
 	}
 

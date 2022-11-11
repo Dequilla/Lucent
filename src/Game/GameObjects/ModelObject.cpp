@@ -1,6 +1,6 @@
 #include "Game/GameObjects/ModelObject.h"
 
-ce::game::ModelObject::ModelObject()
+lu::game::ModelObject::ModelObject()
 {
 	this->addComponent(&m_transformComponent);
 	this->addComponent(&m_modelComponent);

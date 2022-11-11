@@ -1,15 +1,15 @@
 #include "Game/GameMode/ExampleGameMode.h"
 
-void ce::game::ExampleGameMode::init()
+void lu::game::ExampleGameMode::init()
 {
-	glm::vec2 size = ce::core::Application::getScreenBufferSize();
+	glm::vec2 size = lu::core::Application::getScreenBufferSize();
 
 	m_renderer.setScreenBufferSize(size.x, size.y);
 
 	// Game objects
-	ce::graphics::ModelLoader loader;
+	lu::graphics::ModelLoader loader;
 	
-	ce::graphics::Model grassyModel = loader.loadModel("Resources/Models/Grassy/grassy.obj");
+	lu::graphics::Model grassyModel = loader.loadModel("Resources/Models/Grassy/grassy.obj");
 
 	m_grassy.name = "grassy";
 	m_grassy.model()->setModel(grassyModel);
@@ -17,7 +17,7 @@ void ce::game::ExampleGameMode::init()
 	m_grassy.transform()->setScale(2.f, 2.f, 2.f);
 	m_scene.addGameObject("root", &m_grassy);
 
-	ce::graphics::Model nanosuit = loader.loadModel("Resources/Models/Nanosuit/nanosuit.obj");
+	lu::graphics::Model nanosuit = loader.loadModel("Resources/Models/Nanosuit/nanosuit.obj");
 
 	m_nanosuit.name = "nanosuit";
 	m_nanosuit.model()->setModel(nanosuit);
@@ -57,25 +57,25 @@ void ce::game::ExampleGameMode::init()
 	m_scene.addGameObject("root", &m_spotLight);
 
 	// Input
-	m_input.bindAxisEvent(ce::core::M_MOTION_XREL, this, &ExampleGameMode::cameraYaw);
-	m_input.bindAxisEvent(ce::core::M_MOTION_YREL, this, &ExampleGameMode::cameraPitch);
+	m_input.bindAxisEvent(lu::core::M_MOTION_XREL, this, &ExampleGameMode::cameraYaw);
+	m_input.bindAxisEvent(lu::core::M_MOTION_YREL, this, &ExampleGameMode::cameraPitch);
 
-	m_input.bindButtonEvent(ce::core::K_w, this, &ExampleGameMode::moveForward);
-	m_input.bindButtonEvent(ce::core::K_s, this, &ExampleGameMode::moveBackward);
-	m_input.bindButtonEvent(ce::core::K_a, this, &ExampleGameMode::moveLeft);
-	m_input.bindButtonEvent(ce::core::K_d, this, &ExampleGameMode::moveRight);
+	m_input.bindButtonEvent(lu::core::K_w, this, &ExampleGameMode::moveForward);
+	m_input.bindButtonEvent(lu::core::K_s, this, &ExampleGameMode::moveBackward);
+	m_input.bindButtonEvent(lu::core::K_a, this, &ExampleGameMode::moveLeft);
+	m_input.bindButtonEvent(lu::core::K_d, this, &ExampleGameMode::moveRight);
 
-	m_input.bindButtonEvent(ce::core::K_h, this, &ExampleGameMode::movePLightF);
-	m_input.bindButtonEvent(ce::core::K_j, this, &ExampleGameMode::movePLightB);
-	m_input.bindButtonEvent(ce::core::K_k, this, &ExampleGameMode::movePLightL);
-	m_input.bindButtonEvent(ce::core::K_l, this, &ExampleGameMode::movePLightR);
+	m_input.bindButtonEvent(lu::core::K_h, this, &ExampleGameMode::movePLightF);
+	m_input.bindButtonEvent(lu::core::K_j, this, &ExampleGameMode::movePLightB);
+	m_input.bindButtonEvent(lu::core::K_k, this, &ExampleGameMode::movePLightL);
+	m_input.bindButtonEvent(lu::core::K_l, this, &ExampleGameMode::movePLightR);
 
 	GameMode::init();
 }
 
-void ce::game::ExampleGameMode::begin()
+void lu::game::ExampleGameMode::begin()
 {
-	glm::vec2 size = ce::core::Application::getScreenBufferSize();
+	glm::vec2 size = lu::core::Application::getScreenBufferSize();
 	m_renderer.setScreenBufferSize(size.x, size.y);
 
 	m_renderer.begin();
@@ -84,7 +84,7 @@ void ce::game::ExampleGameMode::begin()
 	GameMode::begin();
 }
 
-void ce::game::ExampleGameMode::tick(float dt)
+void lu::game::ExampleGameMode::tick(float dt)
 {
 	float speed = 10.0f * dt;
 
@@ -116,12 +116,12 @@ void ce::game::ExampleGameMode::tick(float dt)
 	GameMode::tick(dt);
 }
 
-void ce::game::ExampleGameMode::draw()
+void lu::game::ExampleGameMode::draw()
 {
 	GameMode::draw(&m_renderer);
 }
 
-void ce::game::ExampleGameMode::end()
+void lu::game::ExampleGameMode::end()
 {
 	m_renderer.endScene();
 	m_renderer.end();
@@ -131,12 +131,12 @@ void ce::game::ExampleGameMode::end()
 	GameMode::end();
 }
 
-void ce::game::ExampleGameMode::cameraYaw(float axis)
+void lu::game::ExampleGameMode::cameraYaw(float axis)
 {
 	m_orientYaw += axis * 0.5f;
 }
 
-void ce::game::ExampleGameMode::cameraPitch(float axis)
+void lu::game::ExampleGameMode::cameraPitch(float axis)
 {
 	m_orientPitch += axis * 0.5f;
 	
@@ -146,45 +146,45 @@ void ce::game::ExampleGameMode::cameraPitch(float axis)
 		m_orientPitch = -89.9f;
 }
 
-void ce::game::ExampleGameMode::moveLeft(bool pressed)
+void lu::game::ExampleGameMode::moveLeft(bool pressed)
 {
 	m_moveLeft = pressed;
 }
 
-void ce::game::ExampleGameMode::moveRight(bool pressed)
+void lu::game::ExampleGameMode::moveRight(bool pressed)
 {
 	m_moveRight = pressed;
 }
 
-void ce::game::ExampleGameMode::moveForward(bool pressed)
+void lu::game::ExampleGameMode::moveForward(bool pressed)
 {
 	m_moveForward = pressed;
 }
 
-void ce::game::ExampleGameMode::moveBackward(bool pressed)
+void lu::game::ExampleGameMode::moveBackward(bool pressed)
 {
 	m_moveBackward = pressed;
 }
 
-void ce::game::ExampleGameMode::movePLightF(bool pressed)
+void lu::game::ExampleGameMode::movePLightF(bool pressed)
 {
 	m_pointLights[0].light()->position += glm::vec3(0.0f, 0.0f, -0.2f);
 	m_nanosuit.transform()->move(glm::vec3(0.0f, 0.0f, -0.2f));
 }
 
-void ce::game::ExampleGameMode::movePLightB(bool pressed)
+void lu::game::ExampleGameMode::movePLightB(bool pressed)
 {
 	m_pointLights[0].light()->position += glm::vec3(0.0f, 0.0f, 0.2f);
 	m_nanosuit.transform()->move(glm::vec3(0.0f, 0.0f, 0.2f));
 }
 
-void ce::game::ExampleGameMode::movePLightL(bool pressed)
+void lu::game::ExampleGameMode::movePLightL(bool pressed)
 {
 	m_pointLights[0].light()->position += glm::vec3(-0.2f, 0.0f, 0.0f);
 	m_nanosuit.transform()->move(glm::vec3(-0.2f, 0.0f, 0.0f));
 }
 
-void ce::game::ExampleGameMode::movePLightR(bool pressed)
+void lu::game::ExampleGameMode::movePLightR(bool pressed)
 {
 	m_pointLights[0].light()->position += glm::vec3(0.2f, 0.0f, 0.0f);
 	m_nanosuit.transform()->move(glm::vec3(0.2f, 0.0f, 0.0f));

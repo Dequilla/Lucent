@@ -1,17 +1,17 @@
 #include "Graphics/Model/Model.h"
 
-ce::graphics::Model::Model(std::vector<std::shared_ptr<Mesh>> meshes)
+lu::graphics::Model::Model(std::vector<std::shared_ptr<Mesh>> meshes)
 {
 	m_meshes = meshes;
 }
 
-void ce::graphics::Model::draw()
+void lu::graphics::Model::draw()
 {
 	for (unsigned int i = 0; i < m_meshes.size(); i++)
 		m_meshes[i].get()->draw();
 }
 
-void ce::graphics::Model::draw(Renderer3D* renderer, glm::mat4 modelMatrix)
+void lu::graphics::Model::draw(Renderer3D* renderer, glm::mat4 modelMatrix)
 {
 	for (unsigned int i = 0; i < m_meshes.size(); i++)
 	{

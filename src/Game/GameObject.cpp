@@ -1,17 +1,17 @@
 #include "Game/GameObject.h"
 
-ce::game::GameObject::GameObject(GameObject* parent)
+lu::game::GameObject::GameObject(GameObject* parent)
 {
 	m_parent = parent;
 }
 
-ce::game::GameObject::GameObject(GameObject* parent, std::string name)
+lu::game::GameObject::GameObject(GameObject* parent, std::string name)
 {
 	this->name = name;
 	m_parent = parent;
 }
 
-ce::game::GameObject* ce::game::GameObject::addChild(GameObject* child)
+lu::game::GameObject* lu::game::GameObject::addChild(GameObject* child)
 {
 	child->setParent(this);
 	m_children.push_back(child);
@@ -19,12 +19,12 @@ ce::game::GameObject* ce::game::GameObject::addChild(GameObject* child)
 	return m_children.back();
 }
 
-void ce::game::GameObject::setParent(GameObject* parent)
+void lu::game::GameObject::setParent(GameObject* parent)
 {
 	m_parent = parent;
 }
 
-void ce::game::GameObject::removeChild(std::string name)
+void lu::game::GameObject::removeChild(std::string name)
 {
 	for (int i = 0; i < m_children.size(); i++)
 	{
@@ -35,7 +35,7 @@ void ce::game::GameObject::removeChild(std::string name)
 	}
 }
 
-void ce::game::GameObject::removeObject(std::string name)
+void lu::game::GameObject::removeObject(std::string name)
 {
 	for (int i = 0; i < m_children.size(); i++)
 	{
@@ -53,7 +53,7 @@ void ce::game::GameObject::removeObject(std::string name)
 	}
 }
 
-void ce::game::GameObject::tick(float dt)
+void lu::game::GameObject::tick(float dt)
 {
 	// Tick if tickable
 	for (int i = 0; i < m_components.size(); i++)
@@ -69,7 +69,7 @@ void ce::game::GameObject::tick(float dt)
 	}
 }
 
-void ce::game::GameObject::draw(ce::graphics::Renderer3D* renderer)
+void lu::game::GameObject::draw(lu::graphics::Renderer3D* renderer)
 {
 	// Draw if drawable
 	for (int i = 0; i < m_components.size(); i++)
@@ -85,7 +85,7 @@ void ce::game::GameObject::draw(ce::graphics::Renderer3D* renderer)
 	}
 }
 
-ce::game::GameObject* ce::game::GameObject::getGameObjectByName(std::string name)
+lu::game::GameObject* lu::game::GameObject::getGameObjectByName(std::string name)
 {
 	for (int i = 0; i < m_children.size(); i++)
 	{
@@ -106,13 +106,13 @@ ce::game::GameObject* ce::game::GameObject::getGameObjectByName(std::string name
 	return nullptr;
 }
 
-void ce::game::GameObject::addComponent(ce::game::BaseComponent* component)
+void lu::game::GameObject::addComponent(lu::game::BaseComponent* component)
 {
 	component->m_hostComponents = &m_components; // Give this component access to this objects components
 	m_components.push_back(component);
 }
 
-void ce::game::GameObject::init()
+void lu::game::GameObject::init()
 {
 	// Init all components
 	for (int i = 0; i < m_components.size(); i++)

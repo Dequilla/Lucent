@@ -21,7 +21,7 @@
 #include <unordered_map>
 #include <string>
 
-namespace ce { namespace graphics { 
+namespace lu { namespace graphics { 
 
 	/**
 	* \brief Loads models

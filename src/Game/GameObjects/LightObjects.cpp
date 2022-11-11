@@ -1,16 +1,16 @@
 #include "Game/GameObjects/LightObjects.h"
 
-ce::game::DirLightObject::DirLightObject()
+lu::game::DirLightObject::DirLightObject()
 {
 	this->addComponent(&m_light);
 }
 
-ce::game::PointLightObject::PointLightObject()
+lu::game::PointLightObject::PointLightObject()
 {
 	this->addComponent(&m_light);
 }
 
-ce::game::SpotLightObject::SpotLightObject()
+lu::game::SpotLightObject::SpotLightObject()
 {
 	this->addComponent(&m_light);
 }

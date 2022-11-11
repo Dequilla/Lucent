@@ -13,7 +13,7 @@
 
 #include <vector>
 
-namespace ce { namespace graphics {
+namespace lu { namespace graphics {
 
 	typedef std::vector<RenderCommand> CommandQueue; /**< The queue type of which we store the render commands */
 

@@ -1,6 +1,6 @@
 #include "Core/Input.h"
 
-void ce::core::Input::unbindActual()
+void lu::core::Input::unbindActual()
 {
 	// Unbinds if it was requested
 
@@ -25,7 +25,7 @@ void ce::core::Input::unbindActual()
 	}
 }
 
-void ce::core::Input::checkInput(const SDL_Event& e)
+void lu::core::Input::checkInput(const SDL_Event& e)
 {
 	// Checks if a clear of binds has been requested and fullfills said request if
 	unbindActual();
@@ -160,7 +160,7 @@ void ce::core::Input::checkInput(const SDL_Event& e)
 		}
 		catch (std::exception& e)
 		{
-			ce::core::log(CE_AT, "Exception in CheckInput: " + std::string(e.what()), LOG_ERROR);
+			lu::core::log(LU_AT, "Exception in CheckInput: " + std::string(e.what()), LOG_ERROR);
 		}
 	}
 	// AXIS EVENTS
@@ -259,21 +259,21 @@ void ce::core::Input::checkInput(const SDL_Event& e)
 	}
 }
 
-void ce::core::Input::clearButtonBinds()
+void lu::core::Input::clearButtonBinds()
 {
 	m_bUnbindButtons = true;
 }
 
-void ce::core::Input::clearAxisBinds()
+void lu::core::Input::clearAxisBinds()
 {
 	m_bUnbindAxis = true;
 }
 
-void ce::core::Input::addJoystick(int joystickID)
+void lu::core::Input::addJoystick(int joystickID)
 {
 }
 
-void ce::core::Input::addController(int controllerID)
+void lu::core::Input::addController(int controllerID)
 {
 	if (SDL_IsGameController(controllerID))
 	{
@@ -291,7 +291,7 @@ void ce::core::Input::addController(int controllerID)
 	}
 }
 
-void ce::core::Input::removeController(int controllerID)
+void lu::core::Input::removeController(int controllerID)
 {
 	Joystick controller;
 	controller.controller = SDL_GameControllerFromInstanceID(controllerID);

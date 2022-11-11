@@ -1,16 +1,16 @@
 #include "Game/Scene.h"
 
-ce::game::RootObject* ce::game::Scene::getRootObject()
+lu::game::RootObject* lu::game::Scene::getRootObject()
 {
 	return &m_rootObject;
 }
 
-ce::game::GameObject* ce::game::Scene::getGameObjectByName(std::string name)
+lu::game::GameObject* lu::game::Scene::getGameObjectByName(std::string name)
 {
 	return m_rootObject.getGameObjectByName(name);
 }
 
-ce::game::GameObject* ce::game::Scene::addGameObject(std::string nameOfParent, GameObject * object)
+lu::game::GameObject* lu::game::Scene::addGameObject(std::string nameOfParent, GameObject * object)
 {
 	// If it matches the root object
 	if (this->m_rootObject.name == nameOfParent)
@@ -22,26 +22,26 @@ ce::game::GameObject* ce::game::Scene::addGameObject(std::string nameOfParent, G
 	return m_rootObject.getGameObjectByName(nameOfParent)->addChild(object);;
 }
 
-void ce::game::Scene::init()
+void lu::game::Scene::init()
 {
 	m_rootObject.name = "root";
 	m_rootObject.init(); // Initializes all the objects
 }
 
-void ce::game::Scene::begin()
+void lu::game::Scene::begin()
 {
 }
 
-void ce::game::Scene::tick(float dt)
+void lu::game::Scene::tick(float dt)
 {
 	m_rootObject.tick(dt);
 }
 
-void ce::game::Scene::draw(ce::graphics::Renderer3D* renderer)
+void lu::game::Scene::draw(lu::graphics::Renderer3D* renderer)
 {
 	m_rootObject.draw(renderer);
 }
 
-void ce::game::Scene::end()
+void lu::game::Scene::end()
 {
 }

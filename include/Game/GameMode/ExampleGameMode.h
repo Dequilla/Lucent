@@ -19,21 +19,21 @@
 
 #include "Core/Application.h"
 
-namespace ce { namespace game {
+namespace lu { namespace game {
 
 	class ExampleGameMode : public GameMode
 	{
 	protected:
 		// GameObjects
-		ce::game::ModelObject m_nanosuit;
-		ce::game::ModelObject m_grassy;
-		ce::game::CameraObject m_camera;
-		ce::game::DirLightObject m_dirLight;
-		ce::game::PointLightObject m_pointLights[2];
-		ce::game::SpotLightObject m_spotLight;
+		lu::game::ModelObject m_nanosuit;
+		lu::game::ModelObject m_grassy;
+		lu::game::CameraObject m_camera;
+		lu::game::DirLightObject m_dirLight;
+		lu::game::PointLightObject m_pointLights[2];
+		lu::game::SpotLightObject m_spotLight;
 
-		ce::graphics::ForwardRenderer m_renderer;
-		ce::graphics::LightSetup m_lights;
+		lu::graphics::ForwardRenderer m_renderer;
+		lu::graphics::LightSetup m_lights;
 
 		// TODO: MovementComponent?
 		bool m_moveForward = false;
