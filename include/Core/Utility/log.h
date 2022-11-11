@@ -15,24 +15,24 @@
 /**
 * \macro Creates a c-style string of x
 */
-#define CE_STR(x) #x
+#define LU_STR(x) #x
 
 /**
 * \macro Creates a c-style string of x
 */
-#define CE_TOSTRING(x) CE_STR(x)
+#define LU_TOSTRING(x) LU_STR(x)
 
 /**
 * \macro Creates a c-style string with the location and line you currently at
 */
-#define CE_C_AT __FILE__ ":" CE_TOSTRING(__LINE__)
+#define LU_C_AT __FILE__ ":" LU_TOSTRING(__LINE__)
 
 /**
 * \macro Creates a C++ style string with the location and line you currently at
 */
-#define CE_AT std::string(CE_C_AT)
+#define LU_AT std::string(LU_C_AT)
 
-namespace ce { namespace core {
+namespace lu { namespace core {
 
 	/**
 	* \brief Enum with the types of logging you can make
@@ -60,27 +60,27 @@ namespace ce { namespace core {
 		switch (type)
 		{
 		case LOG_MESSAGE:
-			begin = "CE | MESSAGE: ";
+			begin = "LU | MESSAGE: ";
 			fColor = CONSOLE_GREY;
 			bColor = CONSOLE_BLACK;
 			break;
 		case LOG_WARNING:
-			begin = "CE | WARNING: ";
+			begin = "LU | WARNING: ";
 			fColor = CONSOLE_YELLOW;
 			bColor = CONSOLE_BLACK;
 			break;
 		case LOG_ERROR:
-			begin = "CE | ERROR: ";
+			begin = "LU | ERROR: ";
 			fColor = CONSOLE_RED;
 			bColor = CONSOLE_BLACK;
 			break;
 		case LOG_CRITICAL:
-			begin = "CE | CRITICAL-ERROR: ";
+			begin = "LU | CRITICAL-ERROR: ";
 			fColor = CONSOLE_RED;
 			bColor = CONSOLE_YELLOW;
 			break;
 		default:
-			begin = "CE | MESSAGE: ";
+			begin = "LU | MESSAGE: ";
 			fColor = CONSOLE_GREY;
 			bColor = CONSOLE_BLACK;
 			break;
@@ -99,7 +99,7 @@ namespace ce { namespace core {
 	*/
 	inline void log(const std::string& extra_info, const std::string& output, const LogType& type = LOG_MESSAGE)
 	{
-		ce::core::log(output + "\n   '--> " + extra_info, type);
+		lu::core::log(output + "\n   '--> " + extra_info, type);
 	}
 
 }} // Namespace end

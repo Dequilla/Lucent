@@ -12,7 +12,7 @@
 Uses Freetype, SDL, GLEW, ASSIMP, GLM and OpenGL under the hood.
 
 #### Building
-CEngine uses CMAKE as it's building system. It is recommended to build out of source.
+Lucent uses CMAKE as it's building system. It is recommended to build out of source.
 
 #### Linux - libraries required
 On Ubuntu packages(tested):
@@ -32,17 +32,17 @@ To build you also need CMAKE as stated before:
 Now you can build it:
 
 ```shell
-cd path/to/CEngine/build
+cd path/to/Lucent/build
 sh build.sh
 ```
 
 You can add `--clean` to create a clean build(ex: `sh build.sh --clean`).
 
-The build will appear in `CEngine/build/bin/src`
+The build will appear in `Lucent/build/bin/src`
 
 #### Windows - libraries required
 On Windows any libaries needed come with the project under the "deps"-folder.
 
 
 ### Current progress
-![alt text](https://github.com/Dequilla/CEngine/raw/master/progress_latest.png "An image of the engine in action with the current build")
+![alt text](https://github.com/Dequilla/Lucent/raw/master/progress_latest.png "An image of the engine in action with the current build")

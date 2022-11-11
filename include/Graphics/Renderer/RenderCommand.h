@@ -9,7 +9,7 @@
 
 #include <vector>
 
-namespace ce { namespace graphics {
+namespace lu { namespace graphics {
 
 	/**
 	* \brief A structure of a rendercommand to be sent to a renderer

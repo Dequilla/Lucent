@@ -14,7 +14,7 @@
 
 #include "InputCodes.h"
 
-namespace ce { namespace core {
+namespace lu { namespace core {
 
 	/**
 	* \struct Joystick
@@ -77,7 +77,7 @@ namespace ce { namespace core {
 	};
 
 	template<class T>
-	inline void ce::core::Input::bindButtonEvent(KeyCodes key, T* instance, void(T::*func)(bool))
+	inline void lu::core::Input::bindButtonEvent(KeyCodes key, T* instance, void(T::*func)(bool))
 	{
 		// Remove any already bound references
 		for (unsigned int i = 0; i < m_boundKeys.size(); i++)
@@ -99,7 +99,7 @@ namespace ce { namespace core {
 	}
 
 	template<class T>
-	inline void ce::core::Input::bindAxisEvent(AxisEventCodes axis, T* instance, void(T::* func)(float))
+	inline void lu::core::Input::bindAxisEvent(AxisEventCodes axis, T* instance, void(T::* func)(float))
 	{
 		// Remove any already bound references
 		for (unsigned int i = 0; i < m_boundAxis.size(); i++)

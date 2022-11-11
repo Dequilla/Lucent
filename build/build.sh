@@ -1,14 +1,18 @@
 #!/bin/sh
 
-echo "\n -CE- Building: \n"
-echo " ██████╗███████╗███╗   ██╗ ██████╗ ██╗███╗   ██╗███████╗██╗"
-echo "██╔════╝██╔════╝████╗  ██║██╔════╝ ██║████╗  ██║██╔════╝██║"
-echo "██║     █████╗  ██╔██╗ ██║██║  ███╗██║██╔██╗ ██║█████╗  ██║"
-echo "██║     ██╔══╝  ██║╚██╗██║██║   ██║██║██║╚██╗██║██╔══╝  ╚═╝"
-echo " ██████╗███████╗██║ ╚████║╚██████╔╝██║██║ ╚████║███████╗██╗"
-echo " ╚═════╝╚══════╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝"
+echo "\nBuilding: \n"
 
-echo "\n\n-CE- Creating bin..."
+echo " ▄█       ███    █▄   ▄████████    ▄████████ ███▄▄▄▄       ███    " 
+echo "███       ███    ███ ███    ███   ███    ███ ███▀▀▀██▄ ▀█████████▄" 
+echo "███       ███    ███ ███    █▀    ███    █▀  ███   ███    ▀███▀▀██" 
+echo "███       ███    ███ ███         ▄███▄▄▄     ███   ███     ███   ▀" 
+echo "███       ███    ███ ███        ▀▀███▀▀▀     ███   ███     ███    " 
+echo "███       ███    ███ ███    █▄    ███    █▄  ███   ███     ███    " 
+echo "███▌    ▄ ███    ███ ███    ███   ███    ███ ███   ███     ███    " 
+echo "█████▄▄██ ████████▀  ████████▀    ██████████  ▀█   █▀     ▄████▀  " 
+echo "▀"
+
+echo "\n\n-LU- Creating bin..."
 mkdir -p bin/
 
 # Enter bin
@@ -16,27 +20,27 @@ cd bin/
 
 # If we want a clean build clear bin
 if [ "$1" = "--clean" ]; then
-    echo "-CE- Clearing previous build..."
+    echo "-LU- Clearing previous build..."
 
     rm -rf *
 fi
 
 # Run cmake in our root folder where our topmost CMakeLists.txt file is
-echo "-CE- Running cmake..."
+echo "-LU- Running cmake..."
 if [ "$1" = "--debug" ]; then
-    echo "-CE- Building as debug..."
+    echo "-LU- Building as debug..."
     cmake -DCMAKE_BUILD_TYPE=Debug ../../
 else
-    echo "-CE- Building as release..."
+    echo "-LU- Building as release..."
     cmake -DCMAKE_BUILD_TYPE=Release ../../
 fi
 
 # Compile program
-echo "-CE- Running make..."
+echo "-LU- Running make..."
 make
 
 # Now move resources files
-echo "-CE- Moving resources..."
+echo "-LU- Moving resources..."
 cd src/
 
 if [ -d "$Resources/" ]; then

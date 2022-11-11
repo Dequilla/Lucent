@@ -15,7 +15,7 @@
 
 #include "Core/Utility/log.h"
 
-namespace ce { namespace graphics {
+namespace lu { namespace graphics {
 
 	/**
 	* \brief What the texture will be used for

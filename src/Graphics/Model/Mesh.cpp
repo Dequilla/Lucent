@@ -1,6 +1,6 @@
 #include "Graphics/Model/Mesh.h"
 
-void ce::graphics::Mesh::setupMesh()
+void lu::graphics::Mesh::setupMesh()
 {
 	glGenVertexArrays(1, &m_VAO);
 	glGenBuffers(1, &m_VBO);
@@ -29,7 +29,7 @@ void ce::graphics::Mesh::setupMesh()
 	glBindVertexArray(0);
 }
 
-ce::graphics::Mesh::Mesh(VertexArray vertices, IndexArray indices, Material material)
+lu::graphics::Mesh::Mesh(VertexArray vertices, IndexArray indices, Material material)
 {
 	m_vertices = vertices;
 	m_indices = indices;
@@ -38,7 +38,7 @@ ce::graphics::Mesh::Mesh(VertexArray vertices, IndexArray indices, Material mate
 	setupMesh();
 }
 
-void ce::graphics::Mesh::draw()
+void lu::graphics::Mesh::draw()
 {
 	material.shader.use(); // use the material shader
 

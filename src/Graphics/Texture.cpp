@@ -3,7 +3,7 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "STB/stb_image.h"
 
-unsigned int ce::graphics::loadTexture(const char * path)
+unsigned int lu::graphics::loadTexture(const char * path)
 {
 	unsigned int textureID;
 	glGenTextures(1, &textureID);
@@ -31,7 +31,7 @@ unsigned int ce::graphics::loadTexture(const char * path)
 	}
 	else
 	{
-		ce::core::log("Failed to load texture : " + std::string(path), ce::core::LOG_WARNING);
+		lu::core::log("Failed to load texture : " + std::string(path), lu::core::LOG_WARNING);
 	}
 
 	stbi_image_free(data);

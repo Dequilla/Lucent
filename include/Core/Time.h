@@ -5,7 +5,7 @@
 
 #include "SDL2/SDL.h"
 
-namespace ce { namespace core {
+namespace lu { namespace core {
 
 	/**
 	* \brief Represents time in diffrent formats

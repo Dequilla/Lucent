@@ -10,7 +10,7 @@
 
 #include <vector>
 
-namespace ce { namespace graphics {
+namespace lu { namespace graphics {
 
 	/**
 	* \brief A renderable piece of text
@@ -18,12 +18,12 @@ namespace ce { namespace graphics {
 	class Text
 	{
 	protected:
-		ce::graphics::Font* m_font;
+		lu::graphics::Font* m_font;
 		std::string m_text = "";
 		unsigned int m_size = 48;
 		glm::ivec2 m_position;
 		glm::vec4 m_color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
-		std::vector<ce::graphics::Character> m_characters;
+		std::vector<lu::graphics::Character> m_characters;
 
 		GLuint m_VAO, m_VBO;
 
@@ -40,7 +40,7 @@ namespace ce { namespace graphics {
 		void setColor(glm::vec4 color);
 		void setColor(float r, float g, float b, float a = 1.0f);
 
-		void draw(ce::graphics::Shader shader);
+		void draw(lu::graphics::Shader shader);
 
 		std::string getText() { return m_text; }
 	};

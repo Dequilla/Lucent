@@ -9,7 +9,7 @@
 
 // TODO: if bored document all of the buttons
 
-namespace ce { namespace core {
+namespace lu { namespace core {
 	
 	/**
 	* \brief Enum containing all the codes for detecting AxisEvents such as the mouse

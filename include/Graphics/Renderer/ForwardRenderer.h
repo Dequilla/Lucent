@@ -10,7 +10,7 @@
 
 #include "Graphics/Model/Mesh.h"
 
-namespace ce { namespace graphics {
+namespace lu { namespace graphics {
 
 	class ForwardRenderer : public Renderer3D
 	{

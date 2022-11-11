@@ -5,13 +5,13 @@
 #include "Game/Scene.h"
 #include "Core/Input.h"
 
-namespace ce { namespace game {
+namespace lu { namespace game {
 
 	class GameMode
 	{
 	protected:
-		ce::game::Scene	m_scene;
-		ce::core::Input m_input;
+		lu::game::Scene	m_scene;
+		lu::core::Input m_input;
 
 	public:
 		void checkInput(const SDL_Event& input);
@@ -22,7 +22,7 @@ namespace ce { namespace game {
 		virtual void draw() = 0;
 		virtual void end();
 
-		void draw(ce::graphics::Renderer3D* renderer);
+		void draw(lu::graphics::Renderer3D* renderer);
 	};
 
 }} // End namespace

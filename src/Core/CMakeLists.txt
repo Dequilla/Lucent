@@ -4,7 +4,7 @@ add_subdirectory(Utility)
 
 set(INC_CORE_DIR ${OUR_INC_DIR}/Core)
 
-set(CEngineCoreSource 	${INC_CORE_DIR}/Window.h		Window.cpp
+set(LucentCoreSource 	${INC_CORE_DIR}/Window.h		Window.cpp
 						${INC_CORE_DIR}/Input.h			Input.cpp
 						${INC_CORE_DIR}/InputCodes.h	
 						${INC_CORE_DIR}/Application.h 	Application.cpp
@@ -14,4 +14,4 @@ set(CEngineCoreSource 	${INC_CORE_DIR}/Window.h		Window.cpp
 						${INC_CORE_DIR}/Utility/log.h
 						${INC_CORE_DIR}/Utility/console.h)
 
-add_library(CEngineCore ${CEngineCoreSource})
+add_library(LucentCore ${LucentCoreSource})

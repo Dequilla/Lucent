@@ -13,7 +13,7 @@
 #include "Core/Utility/log.h"
 
 
-namespace ce { namespace core {
+namespace lu { namespace core {
 
 	/**
 	* \enum

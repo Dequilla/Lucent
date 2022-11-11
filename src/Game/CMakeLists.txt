@@ -6,7 +6,7 @@ add_subdirectory(GameObjects)
 
 set(INC_GAME_DIR ${OUR_INC_DIR}/Game)
 
-set(CEngineGameSource   ${INC_GAME_DIR}/Scene.h							Scene.cpp
+set(LucentGameSource   ${INC_GAME_DIR}/Scene.h							Scene.cpp
 						 	
 						${INC_GAME_DIR}/GameObject.h					GameObject.cpp
 						${INC_GAME_DIR}/GameObjects/CameraObject.h 		GameObjects/CameraObject.cpp
@@ -22,4 +22,4 @@ set(CEngineGameSource   ${INC_GAME_DIR}/Scene.h							Scene.cpp
 						${INC_GAME_DIR}/Components/TransformComponent.h	Components/TransformComponent.cpp
 						${INC_GAME_DIR}/Components/LightComponents.h	Components/LightComponents.cpp)
 
-add_library(CEngineGame ${CEngineGameSource})
+add_library(LucentGame ${LucentGameSource})

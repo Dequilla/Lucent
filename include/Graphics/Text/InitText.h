@@ -5,7 +5,7 @@
 
 #include "Core/Utility/log.h"
 
-namespace ce { namespace graphics {
+namespace lu { namespace graphics {
 
 	extern FT_Library ftLib; /**< Freetype library */
 
@@ -24,7 +24,7 @@ namespace ce { namespace graphics {
 		FT_Error err = FT_Init_FreeType(&ftLib);
 		if (err)
 		{
-			ce::core::log("Failed to initialize FreeType library, FT error: " + std::string(FT_getErrorMessage(err)), ce::core::LOG_ERROR);
+			lu::core::log("Failed to initialize FreeType library, FT error: " + std::string(FT_getErrorMessage(err)), lu::core::LOG_ERROR);
 			return false;
 		}
 		return true;

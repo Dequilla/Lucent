@@ -1,6 +1,6 @@
 #include "Game/Components/ModelComponent.h"
 
-void ce::game::ModelComponent::init()
+void lu::game::ModelComponent::init()
 {
 	bTickable = false;
 	bDrawable = true;
@@ -8,11 +8,11 @@ void ce::game::ModelComponent::init()
 	updateTransform();
 }
 
-void ce::game::ModelComponent::tick(float dt)
+void lu::game::ModelComponent::tick(float dt)
 {
 }
 
-void ce::game::ModelComponent::draw(ce::graphics::Renderer3D* renderer)
+void lu::game::ModelComponent::draw(lu::graphics::Renderer3D* renderer)
 {
 	glm::mat4 modelMatrix;
 
@@ -28,17 +28,17 @@ void ce::game::ModelComponent::draw(ce::graphics::Renderer3D* renderer)
 	m_model.draw(renderer, modelMatrix);
 }
 
-std::string ce::game::ModelComponent::getType()
+std::string lu::game::ModelComponent::getType()
 {
 	return std::string("ModelComponent");
 }
 
-void ce::game::ModelComponent::setModel(ce::graphics::Model model)
+void lu::game::ModelComponent::setModel(lu::graphics::Model model)
 {
 	m_model = model;
 }
 
-void ce::game::ModelComponent::updateTransform()
+void lu::game::ModelComponent::updateTransform()
 {
 	// Get the first TransformComponent of our host
 	m_transform = getHostComponentsOfType<TransformComponent>("TransformComponent").at(0);

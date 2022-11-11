@@ -1,46 +1,46 @@
 #include "Game/Components/LightComponents.h"
 
-void ce::game::DirLightComponent::init()
+void lu::game::DirLightComponent::init()
 {
 	bTickable = false;
 	bDrawable = true;
 }
 
-void ce::game::DirLightComponent::tick(float dt)
+void lu::game::DirLightComponent::tick(float dt)
 {
 }
 
-void ce::game::DirLightComponent::draw(ce::graphics::Renderer3D * renderer)
+void lu::game::DirLightComponent::draw(lu::graphics::Renderer3D * renderer)
 {
 	renderer->submitDirLight(*this);
 }
 
-void ce::game::PointLightComponent::init()
+void lu::game::PointLightComponent::init()
 {
 	bTickable = false;
 	bDrawable = true;
 }
 
-void ce::game::PointLightComponent::tick(float dt)
+void lu::game::PointLightComponent::tick(float dt)
 {
 }
 
-void ce::game::PointLightComponent::draw(ce::graphics::Renderer3D * renderer)
+void lu::game::PointLightComponent::draw(lu::graphics::Renderer3D * renderer)
 {
 	renderer->submitPointLight(*this);
 }
 
-void ce::game::SpotLightComponent::init()
+void lu::game::SpotLightComponent::init()
 {
 	bTickable = false;
 	bDrawable = true;
 }
 
-void ce::game::SpotLightComponent::tick(float dt)
+void lu::game::SpotLightComponent::tick(float dt)
 {
 }
 
-void ce::game::SpotLightComponent::draw(ce::graphics::Renderer3D * renderer)
+void lu::game::SpotLightComponent::draw(lu::graphics::Renderer3D * renderer)
 {
 	renderer->submitSpotLight(*this);
 }
