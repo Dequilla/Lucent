@@ -8,23 +8,23 @@
 
 #include "Graphics/Model/Model.h"
 
-namespace ce { namespace game {
+namespace lu { namespace game {
 
 	class ModelComponent : public BaseComponent
 	{
 	protected:
-		ce::graphics::Model m_model;
+		lu::graphics::Model m_model;
 
 		TransformComponent* m_transform;
 
 	public:
 		virtual void init() override;
 		virtual void tick(float dt) override;
-		virtual void draw(ce::graphics::Renderer3D* renderer) override;
+		virtual void draw(lu::graphics::Renderer3D* renderer) override;
 
 		virtual std::string getType() override;
 
-		void setModel(ce::graphics::Model model);
+		void setModel(lu::graphics::Model model);
 		
 		/**
 		* \brief Updates the transform component used

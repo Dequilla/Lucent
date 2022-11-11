@@ -1,6 +1,6 @@
 #include "Graphics/Text/Text.h"
 
-ce::graphics::Text::Text()
+lu::graphics::Text::Text()
 {
 	glGenVertexArrays(1, &m_VAO);
 	glGenBuffers(1, &m_VBO);
@@ -16,7 +16,7 @@ ce::graphics::Text::Text()
 	glBindVertexArray(0);
 }
 
-void ce::graphics::Text::update()
+void lu::graphics::Text::update()
 {
 	m_characters.clear();
 
@@ -26,48 +26,48 @@ void ce::graphics::Text::update()
 	}
 }
 
-void ce::graphics::Text::setFont(Font* font)
+void lu::graphics::Text::setFont(Font* font)
 {
 	m_font = font;
 
 	update();
 }
 
-void ce::graphics::Text::setText(std::string text)
+void lu::graphics::Text::setText(std::string text)
 {
 	m_text = text;
 
 	update();
 }
 
-void ce::graphics::Text::setSize(unsigned int size)
+void lu::graphics::Text::setSize(unsigned int size)
 {
 	m_size = size;
 
 	update();
 }
 
-void ce::graphics::Text::setPosition(int x, int y)
+void lu::graphics::Text::setPosition(int x, int y)
 {
 	m_position = glm::ivec2(x, y);
 }
 
-void ce::graphics::Text::setPosition(glm::ivec2 pos)
+void lu::graphics::Text::setPosition(glm::ivec2 pos)
 {
 	m_position = pos;
 }
 
-void ce::graphics::Text::setColor(glm::vec4 color)
+void lu::graphics::Text::setColor(glm::vec4 color)
 {
 	m_color = color;
 }
 
-void ce::graphics::Text::setColor(float r, float g, float b, float a)
+void lu::graphics::Text::setColor(float r, float g, float b, float a)
 {
 	m_color = glm::vec4(r, g, b, a);
 }
 
-void ce::graphics::Text::draw(ce::graphics::Shader shader)
+void lu::graphics::Text::draw(lu::graphics::Shader shader)
 {
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -81,7 +81,7 @@ void ce::graphics::Text::draw(ce::graphics::Shader shader)
 	GLfloat x = m_position.x;
 	GLfloat y = m_position.y;
 
-	glm::vec2 screenSize = ce::core::Application::getScreenBufferSize();
+	glm::vec2 screenSize = lu::core::Application::getScreenBufferSize();
 	glm::mat4 projection = glm::ortho(0.0f, (float)screenSize.x, 0.0f, (float)screenSize.y);
 	shader.setMat4("projection", projection);
 

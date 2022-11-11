@@ -8,7 +8,7 @@
 
 #include <vector>
 
-namespace ce { namespace graphics {
+namespace lu { namespace graphics {
 
 	/**
 	* \brief Base class for all lights

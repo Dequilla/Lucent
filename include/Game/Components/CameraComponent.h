@@ -5,7 +5,7 @@
 #include "BaseComponent.h"
 #include "TransformComponent.h"
 
-namespace ce { namespace game {
+namespace lu { namespace game {
 
 	class CameraComponent : public BaseComponent
 	{
@@ -24,7 +24,7 @@ namespace ce { namespace game {
 
 		virtual void init() override;
 		virtual void tick(float dt) override;
-		virtual void draw(ce::graphics::Renderer3D* renderer) override;
+		virtual void draw(lu::graphics::Renderer3D* renderer) override;
 
 		virtual std::string getType() override;
 

@@ -9,7 +9,7 @@
 
 #include "GLM/glm.hpp"
 
-namespace ce { namespace graphics {
+namespace lu { namespace graphics {
 
 	/**
 	* \brief A vertex structure

@@ -1,9 +1,9 @@
 #include "Graphics/Shader/ShaderLoader.h"
 
 // Define static member
-std::vector<std::pair<ce::graphics::ShaderProperties, ce::graphics::Shader>> ce::graphics::ShaderLoader::m_loadedShaders;
+std::vector<std::pair<lu::graphics::ShaderProperties, lu::graphics::Shader>> lu::graphics::ShaderLoader::m_loadedShaders;
 
-ce::graphics::Shader ce::graphics::ShaderLoader::loadFromSource(const GLchar * vertexSource, const GLchar * fragmentSource, const GLchar * geometrySource)
+lu::graphics::Shader lu::graphics::ShaderLoader::loadFromSource(const GLchar * vertexSource, const GLchar * fragmentSource, const GLchar * geometrySource)
 {
 	unsigned int vertex, fragment, programID;
 	int success;
@@ -19,7 +19,7 @@ ce::graphics::Shader ce::graphics::ShaderLoader::loadFromSource(const GLchar * v
 	if (!success)
 	{
 		glGetShaderInfoLog(vertex, 512, NULL, infoLog);
-		ce::core::log("Failed compiling vertex shader\n Info Log: " + std::string(infoLog), ce::core::LOG_ERROR);
+		lu::core::log("Failed compiling vertex shader\n Info Log: " + std::string(infoLog), lu::core::LOG_ERROR);
 	}
 
 	fragment = glCreateShader(GL_FRAGMENT_SHADER);
@@ -31,7 +31,7 @@ ce::graphics::Shader ce::graphics::ShaderLoader::loadFromSource(const GLchar * v
 	if (!success)
 	{
 		glGetShaderInfoLog(fragment, 512, NULL, infoLog);
-		ce::core::log("Failed compiling fragment shader\n Info Log : " + std::string(infoLog), ce::core::LOG_ERROR);
+		lu::core::log("Failed compiling fragment shader\n Info Log : " + std::string(infoLog), lu::core::LOG_ERROR);
 	}
 
 	// Create and link to program
@@ -45,7 +45,7 @@ ce::graphics::Shader ce::graphics::ShaderLoader::loadFromSource(const GLchar * v
 	if (!success)
 	{
 		glGetProgramInfoLog(programID, 512, NULL, infoLog);
-		ce::core::log("Failed linking shader program\n Info Log : " + std::string(infoLog), ce::core::LOG_ERROR);
+		lu::core::log("Failed linking shader program\n Info Log : " + std::string(infoLog), lu::core::LOG_ERROR);
 	}
 
 	Shader shader;
@@ -57,7 +57,7 @@ ce::graphics::Shader ce::graphics::ShaderLoader::loadFromSource(const GLchar * v
 	return shader;
 }
 
-ce::graphics::Shader ce::graphics::ShaderLoader::loadShader(ShaderProperties properties, bool withLights)
+lu::graphics::Shader lu::graphics::ShaderLoader::loadShader(ShaderProperties properties, bool withLights)
 {
 	// If it doesn't exist, load it
 	if(!alreadyExists(properties))
@@ -91,31 +91,31 @@ ce::graphics::Shader ce::graphics::ShaderLoader::loadShader(ShaderProperties pro
 		}
 		catch (std::ifstream::failure e)
 		{
-			ce::core::log("Failed to read shader-file / -s, wrong path? \
+			lu::core::log("Failed to read shader-file / -s, wrong path? \
 					\n-- Path vertex: " + properties.vPath
 				+ " \n-- Path fragment: " + properties.fPath 
 				+ " \n-- Path geometry: " + properties.gPath
-				, ce::core::LOG_WARNING);
+				, lu::core::LOG_WARNING);
 		}
 
 		if(withLights)
 		{
 			// Set the maximum amount of lights
-			fragmentCode = core::string::replace(fragmentCode, "${NUM_DIR_LIGHTS}", std::to_string(ce::core::Application::getInstance().maxDirLights));
+			fragmentCode = core::string::replace(fragmentCode, "${NUM_DIR_LIGHTS}", std::to_string(lu::core::Application::getInstance().maxDirLights));
 
 			// Comment out lightingloop if we have no lights
-			fragmentCode = core::string::replace(fragmentCode, "${HAS_DIR_LIGHT1}", (ce::core::Application::getInstance().maxDirLights > 0) ? "" : "//");
-			fragmentCode = core::string::replace(fragmentCode, "${HAS_DIR_LIGHT2}", (ce::core::Application::getInstance().maxDirLights > 0) ? "" : "//");
+			fragmentCode = core::string::replace(fragmentCode, "${HAS_DIR_LIGHT1}", (lu::core::Application::getInstance().maxDirLights > 0) ? "" : "//");
+			fragmentCode = core::string::replace(fragmentCode, "${HAS_DIR_LIGHT2}", (lu::core::Application::getInstance().maxDirLights > 0) ? "" : "//");
 
-			fragmentCode = core::string::replace(fragmentCode, "${NUM_POINT_LIGHTS}", std::to_string(ce::core::Application::getInstance().maxPointLights));
+			fragmentCode = core::string::replace(fragmentCode, "${NUM_POINT_LIGHTS}", std::to_string(lu::core::Application::getInstance().maxPointLights));
 			// Comment out lightingloop if we have no lights
-			fragmentCode = core::string::replace(fragmentCode, "${HAS_POINT_LIGHT1}", (ce::core::Application::getInstance().maxPointLights > 0) ? "" : "//");
-			fragmentCode = core::string::replace(fragmentCode, "${HAS_POINT_LIGHT2}", (ce::core::Application::getInstance().maxPointLights > 0) ? "" : "//");
+			fragmentCode = core::string::replace(fragmentCode, "${HAS_POINT_LIGHT1}", (lu::core::Application::getInstance().maxPointLights > 0) ? "" : "//");
+			fragmentCode = core::string::replace(fragmentCode, "${HAS_POINT_LIGHT2}", (lu::core::Application::getInstance().maxPointLights > 0) ? "" : "//");
 
-			fragmentCode = core::string::replace(fragmentCode, "${NUM_SPOT_LIGHTS}", std::to_string(ce::core::Application::getInstance().maxSpotLights));
+			fragmentCode = core::string::replace(fragmentCode, "${NUM_SPOT_LIGHTS}", std::to_string(lu::core::Application::getInstance().maxSpotLights));
 			// Comment out lightingloop if we have no lights
-			fragmentCode = core::string::replace(fragmentCode, "${HAS_SPOT_LIGHT1}", (ce::core::Application::getInstance().maxSpotLights > 0) ? "" : "//");
-			fragmentCode = core::string::replace(fragmentCode, "${HAS_SPOT_LIGHT2}", (ce::core::Application::getInstance().maxSpotLights > 0) ? "" : "//");
+			fragmentCode = core::string::replace(fragmentCode, "${HAS_SPOT_LIGHT1}", (lu::core::Application::getInstance().maxSpotLights > 0) ? "" : "//");
+			fragmentCode = core::string::replace(fragmentCode, "${HAS_SPOT_LIGHT2}", (lu::core::Application::getInstance().maxSpotLights > 0) ? "" : "//");
 		}
 
 		const GLchar* vertexSource = vertexCode.c_str();
@@ -134,7 +134,7 @@ ce::graphics::Shader ce::graphics::ShaderLoader::loadShader(ShaderProperties pro
 	}
 }
 
-bool ce::graphics::ShaderLoader::alreadyExists(ShaderProperties properties)
+bool lu::graphics::ShaderLoader::alreadyExists(ShaderProperties properties)
 {
 	for (auto &shader : m_loadedShaders)
 	{

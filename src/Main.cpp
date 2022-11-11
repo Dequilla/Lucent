@@ -27,48 +27,48 @@ bool fullscreen = false;
 
 int main(int argc, char* argv[])
 {
-	ce::core::Application::init();
-	ce::core::Application::setScreenBufferSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+	lu::core::Application::init();
+	lu::core::Application::setScreenBufferSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 
-	ce::core::Application::getInstance().maxDirLights = 1;
-	ce::core::Application::getInstance().maxPointLights = 10;
-	ce::core::Application::getInstance().maxSpotLights = 1;
+	lu::core::Application::getInstance().maxDirLights = 1;
+	lu::core::Application::getInstance().maxPointLights = 10;
+	lu::core::Application::getInstance().maxSpotLights = 1;
 
-	ce::core::Window window(
-		"Hello world",
-		ce::core::WINDOWPOS_CENTERED,
-		ce::core::WINDOWPOS_CENTERED,
+	lu::core::Window window(
+		"Lucent",
+		lu::core::WINDOWPOS_CENTERED,
+		lu::core::WINDOWPOS_CENTERED,
 		SCREEN_WIDTH, SCREEN_HEIGHT,
-		ce::core::WINDOW_RESIZABLE
+		lu::core::WINDOW_RESIZABLE
 	);
 
-	ce::core::Application::enableVSYNC(true);
+	lu::core::Application::enableVSYNC(true);
 
 	window.setWindowGrab(true);
 
-	ce::game::ExampleGameMode exGameMode;
+	lu::game::ExampleGameMode exGameMode;
 	exGameMode.init();
 
 	glEnable(GL_DEPTH_TEST);
 
-	ce::core::Clock clock;
+	lu::core::Clock clock;
 	clock.start();
 
 	// FPS -- TEMP, gonna do better
 	bool showFPS = false;
 	float frameCount = 1.0f;
-	ce::graphics::Font font;
+	lu::graphics::Font font;
 	font.load("Resources/Fonts/MotionControl-Bold.otf");
-	ce::graphics::Text text;
+	lu::graphics::Text text;
 	text.setFont(&font);
 	text.setColor(1.0f, 1.0f, 1.0f);
 	text.setSize(30);
 
-	ce::graphics::ShaderLoader sLoader;
-	ce::graphics::ShaderProperties props;
+	lu::graphics::ShaderLoader sLoader;
+	lu::graphics::ShaderProperties props;
 	props.vPath = "Shaders/Text/basic_vertex.glsl";
 	props.fPath = "Shaders/Text/basic_fragment.glsl";
-	ce::graphics::Shader textShader = sLoader.loadShader(props, false);
+	lu::graphics::Shader textShader = sLoader.loadShader(props, false);
 
 	bool running = true;
 	while (running)
@@ -91,14 +91,14 @@ int main(int argc, char* argv[])
 					// Buggy on linux it seems - probably happens too fast, so it instantly switches back
 					if (fullscreen == false)
 					{
-						window.setWindowFullscreen(ce::core::WINDOW_FULLSCREEN_DESKTOP);
-						ce::core::Application::setScreenBufferSize(window.getSize().x, window.getSize().y);
+						window.setWindowFullscreen(lu::core::WINDOW_FULLSCREEN_DESKTOP);
+						lu::core::Application::setScreenBufferSize(window.getSize().x, window.getSize().y);
 						fullscreen = true;
 					}
 					else
 					{
 						window.setWindowFullscreen(0);
-						ce::core::Application::setScreenBufferSize(window.getSize().x, window.getSize().y);
+						lu::core::Application::setScreenBufferSize(window.getSize().x, window.getSize().y);
 						fullscreen = false;
 					}
 				}

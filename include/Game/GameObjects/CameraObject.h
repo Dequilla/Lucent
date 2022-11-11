@@ -8,12 +8,12 @@
 #include "Game/Components/TransformComponent.h"
 #include "Game/Components/CameraComponent.h"
 
-namespace ce { namespace game {
+namespace lu { namespace game {
 
 	class CameraObject : public GameObject
 	{
-		ce::game::TransformComponent	m_transformComponent;
-		ce::game::CameraComponent		m_cameraComponent;
+		lu::game::TransformComponent	m_transformComponent;
+		lu::game::CameraComponent		m_cameraComponent;
 
 	public:
 		CameraObject();

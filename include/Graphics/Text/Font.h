@@ -11,7 +11,7 @@
 #include "GL/glew.h"
 #include "GLM/glm.hpp"
 
-namespace ce { namespace graphics {
+namespace lu { namespace graphics {
 
 	struct Character
 	{

@@ -8,7 +8,7 @@
 #include "Graphics/Texture.h"
 #include "Graphics/Shader/Shader.h"
 
-namespace ce { namespace graphics {
+namespace lu { namespace graphics {
 
 	/**
 	* \brief Material properties to describe some of what it needs to function

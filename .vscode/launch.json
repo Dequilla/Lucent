@@ -8,7 +8,7 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/bin/src/CEngine",
+            "program": "${workspaceFolder}/build/bin/src/Lucent",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/build/bin/src",

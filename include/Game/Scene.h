@@ -6,7 +6,7 @@
 
 #include "Game/GameObject.h"
 
-namespace ce { namespace game {
+namespace lu { namespace game {
 
 	class Scene
 	{
@@ -22,7 +22,7 @@ namespace ce { namespace game {
 		void begin();
 
 		void tick(float dt);
-		void draw(ce::graphics::Renderer3D* renderer);
+		void draw(lu::graphics::Renderer3D* renderer);
 
 		void end();
 	};

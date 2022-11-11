@@ -6,7 +6,7 @@
 #include "Graphics/Renderer/Renderer3D.h"
 #include "Game/Components/BaseComponent.h"
 
-namespace ce { namespace game {
+namespace lu { namespace game {
 
 	class GameObject
 	{
@@ -66,7 +66,7 @@ namespace ce { namespace game {
 		*
 		* @param renderer A 3D renderer
 		*/
-		void draw(ce::graphics::Renderer3D* renderer);
+		void draw(lu::graphics::Renderer3D* renderer);
 
 		/**
 		* \brief This GameObjects identifier
@@ -101,7 +101,7 @@ namespace ce { namespace game {
 	};
 
 	template<class T>
-	inline std::vector<T*> ce::game::GameObject::getComponentsOfType(std::string type)
+	inline std::vector<T*> lu::game::GameObject::getComponentsOfType(std::string type)
 	{
 		int count = 0;
 		std::vector<T*> result;

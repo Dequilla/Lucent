@@ -3,7 +3,7 @@
 #include "Game/GameObject.h"
 #include "Game/Components/LightComponents.h"
 
-namespace ce { namespace game {
+namespace lu { namespace game {
 
 	class DirLightObject : public GameObject
 	{

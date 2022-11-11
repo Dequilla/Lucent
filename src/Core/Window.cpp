@@ -1,6 +1,6 @@
 #include "Core/Window.h"
 
-void ce::core::Window::initVideoComponents()
+void lu::core::Window::initVideoComponents()
 {
 	// Set openGL Attributes
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
@@ -9,23 +9,23 @@ void ce::core::Window::initVideoComponents()
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 }
 
-void ce::core::Window::destroyWindow()
+void lu::core::Window::destroyWindow()
 {
 	SDL_DestroyWindow(m_window);
 	SDL_GL_DeleteContext(m_glContext);
 }
 
-ce::core::Window::Window(std::string title, int posx, int posy, int width, int height, unsigned int flags)
+lu::core::Window::Window(std::string title, int posx, int posy, int width, int height, unsigned int flags)
 {
 	create(title, posx, posy, width, height, flags);
 }
 
-ce::core::Window::~Window()
+lu::core::Window::~Window()
 {
 	destroyWindow();
 }
 
-void ce::core::Window::create(std::string title, int posx, int posy, int width, int height, unsigned int flags)
+void lu::core::Window::create(std::string title, int posx, int posy, int width, int height, unsigned int flags)
 {
 	initVideoComponents();
 
@@ -38,14 +38,14 @@ void ce::core::Window::create(std::string title, int posx, int posy, int width, 
 	m_window = SDL_CreateWindow(title.c_str(), posx, posy, width, height, SDL_WINDOW_OPENGL | flags);
 	if (m_window == NULL)
 	{
-		ce::core::log(CE_AT, "Failed to create window with title: " + title + " with error: " + SDL_GetError(), LOG_ERROR);
+		lu::core::log(LU_AT, "Failed to create window with title: " + title + " with error: " + SDL_GetError(), LOG_ERROR);
 	}
 
 	// Create the context
 	m_glContext = SDL_GL_CreateContext(m_window);
 	if (m_glContext == NULL)
 	{
-		ce::core::log(CE_AT, "Failed to create a GL context for the window with the title: " + title + " with error: " + SDL_GetError(), LOG_ERROR);
+		lu::core::log(LU_AT, "Failed to create a GL context for the window with the title: " + title + " with error: " + SDL_GetError(), LOG_ERROR);
 	}
 	SDL_GL_MakeCurrent(m_window, m_glContext);
 
@@ -53,11 +53,11 @@ void ce::core::Window::create(std::string title, int posx, int posy, int width, 
 	glewExperimental = GL_TRUE;
 	if (glewInit() != GLEW_OK)
 	{
-		ce::core::log(CE_AT, "GLEW failed to initialize", LOG_ERROR);
+		lu::core::log(LU_AT, "GLEW failed to initialize", LOG_ERROR);
 	}
 }
 
-void ce::core::Window::setClearColor(float r, float g, float b, float a)
+void lu::core::Window::setClearColor(float r, float g, float b, float a)
 {
 	if (m_glContext != SDL_GL_GetCurrentContext())
 	{
@@ -67,7 +67,7 @@ void ce::core::Window::setClearColor(float r, float g, float b, float a)
 	glClearColor(r, g, b, a);
 }
 
-void ce::core::Window::clear()
+void lu::core::Window::clear()
 {
 	if (m_glContext != SDL_GL_GetCurrentContext())
 	{
@@ -77,32 +77,32 @@ void ce::core::Window::clear()
 	glClear(GL_COLOR_BUFFER_BIT);
 }
 
-void ce::core::Window::display()
+void lu::core::Window::display()
 {
 	SDL_GL_SwapWindow(m_window);
 }
 
-void ce::core::Window::setSize(int width, int height)
+void lu::core::Window::setSize(int width, int height)
 {
 	SDL_SetWindowSize(m_window, width, height);
 }
 
-void ce::core::Window::setTitle(std::string title)
+void lu::core::Window::setTitle(std::string title)
 {
 	SDL_SetWindowTitle(m_window, title.c_str());
 }
 
-void ce::core::Window::setWindowGrab(bool grab)
+void lu::core::Window::setWindowGrab(bool grab)
 {
 	SDL_SetRelativeMouseMode((grab) ? SDL_TRUE : SDL_FALSE);
 }
 
-void ce::core::Window::setWindowFullscreen(unsigned int type)
+void lu::core::Window::setWindowFullscreen(unsigned int type)
 {
 	SDL_SetWindowFullscreen(m_window, type);
 }
 
-glm::vec2 ce::core::Window::getSize()
+glm::vec2 lu::core::Window::getSize()
 {
 	int width, height;
 	SDL_GetWindowSize(m_window, &width, &height);

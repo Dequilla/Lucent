@@ -7,7 +7,7 @@ add_subdirectory(Renderer)
 
 set(INC_GRAPHICS_DIR ${OUR_INC_DIR}/Graphics)
 
-set(CEngineGraphicsSource 	${INC_GRAPHICS_DIR}/Texture.h	 	Texture.cpp
+set(LucentGraphicsSource 	${INC_GRAPHICS_DIR}/Texture.h	 	Texture.cpp
 							${INC_GRAPHICS_DIR}/Lights.h	 	Lights.cpp
 							${INC_GRAPHICS_DIR}/Vertex.h
 							${INC_GRAPHICS_DIR}/Transform.h 	Transform.cpp
@@ -29,4 +29,4 @@ set(CEngineGraphicsSource 	${INC_GRAPHICS_DIR}/Texture.h	 	Texture.cpp
 						  ${INC_GRAPHICS_DIR}/Model/Model.h		  	Model/Model.cpp)
 
 
-add_library(CEngineGraphics ${CEngineGraphicsSource})
+add_library(LucentGraphics ${LucentGraphicsSource})

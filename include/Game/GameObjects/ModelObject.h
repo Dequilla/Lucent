@@ -4,7 +4,7 @@
 #include "Game/Components/TransformComponent.h"
 #include "Game/Components/ModelComponent.h"
 
-namespace ce { namespace game {
+namespace lu { namespace game {
 
 	class ModelObject : public GameObject
 	{

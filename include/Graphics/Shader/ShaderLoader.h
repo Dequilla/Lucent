@@ -14,7 +14,7 @@
 
 #include "Graphics/Shader/Shader.h"
 
-namespace ce { namespace graphics {
+namespace lu { namespace graphics {
 
 	/**
 	* \brief ShaderProperty structure describing what a shader should contain
@@ -47,7 +47,7 @@ namespace ce { namespace graphics {
 	class ShaderLoader
 	{
 	private:
-		static std::vector<std::pair<ce::graphics::ShaderProperties, ce::graphics::Shader>> m_loadedShaders;
+		static std::vector<std::pair<lu::graphics::ShaderProperties, lu::graphics::Shader>> m_loadedShaders;
 
 	protected:
 		/**

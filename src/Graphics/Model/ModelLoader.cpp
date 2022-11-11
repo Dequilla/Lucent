@@ -1,8 +1,8 @@
 #include "Graphics/Model/ModelLoader.h"
 
-std::unordered_map<std::string, ce::graphics::Model> ce::graphics::ModelLoader::m_models;
+std::unordered_map<std::string, lu::graphics::Model> lu::graphics::ModelLoader::m_models;
 
-ce::graphics::Mesh ce::graphics::ModelLoader::processMesh(aiMesh* mesh, const aiScene* scene)
+lu::graphics::Mesh lu::graphics::ModelLoader::processMesh(aiMesh* mesh, const aiScene* scene)
 {
 	VertexArray vertices;
 	IndexArray indices;
@@ -65,8 +65,8 @@ ce::graphics::Mesh ce::graphics::ModelLoader::processMesh(aiMesh* mesh, const ai
 		// Choose shader based on if we need blending or not
 		if (opacity >= 1.0f)
 		{
-			ce::graphics::ShaderProperties properties;
-			ce::graphics::ShaderLoader loader;
+			lu::graphics::ShaderProperties properties;
+			lu::graphics::ShaderLoader loader;
 			properties.vPath = "Shaders/Dynamic/opaque_sd_vertex.glsl";
 			properties.fPath = "Shaders/Dynamic/opaque_sd_fragment.glsl";
 			material.shader = loader.loadShader(properties, true);
@@ -75,8 +75,8 @@ ce::graphics::Mesh ce::graphics::ModelLoader::processMesh(aiMesh* mesh, const ai
 		{
 			material.m_materialProperties = material.m_materialProperties | MAT_BLEND;
 
-			ce::graphics::ShaderProperties properties;
-			ce::graphics::ShaderLoader loader;
+			lu::graphics::ShaderProperties properties;
+			lu::graphics::ShaderLoader loader;
 			properties.vPath = "Shaders/Dynamic/transparent_sd_vertex.glsl";
 			properties.fPath = "Shaders/Dynamic/transparent_sd_fragment.glsl";
 			material.shader = loader.loadShader(properties, true);
@@ -101,7 +101,7 @@ ce::graphics::Mesh ce::graphics::ModelLoader::processMesh(aiMesh* mesh, const ai
 	return result;
 }
 
-void ce::graphics::ModelLoader::processNode(aiNode* node, const aiScene* scene)
+void lu::graphics::ModelLoader::processNode(aiNode* node, const aiScene* scene)
 {
 	// Process meshes of this node
 	for (unsigned int i = 0; i < node->mNumMeshes; i++)
@@ -117,7 +117,7 @@ void ce::graphics::ModelLoader::processNode(aiNode* node, const aiScene* scene)
 	}
 }
 
-std::vector<ce::graphics::Texture> ce::graphics::ModelLoader::loadMaterialTextures(aiMaterial* mat, aiTextureType type, TextureType ceTexType)
+std::vector<lu::graphics::Texture> lu::graphics::ModelLoader::loadMaterialTextures(aiMaterial* mat, aiTextureType type, TextureType ceTexType)
 {
 	std::vector<Texture> textures;
 	for (unsigned int i = 0; i < mat->GetTextureCount(type); i++)
@@ -136,7 +136,7 @@ std::vector<ce::graphics::Texture> ce::graphics::ModelLoader::loadMaterialTextur
 	return textures;
 }
 
-ce::graphics::Model ce::graphics::ModelLoader::loadModel(std::string path)
+lu::graphics::Model lu::graphics::ModelLoader::loadModel(std::string path)
 {
 	if(!(m_models.count(path) > 0))
 	{
@@ -148,7 +148,7 @@ ce::graphics::Model ce::graphics::ModelLoader::loadModel(std::string path)
 
 		if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 		{
-			ce::core::log("Failed importing model(path: " + path + "), error: " + importer.GetErrorString(), ce::core::LOG_WARNING);
+			lu::core::log("Failed importing model(path: " + path + "), error: " + importer.GetErrorString(), lu::core::LOG_WARNING);
 			return Model();
 		}
 

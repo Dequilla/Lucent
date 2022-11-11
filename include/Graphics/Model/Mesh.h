@@ -8,7 +8,7 @@
 #include "Graphics/Vertex.h"
 #include "Graphics/Model/Material.h"
 
-namespace ce { namespace graphics {
+namespace lu { namespace graphics {
 
 	/**
 	* \brief A object representation of a mesh

@@ -13,7 +13,7 @@
 #include <Windows.h>
 #endif
 
-namespace ce { namespace core {
+namespace lu { namespace core {
 
 	/**
 	* \brief The supported colors for console output

@@ -4,7 +4,7 @@
 #include "GLM/gtc/quaternion.hpp"
 #include "GLM/gtc/matrix_transform.hpp"
 
-namespace ce { namespace graphics {
+namespace lu { namespace graphics {
 
 	class Transform
 	{
