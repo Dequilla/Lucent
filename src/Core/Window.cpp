@@ -1,4 +1,4 @@
-#include "Window.h"
+#include "Core/Window.h"
 
 void ce::core::Window::initVideoComponents()
 {
