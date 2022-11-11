@@ -70,6 +70,7 @@ int main(int argc, char* argv[])
 	props.fPath = "Shaders/Text/basic_fragment.glsl";
 	lu::graphics::Shader textShader = sLoader.loadShader(props, false);
 
+	bool skeleton = false;
 	bool running = true;
 	while (running)
 	{
@@ -106,6 +107,15 @@ int main(int argc, char* argv[])
 				if (e.key.keysym.sym == SDLK_F9)
 				{
 					showFPS = !showFPS; // Toggle fps counter
+				}
+
+				if(e.key.keysym.sym == SDLK_F10)
+				{
+					skeleton = !skeleton;
+					if(skeleton)
+						glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+					else
+						glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 				}
 			}
 		}
