@@ -27,7 +27,7 @@ namespace ce { namespace core {
 			unsigned int pos = workable.find(toReplace);
 
 			// Failed to find any matches
-			if (pos == workable.npos || pos > workable.size())
+			if (pos == workable.npos || pos > workable.size() || pos >= 4294967295)
 			{
 				ce::core::log(CE_AT, "Could not find match to replace. Replacement: \"" + replaceWith + "\" To be replaced: \"" + toReplace + "\"", LOG_WARNING);
 				return std::string("");

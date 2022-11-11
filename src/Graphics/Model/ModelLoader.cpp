@@ -69,7 +69,7 @@ ce::graphics::Mesh ce::graphics::ModelLoader::processMesh(aiMesh* mesh, const ai
 			ce::graphics::ShaderLoader loader;
 			properties.vPath = "Shaders/Dynamic/opaque_sd_vertex.glsl";
 			properties.fPath = "Shaders/Dynamic/opaque_sd_fragment.glsl";
-			material.shader = loader.loadShader(properties);
+			material.shader = loader.loadShader(properties, true);
 		}
 		else if (opacity < 1.0f) // Use blending shader to get opacity
 		{
@@ -79,7 +79,7 @@ ce::graphics::Mesh ce::graphics::ModelLoader::processMesh(aiMesh* mesh, const ai
 			ce::graphics::ShaderLoader loader;
 			properties.vPath = "Shaders/Dynamic/transparent_sd_vertex.glsl";
 			properties.fPath = "Shaders/Dynamic/transparent_sd_fragment.glsl";
-			material.shader = loader.loadShader(properties);
+			material.shader = loader.loadShader(properties, true);
 		}
 
 		float shininess;

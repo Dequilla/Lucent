@@ -57,7 +57,7 @@ ce::graphics::Shader ce::graphics::ShaderLoader::loadFromSource(const GLchar * v
 	return shader;
 }
 
-ce::graphics::Shader ce::graphics::ShaderLoader::loadShader(ShaderProperties properties)
+ce::graphics::Shader ce::graphics::ShaderLoader::loadShader(ShaderProperties properties, bool withLights)
 {
 	// If it doesn't exist, load it
 	if(!alreadyExists(properties))
@@ -98,24 +98,25 @@ ce::graphics::Shader ce::graphics::ShaderLoader::loadShader(ShaderProperties pro
 				, ce::core::LOG_WARNING);
 		}
 
-		
-		// Set the maximum amount of lights
-		fragmentCode = core::string::replace(fragmentCode, "${NUM_DIR_LIGHTS}", std::to_string(ce::core::Application::getInstance().maxDirLights));
+		if(withLights)
+		{
+			// Set the maximum amount of lights
+			fragmentCode = core::string::replace(fragmentCode, "${NUM_DIR_LIGHTS}", std::to_string(ce::core::Application::getInstance().maxDirLights));
 
-		// Comment out lightingloop if we have no lights
-		fragmentCode = core::string::replace(fragmentCode, "${HAS_DIR_LIGHT1}", (ce::core::Application::getInstance().maxDirLights > 0) ? "" : "//");
-		fragmentCode = core::string::replace(fragmentCode, "${HAS_DIR_LIGHT2}", (ce::core::Application::getInstance().maxDirLights > 0) ? "" : "//");
+			// Comment out lightingloop if we have no lights
+			fragmentCode = core::string::replace(fragmentCode, "${HAS_DIR_LIGHT1}", (ce::core::Application::getInstance().maxDirLights > 0) ? "" : "//");
+			fragmentCode = core::string::replace(fragmentCode, "${HAS_DIR_LIGHT2}", (ce::core::Application::getInstance().maxDirLights > 0) ? "" : "//");
 
-		fragmentCode = core::string::replace(fragmentCode, "${NUM_POINT_LIGHTS}", std::to_string(ce::core::Application::getInstance().maxPointLights));
-		// Comment out lightingloop if we have no lights
-		fragmentCode = core::string::replace(fragmentCode, "${HAS_POINT_LIGHT1}", (ce::core::Application::getInstance().maxPointLights > 0) ? "" : "//");
-		fragmentCode = core::string::replace(fragmentCode, "${HAS_POINT_LIGHT2}", (ce::core::Application::getInstance().maxPointLights > 0) ? "" : "//");
+			fragmentCode = core::string::replace(fragmentCode, "${NUM_POINT_LIGHTS}", std::to_string(ce::core::Application::getInstance().maxPointLights));
+			// Comment out lightingloop if we have no lights
+			fragmentCode = core::string::replace(fragmentCode, "${HAS_POINT_LIGHT1}", (ce::core::Application::getInstance().maxPointLights > 0) ? "" : "//");
+			fragmentCode = core::string::replace(fragmentCode, "${HAS_POINT_LIGHT2}", (ce::core::Application::getInstance().maxPointLights > 0) ? "" : "//");
 
-		fragmentCode = core::string::replace(fragmentCode, "${NUM_SPOT_LIGHTS}", std::to_string(ce::core::Application::getInstance().maxSpotLights));
-		// Comment out lightingloop if we have no lights
-		fragmentCode = core::string::replace(fragmentCode, "${HAS_SPOT_LIGHT1}", (ce::core::Application::getInstance().maxSpotLights > 0) ? "" : "//");
-		fragmentCode = core::string::replace(fragmentCode, "${HAS_SPOT_LIGHT2}", (ce::core::Application::getInstance().maxSpotLights > 0) ? "" : "//");
-	
+			fragmentCode = core::string::replace(fragmentCode, "${NUM_SPOT_LIGHTS}", std::to_string(ce::core::Application::getInstance().maxSpotLights));
+			// Comment out lightingloop if we have no lights
+			fragmentCode = core::string::replace(fragmentCode, "${HAS_SPOT_LIGHT1}", (ce::core::Application::getInstance().maxSpotLights > 0) ? "" : "//");
+			fragmentCode = core::string::replace(fragmentCode, "${HAS_SPOT_LIGHT2}", (ce::core::Application::getInstance().maxSpotLights > 0) ? "" : "//");
+		}
 
 		const GLchar* vertexSource = vertexCode.c_str();
 		const GLchar* fragmentSource = fragmentCode.c_str();

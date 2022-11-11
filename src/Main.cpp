@@ -68,7 +68,7 @@ int main(int argc, char* argv[])
 	ce::graphics::ShaderProperties props;
 	props.vPath = "Shaders/Text/basic_vertex.glsl";
 	props.fPath = "Shaders/Text/basic_fragment.glsl";
-	ce::graphics::Shader textShader = sLoader.loadShader(props);
+	ce::graphics::Shader textShader = sLoader.loadShader(props, false);
 
 	bool running = true;
 	while (running)
