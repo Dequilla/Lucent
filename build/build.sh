@@ -23,7 +23,13 @@ fi
 
 # Run cmake in our root folder where our topmost CMakeLists.txt file is
 echo "-CE- Running cmake..."
-cmake ../../
+if [ "$1" = "--debug" ]; then
+    echo "-CE- Building as debug..."
+    cmake -DCMAKE_BUILD_TYPE=Debug ../../
+else
+    echo "-CE- Building as release..."
+    cmake -DCMAKE_BUILD_TYPE=Release ../../
+fi
 
 # Compile program
 echo "-CE- Running make..."
