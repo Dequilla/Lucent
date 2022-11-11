@@ -2,6 +2,11 @@
 ##### NOTE *A hobby project*
 ###### *I learn as I go*
 
+## WoW - Way Of Working
+- Work is done on dev or branches of dev
+- Work to be added to master has to go through a pull request
+- More TBD
+
 ## Requirements
 
 Uses Freetype, SDL, GLEW, ASSIMP, GLM and OpenGL under the hood.
