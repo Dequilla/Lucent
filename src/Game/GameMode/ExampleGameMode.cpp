@@ -32,7 +32,7 @@ void ce::game::ExampleGameMode::init()
 	m_scene.addGameObject("root", &m_camera);
 
 	// Lights
-	m_dirLight.light()->ambient = glm::vec3(0.005f, 0.005f, 0.005f);
+	m_dirLight.light()->ambient = glm::vec3(0.01f, 0.01f, 0.01f);
 	m_dirLight.light()->diffuse = glm::vec3(0.02f, 0.02f, 0.02f);
 	m_dirLight.light()->specular = glm::vec3(0.03f, 0.03f, 0.03f);
 	m_scene.addGameObject("root", &m_dirLight);
@@ -65,10 +65,10 @@ void ce::game::ExampleGameMode::init()
 	m_input.bindButtonEvent(ce::core::K_a, this, &ExampleGameMode::moveLeft);
 	m_input.bindButtonEvent(ce::core::K_d, this, &ExampleGameMode::moveRight);
 
-	m_input.bindButtonEvent(ce::core::K_KP_8, this, &ExampleGameMode::movePLightF);
-	m_input.bindButtonEvent(ce::core::K_KP_2, this, &ExampleGameMode::movePLightB);
-	m_input.bindButtonEvent(ce::core::K_KP_4, this, &ExampleGameMode::movePLightL);
-	m_input.bindButtonEvent(ce::core::K_KP_6, this, &ExampleGameMode::movePLightR);
+	m_input.bindButtonEvent(ce::core::K_h, this, &ExampleGameMode::movePLightF);
+	m_input.bindButtonEvent(ce::core::K_j, this, &ExampleGameMode::movePLightB);
+	m_input.bindButtonEvent(ce::core::K_k, this, &ExampleGameMode::movePLightL);
+	m_input.bindButtonEvent(ce::core::K_l, this, &ExampleGameMode::movePLightR);
 
 	GameMode::init();
 }

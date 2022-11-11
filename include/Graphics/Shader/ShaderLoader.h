@@ -70,7 +70,7 @@ namespace ce { namespace graphics {
 		* @param properties ShaderProperties describing the shader 
 		* @return Pointer to shader program object
 		*/
-		Shader loadShader(ShaderProperties properties);
+		Shader loadShader(ShaderProperties properties, bool withLights);
 
 		/**
 		* \breif Check if a shader with ShaderProperties has been loaded previously
