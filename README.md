@@ -36,7 +36,9 @@ cd path/to/Lucent/build
 sh build.sh
 ```
 
-You can add `--clean` to create a clean build(ex: `sh build.sh --clean`).
+You can add `--clean` to create a clean build (ex: `sh build.sh --clean`).
+You can add `--debug` to create a debug build (ex: `sh build.sh --debug`).
+These flags cannot be combined as of now.
 
 The build will appear in `Lucent/build/bin/src`
 
