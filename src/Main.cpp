@@ -45,9 +45,6 @@ int main(int argc, char* argv[])
 	lu::core::Application::enableVSYNC(true);
 	window->setWindowGrab(true);
 
-	lu::core::Application::getInstance().setWindow(window);
-	
-
 	lu::game::ExampleGameMode exGameMode;
 	exGameMode.init();
 

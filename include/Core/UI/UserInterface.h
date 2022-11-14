@@ -18,6 +18,8 @@ namespace lu { namespace core { namespace ui {
 
         ImGui_ImplSDL2_InitForOpenGL(sdlWindow, glContext);
         ImGui_ImplOpenGL3_Init("#version 330");
+
+        return false;
     }
 
 }}}

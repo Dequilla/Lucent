@@ -69,16 +69,6 @@ void lu::core::Application::setScreenBufferSize(unsigned int w, unsigned int h)
 	getInstance().setScreenBufferSizeInternal(w, h);
 }
 
-void lu::core::Application::setWindow(std::shared_ptr<lu::core::Window> window)
-{
-	getInstance().m_window = std::make_shared<lu::core::Window>(*window);
-}
-
-std::shared_ptr<lu::core::Window> lu::core::Application::getWindow()
-{
-	return std::make_shared<lu::core::Window>(*(getInstance().m_window));
-}
-
 bool lu::core::Application::init()
 {
 	return getInstance().initInternal();
