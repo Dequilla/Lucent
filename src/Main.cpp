@@ -34,7 +34,7 @@ int main(int argc, char* argv[])
 	lu::core::Application::getInstance().maxPointLights = 10;
 	lu::core::Application::getInstance().maxSpotLights = 1;
 
-	lu::core::Window window(
+	std::shared_ptr<lu::core::Window> window = std::make_shared<lu::core::Window>(
 		"Lucent",
 		lu::core::WINDOWPOS_CENTERED,
 		lu::core::WINDOWPOS_CENTERED,
@@ -43,8 +43,10 @@ int main(int argc, char* argv[])
 	);
 
 	lu::core::Application::enableVSYNC(true);
+	window->setWindowGrab(true);
 
-	window.setWindowGrab(true);
+	lu::core::Application::getInstance().setWindow(window);
+	
 
 	lu::game::ExampleGameMode exGameMode;
 	exGameMode.init();
@@ -92,14 +94,14 @@ int main(int argc, char* argv[])
 					// Buggy on linux it seems - probably happens too fast, so it instantly switches back
 					if (fullscreen == false)
 					{
-						window.setWindowFullscreen(lu::core::WINDOW_FULLSCREEN_DESKTOP);
-						lu::core::Application::setScreenBufferSize(window.getSize().x, window.getSize().y);
+						window->setWindowFullscreen(lu::core::WINDOW_FULLSCREEN_DESKTOP);
+						lu::core::Application::setScreenBufferSize(window->getSize().x, window->getSize().y);
 						fullscreen = true;
 					}
 					else
 					{
-						window.setWindowFullscreen(0);
-						lu::core::Application::setScreenBufferSize(window.getSize().x, window.getSize().y);
+						window->setWindowFullscreen(0);
+						lu::core::Application::setScreenBufferSize(window->getSize().x, window->getSize().y);
 						fullscreen = false;
 					}
 				}
@@ -120,7 +122,7 @@ int main(int argc, char* argv[])
 			}
 		}
 
-		window.clear();
+		window->clear();
 		glClear(GL_DEPTH_BUFFER_BIT);
 
 		float deltaTime = clock.restart().asSeconds();
@@ -137,7 +139,7 @@ int main(int argc, char* argv[])
 			if (frameCount >= 1.f) // Once a second
 			{
 				int fps = 1 / deltaTime;
-				text.setPosition(20, window.getSize().y - 30);
+				text.setPosition(20, window->getSize().y - 30);
 				text.setText("FPS: " + std::to_string(fps));
 
 				frameCount = 0.f;
@@ -145,7 +147,7 @@ int main(int argc, char* argv[])
 			text.draw(textShader);
 		}
 		
-		window.display();
+		window->display();
 	}
 
 	SDL_Quit();

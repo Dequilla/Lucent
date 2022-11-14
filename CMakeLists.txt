@@ -9,7 +9,8 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 set(LucentDependencies ${PROJECT_SOURCE_DIR}/deps)
 
 # Include dirs
-set(ALL_DEP_INCLUDES ${LucentDependencies}/include/All)
+set(ALL_DEP_INCLUDES 	${LucentDependencies}/include/All
+						${LucentDependencies}/external)
 
 # Include our source files
 set(OUR_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
@@ -69,5 +70,8 @@ elseif(UNIX)
 	# Include the found path for our deps on UNIX
 	include_directories(${ASSIMP_INCLUDE_DIRS} ${SDL2_INCLUDE_DIR} ${GLEW_INCLUDE_DIRS} ${FREETYPE_INCLUDE_DIRS} ${ALL_DEP_INCLUDES})
 endif()
+
+# Setup ImGUI
+add_subdirectory(deps/external/imgui)
 
 add_subdirectory(src)

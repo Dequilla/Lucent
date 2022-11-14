@@ -11,7 +11,7 @@
 #include "GL/glew.h"
 
 #include "Core/Utility/log.h"
-
+#include "Core/UI/UserInterface.h"
 
 namespace lu { namespace core {
 

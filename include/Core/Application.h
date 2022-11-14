@@ -8,10 +8,12 @@
 #include "GLM/glm.hpp"
 
 #include "Core/Utility/log.h"
+#include "Core/Window.h"
 #include "Graphics/Text/InitText.h"
 
 #include <iostream>
 #include <string>
+#include <memory>
 
 namespace lu { namespace core { 
 
@@ -31,6 +33,8 @@ namespace lu { namespace core {
 		int m_screenWidth = 0; /**< Screen buffer width for desired output */
 		int m_screenHeight = 0; /**< Screen buffer height for desired output */
 
+		std::shared_ptr<lu::core::Window> m_window;
+
 		bool initInternal();
 
 		static void enableVSYNCInternal(bool enabled);
@@ -39,6 +43,9 @@ namespace lu { namespace core {
 		static glm::vec2 getScreenBufferSize();
 		static void setScreenBufferSize(glm::vec2 size);
 		static void setScreenBufferSize(unsigned int w, unsigned int h);
+
+		static void setWindow(std::shared_ptr<lu::core::Window> window);
+		static std::shared_ptr<lu::core::Window> getWindow();
 
 		static bool init(); /**< Initializes some of the libraries used internally, called by the engine first thing that happens */
 
