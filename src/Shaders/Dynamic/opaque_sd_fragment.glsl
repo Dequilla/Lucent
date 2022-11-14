@@ -4,11 +4,15 @@ out vec4 FragColor;
 in vec3 Normal;
 in vec3 FragPos;
 in vec2 TexCoords;
+in mat3 TBNMat;
+in vec3 TangentViewPos;
+in vec3 TangentFragPos;
 
 struct Material 
 {
 	sampler2D texture_diffuse1;
 	sampler2D texture_specular1;
+	sampler2D texture_normal1;
 	float shininess;
 };
 
@@ -74,8 +78,9 @@ vec3 CalcSpotLight(SpotLight light, vec3 normal, vec3 fragPos, vec3 viewDir);
 void main()
 {
 	// Properties
-	vec3 norm = normalize(Normal);
-	vec3 viewDir = normalize(viewPos - FragPos);
+	vec3 norm = texture(material.texture_normal1, TexCoords).rgb;
+	norm = normalize(norm * 2.0 - 1.0);
+	vec3 viewDir = normalize(TangentViewPos - TangentFragPos);
 
 	vec3 result = vec3(0.0, 0.0, 0.0);
 
@@ -115,7 +120,9 @@ vec3 CalcDirLight(DirLight light, vec3 normal, vec3 viewDir)
 
 vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir)
 {
-	vec3 lightDir = normalize(light.position - fragPos);
+	vec3 TangentLightPos = TBNMat * light.position;
+
+	vec3 lightDir = normalize(TangentLightPos - TangentFragPos);
 
 	// Diffuse component
 	float diff = max(dot(normal, lightDir), 0.0);
@@ -142,7 +149,9 @@ vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir)
 
 vec3 CalcSpotLight(SpotLight light, vec3 normal, vec3 fragPos, vec3 viewDir)
 {
-	 vec3 lightDir = normalize(light.position - fragPos);
+	 vec3 TangentLightPos = TBNMat * light.position;
+
+	 vec3 lightDir = normalize(TangentLightPos - TangentFragPos);
 
 	 // Diffuse component
 	 float diff = max(dot(normal, lightDir), 0.0);

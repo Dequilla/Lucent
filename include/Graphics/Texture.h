@@ -22,8 +22,9 @@ namespace lu { namespace graphics {
 	*/
 	enum TextureType
 	{
-		TEXTURE_DIFFUSE, /**< Texture will be used for diffuse mapping */
-		TEXTURE_SPECULAR /**< Texture will be used for specular mapping */
+		TEXTURE_DIFFUSE,  /**< Texture will be used for diffuse mapping */
+		TEXTURE_SPECULAR, /**< Texture will be used for specular mapping */
+		TEXTURE_NORMALS   /**< Texture will be used for normal mapping */
 	};
 
 	/**

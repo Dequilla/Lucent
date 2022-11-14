@@ -27,6 +27,7 @@ namespace lu { namespace graphics {
 	{
 	protected:
 		unsigned int m_screenBufferWidth, m_screenBufferHeight; /**< The size of the screenbuffer we draw too */
+		glm::vec3 m_viewPosition;
 
 		CommandQueue m_commandQueue; /**< The command queue where we store the render commands */
 
@@ -53,6 +54,13 @@ namespace lu { namespace graphics {
 		* @param height The height in pixels of the window
 		*/
 		virtual void setScreenBufferSize(unsigned int width, unsigned int height) { m_screenBufferWidth = width; m_screenBufferHeight = height; }
+
+		/**
+		 * \breif Set the view position (usually camera)
+		 * 
+		 * @param viewPosition The position of the desired view (usually camera)
+		 */
+		virtual void setViewPosition(glm::vec3 viewPosition) { m_viewPosition = viewPosition; }
 	};
 
 }}

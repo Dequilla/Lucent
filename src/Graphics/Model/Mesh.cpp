@@ -26,6 +26,10 @@ void lu::graphics::Mesh::setupMesh()
 	glEnableVertexAttribArray(2);
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, textureCoord));
 
+	// Vertex tangent
+	glEnableVertexAttribArray(3);
+	glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, tangent));
+
 	glBindVertexArray(0);
 }
 
@@ -44,6 +48,7 @@ void lu::graphics::Mesh::draw()
 
 	unsigned int diffuseNr = 1;
 	unsigned int specularNr = 1;
+	unsigned int normalNr = 1;
 
 	for (unsigned int i = 0; i < material.textures.size(); i++)
 	{
@@ -62,6 +67,12 @@ void lu::graphics::Mesh::draw()
 			name = "texture_specular";
 			number = std::to_string(specularNr);
 			specularNr++;
+		}
+		else if (material.textures[i].type = TEXTURE_NORMALS)
+		{
+			name = "texture_normal";
+			number = std::to_string(normalNr);
+			normalNr++;
 		}
 
 		std::string shaderUniform = ("material." + name + number).c_str();

@@ -19,10 +19,13 @@ lu::graphics::Mesh lu::graphics::ModelLoader::processMesh(aiMesh* mesh, const ai
 		vector.z = mesh->mVertices[i].z;
 		vertex.position = vector;
 
-		vector.x = mesh->mNormals[i].x;
-		vector.y = mesh->mNormals[i].y;
-		vector.z = mesh->mNormals[i].z;
-		vertex.normal = vector;
+		if(mesh->HasNormals())
+		{
+			vector.x = mesh->mNormals[i].x;
+			vector.y = mesh->mNormals[i].y;
+			vector.z = mesh->mNormals[i].z;
+			vertex.normal = vector;
+		}
 
 		// If it has coordinates
 		if (mesh->mTextureCoords[0])
@@ -31,6 +34,12 @@ lu::graphics::Mesh lu::graphics::ModelLoader::processMesh(aiMesh* mesh, const ai
 			vec.x = mesh->mTextureCoords[0][i].x;
 			vec.y = mesh->mTextureCoords[0][i].y;
 			vertex.textureCoord = vec;
+
+			glm::vec3 tVec;
+			tVec.x = mesh->mTangents[i].x;
+			tVec.y = mesh->mTangents[i].y;
+			tVec.z = mesh->mTangents[i].z;
+			vertex.tangent = tVec;
 		}
 		else
 			vertex.textureCoord = glm::vec2(0.0f, 0.0f);
@@ -93,6 +102,9 @@ lu::graphics::Mesh lu::graphics::ModelLoader::processMesh(aiMesh* mesh, const ai
 
 		std::vector<Texture> specularMaps = loadMaterialTextures(assimpMaterial, aiTextureType_SPECULAR, TEXTURE_SPECULAR);
 		material.textures.insert(material.textures.end(), specularMaps.begin(), specularMaps.end());
+
+		std::vector<Texture> normalMaps = loadMaterialTextures(assimpMaterial, aiTextureType_NORMALS, TEXTURE_NORMALS);
+		material.textures.insert(material.textures.end(), normalMaps.begin(), normalMaps.end());
 	}
 
 	Mesh result(vertices, indices, material);
@@ -144,7 +156,7 @@ lu::graphics::Model lu::graphics::ModelLoader::loadModel(std::string path)
 		Assimp::Importer importer;
 
 		// Triangulate since we currently only support triangles, flipUV's because OpenGL, generate normals if they dont exist
-		const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_GenNormals);
+		const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_GenNormals | aiProcess_CalcTangentSpace);
 
 		if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 		{

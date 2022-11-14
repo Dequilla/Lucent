@@ -86,6 +86,7 @@ void lu::graphics::ForwardRenderer::present()
 		// Temp: submit camera TODO: use uniform buffer or similar
 		command.shader.setMat4("view", m_viewMatrix);
 		command.shader.setMat4("projection", m_projectionMatrix);
+		command.shader.setVec3("viewPos", m_viewPosition);
 
 		command.shader.setInt("amountOfDirLights", m_lightSetup.dirLights.size());
 		command.shader.setInt("amountOfPointLights", m_lightSetup.pointLights.size());

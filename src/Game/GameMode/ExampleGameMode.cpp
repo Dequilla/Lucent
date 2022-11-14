@@ -9,12 +9,13 @@ void lu::game::ExampleGameMode::init()
 	// Game objects
 	lu::graphics::ModelLoader loader;
 	
-	lu::graphics::Model grassyModel = loader.loadModel("Resources/Models/Grassy/grassy.obj");
+	//lu::graphics::Model grassyModel = loader.loadModel("Resources/Models/Grassy/grassy.obj");
+	lu::graphics::Model grassyModel = loader.loadModel("Resources/Models/TestTerrain/TestTerrain.obj");
 
 	m_grassy.name = "grassy";
 	m_grassy.model()->setModel(grassyModel);
-	m_grassy.transform()->setPosition(0.0f, -1.f, 0.0f);
-	m_grassy.transform()->setScale(2.f, 2.f, 2.f);
+	m_grassy.transform()->setPosition(0.0f, -15.f, 0.0f);
+	m_grassy.transform()->setScale(1.f, 1.f, 1.f);
 	m_scene.addGameObject("root", &m_grassy);
 
 	lu::graphics::Model nanosuit = loader.loadModel("Resources/Models/Nanosuit/nanosuit.obj");
@@ -77,6 +78,11 @@ void lu::game::ExampleGameMode::begin()
 {
 	glm::vec2 size = lu::core::Application::getScreenBufferSize();
 	m_renderer.setScreenBufferSize(size.x, size.y);
+
+	// View position
+	auto cameraTransforms = m_camera.getComponentsOfType<lu::game::TransformComponent>("TransformComponent");
+	if(cameraTransforms.size() > 0)
+		m_renderer.setViewPosition(cameraTransforms.at(0)->getPosition());
 
 	m_renderer.begin();
 	m_renderer.beginScene(m_camera.camera()->getViewMatrix(), m_camera.camera()->getProjectionMatrix());
