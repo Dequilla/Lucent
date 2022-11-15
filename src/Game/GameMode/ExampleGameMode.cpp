@@ -6,8 +6,6 @@ void lu::game::ExampleGameMode::init()
 
 	m_renderer.setScreenBufferSize(size.x, size.y);
 
-	
-
 	// Game objects
 	lu::graphics::ModelLoader loader;
 	
@@ -120,6 +118,15 @@ void lu::game::ExampleGameMode::tick(float dt)
 
 void lu::game::ExampleGameMode::draw()
 {
+		// Create a UI
+		lu::core::ui::createFrame();
+		ImGui::Begin("Hello, world!"); 
+		ImGui::Text("This is some useful text."); 
+		ImGui::End();
+		ImGui::Render();
+		glViewport(0, 0, (int)m_imguiIO.DisplaySize.x, (int)m_imguiIO.DisplaySize.y);
+		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
 	GameMode::draw(&m_renderer);
 }
 

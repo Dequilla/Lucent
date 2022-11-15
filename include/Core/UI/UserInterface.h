@@ -8,7 +8,7 @@
 
 namespace lu { namespace core { namespace ui {
 
-    inline bool initUserInterfaceComponents(SDL_Window* sdlWindow, SDL_GLContext glContext)
+    inline bool initImGUI(SDL_Window* sdlWindow, SDL_GLContext glContext)
     {
         IMGUI_CHECKVERSION();
         ImGui::CreateContext();
@@ -19,6 +19,13 @@ namespace lu { namespace core { namespace ui {
         ImGui_ImplOpenGL3_Init("#version 130");
 
         return false;
+    }
+
+    inline void endImGUI()
+    {
+        ImGui_ImplOpenGL3_Shutdown();
+        ImGui_ImplSDL2_Shutdown();
+        ImGui::DestroyContext();
     }
 
     inline void processEvents(const SDL_Event* event)

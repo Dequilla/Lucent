@@ -10,7 +10,8 @@ set(LucentDependencies ${PROJECT_SOURCE_DIR}/deps)
 
 # Include dirs
 set(ALL_DEP_INCLUDES 	${LucentDependencies}/include/All
-						${LucentDependencies}/external)
+						${LucentDependencies}/external
+						${LucentDependencies}/external/imgui)
 
 # Include our source files
 set(OUR_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)

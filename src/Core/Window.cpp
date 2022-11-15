@@ -1,5 +1,7 @@
 #include "Core/Window.h"
 
+bool lu::core::Window::m_imguiActive = false;
+
 void lu::core::Window::initVideoComponents()
 {
 	// Set openGL Attributes
@@ -55,9 +57,6 @@ void lu::core::Window::create(std::string title, int posx, int posy, int width, 
 	{
 		lu::core::log(LU_AT, "GLEW failed to initialize", LOG_ERROR);
 	}
-
-	// Init UI
-	lu::core::ui::initUserInterfaceComponents(m_window, m_glContext);
 }
 
 void lu::core::Window::setClearColor(float r, float g, float b, float a)
@@ -110,4 +109,25 @@ glm::vec2 lu::core::Window::getSize()
 	int width, height;
 	SDL_GetWindowSize(m_window, &width, &height);
 	return glm::vec2(width, height);
+}
+
+void lu::core::Window::setActiveImGUI(bool setActive)
+{
+	if(setActive)
+	{
+		if(m_imguiActive)
+		{
+			lu::core::ui::endImGUI();
+			m_imguiActive = false;
+		}
+
+		// Init ImGUI
+		m_imguiActive = lu::core::ui::initImGUI(m_window, m_glContext);
+	}
+	else
+	{
+		lu::core::ui::endImGUI();
+		m_imguiActive = false;
+	}
+
 }

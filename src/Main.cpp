@@ -44,10 +44,10 @@ int main(int argc, char* argv[])
 		lu::core::WINDOW_RESIZABLE
 	);
 
-	ImGuiIO& imguiIO = ImGui::GetIO(); (void)imguiIO;
+	// Setting up imgui to render to this, our main window
+	window.setActiveImGUI(true);
 
 	lu::core::Application::enableVSYNC(true);
-	window.setWindowGrab(true);
 
 	lu::game::ExampleGameMode exGameMode;
 	exGameMode.init();
@@ -73,7 +73,6 @@ int main(int argc, char* argv[])
 	props.fPath = "Shaders/Text/basic_fragment.glsl";
 	lu::graphics::Shader textShader = sLoader.loadShader(props, false);
 
-	bool skeleton = false;
 	bool running = true;
 	while (running)
 	{
@@ -108,6 +107,13 @@ int main(int argc, char* argv[])
 					}
 				}
 
+				if(e.key.keysym.sym == SDLK_F8)
+				{
+					static bool cursorIsGrabbed = false;
+					cursorIsGrabbed = !cursorIsGrabbed;
+					window.setWindowGrab(cursorIsGrabbed);
+				}
+
 				if (e.key.keysym.sym == SDLK_F9)
 				{
 					showFPS = !showFPS; // Toggle fps counter
@@ -115,6 +121,7 @@ int main(int argc, char* argv[])
 
 				if(e.key.keysym.sym == SDLK_F10)
 				{
+					static bool skeleton = false;
 					skeleton = !skeleton;
 					if(skeleton)
 						glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -133,15 +140,6 @@ int main(int argc, char* argv[])
 		exGameMode.tick(deltaTime);
 		exGameMode.draw();
 		exGameMode.end();
-		
-		// Create a UI
-		lu::core::ui::createFrame();
-		ImGui::Begin("Hello, world!"); 
-		ImGui::Text("This is some useful text."); 
-		ImGui::End();
-		ImGui::Render();
-		glViewport(0, 0, (int)imguiIO.DisplaySize.x, (int)imguiIO.DisplaySize.y);
-		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
 		if (showFPS)
 		{
@@ -161,10 +159,7 @@ int main(int argc, char* argv[])
 		window.display();
 	}
 
-	ImGui_ImplOpenGL3_Shutdown();
-    ImGui_ImplSDL2_Shutdown();
-    ImGui::DestroyContext();
-
+	window.setActiveImGUI(false);
 	SDL_Quit();
 
 	return 0;

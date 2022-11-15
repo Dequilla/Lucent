@@ -26,6 +26,8 @@ namespace lu { namespace game {
 	class ExampleGameMode : public GameMode
 	{
 	protected:
+		ImGuiIO& m_imguiIO = ImGui::GetIO();
+
 		// GameObjects
 		lu::game::ModelObject m_nanosuit;
 		lu::game::ModelObject m_grassy;

@@ -46,6 +46,8 @@ namespace lu { namespace core {
 		SDL_Window* m_window = nullptr;
 		SDL_GLContext m_glContext = NULL;
 
+		static bool m_imguiActive;
+
 		void initVideoComponents();
 		void destroyWindow();
 
@@ -122,6 +124,11 @@ namespace lu { namespace core {
 		void setWindowFullscreen(unsigned int type);
 
 		glm::vec2 getSize(); /**< Returns a vector with the width and height of the window */
+
+		/**
+		 * \brief Sets this Window as the currently active window which recieves ImGUI UI updates
+		 */
+		void setActiveImGUI(bool setActive);
 	};
 
 }} // Namespace end
