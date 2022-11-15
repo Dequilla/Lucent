@@ -11,6 +11,8 @@
 #include "Core/Window.h"
 #include "Core/Application.h"
 
+#include "Core/UI/UserInterface.h"
+
 #include "Game/GameMode/ExampleGameMode.h"
 
 #include "Graphics/Text/Font.h"
@@ -42,8 +44,9 @@ int main(int argc, char* argv[])
 		lu::core::WINDOW_RESIZABLE
 	);
 
-	lu::core::Application::enableVSYNC(true);
+	ImGuiIO& imguiIO = ImGui::GetIO(); (void)imguiIO;
 
+	lu::core::Application::enableVSYNC(true);
 	window.setWindowGrab(true);
 
 	lu::game::ExampleGameMode exGameMode;
@@ -77,6 +80,7 @@ int main(int argc, char* argv[])
 		SDL_Event e;
 		while (SDL_PollEvent(&e) != 0)
 		{
+			lu::core::ui::processEvents(&e);
 			exGameMode.checkInput(e);
 
 			if (e.type == SDL_QUIT)
@@ -124,12 +128,21 @@ int main(int argc, char* argv[])
 		glClear(GL_DEPTH_BUFFER_BIT);
 
 		float deltaTime = clock.restart().asSeconds();
-
+		
 		exGameMode.begin();
 		exGameMode.tick(deltaTime);
 		exGameMode.draw();
 		exGameMode.end();
 		
+		// Create a UI
+		lu::core::ui::createFrame();
+		ImGui::Begin("Hello, world!"); 
+		ImGui::Text("This is some useful text."); 
+		ImGui::End();
+		ImGui::Render();
+		glViewport(0, 0, (int)imguiIO.DisplaySize.x, (int)imguiIO.DisplaySize.y);
+		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
 		if (showFPS)
 		{
 			// Draw fps - Temporary, will create debug panel thingy
@@ -147,6 +160,10 @@ int main(int argc, char* argv[])
 		
 		window.display();
 	}
+
+	ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplSDL2_Shutdown();
+    ImGui::DestroyContext();
 
 	SDL_Quit();
 

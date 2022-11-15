@@ -55,6 +55,9 @@ void lu::core::Window::create(std::string title, int posx, int posy, int width, 
 	{
 		lu::core::log(LU_AT, "GLEW failed to initialize", LOG_ERROR);
 	}
+
+	// Init UI
+	lu::core::ui::initUserInterfaceComponents(m_window, m_glContext);
 }
 
 void lu::core::Window::setClearColor(float r, float g, float b, float a)

@@ -6,15 +6,17 @@ void lu::game::ExampleGameMode::init()
 
 	m_renderer.setScreenBufferSize(size.x, size.y);
 
+	
+
 	// Game objects
 	lu::graphics::ModelLoader loader;
 	
-	lu::graphics::Model grassyModel = loader.loadModel("Resources/Models/Grassy/grassy.obj");
+	lu::graphics::Model grassyModel = loader.loadModel("Resources/Models/TestTerrain/TestTerrain.obj");
 
 	m_grassy.name = "grassy";
 	m_grassy.model()->setModel(grassyModel);
-	m_grassy.transform()->setPosition(0.0f, -1.f, 0.0f);
-	m_grassy.transform()->setScale(2.f, 2.f, 2.f);
+	m_grassy.transform()->setPosition(0.0f, -15.f, 0.0f);
+	m_grassy.transform()->setScale(1.f, 1.f, 1.f);
 	m_scene.addGameObject("root", &m_grassy);
 
 	lu::graphics::Model nanosuit = loader.loadModel("Resources/Models/Nanosuit/nanosuit.obj");

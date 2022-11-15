@@ -8,10 +8,12 @@
 #include "GLM/glm.hpp"
 
 #include "Core/Utility/log.h"
+#include "Core/Window.h"
 #include "Graphics/Text/InitText.h"
 
 #include <iostream>
 #include <string>
+#include <memory>
 
 namespace lu { namespace core { 
 
