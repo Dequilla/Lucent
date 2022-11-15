@@ -12,3 +12,8 @@ CMakeCache.txt
 ###########
 [Bb]in/
 [Rr]elease/
+
+
+# Submodules #
+##############
+deps/external/imgui/
