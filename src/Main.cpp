@@ -11,6 +11,8 @@
 #include "Core/Window.h"
 #include "Core/Application.h"
 
+#include "Core/UI/UserInterface.h"
+
 #include "Game/GameMode/ExampleGameMode.h"
 
 #include "Graphics/Text/Font.h"
@@ -34,7 +36,7 @@ int main(int argc, char* argv[])
 	lu::core::Application::getInstance().maxPointLights = 10;
 	lu::core::Application::getInstance().maxSpotLights = 1;
 
-	std::shared_ptr<lu::core::Window> window = std::make_shared<lu::core::Window>(
+	lu::core::Window window(
 		"Lucent",
 		lu::core::WINDOWPOS_CENTERED,
 		lu::core::WINDOWPOS_CENTERED,
@@ -42,8 +44,10 @@ int main(int argc, char* argv[])
 		lu::core::WINDOW_RESIZABLE
 	);
 
+	ImGuiIO& imguiIO = ImGui::GetIO(); (void)imguiIO;
+
 	lu::core::Application::enableVSYNC(true);
-	window->setWindowGrab(true);
+	window.setWindowGrab(true);
 
 	lu::game::ExampleGameMode exGameMode;
 	exGameMode.init();
@@ -76,6 +80,7 @@ int main(int argc, char* argv[])
 		SDL_Event e;
 		while (SDL_PollEvent(&e) != 0)
 		{
+			lu::core::ui::processEvents(&e);
 			exGameMode.checkInput(e);
 
 			if (e.type == SDL_QUIT)
@@ -91,14 +96,14 @@ int main(int argc, char* argv[])
 					// Buggy on linux it seems - probably happens too fast, so it instantly switches back
 					if (fullscreen == false)
 					{
-						window->setWindowFullscreen(lu::core::WINDOW_FULLSCREEN_DESKTOP);
-						lu::core::Application::setScreenBufferSize(window->getSize().x, window->getSize().y);
+						window.setWindowFullscreen(lu::core::WINDOW_FULLSCREEN_DESKTOP);
+						lu::core::Application::setScreenBufferSize(window.getSize().x, window.getSize().y);
 						fullscreen = true;
 					}
 					else
 					{
-						window->setWindowFullscreen(0);
-						lu::core::Application::setScreenBufferSize(window->getSize().x, window->getSize().y);
+						window.setWindowFullscreen(0);
+						lu::core::Application::setScreenBufferSize(window.getSize().x, window.getSize().y);
 						fullscreen = false;
 					}
 				}
@@ -119,16 +124,25 @@ int main(int argc, char* argv[])
 			}
 		}
 
-		window->clear();
+		window.clear();
 		glClear(GL_DEPTH_BUFFER_BIT);
 
 		float deltaTime = clock.restart().asSeconds();
-
+		
 		exGameMode.begin();
 		exGameMode.tick(deltaTime);
 		exGameMode.draw();
 		exGameMode.end();
 		
+		// Create a UI
+		lu::core::ui::createFrame();
+		ImGui::Begin("Hello, world!"); 
+		ImGui::Text("This is some useful text."); 
+		ImGui::End();
+		ImGui::Render();
+		glViewport(0, 0, (int)imguiIO.DisplaySize.x, (int)imguiIO.DisplaySize.y);
+		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
 		if (showFPS)
 		{
 			// Draw fps - Temporary, will create debug panel thingy
@@ -136,7 +150,7 @@ int main(int argc, char* argv[])
 			if (frameCount >= 1.f) // Once a second
 			{
 				int fps = 1 / deltaTime;
-				text.setPosition(20, window->getSize().y - 30);
+				text.setPosition(20, window.getSize().y - 30);
 				text.setText("FPS: " + std::to_string(fps));
 
 				frameCount = 0.f;
@@ -144,8 +158,12 @@ int main(int argc, char* argv[])
 			text.draw(textShader);
 		}
 		
-		window->display();
+		window.display();
 	}
+
+	ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplSDL2_Shutdown();
+    ImGui::DestroyContext();
 
 	SDL_Quit();
 

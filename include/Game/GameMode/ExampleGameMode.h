@@ -19,6 +19,8 @@
 
 #include "Core/Application.h"
 
+#include "Core/UI/UserInterface.h"
+
 namespace lu { namespace game {
 
 	class ExampleGameMode : public GameMode

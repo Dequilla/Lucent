@@ -12,14 +12,25 @@ namespace lu { namespace core { namespace ui {
     {
         IMGUI_CHECKVERSION();
         ImGui::CreateContext();
-        ImGuiIO& io = ImGui::GetIO(); (void)io;
         
         ImGui::StyleColorsDark();
 
         ImGui_ImplSDL2_InitForOpenGL(sdlWindow, glContext);
-        ImGui_ImplOpenGL3_Init("#version 330");
+        ImGui_ImplOpenGL3_Init("#version 130");
 
         return false;
+    }
+
+    inline void processEvents(const SDL_Event* event)
+    {
+        ImGui_ImplSDL2_ProcessEvent(event);
+    }
+
+    inline void createFrame()
+    {
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplSDL2_NewFrame();
+        ImGui::NewFrame();
     }
 
 }}}

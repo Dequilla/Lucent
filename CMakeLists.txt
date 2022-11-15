@@ -71,7 +71,7 @@ elseif(UNIX)
 	include_directories(${ASSIMP_INCLUDE_DIRS} ${SDL2_INCLUDE_DIR} ${GLEW_INCLUDE_DIRS} ${FREETYPE_INCLUDE_DIRS} ${ALL_DEP_INCLUDES})
 endif()
 
-# Setup ImGUI
-add_subdirectory(deps/external/imgui)
+# Setup submodules
+add_subdirectory(deps/external)
 
 add_subdirectory(src)

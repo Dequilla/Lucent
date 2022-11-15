@@ -6,6 +6,8 @@ void lu::game::ExampleGameMode::init()
 
 	m_renderer.setScreenBufferSize(size.x, size.y);
 
+	
+
 	// Game objects
 	lu::graphics::ModelLoader loader;
 	
