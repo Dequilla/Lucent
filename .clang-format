@@ -1,0 +1,38 @@
+Standard: Latest
+Language: Cpp
+
+BasedOnStyle: Mozilla
+UseTab: Never
+IndentWidth: 4
+AlignAfterOpenBracket: Align
+
+SpacesInAngles: Never
+SeparateDefinitionBlocks: Always
+NamespaceIndentation: All
+LambdaBodyIndentation: OuterScope
+IndentCaseLabels: true
+IndentAccessModifiers: true
+
+BreakBeforeBraces: Allman
+SpacesInContainerLiterals: false
+BreakConstructorInitializers: AfterColon
+BreakBeforeTernaryOperators: true
+BreakBeforeBinaryOperators: None
+
+MaxEmptyLinesToKeep: 2
+KeepEmptyLines:
+  AtEndOfFile: false
+  AtStartOfBlock: false
+  AtStartOfFile: false
+
+MainIncludeChar: AngleBracket
+
+IntegerLiteralSeparator:
+  Binary: 4
+  Decimal: 3
+  Hex: -1
+
+ReferenceAlignment: Right
+PointerAlignment: Right
+
+

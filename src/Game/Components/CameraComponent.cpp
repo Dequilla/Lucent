@@ -2,64 +2,80 @@
 
 lu::game::CameraComponent::CameraComponent()
 {
-	glm::vec2 size = lu::core::Application::getScreenBufferSize();
+    glm::vec2 size = lu::core::Application::getScreenBufferSize();
 
-	m_aspectRatio = (float)size.x / (float)size.y;
+    m_aspectRatio = (float)size.x / (float)size.y;
 }
 
-void lu::game::CameraComponent::init()
+void
+lu::game::CameraComponent::init()
 {
-	bDrawable = false;
-	bTickable = false;
+    bDrawable = false;
+    bTickable = false;
 
-	updateTransform();
+    updateTransform();
 }
 
-void lu::game::CameraComponent::tick(float dt)
-{
-}
-
-void lu::game::CameraComponent::draw(lu::graphics::Renderer3D* renderer)
+void
+lu::game::CameraComponent::tick(float dt)
 {
 }
 
-std::string lu::game::CameraComponent::getType()
+void
+lu::game::CameraComponent::draw(lu::graphics::Renderer3D *renderer)
 {
-	return std::string("CameraComponent");
 }
 
-void lu::game::CameraComponent::setProjection(float fov, float aspectRatio, float projnear, float projfar)
+std::string
+lu::game::CameraComponent::getType()
 {
-	m_fov = fov;
-	m_aspectRatio = aspectRatio;
-	m_near = projnear;
-	m_far = projfar;
-
-	m_projection = glm::perspective(glm::radians(m_fov), m_aspectRatio, m_near, m_far);
+    return std::string("CameraComponent");
 }
 
-glm::mat4 lu::game::CameraComponent::getProjectionMatrix() const
+void
+lu::game::CameraComponent::setProjection(float fov,
+                                         float aspectRatio,
+                                         float projnear,
+                                         float projfar)
 {
-	return m_projection;
+    m_fov = fov;
+    m_aspectRatio = aspectRatio;
+    m_near = projnear;
+    m_far = projfar;
+
+    m_projection =
+      glm::perspective(glm::radians(m_fov), m_aspectRatio, m_near, m_far);
 }
 
-glm::mat4 lu::game::CameraComponent::getViewMatrix() const
+glm::mat4
+lu::game::CameraComponent::getProjectionMatrix() const
 {
-	return glm::translate(glm::mat4_cast(m_transform->getOrientation()), m_transform->getPosition());
+    return m_projection;
 }
 
-glm::vec3 lu::game::CameraComponent::getForwardVector() const
+glm::mat4
+lu::game::CameraComponent::getViewMatrix() const
 {
-	return glm::vec3(0.0f, 0.0f, -1.0f) * m_transform->getOrientation();
+    return glm::translate(glm::mat4_cast(m_transform->getOrientation()),
+                          m_transform->getPosition());
 }
 
-glm::vec3 lu::game::CameraComponent::getLeftVector() const
+glm::vec3
+lu::game::CameraComponent::getForwardVector() const
 {
-	return glm::vec3(-1.0f, 0.0f, 0.0f) * m_transform->getOrientation();
+    return glm::vec3(0.0f, 0.0f, -1.0f) * m_transform->getOrientation();
 }
 
-void lu::game::CameraComponent::updateTransform()
+glm::vec3
+lu::game::CameraComponent::getLeftVector() const
 {
-	// Get the first TransformComponent of our host
-	m_transform = getHostComponentsOfType<TransformComponent>("TransformComponent").at(0);
+    return glm::vec3(-1.0f, 0.0f, 0.0f) * m_transform->getOrientation();
+}
+
+void
+lu::game::CameraComponent::updateTransform()
+{
+    // Get the first TransformComponent of our host
+    m_transform =
+      getHostComponentsOfType<TransformComponent>("TransformComponent").at(0);
 }

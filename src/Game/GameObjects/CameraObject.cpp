@@ -2,8 +2,8 @@
 
 lu::game::CameraObject::CameraObject()
 {
-	this->addComponent(&m_cameraComponent);
-	this->addComponent(&m_transformComponent);
+    this->addComponent(&m_cameraComponent);
+    this->addComponent(&m_transformComponent);
 
-	m_cameraComponent.updateTransform();
+    m_cameraComponent.updateTransform();
 }

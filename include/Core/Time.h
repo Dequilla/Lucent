@@ -1,44 +1,50 @@
 /**
-* \file Time.h
-*/
+ * \file Time.h
+ */
 #pragma once
 
 #include "SDL2/SDL.h"
 
-namespace lu { namespace core {
+namespace lu
+{
+    namespace core
+    {
 
-	/**
-	* \brief Represents time in diffrent formats
-	* 
-	* Internally uses milliseconds and easily transfers it to other formats for use in the engine.
-	*/
-	struct Time
-	{
-		int time = 0;  /**<  The time in milliseconds */
-		
-		int asMicroseconds()	{ return time * 1000; }
-		int asMilliseconds()	{ return time; }
-		float asSeconds()		{ return (float)time / 1000.f; }
-	};
+        /**
+         * \brief Represents time in diffrent formats
+         *
+         * Internally uses milliseconds and easily transfers it to other formats
+         * for use in the engine.
+         */
+        struct Time
+        {
+                int time = 0; /**<  The time in milliseconds */
 
+                int asMicroseconds() { return time * 1'000; }
 
-	/**
-	* \brief A simple clock
-	*/
-	class Clock
-	{
-	private:
-		unsigned int m_ticksStarted = 0; // Milliseconds at start
-	
-	public:
-		Clock() {}
+                int asMilliseconds() { return time; }
 
-		void start(); /**< Start clock */
+                float asSeconds() { return (float)time / 1000.f; }
+        };
 
-		Time getPassed(); /**< Get the Time passed since start or restart */
+        /**
+         * \brief A simple clock
+         */
+        class Clock
+        {
+            private:
+                unsigned int m_ticksStarted = 0; // Milliseconds at start
 
-		Time restart(); /**< Get Time passed then restart the clock */
-	};
+            public:
+                Clock() {}
 
+                void start(); /**< Start clock */
 
-}}
+                Time
+                getPassed(); /**< Get the Time passed since start or restart */
+
+                Time restart(); /**< Get Time passed then restart the clock */
+        };
+
+    }
+}

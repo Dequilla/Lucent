@@ -1,22 +1,30 @@
 #pragma once
 
-#include "Game/GameObject.h"
-#include "Game/Components/TransformComponent.h"
 #include "Game/Components/ModelComponent.h"
+#include "Game/Components/TransformComponent.h"
+#include "Game/GameObject.h"
 
-namespace lu { namespace game {
+namespace lu
+{
+    namespace game
+    {
 
-	class ModelObject : public GameObject
-	{
-	protected:
-		game::TransformComponent	m_transformComponent;
-		game::ModelComponent		m_modelComponent;
+        class ModelObject : public GameObject
+        {
+            protected:
+                game::TransformComponent m_transformComponent;
+                game::ModelComponent m_modelComponent;
 
-	public:
-		ModelObject();
+            public:
+                ModelObject();
 
-		game::TransformComponent*	transform() { return &m_transformComponent; }
-		game::ModelComponent*		model() { return &m_modelComponent; }
-	};
+                game::TransformComponent *transform()
+                {
+                    return &m_transformComponent;
+                }
 
-}}
+                game::ModelComponent *model() { return &m_modelComponent; }
+        };
+
+    }
+}

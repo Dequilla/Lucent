@@ -14,6 +14,9 @@ Uses Freetype, SDL, GLEW, ASSIMP, GLM and OpenGL under the hood.
 #### Building
 Lucent uses CMAKE as it's building system. It is recommended to build out of source.
 
+#### Contributing
+Lucent enforces clang formatting, config file included.
+
 #### Linux - libraries required
 On Ubuntu packages(tested):
 - libsdl2-dev
