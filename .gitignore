@@ -2,14 +2,15 @@
 ################
 *.vs/
 
-
 # CMAKE #
 #########
 CMakeCache.txt
-
 
 # Folders #
 ###########
 [Bb]in/
 [Rr]elease/
 
+# clangd #
+##########
+.cache/

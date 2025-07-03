@@ -1,38 +1,42 @@
 #pragma once
 
-#include "Game/GameObject.h"
 #include "Game/Components/LightComponents.h"
+#include "Game/GameObject.h"
 
-namespace lu { namespace game {
+namespace lu
+{
+    namespace game
+    {
 
-	class DirLightObject : public GameObject
-	{
-		game::DirLightComponent m_light;
+        class DirLightObject : public GameObject
+        {
+                game::DirLightComponent m_light;
 
-	public:
-		DirLightObject();
+            public:
+                DirLightObject();
 
-		DirLightComponent* light() { return &m_light; }
-	};
+                DirLightComponent *light() { return &m_light; }
+        };
 
-	class PointLightObject : public GameObject
-	{
-		game::PointLightComponent m_light;
+        class PointLightObject : public GameObject
+        {
+                game::PointLightComponent m_light;
 
-	public:
-		PointLightObject();
+            public:
+                PointLightObject();
 
-		PointLightComponent* light() { return &m_light; }
-	};
+                PointLightComponent *light() { return &m_light; }
+        };
 
-	class SpotLightObject : public GameObject
-	{
-		game::SpotLightComponent m_light;
+        class SpotLightObject : public GameObject
+        {
+                game::SpotLightComponent m_light;
 
-	public:
-		SpotLightObject();
+            public:
+                SpotLightObject();
 
-		SpotLightComponent* light() { return &m_light; }
-	};
+                SpotLightComponent *light() { return &m_light; }
+        };
 
-}}
+    }
+}

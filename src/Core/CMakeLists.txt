@@ -10,8 +10,6 @@ set(LucentCoreSource 	${INC_CORE_DIR}/Window.h				Window.cpp
 						${INC_CORE_DIR}/Application.h 			Application.cpp
 						${INC_CORE_DIR}/Time.h					Time.cpp
 
-						${INC_CORE_DIR}/UI/UserInterface.h 		UI/UserInterface.cpp
-
 						${INC_CORE_DIR}/Utility/stringutility.h
 						${INC_CORE_DIR}/Utility/log.h
 						${INC_CORE_DIR}/Utility/console.h)

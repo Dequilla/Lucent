@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "\nBuilding: \n"
+echo "Building: "
 
 echo " ▄█       ███    █▄   ▄████████    ▄████████ ███▄▄▄▄       ███    " 
 echo "███       ███    ███ ███    ███   ███    ███ ███▀▀▀██▄ ▀█████████▄" 
@@ -12,7 +12,7 @@ echo "███▌    ▄ ███    ███ ███    ███   ██
 echo "█████▄▄██ ████████▀  ████████▀    ██████████  ▀█   █▀     ▄████▀  " 
 echo "▀"
 
-echo "\n\n-LU- Creating bin..."
+echo "-LU- Creating bin..."
 mkdir -p bin/
 
 # Enter bin

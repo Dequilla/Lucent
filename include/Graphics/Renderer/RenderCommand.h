@@ -1,6 +1,6 @@
 /**
-* \file RenderCommand.h
-*/
+ * \file RenderCommand.h
+ */
 #pragma once
 
 #include "Graphics/Model/Mesh.h"
@@ -9,16 +9,20 @@
 
 #include <vector>
 
-namespace lu { namespace graphics {
+namespace lu
+{
+    namespace graphics
+    {
 
-	/**
-	* \brief A structure of a rendercommand to be sent to a renderer
-	*/
-	struct RenderCommand
-	{
-		Mesh* mesh;
-		glm::mat4 transform;
-		Shader shader;
-	};
+        /**
+         * \brief A structure of a rendercommand to be sent to a renderer
+         */
+        struct RenderCommand
+        {
+                Mesh *mesh;
+                glm::mat4 transform;
+                Shader shader;
+        };
 
-}}
+    }
+}
