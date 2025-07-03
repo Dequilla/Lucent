@@ -5,7 +5,7 @@
 
 #pragma once
 
-#include "SDL2/SDL.h"
+#include <SDL3/SDL.h>
 
 // TODO: if bored document all of the buttons
 
@@ -49,14 +49,10 @@ namespace lu
         enum KeyCodes
         {
             // Controller buttons
-            C_BUTTON_FACE1 =
-              -100'000, /**< Equivalent on XBOX ONE: A */
-            C_BUTTON_FACE2 =
-              -100'001, /**< Equivalent on XBOX ONE: X */
-            C_BUTTON_FACE3 =
-              -100'002, /**< Equivalent on XBOX ONE: B */
-            C_BUTTON_FACE4 =
-              -100'003, /**< Equivalent on XBOX ONE: Y */
+            C_BUTTON_FACE1 = -100'000, /**< Equivalent on XBOX ONE: A */
+            C_BUTTON_FACE2 = -100'001, /**< Equivalent on XBOX ONE: X */
+            C_BUTTON_FACE3 = -100'002, /**< Equivalent on XBOX ONE: B */
+            C_BUTTON_FACE4 = -100'003, /**< Equivalent on XBOX ONE: Y */
             C_BUTTON_DPAD_DOWN =
               -100'004, /**< Equivalent on XBOX ONE: DPAD DOWN		*/
             C_BUTTON_DPAD_UP =
@@ -91,12 +87,12 @@ namespace lu
             K_TAB = SDLK_TAB,
             K_SPACE = SDLK_SPACE,
             K_EXCLAIM = SDLK_EXCLAIM,
-            K_QUOTEDBL = SDLK_QUOTEDBL,
+            K_QUOTEDBL = SDLK_DBLAPOSTROPHE,
             K_HASH = SDLK_HASH,
             K_PERCENT = SDLK_PERCENT,
             K_DOLLAR = SDLK_DOLLAR,
             K_AMPERSAND = SDLK_AMPERSAND,
-            K_QUOTE = SDLK_QUOTE,
+            K_QUOTE = SDLK_APOSTROPHE,
             K_LEFTPAREN = SDLK_LEFTPAREN,
             K_RIGHTPAREN = SDLK_RIGHTPAREN,
             K_ASTERISK = SDLK_ASTERISK,
@@ -128,33 +124,33 @@ namespace lu
             K_RIGHTBRACKET = SDLK_RIGHTBRACKET,
             K_CARET = SDLK_CARET,
             K_UNDERSCORE = SDLK_UNDERSCORE,
-            K_BACKQUOTE = SDLK_BACKQUOTE,
-            K_a = SDLK_a,
-            K_b = SDLK_b,
-            K_c = SDLK_c,
-            K_d = SDLK_d,
-            K_e = SDLK_e,
-            K_f = SDLK_f,
-            K_g = SDLK_g,
-            K_h = SDLK_h,
-            K_i = SDLK_i,
-            K_j = SDLK_j,
-            K_k = SDLK_k,
-            K_l = SDLK_l,
-            K_m = SDLK_m,
-            K_n = SDLK_n,
-            K_o = SDLK_o,
-            K_p = SDLK_p,
-            K_q = SDLK_q,
-            K_r = SDLK_r,
-            K_s = SDLK_s,
-            K_t = SDLK_t,
-            K_u = SDLK_u,
-            K_v = SDLK_v,
-            K_w = SDLK_w,
-            K_x = SDLK_x,
-            K_y = SDLK_y,
-            K_z = SDLK_z,
+            K_BACKQUOTE = SDLK_GRAVE,
+            K_a = SDLK_A,
+            K_b = SDLK_B,
+            K_c = SDLK_C,
+            K_d = SDLK_D,
+            K_e = SDLK_E,
+            K_f = SDLK_F,
+            K_g = SDLK_G,
+            K_h = SDLK_H,
+            K_i = SDLK_I,
+            K_j = SDLK_J,
+            K_k = SDLK_K,
+            K_l = SDLK_L,
+            K_m = SDLK_M,
+            K_n = SDLK_N,
+            K_o = SDLK_O,
+            K_p = SDLK_P,
+            K_q = SDLK_Q,
+            K_r = SDLK_R,
+            K_s = SDLK_S,
+            K_t = SDLK_T,
+            K_u = SDLK_U,
+            K_v = SDLK_V,
+            K_w = SDLK_W,
+            K_x = SDLK_X,
+            K_y = SDLK_Y,
+            K_z = SDLK_Z,
 
             K_CAPSLOCK = SDLK_CAPSLOCK,
 
@@ -306,16 +302,12 @@ namespace lu
 
             K_MODE = SDLK_MODE,
 
-            K_AUDIONEXT = SDLK_AUDIONEXT,
-            K_AUDIOPREV = SDLK_AUDIOPREV,
-            K_AUDIOSTOP = SDLK_AUDIOSTOP,
-            K_AUDIOPLAY = SDLK_AUDIOPLAY,
-            K_AUDIOMUTE = SDLK_AUDIOMUTE,
-            K_MEDIASELECT = SDLK_MEDIASELECT,
-            K_WWW = SDLK_WWW,
-            K_MAIL = SDLK_MAIL,
-            K_CALCULATOR = SDLK_CALCULATOR,
-            K_COMPUTER = SDLK_COMPUTER,
+            K_AUDIONEXT = SDLK_MEDIA_NEXT_TRACK,
+            K_AUDIOPREV = SDLK_MEDIA_PREVIOUS_TRACK,
+            K_AUDIOSTOP = SDLK_MEDIA_STOP,
+            K_AUDIOPLAY = SDLK_MEDIA_PLAY,
+            K_AUDIOMUTE = SDLK_MUTE,
+            K_MEDIASELECT = SDLK_MEDIA_SELECT,
             K_AC_SEARCH = SDLK_AC_SEARCH,
             K_AC_HOME = SDLK_AC_HOME,
             K_AC_BACK = SDLK_AC_BACK,
@@ -324,13 +316,7 @@ namespace lu
             K_AC_REFRESH = SDLK_AC_REFRESH,
             K_AC_BOOKMARKS = SDLK_AC_BOOKMARKS,
 
-            K_BRIGHTNESSDOWN = SDLK_BRIGHTNESSDOWN,
-            K_BRIGHTNESSUP = SDLK_BRIGHTNESSUP,
-            K_DISPLAYSWITCH = SDLK_DISPLAYSWITCH,
-            K_KBDILLUMTOGGLE = SDLK_KBDILLUMTOGGLE,
-            K_KBDILLUMDOWN = SDLK_KBDILLUMDOWN,
-            K_KBDILLUMUP = SDLK_KBDILLUMUP,
-            K_EJECT = SDLK_EJECT,
+            K_EJECT = SDLK_MEDIA_EJECT,
             K_SLEEP = SDLK_SLEEP
         };
     }

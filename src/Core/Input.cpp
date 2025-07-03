@@ -34,31 +34,33 @@ lu::core::Input::checkInput(const SDL_Event &e)
     unbindActual();
 
     // KEYBOARD/BUTTON EVENTS
-    if (e.type == SDL_KEYDOWN || e.type == SDL_KEYUP ||
-        e.type == SDL_MOUSEBUTTONDOWN || e.type == SDL_MOUSEBUTTONUP ||
-        e.type == SDL_CONTROLLERBUTTONDOWN || e.type == SDL_CONTROLLERBUTTONUP)
+    if (e.type == SDL_EVENT_KEY_DOWN || e.type == SDL_EVENT_KEY_UP ||
+        e.type == SDL_EVENT_MOUSE_BUTTON_DOWN ||
+        e.type == SDL_EVENT_MOUSE_BUTTON_UP ||
+        e.type == SDL_EVENT_GAMEPAD_BUTTON_DOWN ||
+        e.type == SDL_EVENT_GAMEPAD_BUTTON_UP)
     {
         try
         {
             for (auto &ptr : m_boundKeys)
             {
                 // If key/button is pressed keyPressed = true
-                bool keyPressed =
-                  (e.type == SDL_KEYDOWN || e.type == SDL_MOUSEBUTTONDOWN ||
-                   e.type == SDL_CONTROLLERBUTTONDOWN)
-                    ? true
-                    : false;
+                bool keyPressed = (e.type == SDL_EVENT_KEY_DOWN ||
+                                   e.type == SDL_EVENT_MOUSE_BUTTON_DOWN ||
+                                   e.type == SDL_EVENT_GAMEPAD_BUTTON_DOWN)
+                                    ? true
+                                    : false;
 
                 // Check if it equals a key
-                if (e.key.keysym.sym == ptr)
+                if (e.key.key == ptr)
                 {
                     // Call callback function
                     m_cbButtonEvent.at(ptr)(keyPressed);
                 }
 
                 // Check if it is a mouse button
-                if (e.type == SDL_MOUSEBUTTONDOWN ||
-                    e.type == SDL_MOUSEBUTTONUP)
+                if (e.type == SDL_EVENT_MOUSE_BUTTON_DOWN ||
+                    e.type == SDL_EVENT_MOUSE_BUTTON_UP)
                 {
                     // If current bind we are checking equals any of the mouse
                     // buttons
@@ -88,81 +90,81 @@ lu::core::Input::checkInput(const SDL_Event &e)
                 }
 
                 // Controller buttons
-                if (e.type == SDL_CONTROLLERBUTTONDOWN ||
-                    e.type == SDL_CONTROLLERBUTTONUP)
+                if (e.type == SDL_EVENT_GAMEPAD_BUTTON_DOWN ||
+                    e.type == SDL_EVENT_GAMEPAD_BUTTON_UP)
                 {
                     // Which controller
-                    SDL_JoystickID controllerID = e.cbutton.which;
+                    SDL_JoystickID controllerID = e.gbutton.which;
 
-                    SDL_GameControllerButton button =
-                      (SDL_GameControllerButton)e.cbutton.button;
+                    SDL_GamepadButton button =
+                      (SDL_GamepadButton)e.gbutton.button;
 
                     switch (ptr)
                     {
                             // Right side buttons
                         case C_BUTTON_FACE1:
-                            if (button == SDL_CONTROLLER_BUTTON_A)
+                            if (button == SDL_GAMEPAD_BUTTON_SOUTH)
                                 m_cbButtonEvent.at(ptr)(keyPressed);
                             break;
                         case C_BUTTON_FACE2:
-                            if (button == SDL_CONTROLLER_BUTTON_X)
+                            if (button == SDL_GAMEPAD_BUTTON_WEST)
                                 m_cbButtonEvent.at(ptr)(keyPressed);
                             break;
                         case C_BUTTON_FACE3:
-                            if (button == SDL_CONTROLLER_BUTTON_B)
+                            if (button == SDL_GAMEPAD_BUTTON_EAST)
                                 m_cbButtonEvent.at(ptr)(keyPressed);
                             break;
                         case C_BUTTON_FACE4:
-                            if (button == SDL_CONTROLLER_BUTTON_Y)
+                            if (button == SDL_GAMEPAD_BUTTON_NORTH)
                                 m_cbButtonEvent.at(ptr)(keyPressed);
                             break;
 
                             // DPAD / Left side buttons
                         case C_BUTTON_DPAD_DOWN:
-                            if (button == SDL_CONTROLLER_BUTTON_DPAD_DOWN)
+                            if (button == SDL_GAMEPAD_BUTTON_DPAD_DOWN)
                                 m_cbButtonEvent.at(ptr)(keyPressed);
                             break;
                         case C_BUTTON_DPAD_UP:
-                            if (button == SDL_CONTROLLER_BUTTON_DPAD_UP)
+                            if (button == SDL_GAMEPAD_BUTTON_DPAD_UP)
                                 m_cbButtonEvent.at(ptr)(keyPressed);
                             break;
                         case C_BUTTON_DPAD_LEFT:
-                            if (button == SDL_CONTROLLER_BUTTON_DPAD_LEFT)
+                            if (button == SDL_GAMEPAD_BUTTON_DPAD_LEFT)
                                 m_cbButtonEvent.at(ptr)(keyPressed);
                             break;
                         case C_BUTTON_DPAD_RIGHT:
-                            if (button == SDL_CONTROLLER_BUTTON_DPAD_RIGHT)
+                            if (button == SDL_GAMEPAD_BUTTON_DPAD_RIGHT)
                                 m_cbButtonEvent.at(ptr)(keyPressed);
                             break;
 
                             // Stick left
                         case C_BUTTON_STICK1:
-                            if (button == SDL_CONTROLLER_BUTTON_LEFTSTICK)
+                            if (button == SDL_GAMEPAD_BUTTON_LEFT_STICK)
                                 m_cbButtonEvent.at(ptr)(keyPressed);
                             break;
                             // Stick right
                         case C_BUTTON_STICK2:
-                            if (button == SDL_CONTROLLER_BUTTON_RIGHTSTICK)
+                            if (button == SDL_GAMEPAD_BUTTON_RIGHT_STICK)
                                 m_cbButtonEvent.at(ptr)(keyPressed);
                             break;
 
                             // Back buttons
                         case C_BUTTON_LBUMPER:
-                            if (button == SDL_CONTROLLER_BUTTON_LEFTSHOULDER)
+                            if (button == SDL_GAMEPAD_BUTTON_LEFT_SHOULDER)
                                 m_cbButtonEvent.at(ptr)(keyPressed);
                             break;
                         case C_BUTTON_RBUMPER:
-                            if (button == SDL_CONTROLLER_BUTTON_RIGHTSHOULDER)
+                            if (button == SDL_GAMEPAD_BUTTON_RIGHT_SHOULDER)
                                 m_cbButtonEvent.at(ptr)(keyPressed);
                             break;
 
                             // Start / select
                         case C_BUTTON_SELECT:
-                            if (button == SDL_CONTROLLER_BUTTON_BACK)
+                            if (button == SDL_GAMEPAD_BUTTON_BACK)
                                 m_cbButtonEvent.at(ptr)(keyPressed);
                             break;
                         case C_BUTTON_START:
-                            if (button == SDL_CONTROLLER_BUTTON_START)
+                            if (button == SDL_GAMEPAD_BUTTON_START)
                                 m_cbButtonEvent.at(ptr)(keyPressed);
                             break;
                     }
@@ -177,96 +179,102 @@ lu::core::Input::checkInput(const SDL_Event &e)
         }
     }
     // AXIS EVENTS
-    else if (e.type == SDL_MOUSEMOTION || e.type == SDL_MOUSEWHEEL ||
-             e.type == SDL_CONTROLLERAXISMOTION)
+    else if (e.type == SDL_EVENT_MOUSE_MOTION ||
+             e.type == SDL_EVENT_MOUSE_WHEEL ||
+             e.type == SDL_EVENT_GAMEPAD_AXIS_MOTION)
     {
         for (auto &ptr : m_boundAxis)
         {
             // MOUSE
-            if (e.type == SDL_MOUSEMOTION || e.type == SDL_MOUSEWHEEL)
+            if (e.type == SDL_EVENT_MOUSE_MOTION ||
+                e.type == SDL_EVENT_MOUSE_WHEEL)
             {
                 switch (ptr)
                 {
                     case M_MOTION_X:
-                        if (e.type == SDL_MOUSEMOTION && e.motion.xrel != 0)
+                        if (e.type == SDL_EVENT_MOUSE_MOTION &&
+                            e.motion.xrel != 0)
                             m_cbAxisEvent.at(ptr)((float)e.motion.x);
                         break;
                     case M_MOTION_Y:
-                        if (e.type == SDL_MOUSEMOTION && e.motion.yrel != 0)
+                        if (e.type == SDL_EVENT_MOUSE_MOTION &&
+                            e.motion.yrel != 0)
                             m_cbAxisEvent.at(ptr)((float)e.motion.y);
                         break;
                     case M_MOTION_XREL:
-                        if (e.type == SDL_MOUSEMOTION && e.motion.xrel != 0)
+                        if (e.type == SDL_EVENT_MOUSE_MOTION &&
+                            e.motion.xrel != 0)
                             m_cbAxisEvent.at(ptr)((float)e.motion.xrel);
                         break;
                     case M_MOTION_YREL:
-                        if (e.type == SDL_MOUSEMOTION && e.motion.yrel != 0)
+                        if (e.type == SDL_EVENT_MOUSE_MOTION &&
+                            e.motion.yrel != 0)
                             m_cbAxisEvent.at(ptr)((float)e.motion.yrel);
                         break;
                     case M_WHEEL_X:
-                        if (e.type == SDL_MOUSEWHEEL)
+                        if (e.type == SDL_EVENT_MOUSE_WHEEL)
                             m_cbAxisEvent.at(ptr)((float)e.wheel.x);
                         break;
                     case M_WHEEL_Y:
-                        if (e.type == SDL_MOUSEWHEEL)
+                        if (e.type == SDL_EVENT_MOUSE_WHEEL)
                             m_cbAxisEvent.at(ptr)((float)e.wheel.y);
                         break;
                 }
             }
             // CONTROLLER AXIS
-            else if (e.type == SDL_CONTROLLERAXISMOTION)
+            else if (e.type == SDL_EVENT_GAMEPAD_AXIS_MOTION)
             {
                 // Which controller
-                SDL_JoystickID controllerID = e.caxis.which;
+                SDL_JoystickID controllerID = e.gaxis.which;
 
-                SDL_GameControllerAxis caxis =
-                  (SDL_GameControllerAxis)e.caxis.axis;
+                SDL_GamepadAxis gaxis = (SDL_GamepadAxis)e.gaxis.axis;
 
                 switch (ptr)
                 {
                         // LEFT STICK
                     case C_AXIS_LSTICKX:
-                        if (e.caxis.axis == SDL_CONTROLLER_AXIS_LEFTX)
-                            m_cbAxisEvent.at(ptr)((float)e.caxis.value);
+                        if (e.gaxis.axis == SDL_GAMEPAD_AXIS_LEFTX)
+                            m_cbAxisEvent.at(ptr)((float)e.gaxis.value);
                         break;
                     case C_AXIS_LSTICKY:
-                        if (e.caxis.axis == SDL_CONTROLLER_AXIS_LEFTY)
-                            m_cbAxisEvent.at(ptr)((float)e.caxis.value);
+                        if (e.gaxis.axis == SDL_GAMEPAD_AXIS_LEFTY)
+                            m_cbAxisEvent.at(ptr)((float)e.gaxis.value);
                         break;
 
                         // RIGHT STICK
                     case C_AXIS_RSTICKX:
-                        if (e.caxis.axis == SDL_CONTROLLER_AXIS_RIGHTX)
-                            m_cbAxisEvent.at(ptr)((float)e.caxis.value);
+                        if (e.gaxis.axis == SDL_GAMEPAD_AXIS_RIGHTX)
+                            m_cbAxisEvent.at(ptr)((float)e.gaxis.value);
                         break;
                     case C_AXIS_RSTICKY:
-                        if (e.caxis.axis == SDL_CONTROLLER_AXIS_RIGHTY)
-                            m_cbAxisEvent.at(ptr)((float)e.caxis.value);
+                        if (e.gaxis.axis == SDL_GAMEPAD_AXIS_RIGHTY)
+                            m_cbAxisEvent.at(ptr)((float)e.gaxis.value);
                         break;
 
                         // Triggers
                     case C_AXIS_LTRIGGER:
-                        if (e.caxis.axis == SDL_CONTROLLER_AXIS_TRIGGERLEFT)
-                            m_cbAxisEvent.at(ptr)((float)e.caxis.value);
+                        if (e.gaxis.axis == SDL_GAMEPAD_AXIS_LEFT_TRIGGER)
+                            m_cbAxisEvent.at(ptr)((float)e.gaxis.value);
                         break;
                     case C_AXIS_RTRIGGER:
-                        if (e.caxis.axis == SDL_CONTROLLER_AXIS_TRIGGERRIGHT)
-                            m_cbAxisEvent.at(ptr)((float)e.caxis.value);
+                        if (e.gaxis.axis == SDL_GAMEPAD_AXIS_RIGHT_TRIGGER)
+                            m_cbAxisEvent.at(ptr)((float)e.gaxis.value);
                         break;
                 }
             }
         }
     }
     // CONTROLLER EVENTS
-    else if (e.type == SDL_CONTROLLERDEVICEADDED ||
-             e.type == SDL_CONTROLLERDEVICEREMOVED || SDL_CONTROLLERAXISMOTION)
+    else if (e.type == SDL_EVENT_GAMEPAD_ADDED ||
+             e.type == SDL_EVENT_GAMEPAD_REMOVED ||
+             SDL_EVENT_GAMEPAD_AXIS_MOTION)
     {
         switch (e.type)
         {
-            case SDL_CONTROLLERDEVICEADDED:
+            case SDL_EVENT_GAMEPAD_ADDED:
                 addController(e.cdevice.which);
                 break;
-            case SDL_CONTROLLERDEVICEREMOVED:
+            case SDL_EVENT_GAMEPAD_REMOVED:
                 removeController(e.cdevice.which);
                 break;
         }
@@ -293,16 +301,15 @@ lu::core::Input::addJoystick(int joystickID)
 void
 lu::core::Input::addController(int controllerID)
 {
-    if (SDL_IsGameController(controllerID))
+    if (SDL_IsGamepad(controllerID))
     {
         Joystick controller;
-        controller.controller = SDL_GameControllerOpen(controllerID);
+        controller.controller = SDL_OpenGamepad(controllerID);
 
         if (controller.controller)
         {
-            controller.joystick =
-              SDL_GameControllerGetJoystick(controller.controller);
-            controller.instanceID = SDL_JoystickInstanceID(controller.joystick);
+            controller.joystick = SDL_GetGamepadJoystick(controller.controller);
+            controller.instanceID = SDL_GetJoystickID(controller.joystick);
         }
     }
 }
@@ -311,6 +318,6 @@ void
 lu::core::Input::removeController(int controllerID)
 {
     Joystick controller;
-    controller.controller = SDL_GameControllerFromInstanceID(controllerID);
-    SDL_GameControllerClose(controller.controller);
+    controller.controller = SDL_GetGamepadFromID(controllerID);
+    SDL_CloseGamepad(controller.controller);
 }

@@ -8,7 +8,7 @@
 #include <unordered_map>
 #include <vector>
 
-#include "SDL2/SDL.h"
+#include <SDL3/SDL.h>
 
 #include "Core/Utility/log.h"
 
@@ -28,7 +28,7 @@ namespace lu
         {
                 int instanceID = 0;
                 SDL_Joystick *joystick = nullptr;
-                SDL_GameController *controller = nullptr;
+                SDL_Gamepad *controller = nullptr;
         };
 
         /**

@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "GL/glew.h"
-#include "SDL2/SDL.h"
+#include <SDL3/SDL.h>
 
 #include "GLM/glm.hpp"
 
@@ -78,22 +78,21 @@ main(int argc, char *argv[])
         {
             exGameMode.checkInput(e);
 
-            if (e.type == SDL_QUIT)
+            if (e.type == SDL_EVENT_QUIT)
             {
                 running = false;
             }
 
-            if (e.type == SDL_KEYDOWN)
+            if (e.type == SDL_EVENT_KEY_DOWN)
             {
                 // TOGGLE FULLSCREEN
-                if (e.key.keysym.sym == SDLK_F11)
+                if (e.key.key == SDLK_F11)
                 {
                     // Buggy on linux it seems - probably happens too fast, so
                     // it instantly switches back
                     if (fullscreen == false)
                     {
-                        window.setWindowFullscreen(
-                          lu::core::WINDOW_FULLSCREEN_DESKTOP);
+                        window.setWindowFullscreen(lu::core::WINDOW_FULLSCREEN);
                         lu::core::Application::setScreenBufferSize(
                           window.getSize().x, window.getSize().y);
                         fullscreen = true;
@@ -107,12 +106,12 @@ main(int argc, char *argv[])
                     }
                 }
 
-                if (e.key.keysym.sym == SDLK_F9)
+                if (e.key.key == SDLK_F9)
                 {
                     showFPS = !showFPS; // Toggle fps counter
                 }
 
-                if (e.key.keysym.sym == SDLK_F10)
+                if (e.key.key == SDLK_F10)
                 {
                     skeleton = !skeleton;
                     if (skeleton)

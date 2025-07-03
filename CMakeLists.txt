@@ -53,7 +53,7 @@ elseif(UNIX)
 	set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/CMAKE)
 	
 	# Sets SDL2_INCLUDE_DIR and SDL2_LIBRARY
-	find_package(SDL2 REQUIRED)
+	find_package(SDL3 REQUIRED CONFIG REQUIRED COMPONENTS SDL3)
 
 	# Sets GLEW libraries and includes
 	find_package(GLEW REQUIRED)

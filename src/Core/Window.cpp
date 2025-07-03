@@ -15,7 +15,7 @@ void
 lu::core::Window::destroyWindow()
 {
     SDL_DestroyWindow(m_window);
-    SDL_GL_DeleteContext(m_glContext);
+    SDL_GL_DestroyContext(m_glContext);
 }
 
 lu::core::Window::Window(std::string title,
@@ -50,8 +50,8 @@ lu::core::Window::create(std::string title,
     }
 
     // Create the window
-    m_window = SDL_CreateWindow(
-      title.c_str(), posx, posy, width, height, SDL_WINDOW_OPENGL | flags);
+    m_window =
+      SDL_CreateWindow(title.c_str(), width, height, SDL_WINDOW_OPENGL | flags);
     if (m_window == NULL)
     {
         lu::core::log(LU_AT,
@@ -123,7 +123,7 @@ lu::core::Window::setTitle(std::string title)
 void
 lu::core::Window::setWindowGrab(bool grab)
 {
-    SDL_SetRelativeMouseMode((grab) ? SDL_TRUE : SDL_FALSE);
+    SDL_SetWindowRelativeMouseMode(m_window, (grab) ? true : false);
 }
 
 void

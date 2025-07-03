@@ -8,7 +8,7 @@
 
 #include "GL/glew.h"
 #include "GLM/glm.hpp"
-#include "SDL2/SDL.h"
+#include <SDL3/SDL.h>
 
 #include "Core/Utility/log.h"
 
@@ -24,11 +24,7 @@ namespace lu
         enum WindowFlags
         {
             WINDOW_FULLSCREEN = SDL_WINDOW_FULLSCREEN, /**< Fullscreen window */
-            WINDOW_FULLSCREEN_DESKTOP =
-              SDL_WINDOW_FULLSCREEN_DESKTOP, /**< Fullscreen window at the
-                                                current desktop resolution*/
-            WINDOW_SHOWN = SDL_WINDOW_SHOWN, /**< Window is visible (default) */
-            WINDOW_HIDDEN = SDL_WINDOW_HIDDEN, /**< Window is hidden */
+            WINDOW_HIDDEN = SDL_WINDOW_HIDDEN,         /**< Window is hidden */
             WINDOW_RESIZABLE =
               SDL_WINDOW_RESIZABLE, /**< Window is resizeable */
             WINDOW_BORDERLESS =
@@ -78,7 +74,7 @@ namespace lu
                        int posy,
                        int width,
                        int height,
-                       unsigned int flags = WINDOW_SHOWN);
+                       unsigned int flags);
                 ~Window();
 
                 /**
@@ -99,7 +95,7 @@ namespace lu
                             int posy,
                             int width,
                             int height,
-                            unsigned int flags = WINDOW_SHOWN);
+                            unsigned int flags);
 
                 /**
                  * \breif Sets the clearcolor for this window and its context
