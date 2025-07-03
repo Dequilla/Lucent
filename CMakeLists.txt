@@ -3,8 +3,10 @@ cmake_minimum_required(VERSION 3.5.2 FATAL_ERROR)
 project(Lucent)
 
 # Enable c++26
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 set(CMAKE_CXX_STANDARD 26)
+
+# Export compile_commands.json for LSPs
+set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 
 # Dependencies directory
 set(LucentDependencies ${PROJECT_SOURCE_DIR}/deps)
