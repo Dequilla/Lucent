@@ -1,9 +1,12 @@
 #FILE: /CMakeLists.txt
-cmake_minimum_required(VERSION 3.0.2 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.5.2 FATAL_ERROR)
 project(Lucent)
 
-# Enable c++11
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+# Enable c++26
+set(CMAKE_CXX_STANDARD 26)
+
+# Export compile_commands.json for LSPs
+set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 
 # Dependencies directory
 set(LucentDependencies ${PROJECT_SOURCE_DIR}/deps)
@@ -70,8 +73,5 @@ elseif(UNIX)
 	# Include the found path for our deps on UNIX
 	include_directories(${ASSIMP_INCLUDE_DIRS} ${SDL2_INCLUDE_DIR} ${GLEW_INCLUDE_DIRS} ${FREETYPE_INCLUDE_DIRS} ${ALL_DEP_INCLUDES})
 endif()
-
-# Setup submodules
-add_subdirectory(deps/external)
 
 add_subdirectory(src)

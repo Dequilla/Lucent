@@ -1,46 +1,61 @@
 #pragma once
 
 #include "BaseComponent.h"
-#include "Graphics/Renderer/Renderer3D.h"
 #include "Graphics/Lights.h"
+#include "Graphics/Renderer/Renderer3D.h"
 
-namespace lu { namespace game {
+namespace lu
+{
+    namespace game
+    {
 
-	class DirLightComponent : public BaseComponent, public lu::graphics::DirLight
-	{
-	public:
+        class DirLightComponent
+          : public BaseComponent
+          , public lu::graphics::DirLight
+        {
+            public:
+                void init() override;
 
-		void init() override;
+                void tick(float dt) override;
+                void draw(lu::graphics::Renderer3D *renderer) override;
 
-		void tick(float dt) override;
-		void draw(lu::graphics::Renderer3D* renderer) override;
+                std::string getType()
+                {
+                    return std::string("DirLightComponent");
+                }
+        };
 
-		std::string getType() { return std::string("DirLightComponent"); }
-	};
+        class PointLightComponent
+          : public BaseComponent
+          , public lu::graphics::PointLight
+        {
+            public:
+                void init() override;
 
-	class PointLightComponent : public BaseComponent, public lu::graphics::PointLight
-	{
+                void tick(float dt) override;
+                void draw(lu::graphics::Renderer3D *renderer) override;
 
-	public:
+                std::string getType()
+                {
+                    return std::string("PointLightComponent");
+                }
+        };
 
-		void init() override;
+        class SpotLightComponent
+          : public BaseComponent
+          , public lu::graphics::SpotLight
+        {
+            public:
+                void init() override;
 
-		void tick(float dt) override;
-		void draw(lu::graphics::Renderer3D* renderer) override;
+                void tick(float dt) override;
+                void draw(lu::graphics::Renderer3D *renderer) override;
 
-		std::string getType() { return std::string("PointLightComponent"); }
-	};
+                std::string getType()
+                {
+                    return std::string("SpotLightComponent");
+                }
+        };
 
-	class SpotLightComponent : public BaseComponent, public lu::graphics::SpotLight
-	{
-	public:
-
-		void init() override;
-
-		void tick(float dt) override;
-		void draw(lu::graphics::Renderer3D* renderer) override;
-
-		std::string getType() { return std::string("SpotLightComponent"); }
-	};
-
-}}
+    }
+}
