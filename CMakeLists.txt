@@ -1,5 +1,5 @@
 #FILE: /CMakeLists.txt
-cmake_minimum_required(VERSION 3.0.2 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.5.2 FATAL_ERROR)
 project(Lucent)
 
 # Enable c++11
@@ -70,8 +70,5 @@ elseif(UNIX)
 	# Include the found path for our deps on UNIX
 	include_directories(${ASSIMP_INCLUDE_DIRS} ${SDL2_INCLUDE_DIR} ${GLEW_INCLUDE_DIRS} ${FREETYPE_INCLUDE_DIRS} ${ALL_DEP_INCLUDES})
 endif()
-
-# Setup submodules
-add_subdirectory(deps/external)
 
 add_subdirectory(src)
