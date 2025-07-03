@@ -29,23 +29,10 @@ bool
 lu::core::Application::initInternal()
 {
     // Retrieve SDL_Versions
-    SDL_version compiled;
-    SDL_version linked;
-    SDL_VERSION(&compiled);
-    SDL_GetVersion(&linked);
-    std::string compiledVersion = "SDL_VERSION_COMPILED - " +
-                                  std::to_string((int)compiled.major) + "." +
-                                  std::to_string((int)compiled.minor) + "." +
-                                  std::to_string((int)compiled.patch);
-    std::string linkedVersion = "SDL_VERSION_LINKED - " +
-                                std::to_string((int)compiled.major) + "." +
-                                std::to_string((int)compiled.minor) + "." +
-                                std::to_string((int)compiled.patch);
+    lu::core::log("SDL3 version: " + std::to_string(SDL_VERSION));
 
-    lu::core::log(compiledVersion);
-    lu::core::log(linkedVersion);
-
-    if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
+    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK | SDL_INIT_GAMEPAD |
+                 SDL_INIT_EVENTS) < 0)
     {
         lu::core::log(LU_AT,
                       "Failed to initialize SDL with error:\n" +

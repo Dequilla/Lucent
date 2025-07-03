@@ -13,7 +13,7 @@ case $ID in
 
     arch)
         echo "Arch Linux"
-        sudo pacman -S sdl2-compat glew assimp freetype2
+        sudo pacman -S sdl3 glew assimp freetype2
         ;;
 esac
     
