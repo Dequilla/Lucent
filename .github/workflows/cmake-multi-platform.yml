@@ -54,6 +54,18 @@ jobs:
       run: |
         echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
 
+    - name:  Install dependencies
+      run:   |
+        if [ "$RUNNER_OS" == "Linux" ]; then
+          ./$github.workspace/script/install_deps.sh
+        elif [ "$RUNNER_OS" == "Windows" ]; then
+          echo "$RUNNER_OS not yet supported for CI."
+        else
+          echo "$RUNNER_OS not supported"
+          exit 1
+        fi
+      shell: bash
+
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
