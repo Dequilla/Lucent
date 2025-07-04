@@ -2,6 +2,9 @@
 cmake_minimum_required(VERSION 3.5.2 FATAL_ERROR)
 project(Lucent)
 
+# Compiler
+message("Using compiler ${CMAKE_CXX_COMPILER_ID}")
+
 # Enable c++26
 set(CMAKE_CXX_STANDARD 26)
 
