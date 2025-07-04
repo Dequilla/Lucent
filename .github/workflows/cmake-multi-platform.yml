@@ -57,7 +57,6 @@ jobs:
     - name:  Install dependencies
       run:   |
         if [ "$RUNNER_OS" == "Linux" ]; then
-          apt search sdl
           ./script/install_deps.sh
         elif [ "$RUNNER_OS" == "Windows" ]; then
           echo "$RUNNER_OS not yet supported for CI."
