@@ -8,6 +8,11 @@ set(CMAKE_CXX_STANDARD 26)
 # Export compile_commands.json for LSPs
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 
+# set the output directory for built objects.
+# This makes sure that the dynamic library goes into the build directory automatically.
+# set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
+# set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
+
 # Dependencies directory
 set(LucentDependencies ${PROJECT_SOURCE_DIR}/deps)
 
@@ -24,6 +29,9 @@ include_directories(${OUR_SRC_DIR} ${OUR_INC_DIR})
 # OpenGL
 find_package(OpenGL REQUIRED)
 include_directories(${OPENGL_INCLUDE_DIRS})
+
+# SDL3 (./script/install_deps.sh has to be run) 
+add_subdirectory(vendor/SDL EXCLUDE_FROM_ALL)
 
 if(WIN32)
 	set(WIN_DEP_INCLUDES ${LucentDependencies}/include/Windows)

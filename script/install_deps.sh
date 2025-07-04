@@ -6,7 +6,7 @@ case $ID in
     ubuntu)
         echo "Ubuntu Linux"
         sudo apt update
-        sudo apt install -y  libsdl3-dev libglew-dev libassimp-dev libfreetype-dev
+        sudo apt install -y libglew-dev libassimp-dev libfreetype-dev
         ;;
 
     debian)
@@ -15,7 +15,8 @@ case $ID in
 
     arch)
         echo "Arch Linux"
-        sudo pacman -S sdl3 glew assimp freetype2
+        sudo pacman -S glew assimp freetype2
         ;;
 esac
     
+git clone https://github.com/libsdl-org/SDL.git vendor/SDL
