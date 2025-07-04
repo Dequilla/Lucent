@@ -57,8 +57,7 @@ jobs:
     - name:  Install dependencies
       run:   |
         if [ "$RUNNER_OS" == "Linux" ]; then
-          pwd
-          tree -L 6 $github.workspace
+          tree -L 6
           ./$github.workspace/script/install_deps.sh
         elif [ "$RUNNER_OS" == "Windows" ]; then
           echo "$RUNNER_OS not yet supported for CI."
