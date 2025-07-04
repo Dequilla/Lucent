@@ -58,6 +58,7 @@ jobs:
       run:   |
         if [ "$RUNNER_OS" == "Linux" ]; then
           ./script/install_deps.sh
+          sudo apt install -y xorg
         elif [ "$RUNNER_OS" == "Windows" ]; then
           echo "$RUNNER_OS not yet supported for CI."
         else
