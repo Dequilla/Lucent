@@ -32,6 +32,7 @@ include_directories(${OPENGL_INCLUDE_DIRS})
 
 # SDL3 (./script/install_deps.sh has to be run) 
 add_subdirectory(vendor/SDL EXCLUDE_FROM_ALL)
+include_directories(vendor/SDL/include)
 
 if(WIN32)
 	set(WIN_DEP_INCLUDES ${LucentDependencies}/include/Windows)
