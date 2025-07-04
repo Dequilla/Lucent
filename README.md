@@ -9,6 +9,9 @@
 █████▄▄██ ████████▀  ████████▀    ██████████  ▀█   █▀     ▄████▀  
 ▀
 ```
+
+[![Lucent Build](https://github.com/Dequilla/Lucent/actions/workflows/lucent_cross_platform_build.yml/badge.svg?branch=master)](https://github.com/Dequilla/Lucent/actions/workflows/lucent_cross_platform_build.yml)
+
 # A crossplatform game engine using OpenGL
 
 ## Contributing
