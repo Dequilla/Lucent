@@ -4,7 +4,9 @@ source /etc/os-release
 
 case $ID in
     ubuntu)
-        echo "Ubuntu Linux TODO"
+        echo "Ubuntu Linux"
+        sudo apt update
+        sudo apt install -y  libsdl3-dev libglew-dev libassimp-dev libfreetype-dev
         ;;
 
     debian)
