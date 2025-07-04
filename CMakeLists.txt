@@ -10,8 +10,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 
 # set the output directory for built objects.
 # This makes sure that the dynamic library goes into the build directory automatically.
-# set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
-# set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 
 # Dependencies directory
 set(LucentDependencies ${PROJECT_SOURCE_DIR}/deps)
