@@ -3,13 +3,11 @@
 #include "GL/glew.h"
 #include <SDL3/SDL.h>
 
-#include "GLM/glm.hpp"
-
-#include "Graphics/Text/Font.h"
-
 #include "Core/Application.h"
 #include "Core/Time.h"
 #include "Core/Window.h"
+#include "GLM/glm.hpp"
+#include "Graphics/Text/Font.h"
 
 #include "Game/GameMode/ExampleGameMode.h"
 
@@ -45,6 +43,9 @@ main(int argc, char *argv[])
     lu::core::Application::enableVSYNC(true);
     window.setWindowGrab(true);
 
+    auto size = window.getSize();
+    std::cout << "Size: " << size.x << "x" << size.y << std::endl;
+
     lu::game::ExampleGameMode exGameMode;
     exGameMode.init();
 
@@ -77,13 +78,13 @@ main(int argc, char *argv[])
         while (SDL_PollEvent(&e) != 0)
         {
             exGameMode.checkInput(e);
+            window.notify(e);
 
             if (e.type == SDL_EVENT_QUIT)
             {
                 running = false;
             }
-
-            if (e.type == SDL_EVENT_KEY_DOWN)
+            else if (e.type == SDL_EVENT_KEY_DOWN)
             {
                 // TOGGLE FULLSCREEN
                 if (e.key.key == SDLK_F11)

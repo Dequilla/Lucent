@@ -1,5 +1,7 @@
 #include "Core/Window.h"
 
+#include "Core/Application.h"
+
 void
 lu::core::Window::initVideoComponents()
 {
@@ -109,6 +111,23 @@ lu::core::Window::display()
 }
 
 void
+lu::core::Window::notify(const SDL_Event &e)
+{
+    switch (e.type)
+    {
+        case SDL_EVENT_WINDOW_RESIZED:
+        {
+            std::cout << e.window.data1 << "-" << e.window.data2 << std::endl;
+            setSize(e.window.data1, e.window.data2);
+            lu::core::Application::setScreenBufferSize(e.window.data1,
+                                                       e.window.data2);
+            glViewport(0, 0, e.window.data1, e.window.data2);
+        }
+        break;
+    }
+}
+
+void
 lu::core::Window::setSize(int width, int height)
 {
     SDL_SetWindowSize(m_window, width, height);
@@ -136,6 +155,7 @@ glm::vec2
 lu::core::Window::getSize()
 {
     int width, height;
-    SDL_GetWindowSize(m_window, &width, &height);
+    // SDL_GetWindowSize(m_window, &width, &height);
+    SDL_GetWindowSizeInPixels(m_window, &width, &height);
     return glm::vec2(width, height);
 }

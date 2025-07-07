@@ -113,6 +113,13 @@ namespace lu
                                    displaying all that has been rendered */
 
                 /**
+                 * \brief Notify the window of incoming events
+                 *
+                 * @param e The incoming event.
+                 */
+                void notify(const SDL_Event &e);
+
+                /**
                  * \brief Sets the window size
                  *
                  * @param width Width

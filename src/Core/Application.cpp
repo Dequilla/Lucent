@@ -31,8 +31,8 @@ lu::core::Application::initInternal()
     // Retrieve SDL_Versions
     lu::core::log("SDL3 version: " + std::to_string(SDL_VERSION));
 
-    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK | SDL_INIT_GAMEPAD |
-                 SDL_INIT_EVENTS) < 0)
+    if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK | SDL_INIT_GAMEPAD |
+                  SDL_INIT_EVENTS))
     {
         lu::core::log(LU_AT,
                       "Failed to initialize SDL with error:\n" +
