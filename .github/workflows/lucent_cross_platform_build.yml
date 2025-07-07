@@ -4,9 +4,9 @@ name: Lucent Build
 
 on:
   push:
-    branches: [ "master", "ci" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "master", "ci" ]
+    branches: [ "master" ]
 
 jobs:
   build:
