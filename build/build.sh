@@ -41,7 +41,7 @@ make
 
 # Now move resources files
 echo "-LU- Moving resources..."
-cd src/
+cd Release
 
 if [ -d "$Resources/" ]; then
     rm -rf Resources/
